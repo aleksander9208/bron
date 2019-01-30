@@ -38,6 +38,18 @@ class UserIdentity extends CUserIdentity
         return !$this->errorCode;
     }
 
+    public function authenticateById($id) {
+        $user = User::model()->findByPk($id);
+        if ($user === null) {
+            $this->errorCode = self::ERROR_USERNAME_INVALID;
+        } else {
+            $this->_id = $user->id;
+            $this->errorCode = self::ERROR_NONE;
+        }
+
+        return !$this->errorCode;
+    }
+
     public function getId()
     {
         return $this->_id;

@@ -75,9 +75,9 @@ class Questionnaire extends CActiveRecord
     {
         return array(
             array('id', 'unique'),
-            array('fio_child', 'unique', 'message' => 'Указанный ребенок был ранее указан в другой заявке'),
-
-            array('user_id,created,fio_child,birthday_child,place_of_study,status,type, fio_parent,residence,place_of_work,tel_parent,email_parent,shift_id', 'required'),
+            array('fio_child', 'validateChild'),
+            array('user_id,created,fio_child,birthday_child,place_of_study,status,type, fio_parent,residence,place_of_work,tel_parent,email_parent,shift_id,dlo_id', 'required'),
+            array('shift_id', 'validateShift'),
             // array('fio_parent,residence,place_of_work,tel_parent,email_parent', 'required', 'on' => 'fl'),
             array('name_ur,fio_ur_contact,tel_ur_contact,email_ur_contact', 'required', 'on' => 'ur'),
             array('user_id', 'validateUser'),
@@ -87,10 +87,8 @@ class Questionnaire extends CActiveRecord
             array('status', 'in', 'range' => array_keys(self::getSatusName())),
             array('type', 'in', 'range' => array(self::TYPE_FIZ, self::TYPE_UR)),
 
-
             array('name_ur_check,fio_ur_contact_check,tel_ur_contact_check,email_ur_contact_check,fio_parent_check,residence_check,place_of_work_check,tel_parent_check,email_parent_check,fio_child_check,birthday_child_check,place_of_study_check', 'in', 'range' => array(0, 1)),
             array('type, fio_parent,residence,place_of_work,tel_parent,email_parent,fio_child,birthday_child,place_of_study,name_ur,fio_ur_contact,tel_ur_contact,email_ur_contact', 'safe'),
-
             array('name_ur_check,fio_ur_contact_check,tel_ur_contact_check,email_ur_contact_check,fio_parent_check,residence_check,place_of_work_check,tel_parent_check,email_parent_check,fio_child_check,birthday_child_check,place_of_study_check,status', 'safe', 'on' => 'mod'),
         );
     }
@@ -117,7 +115,8 @@ class Questionnaire extends CActiveRecord
             'birthday_child' => 'Дата рождения ребенка',
             'place_of_study' => 'Место учебы ребенка',
 
-            'shift_id' => 'Смена'
+            'shift_id' => 'Смена',
+            'dlo_id' => 'Интервал'
 
         );
     }
@@ -208,22 +207,23 @@ class Questionnaire extends CActiveRecord
 
     public function validateUser($attribute)
     {
-        if ($this->isNewRecord && $this->$attribute) {
+        if ($this->isNewRecord && !$this->$attribute) {
             $login = trim($this->type == self::TYPE_UR ? $this->fio_ur_contact : $this->fio_parent);
             $tel = ($this->type == self::TYPE_UR ? $this->tel_ur_contact : $this->tel_parent);
-            $cuser = User::model()->countByAttributes(array('login' => $login));
-            if (!$cuser) {
+            $user = User::model()->findByAttributes(array('login' => $login));
+            if (!$user) {
                 $u = new User();
                 $u->login = $login;
                 $u->password = md5($tel);
                 $u->role = User::ROLE_USER;
                 if (!$u->save()) {
                     $this->addError($attribute, $u->error_str);
-
                     return false;
                 } else {
                     $this->user_id = $u->id;
                 }
+            } else {
+                $this->user_id = $user->id;
             }
         }
 
@@ -235,14 +235,62 @@ class Questionnaire extends CActiveRecord
     {
         if ($this->isNewRecord && $this->$attribute) {
             $year = date("Y");
-            $years = array();
+           /* $years = array();
             for ($i = ($year - 18); $i <= $year; $i++) {
                 $years[] = $i;
             }
             if (!in_array(date("Y", strtotime($this->$attribute)), $years)) {
                 $this->addError($attribute, 'Нельзя подать заявку на взрослого человека');
                 return false;
+            }*/
+            $shifts = SiteService::getShifts();
+            $age = ($year -date("Y", strtotime($this->$attribute)));
+            if (($shifts[$this->shift_id]['min_age'] > $age ) || ($shifts[$this->shift_id]['max_age'] < $age)) {
+                $this->addError($attribute, 'Возраст ребенка не подходит для выбранной смены'.$age);
+                return false;
             }
+
+        }
+
+        return true;
+    }
+
+    public function validateChild($attribute)
+    {
+        $cq = Questionnaire::model()->countByAttributes(array('fio_child' => $this->$attribute, 'dlo_id' => $this->dlo_id, 'shift_id' => $this->shift_id));
+
+        if ($cq) {
+            $this->addError($attribute, 'Указанный ребенок был ранее указан в другой заявке');
+            return false;
+        }
+
+        return true;
+    }
+
+    public function validateShift($attribute) {
+        if (!self::getCAMPByShift($this->$attribute)) {
+            $this->addError($attribute, 'Указанна несуществующая смена');
+
+            return false;
+        }
+
+        return true;
+    }
+
+    public function validateDlo($attribute) {
+        $dlos = self::getDLOName();
+
+        if (!isset($dlos[$this->$attribute])) {
+            $this->addError($attribute, 'Указанна несуществующий период');
+
+            return false;
+        }
+
+        $dlos = self::getDLOSByParams(false, $this->$attribute);
+        if (in_array($this->$attribute,$dlos)) {
+            $this->addError($attribute, 'Указанна несуществующий период для выбранной смены');
+
+            return false;
         }
 
         return true;

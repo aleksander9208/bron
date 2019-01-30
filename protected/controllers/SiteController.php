@@ -31,28 +31,41 @@ class SiteController extends Controller
         );
     }
 
-    public function actionAddStatement() {
+    public function actionAddStatement()
+    {
         $title = 'Подать заявление';
-        $model  = new Questionnaire();
-echo  Yii::app()->user->role;
+        $model = new Questionnaire();
+        echo Yii::app()->user->role;
         $postQuestionnaire = Yii::app()->request->getPost('Questionnaire', array());
+        $postShifts = Yii::app()->request->getPost('Shifts', array());
+        $postDlos = Yii::app()->request->getPost('Dlos', array());
         if ($postQuestionnaire) {
             $transaction = Yii::app()->db->beginTransaction();
-            $model->attributes = $postQuestionnaire;
-            if (!$model->save()) {
+            foreach ($postShifts as $k => $ps) {
+                if (isset($postDlos[$k])) {
+                    $model = new Questionnaire();
+                    $model->attributes = $postQuestionnaire;
+                    $model->shift_id = (int)$ps;
+                    $model->dlo_id = (int)$postDlos[$k];
+                    if (!$model->save()) {
+                        Yii::app()->user->setFlash('q_error',Yii::app()->user->getFlash('q_error'). implode('<br>', $model->error_arr));
+                    }
+                }
+            }
+            if (Yii::app()->user->hasFlash('q_error')) {
                 $transaction->rollBack();
-                Yii::app()->user->setFlash('q_error', implode('<br>', $model->error_arr));
             } else {
                 $transaction->commit();
                 Yii::app()->user->setFlash('q_done', 'Успех');
-                if (Yii::app()->user->getIsGuest() && (boolean)Yii::app()->user->login($model->user_id, AUTH_DURATION)) {
+                $identity = new UserIdentity('','');
+                $identity->authenticateById($model->user_id);
+                if (Yii::app()->user->getIsGuest() && !(boolean)Yii::app()->user->login($identity, AUTH_DURATION)) {
                     $this->refresh();
                 } else {
                     $this->redirect(Yii::app()->createUrl('/profile'));
                 }
             }
         }
-
         $this->render('statement',
             array(
                 'title' => $title,
@@ -60,10 +73,6 @@ echo  Yii::app()->user->role;
             )
         );
     }
-
-
-
-
 
 
 }

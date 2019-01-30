@@ -96,6 +96,16 @@ if (Yii::app()->user->hasFlash('q_done')) {
     <?php echo CHtml::activeTextField($model, 'tel_parent', array('class' => 'form-control col-lg-4', 'placeholder' => $model->getAttributeLabel('tel_parent'))); ?>
 </div>
 
+<?php
+echo CHtml::textField('Shifts[]',Questionnaire::SHIFT_BONFIRE_2);
+echo CHtml::textField('Shifts[]',Questionnaire::SHIFT_KIROVEC_1);
+
+echo CHtml::textField('Dlos[]',Questionnaire::DLO_4);
+echo CHtml::textField('Dlos[]',Questionnaire::DLO_1);
+
+
+?>
+
 <?php echo CHtml::submitButton('Подать заявку', array('class' => 'btn btn-success')); ?>
 
 <?php echo CHtml::endForm(); ?>

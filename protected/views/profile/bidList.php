@@ -41,9 +41,10 @@
             'columns' => array(
                 array(
                     'header' => '№',
-                    'name' => 'id',
+                    'name' => '#',
                     'type' => 'raw',
-                    'value' => 'CHtml::link($data->id,"/admin/bid/".$data->id)',
+                  //  'value' => 'CHtml::link(($row + ($this->grid->dataProvider->pagination->currentPage * $this->grid->dataProvider->pagination->pageSize) + 1),"/admin/bid/".$data->id)',
+                    'value' => 'CHtml::link($data->id,"/profile/bid/".$data->id)',
                     'htmlOptions' => array('class' => 'num_string'),
                     'headerHtmlOptions' => array('class' => 'col'),
                     'filter' => false,
@@ -60,7 +61,7 @@
                     'header' => 'ФИО ребенка',
                     'name' => 'fio_child',
                     'type' => 'raw',
-                    'value' => 'CHtml::link($data->fio_child,"/admin/bid/".$data->id)',
+                    'value' => 'CHtml::link($data->fio_child,"/profile/bid/".$data->id)',
                     'htmlOptions' => array('align' => 'center'),
                     'headerHtmlOptions' => array('class' => 'col'),
                     'filter' =>false,
