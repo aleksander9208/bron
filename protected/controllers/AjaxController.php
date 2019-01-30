@@ -77,7 +77,7 @@ class AjaxController extends Controller
                 if (!$bet->save()) {
                     $this->out['errors'] = $bet->error_arr;
                 } else {
-                      $this->out['data'] = $bet->liveMess;
+                    $this->out['data'] = $bet->liveMess;
                 }
             } else {
                 $this->out['errors'] = array('Парамерты не заданы');
@@ -104,6 +104,31 @@ class AjaxController extends Controller
             }
         } else {
             throw new CHttpException(401, 'Страница не найдена');
+        }
+    }
+
+
+    public function actionGetCampsList()
+    {
+        $shiftId = Yii::app()->request->getParam('shift', false);
+        $dloId = Yii::app()->request->getParam('dloId', false);
+        $age = Yii::app()->request->getParam('age', false);
+        $campsIds = Questionnaire::getCampsByParams($shiftId, $dloId, $age);
+        $this->out['data']['camps'] = array();
+        foreach ($campsIds as $c) {
+            $this->out['data']['camps'][] = array('id' => $c, 'name' => Questionnaire::getCAMPName($c));
+        }
+    }
+
+    public function actionGetShiftList()
+    {
+        $shiftId = Yii::app()->request->getParam('shift', false);
+        $dloId = Yii::app()->request->getParam('dloId', false);
+        $age = Yii::app()->request->getParam('age', false);
+        $campsIds = Questionnaire::getCampsByParams($shiftId, $dloId, $age);
+        $this->out['data']['camps'] = array();
+        foreach ($campsIds as $c) {
+            $this->out['data']['camps'][] = array('id' => $c, 'name' => Questionnaire::getCAMPName($c));
         }
     }
 

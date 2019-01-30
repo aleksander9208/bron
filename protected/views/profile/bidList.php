@@ -46,7 +46,7 @@
                     'value' => 'CHtml::link($data->id,"/admin/bid/".$data->id)',
                     'htmlOptions' => array('class' => 'num_string'),
                     'headerHtmlOptions' => array('class' => 'col'),
-                    'filter' => CHtml::activeTextField($model, 'id', array('class' => 'form-control')),
+                    'filter' => false,
                 ),
                 array(
                     'header' => 'Дата подачи',
@@ -63,52 +63,17 @@
                     'value' => 'CHtml::link($data->fio_child,"/admin/bid/".$data->id)',
                     'htmlOptions' => array('align' => 'center'),
                     'headerHtmlOptions' => array('class' => 'col'),
-                    'filter' => CHtml::activeTextField($model, 'fio_child', array('class' => 'form-control')),
+                    'filter' =>false,
                 ),
-                array(
-                    'header' => 'Тип',
-                    'name' => 'type',
-                    'value' => 'Questionnaire::getTypeName($data->type)',
-                    'htmlOptions' => array('align' => 'center'),
-                    'filter' => Questionnaire::getTypeName(),
-                    'headerHtmlOptions' => array('class' => 'col')
-                ),
-
                 array(
                     'header' => 'Статус',
                     'name' => 'status',
                     'type' => 'raw',
                     'value' => 'Questionnaire::getSatusName($data->status)',
                     'htmlOptions' => array('align' => 'center'),
-                    'filter' => Questionnaire::getSatusName(),
+                    'filter' => false,
                     'headerHtmlOptions' => array('class' => 'col')
                 ),
-
-                array(
-                    'header' => 'ФИО представителя',
-                    'name' => 'fio_ur_contact',
-                    'value' => '$data->fio_ur_contact',
-                    'htmlOptions' => array('align' => 'center'),
-                    'headerHtmlOptions' => array('class' => 'col'),
-                    'filter' => CHtml::activeTextField($model, 'fio_ur_contact', array('class' => 'form-control')),
-                ),
-                array(
-                    'header' => 'ФИО Родителя',
-                    'name' => 'fio_parent',
-                    'value' => '$data->fio_parent',
-                    'htmlOptions' => array('align' => 'center'),
-                    'headerHtmlOptions' => array('class' => 'col'),
-                    'filter' => CHtml::activeTextField($model, 'fio_parent', array('class' => 'form-control')),
-                ),
-                array(
-                    'header' => 'Телефон родителя',
-                    'name' => 'tel_parent',
-                    'value' => '$data->tel_parent',
-                    'htmlOptions' => array('align' => 'center'),
-                    'headerHtmlOptions' => array('class' => 'col'),
-                    'filter' => CHtml::activeTextField($model, 'tel_parent', array('class' => 'form-control')),
-                ),
-
 
             ),
         ));

@@ -16,7 +16,7 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
-        $title = 'Подать заявление';
+        $title = 'Порядок подачи заявления';
         $this->pageTitle = Yii::app()->name . ' - ' . $title;
 
         $cs = Yii::app()->getClientScript();
@@ -27,6 +27,36 @@ class SiteController extends Controller
             array(
                 'title' => $title,
                 'role' => Yii::app()->user->role,
+            )
+        );
+    }
+
+    public function actionAddStatement() {
+        $title = 'Подать заявление';
+        $model  = new Questionnaire();
+echo  Yii::app()->user->role;
+        $postQuestionnaire = Yii::app()->request->getPost('Questionnaire', array());
+        if ($postQuestionnaire) {
+            $transaction = Yii::app()->db->beginTransaction();
+            $model->attributes = $postQuestionnaire;
+            if (!$model->save()) {
+                $transaction->rollBack();
+                Yii::app()->user->setFlash('q_error', implode('<br>', $model->error_arr));
+            } else {
+                $transaction->commit();
+                Yii::app()->user->setFlash('q_done', 'Успех');
+                if (Yii::app()->user->getIsGuest() && (boolean)Yii::app()->user->login($model->user_id, AUTH_DURATION)) {
+                    $this->refresh();
+                } else {
+                    $this->redirect(Yii::app()->createUrl('/profile'));
+                }
+            }
+        }
+
+        $this->render('statement',
+            array(
+                'title' => $title,
+                'model' => $model,
             )
         );
     }

@@ -6,6 +6,9 @@ class User extends CActiveRecord
     const ROLE_USER = 'user';
     const ROLE_BANNED = 'ban';
 
+    public $error_str;
+    public $error_arr = array();
+
     public static function model($className = __CLASS__)
     {
         return parent::model($className);
@@ -53,6 +56,20 @@ class User extends CActiveRecord
         }
 
         return parent::beforeValidate();
+    }
+
+    public function afterValidate()
+    {
+        if ($this->getErrors()) {
+            foreach ($this->getErrors() as $n) {
+                foreach ($n as $e) {
+                    $this->error_arr[] = $e;
+                }
+            }
+            $this->error_str = implode('.', $this->error_arr);
+        }
+
+        return parent::afterValidate();
     }
 
     public static function getRoles($role = false)

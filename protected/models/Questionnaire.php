@@ -1,0 +1,473 @@
+<?php
+
+class Questionnaire extends CActiveRecord
+{
+    const STATUS_IN_MODER = 0;
+    const STATUS_RETURNED = 1;
+    const STATUS_OK = 2;
+
+    const TYPE_FIZ = 0;
+    const TYPE_UR = 1;
+
+    const CAMP_KIROVEC = 1; //кировец
+    const CAMP_BLUESCREEN = 2; // голубой экран
+    const CAMP_EAST_4 = 3;// восток 4
+    const CAMP_DIAMOND = 4; //алмаз
+    const CAMP_BONFIRE = 5; // костер
+    const CAMP_LIGHTHOUSE = 6; //маяк
+    const CAMP_FLYGHT = 7; //полет
+
+
+    const SHIFT_KIROVEC_1 = 1;
+    const SHIFT_KIROVEC_2 = 2;
+    const SHIFT_KIROVEC_3 = 3;
+    const SHIFT_KIROVEC_4 = 4;
+    const SHIFT_KIROVEC_5 = 5;
+    const SHIFT_BLUESCREEN_1 = 6;
+    const SHIFT_BLUESCREEN_2 = 7;
+    const SHIFT_BLUESCREEN_3 = 8;
+    const SHIFT_BLUESCREEN_4 = 9;
+    const SHIFT_EAST_1 = 10;
+    const SHIFT_EAST_2 = 11;
+    const SHIFT_EAST_3 = 12;
+    const SHIFT_DIAMOND_1 = 10;
+    const SHIFT_DIAMOND_2 = 11;
+    const SHIFT_DIAMOND_3 = 12;
+    const SHIFT_DIAMOND_4 = 13;
+    const SHIFT_BONFIRE_1 = 14;
+    const SHIFT_BONFIRE_2 = 15;
+    const SHIFT_BONFIRE_3 = 16;
+    const SHIFT_BONFIRE_4 = 17;
+    const SHIFT_LIGHTHOUSE_1 = 18;
+    const SHIFT_LIGHTHOUSE_2 = 19;
+    const SHIFT_LIGHTHOUSE_3 = 20;
+    const SHIFT_FLYGHT_1 = 21;
+    const SHIFT_FLYGHT_2 = 22;
+    const SHIFT_FLYGHT_3 = 23;
+    const SHIFT_FLYGHT_4 = 24;
+
+    const DLO_1 = 1;
+    const DLO_2 = 2;
+    const DLO_3 = 3;
+    const DLO_4 = 4;
+    const DLO_5 = 5;
+    const DLO_6 = 6;
+    const DLO_7 = 7;
+    const DLO_8 = 8;
+
+    public $error_str;
+    public $error_arr = array();
+
+
+    private $changedAttr = array();
+
+    public static function model($className = __CLASS__)
+    {
+        return parent::model($className);
+    }
+
+    public function tableName()
+    {
+        return '{{questionnaire}}';
+    }
+
+    public function rules()
+    {
+        return array(
+            array('id', 'unique'),
+            array('fio_child', 'unique', 'message' => 'Указанный ребенок был ранее указан в другой заявке'),
+
+            array('user_id,created,fio_child,birthday_child,place_of_study,status,type, fio_parent,residence,place_of_work,tel_parent,email_parent,shift_id', 'required'),
+            // array('fio_parent,residence,place_of_work,tel_parent,email_parent', 'required', 'on' => 'fl'),
+            array('name_ur,fio_ur_contact,tel_ur_contact,email_ur_contact', 'required', 'on' => 'ur'),
+            array('user_id', 'validateUser'),
+            array('birthday_child', 'validateBirthday'),
+            array('name_ur,fio_ur_contact,email_ur_contact,fio_parent,email_parent,fio_child,place_of_study', 'length', 'max' => 255),
+            array('residence,place_of_work', 'length', 'max' => 255),
+            array('status', 'in', 'range' => array_keys(self::getSatusName())),
+            array('type', 'in', 'range' => array(self::TYPE_FIZ, self::TYPE_UR)),
+
+
+            array('name_ur_check,fio_ur_contact_check,tel_ur_contact_check,email_ur_contact_check,fio_parent_check,residence_check,place_of_work_check,tel_parent_check,email_parent_check,fio_child_check,birthday_child_check,place_of_study_check', 'in', 'range' => array(0, 1)),
+            array('type, fio_parent,residence,place_of_work,tel_parent,email_parent,fio_child,birthday_child,place_of_study,name_ur,fio_ur_contact,tel_ur_contact,email_ur_contact', 'safe'),
+
+            array('name_ur_check,fio_ur_contact_check,tel_ur_contact_check,email_ur_contact_check,fio_parent_check,residence_check,place_of_work_check,tel_parent_check,email_parent_check,fio_child_check,birthday_child_check,place_of_study_check,status', 'safe', 'on' => 'mod'),
+        );
+    }
+
+
+    public function attributeLabels()
+    {
+        return array(
+            'type' => 'Тип заявителя',
+            'user_id' => 'Пользователь',
+            'created' => 'Дата подачи',
+            'name_ur' => 'Название юридического лица',
+            'fio_ur_contact' => 'Ф.И.О. контактного лица',
+            'tel_ur_contact' => 'Телефон контактного лица',
+            'email_ur_contact' => 'E-mail контактного лица',
+
+            'fio_parent' => 'Ф.И.О. родителя',
+            'residence' => 'Место жительства по регистрации',
+            'place_of_work' => 'Место работы',
+            'tel_parent' => 'Телефон родителя/опекуна',
+            'email_parent' => 'E-mail родителя/опекуна',
+
+            'fio_child' => 'Ф.И.О. ребенка',
+            'birthday_child' => 'Дата рождения ребенка',
+            'place_of_study' => 'Место учебы ребенка',
+
+            'shift_id' => 'Смена'
+
+        );
+    }
+
+    public function safeAttributes()
+    {
+        return array(
+            'fio_parent',
+            'residence',
+            'place_of_work',
+            'tel_parent',
+            'email_parent',
+            'fio_child',
+            'birthday_child',
+            'place_of_study',
+            'name_ur',
+            'fio_ur_contact',
+            'tel_ur_contact',
+            'email_ur_contact',
+            'type',
+        );
+    }
+
+    public function beforeValidate()
+    {
+        if ($this->isNewRecord) {
+            $this->status = self::STATUS_IN_MODER;
+            if (is_null($this->created)) {
+                $this->created = date('Y-m-d H:i:s');
+            }
+            if ($this->type == self::TYPE_UR) {
+                $this->scenario = 'ur';
+            } else {
+                $this->scenario = 'fl';
+                $this->name_ur = $this->fio_ur_contact = $this->tel_ur_contact = $this->email_ur_contact = null;
+            }
+            $this->user_id = (int)Yii::app()->user->id;
+        } elseif ($this->scenario == 'mod') {
+            if (isset($this->changedAttr['status']) && ($this->changedAttr['status'] != $this->status) && ($this->status == self::STATUS_OK)) {
+                $this->name_ur_check = 0;
+                $this->fio_ur_contact_check = 0;
+                $this->tel_ur_contact_check = 0;
+                $this->email_ur_contact_check = 0;
+                $this->fio_parent_check = 0;
+                $this->residence_check = 0;
+                $this->place_of_work_check = 0;
+                $this->tel_parent_check = 0;
+                $this->email_parent_check = 0;
+                $this->fio_child_check = 0;
+                $this->birthday_child_check = 0;
+                $this->place_of_study_check = 0;
+            }
+        } else { //простое редактирование пользователем
+
+        }
+
+        return parent::beforeValidate();
+    }
+
+    public function afterValidate()
+    {
+        if ($this->getErrors()) {
+            foreach ($this->getErrors() as $n) {
+                foreach ($n as $e) {
+                    $this->error_arr[] = $e;
+                }
+            }
+            $this->error_str = implode('.', $this->error_arr);
+        }
+
+        return parent::afterValidate();
+    }
+
+    public function beforeSave()
+    {
+
+        return parent::beforeSave();
+    }
+
+    public function afterSave()
+    {
+        if ($this->isNewRecord) {
+
+        }
+
+        return parent::afterSave();
+    }
+
+    public function validateUser($attribute)
+    {
+        if ($this->isNewRecord && $this->$attribute) {
+            $login = trim($this->type == self::TYPE_UR ? $this->fio_ur_contact : $this->fio_parent);
+            $tel = ($this->type == self::TYPE_UR ? $this->tel_ur_contact : $this->tel_parent);
+            $cuser = User::model()->countByAttributes(array('login' => $login));
+            if (!$cuser) {
+                $u = new User();
+                $u->login = $login;
+                $u->password = md5($tel);
+                $u->role = User::ROLE_USER;
+                if (!$u->save()) {
+                    $this->addError($attribute, $u->error_str);
+
+                    return false;
+                } else {
+                    $this->user_id = $u->id;
+                }
+            }
+        }
+
+        return true;
+    }
+
+
+    public function validateBirthday($attribute)
+    {
+        if ($this->isNewRecord && $this->$attribute) {
+            $year = date("Y");
+            $years = array();
+            for ($i = ($year - 18); $i <= $year; $i++) {
+                $years[] = $i;
+            }
+            if (!in_array(date("Y", strtotime($this->$attribute)), $years)) {
+                $this->addError($attribute, 'Нельзя подать заявку на взрослого человека');
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    public static function getSatusName($status = false)
+    {
+        $arr = array(
+            self::STATUS_IN_MODER => 'На модерации',
+            self::STATUS_RETURNED => 'На доработке',
+            self::STATUS_OK => 'Одобрен',
+        );
+        if (is_numeric($status)) {
+            if (array_key_exists($status, $arr)) {
+                return $arr[$status];
+            }
+            return $status;
+        }
+        return $arr;
+    }
+
+    public static function getTypeName($type = false)
+    {
+        $arr = array(
+            self::TYPE_FIZ => 'Физ.лицо',
+            self::TYPE_UR => 'Юр.лицо',
+        );
+        if (is_numeric($type)) {
+            if (array_key_exists($type, $arr)) {
+                return $arr[$type];
+            }
+            return $type;
+        }
+        return $arr;
+    }
+
+    public static function getCAMPName($campID = false)
+    {
+        $arr = array(
+            self::CAMP_KIROVEC => 'Кировец',
+            self::CAMP_BLUESCREEN => 'Голубой экран',
+            self::CAMP_EAST_4 => 'Восток-4',
+            self::CAMP_DIAMOND => 'Алмаз',
+            self::CAMP_BONFIRE => 'Костер',
+            self::CAMP_LIGHTHOUSE => 'Маяк',
+            self::CAMP_FLYGHT => 'Полет',
+        );
+        if (is_numeric($campID)) {
+            if (array_key_exists($campID, $arr)) {
+                return $arr[$campID];
+            }
+            return $campID;
+        }
+        return $arr;
+    }
+
+    public static function getCAMPByShift($shiftId)
+    {
+        switch ($shiftId) {
+            case self::SHIFT_KIROVEC_1:
+            case self::SHIFT_KIROVEC_2:
+            case self::SHIFT_KIROVEC_3:
+            case self::SHIFT_KIROVEC_4:
+            case self::SHIFT_KIROVEC_5:
+                return self::CAMP_KIROVEC;
+                break;
+            case self::SHIFT_EAST_1:
+            case self::SHIFT_EAST_2:
+            case self::SHIFT_EAST_3:
+                return self::CAMP_EAST_4;
+                break;
+            case self::SHIFT_DIAMOND_1:
+            case self::SHIFT_DIAMOND_2:
+            case self::SHIFT_DIAMOND_3:
+            case self::SHIFT_DIAMOND_4:
+                return self::CAMP_DIAMOND;
+                break;
+            case self::SHIFT_BONFIRE_1:
+            case self::SHIFT_BONFIRE_2:
+            case self::SHIFT_BONFIRE_3:
+            case self::SHIFT_BONFIRE_4:
+                return self::CAMP_BONFIRE;
+                break;
+            case self::SHIFT_LIGHTHOUSE_1:
+            case self::SHIFT_LIGHTHOUSE_2:
+            case self::SHIFT_LIGHTHOUSE_3:
+                return self::CAMP_LIGHTHOUSE;
+                break;
+            case self::SHIFT_FLYGHT_1:
+            case self::SHIFT_FLYGHT_2:
+            case self::SHIFT_FLYGHT_3:
+            case self::SHIFT_FLYGHT_4:
+                return self::CAMP_FLYGHT;
+                break;
+            default:
+                return 0;
+        }
+    }
+
+    public static function getShiftsByParams($campId = false, $dloId = false, $full = false, $age = false)
+    {
+        $out = array();
+        $shifts = SiteService::getShifts();
+        foreach ($shifts as $k => $s) {
+            if (is_numeric($campId) && $s['camp'] != $campId) {
+                continue;
+            }
+            if (is_numeric($age) && ($s['min_age'] > $age) && ($s['max_age'] < $age)) {
+                continue;
+            }
+            if (is_numeric($dloId) && !in_array($dloId, $s['dlo'])) {
+                continue;
+            }
+            if ($full) {
+                $out[] = $s;
+            } else {
+                $out[] = $k;
+            }
+
+        }
+        return $out;
+    }
+
+    public static function getCampsByParams($shiftId = false, $dloId = false, $age = false)
+    {
+        $out = array();
+        $shifts = SiteService::getShifts();
+        foreach ($shifts as $k => $s) {
+            if (is_numeric($shiftId) && $s['id'] != $shiftId) {
+                continue;
+            }
+            if (is_numeric($dloId) && !in_array($dloId, $s['dlo'])) {
+                continue;
+            }
+            if (is_numeric($age) && ($s['min_age'] > $age) && ($s['max_age'] < $age)) {
+                continue;
+            }
+            $out[] = $s['camp'];
+        }
+
+        return array_unique($out);
+    }
+
+    public static function getDLOSByParams($campId = false, $shiftId = false, $age = false)
+    {
+        $out = array();
+        $shifts = SiteService::getShifts();
+        foreach ($shifts as $k => $s) {
+            if (is_numeric($campId) && $s['camp'] != $campId) {
+                continue;
+            }
+            if (is_numeric($shiftId) && $s['id'] != $shiftId) {
+                continue;
+            }
+            if (is_numeric($age) && ($s['min_age'] > $age) && ($s['max_age'] < $age)) {
+                continue;
+            }
+            foreach ($s['dlo'] as $d) {
+                $out[] = $d;
+            }
+        }
+
+        return array_unique($out);
+    }
+
+    public static function getDLOName($dloId = false)
+    {
+        $arr = array(
+            self::DLO_1 => '01.06-10.06',
+            self::DLO_2 => '12.06-21.06',
+            self::DLO_3 => '23.06-02.07',
+            self::DLO_4 => '05.07-14.07',
+            self::DLO_5 => '16.07-25.07',
+            self::DLO_6 => '28.08-06.08',
+            self::DLO_7 => '08.08-17.08',
+            self::DLO_8 => '19.08-28.08',
+        );
+        if (is_numeric($dloId)) {
+            if (array_key_exists($dloId, $arr)) {
+                return $arr[$dloId];
+            }
+            return $dloId;
+        }
+        return $arr;
+    }
+
+
+    public function getBidList($route)
+    {
+        $sort = new CSort();
+        $sort->defaultOrder = 't.id DESC';
+        $sort->route = $route;
+        $criteria = new CDbCriteria;
+        if (is_numeric($this->type)) {
+            $criteria->compare('t.type', $this->type);
+        }
+        if (is_numeric($this->status)) {
+            $criteria->compare('t.status', $this->status);
+        }
+        if (is_numeric($this->user_id)) {
+            $criteria->compare('t.user_id', $this->user_id);
+        }
+
+        $criteria->compare('t.fio_child', $this->fio_child, true);
+        $criteria->compare('t.fio_ur_contact', $this->fio_ur_contact, true);
+        $criteria->compare('t.fio_parent', $this->fio_parent, true);
+        $criteria->compare('t.tel_parent', $this->tel_parent, true);
+
+        return new CActiveDataProvider('Questionnaire', array(
+            'criteria' => $criteria,
+            'pagination' => array(
+                'pageSize' => 20,
+                'route' => $route,
+            ),
+            'sort' => $sort,
+        ));
+    }
+
+    public function __set($var, $value)
+    {
+        if (in_array($var, array('status')) && !array_key_exists($var, $this->changedAttr)) {
+            $this->changedAttr[$var] = $this->$var;
+        }
+
+        parent::__set($var, $value);
+    }
+
+}

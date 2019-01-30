@@ -19,7 +19,7 @@ class AuthController extends Controller
         if (!Yii::app()->user->getIsGuest()) {
             $this->redirect(Yii::app()->createAbsoluteUrl('/'));
         }
-        $this->pageTitle =  'Авторизация - '.Yii::app()->name;
+        $this->pageTitle = 'Авторизация - ' . Yii::app()->name;
 
         $cs = Yii::app()->getClientScript();
         $cs->registerCssFile(Yii::app()->createUrl('/statics/css/fb.page.auth.css'));
@@ -30,6 +30,20 @@ class AuthController extends Controller
         if (isset($_POST['LoginForm'])) {
             $model->attributes = $_POST['LoginForm'];
             if ($model->validate()) {
+                if (!Yii::app()->user->getIsGuest()) {
+                    switch (Yii::app()->user->role) {
+                        case User::ROLE_USER:
+                            $this->redirect(Yii::app()->createAbsoluteUrl('/profile'));
+                            break;
+                        case User::ROLE_ADMIN:
+                            $this->redirect(Yii::app()->createAbsoluteUrl('/admin'));
+                            break;
+                        default:
+                            $this->redirect(Yii::app()->createAbsoluteUrl('/'));
+                    }
+                }
+
+
                 $this->redirect(Yii::app()->createAbsoluteUrl('/'));
             }
         }

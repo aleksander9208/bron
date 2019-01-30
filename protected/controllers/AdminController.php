@@ -18,32 +18,41 @@ class AdminController extends Controller
 
     public function actionIndex()
     {
-        $title = 'Спортивные события';
+        $title = 'Заявки к рассмотрению';
 
         $this->pageTitle = Yii::app()->name . ' - ' . $title;
-        $this->breadcrumbs = array('Админ-панель' => array(Yii::app()->createUrl('/admin')), $title => array(Yii::app()->createUrl('/admin')));
+        $questionnaire = new Questionnaire();
+        $questionnaire->type = $questionnaire->status = null;
+        $questionnairePost = Yii::app()->request->getParam('Questionnaire', array());
+        if ($questionnairePost) {
+            $questionnaire->attributes = $questionnairePost;
+        }
 
-        $cs = Yii::app()->getClientScript();
-        $cs->registerCssFile(Yii::app()->createUrl('/statics/css/fb.page.admin_events.css'));
-        $cs->registerScriptFile(Yii::app()->createUrl('/statics/js/fb.page.admin_events.js'), CClientScript::POS_END);
-
-        $adminService = new AdminService();
-
-        $this->render('index', array('title' => $title, 'info_data' =>  $adminService->getEventsList(),'events_my'=> $adminService->getMyEventsList() ));
+        $this->render('index', array('title' => $title, 'model' => $questionnaire));
     }
 
-    public function actionMyEventsList()
+    public function actionbid($id = 0)
     {
-        $title = 'Мои события';
-        $this->pageTitle = Yii::app()->name . ' - ' . $title;
-
-        $cs = Yii::app()->getClientScript();
-        $cs->registerCssFile(Yii::app()->createUrl('/statics/css/fb.page.admin_collection.css'));
-        $cs->registerScriptFile(Yii::app()->createUrl('/statics/js/fb.page.admin_collection.js'), CClientScript::POS_END);
-
-        $adminService = new AdminService();
-
-        $this->render('myEventsList', array('title' => $title,'events'=> $adminService->getMyEventsList()));
+        $this->pageTitle = Yii::app()->name . ' - ' . 'Заявка #'.(int)$id;
+        $q = Questionnaire::model()->findByPk($id);
+        if (!$q) {
+            throw new CHttpException(401, 'Страница не найдена');
+        }
+        $questionnairePost = Yii::app()->request->getPost('Questionnaire', array());
+        if ($questionnairePost) {
+            $q->scenario = 'mod';
+            $q->attributes = $questionnairePost;
+            if ($q->save()) {
+                if ($id) {
+                    Yii::app()->user->setFlash('bid', 'Запись успешно отредактированна');
+                    $this->refresh();
+                } else {
+                    Yii::app()->user->setFlash('bid', 'Запись успешно добавлена');
+                    $this->redirect(Yii::app()->createUrl('/admin/bid/' . $q->id));
+                }
+            }
+        }
+        $this->render('bid', array('model' => $q));
     }
 
 
