@@ -5,6 +5,7 @@ class Questionnaire extends CActiveRecord
     const STATUS_IN_MODER = 0;
     const STATUS_RETURNED = 1;
     const STATUS_OK = 2;
+    const STATUS_CANCELED = 3;
 
     const TYPE_FIZ = 0;
     const TYPE_UR = 1;
@@ -86,10 +87,10 @@ class Questionnaire extends CActiveRecord
             array('residence,place_of_work', 'length', 'max' => 255),
             array('status', 'in', 'range' => array_keys(self::getSatusName())),
             array('type', 'in', 'range' => array(self::TYPE_FIZ, self::TYPE_UR)),
-
-            array('name_ur_check,fio_ur_contact_check,tel_ur_contact_check,email_ur_contact_check,fio_parent_check,residence_check,place_of_work_check,tel_parent_check,email_parent_check,fio_child_check,birthday_child_check,place_of_study_check', 'in', 'range' => array(0, 1)),
+            array('status', 'validateStatus'),
+            array('paid,create_admin,name_ur_check,fio_ur_contact_check,tel_ur_contact_check,email_ur_contact_check,fio_parent_check,residence_check,place_of_work_check,tel_parent_check,email_parent_check,fio_child_check,birthday_child_check,place_of_study_check', 'in', 'range' => array(0, 1)),
             array('type, fio_parent,residence,place_of_work,tel_parent,email_parent,fio_child,birthday_child,place_of_study,name_ur,fio_ur_contact,tel_ur_contact,email_ur_contact', 'safe'),
-            array('name_ur_check,fio_ur_contact_check,tel_ur_contact_check,email_ur_contact_check,fio_parent_check,residence_check,place_of_work_check,tel_parent_check,email_parent_check,fio_child_check,birthday_child_check,place_of_study_check,status', 'safe', 'on' => 'mod'),
+            array('paid,comment,name_ur_check,fio_ur_contact_check,tel_ur_contact_check,email_ur_contact_check,fio_parent_check,residence_check,place_of_work_check,tel_parent_check,email_parent_check,fio_child_check,birthday_child_check,place_of_study_check,status,paid,create_admin', 'safe', 'on' => 'mod'),
         );
     }
 
@@ -116,7 +117,10 @@ class Questionnaire extends CActiveRecord
             'place_of_study' => 'Место учебы ребенка',
 
             'shift_id' => 'Смена',
-            'dlo_id' => 'Интервал'
+            'dlo_id' => 'Интервал',
+            'comment' => 'Комментарий',
+            'paid' => 'Выкуплена',
+            'create_admin' =>'Создана админом'
 
         );
     }
@@ -154,6 +158,9 @@ class Questionnaire extends CActiveRecord
                 $this->name_ur = $this->fio_ur_contact = $this->tel_ur_contact = $this->email_ur_contact = null;
             }
             $this->user_id = (int)Yii::app()->user->id;
+            if (Yii::app()->user->role == User::ROLE_ADMIN) {
+                $this->create_admin = 1;
+            }
         } elseif ($this->scenario == 'mod') {
             if (isset($this->changedAttr['status']) && ($this->changedAttr['status'] != $this->status) && ($this->status == self::STATUS_OK)) {
                 $this->name_ur_check = 0;
@@ -168,6 +175,22 @@ class Questionnaire extends CActiveRecord
                 $this->fio_child_check = 0;
                 $this->birthday_child_check = 0;
                 $this->place_of_study_check = 0;
+            }
+        } elseif($this->scenario == 'user_up') { //исправление ошибок пользователем или отменой заявки
+            if (isset($this->changedAttr['status']) && ($this->changedAttr['status'] != $this->status) && ($this->status == self::STATUS_IN_MODER)) {
+                $this->name_ur_check = 0;
+                $this->fio_ur_contact_check = 0;
+                $this->tel_ur_contact_check = 0;
+                $this->email_ur_contact_check = 0;
+                $this->fio_parent_check = 0;
+                $this->residence_check = 0;
+                $this->place_of_work_check = 0;
+                $this->tel_parent_check = 0;
+                $this->email_parent_check = 0;
+                $this->fio_child_check = 0;
+                $this->birthday_child_check = 0;
+                $this->place_of_study_check = 0;
+                $this->created = date('Y-m-d H:i:s');
             }
         } else { //простое редактирование пользователем
 
@@ -231,6 +254,16 @@ class Questionnaire extends CActiveRecord
     }
 
 
+    public function validateStatus($attribute) {
+
+        if (($this->$attribute == 'user_up') && !in_array($this->$attribute, array(self::STATUS_IN_MODER, self::STATUS_CANCELED))) {
+            $this->addError($attribute, 'Не верный статус заявки');
+            return false;
+        }
+
+        return true;
+    }
+
     public function validateBirthday($attribute)
     {
         if ($this->isNewRecord && $this->$attribute) {
@@ -257,11 +290,12 @@ class Questionnaire extends CActiveRecord
 
     public function validateChild($attribute)
     {
-        $cq = Questionnaire::model()->countByAttributes(array('fio_child' => $this->$attribute, 'dlo_id' => $this->dlo_id, 'shift_id' => $this->shift_id));
-
-        if ($cq) {
-            $this->addError($attribute, 'Указанный ребенок был ранее указан в другой заявке');
-            return false;
+        if ($this->isNewRecord) {
+            $cq = Questionnaire::model()->countByAttributes(array('fio_child' => $this->$attribute, 'dlo_id' => $this->dlo_id, 'shift_id' => $this->shift_id));
+            if ($cq) {
+                $this->addError($attribute, 'Указанный ребенок был ранее указан в другой заявке');
+                return false;
+            }
         }
 
         return true;
@@ -302,6 +336,7 @@ class Questionnaire extends CActiveRecord
             self::STATUS_IN_MODER => 'На модерации',
             self::STATUS_RETURNED => 'На доработке',
             self::STATUS_OK => 'Одобрен',
+            self::STATUS_CANCELED => 'Отменена заявителем',
         );
         if (is_numeric($status)) {
             if (array_key_exists($status, $arr)) {
@@ -492,6 +527,9 @@ class Questionnaire extends CActiveRecord
         }
         if (is_numeric($this->user_id)) {
             $criteria->compare('t.user_id', $this->user_id);
+        }
+        if (is_numeric($this->paid)) {
+            $criteria->compare('t.paid', $this->paid);
         }
 
         $criteria->compare('t.fio_child', $this->fio_child, true);

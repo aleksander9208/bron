@@ -48,7 +48,7 @@ class SiteController extends Controller
                     $model->shift_id = (int)$ps;
                     $model->dlo_id = (int)$postDlos[$k];
                     if (!$model->save()) {
-                        Yii::app()->user->setFlash('q_error',Yii::app()->user->getFlash('q_error'). implode('<br>', $model->error_arr));
+                        Yii::app()->user->setFlash('q_error',Yii::app()->user->getFlash('q_error') . implode('<br>', $model->error_arr));
                     }
                 }
             }
@@ -70,6 +70,7 @@ class SiteController extends Controller
             array(
                 'title' => $title,
                 'model' => $model,
+                'user' => Yii::app()->user,
             )
         );
     }

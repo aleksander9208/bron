@@ -175,12 +175,12 @@
             </div>
             <hr>
             <p>
-                <?php if ($model->status != Questionnaire::STATUS_OK) { ?>
+                <?php if (!in_array($model->status, array(Questionnaire::STATUS_OK, Questionnaire::STATUS_CANCELED))) { ?>
                     <button class="btn btn-success" name="Questionnaire[status]"
                             value="<?php echo Questionnaire::STATUS_OK; ?>" type="submit">Зарегистрировать
                     </button>
                 <?php } ?>
-                <?php if ($model->status != Questionnaire::STATUS_RETURNED) { ?>
+                <?php if (in_array($model->status, array(Questionnaire::STATUS_IN_MODER))) { ?>
                     <button class="btn btn-primary" name="Questionnaire[status]"
                             value="<?php echo Questionnaire::STATUS_RETURNED; ?>" type="submit">Вернуть на доработку
                     </button>

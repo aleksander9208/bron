@@ -3,7 +3,7 @@
 class SiteService
 {
 
-    public function checkTurn($userID, $shift)
+    public static function checkTurn($userID, $shift, $full = false)
     {
         $shifts = SiteService::getShifts();
         $seats = (int)((isset($shifts[$shift]['seats'])) ? $shifts[$shift]['seats'] : 0);
@@ -15,8 +15,11 @@ class SiteService
             ->order('created ASC')
             ->limit($seats)
             ->queryRow();
+        if ($full) {
+            return array('incamp' => ($result['incamp'] ? true : false), 'all_seats' => $seats, 'free_seats' => (int)($seats - $result['cnt']));
+        }
 
-        return array('incamp' => ($result['incamp'] ? true : false), 'all_seats' => $seats, 'free_seats' => (int)($seats - $result['cnt']));
+        return ($result['incamp'] ? true : false);
     }
 
     public static function getShifts()

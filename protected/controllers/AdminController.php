@@ -22,7 +22,7 @@ class AdminController extends Controller
 
         $this->pageTitle = Yii::app()->name . ' - ' . $title;
         $questionnaire = new Questionnaire();
-        $questionnaire->type = $questionnaire->status = null;
+        $questionnaire->type = $questionnaire->status = $questionnaire->paid = null;
         $questionnairePost = Yii::app()->request->getParam('Questionnaire', array());
         if ($questionnairePost) {
             $questionnaire->attributes = $questionnairePost;

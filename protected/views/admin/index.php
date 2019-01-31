@@ -10,7 +10,7 @@
         $this->widget('MyGridView', array(
             'id' => 'vacr-grid',
             'dataProvider' => $model->getBidList('/admin/index'),
-            'ajaxUpdate' => false, // 'vacr-grid',
+            'ajaxUpdate' =>  'vacr-grid', //false
             'summaryText' => '',
             'filter' => $model,
             'enableHistory' => false,
@@ -108,7 +108,15 @@
                     'headerHtmlOptions' => array('class' => 'col'),
                     'filter' => CHtml::activeTextField($model, 'tel_parent', array('class' => 'form-control')),
                 ),
-
+                array(
+                    'header' => 'Выкуплена',
+                    'name' => 'paid',
+                    'type' => 'raw',
+                    'value' => 'CHtml::checkBox("paid",$data->paid,array("data-zid"=>$data->id))',
+                    'htmlOptions' => array('align' => 'center'),
+                    'headerHtmlOptions' => array('class' => 'col'),
+                    'filter' => array('НЕТ','ДА'),
+                ),
 
             ),
         ));

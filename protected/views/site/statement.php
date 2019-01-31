@@ -14,6 +14,29 @@ if (Yii::app()->user->hasFlash('q_done')) {
     <?php echo CHtml::activeRadioButtonList($model, 'type', Questionnaire::getTypeName()); ?>
 </div>
 
+<?php if ($user->checkAccess(User::ROLE_ADMIN)) { ?>
+<div class="block form-group mb-4 wn_wog_is_oldyear_hide">
+    <label for="WogMembership_card_num"><?php echo CHtml::activeLabel($model, 'created'); ?></label>
+    <?php
+        $this->widget('zii.widgets.jui.CJuiDatePicker', array(
+            'name' => 'created',
+            'attribute' => 'created',
+            'model' => $model,
+            'options' => array(
+                'locale' => 'ru',
+                'defaultTimeZone' => 'Europe/Moscow',
+                'dateFormat' => 'yy-mm-dd',
+                'defaultDate' => date("Y-m-d"), //$model->birthday_child,
+                'altFormat' => 'yy-mm-dd',
+                'changeMonth' => true,
+                'changeYear' => true,
+              //  'appendText' => 'yyyy-mm-dd',
+                'yearRange' => '-18:+0',
+            ),
+        )); ?>
+    </div>
+   <?php } ?>
+
 
 <!--UR START-->
 <div class="block form-group mb-4 wn_wog_is_oldyear_hide">
@@ -106,6 +129,6 @@ echo CHtml::textField('Dlos[]',Questionnaire::DLO_1);
 
 ?>
 
-<?php echo CHtml::submitButton('Подать заявку', array('class' => 'btn btn-success')); ?>
+<?php echo CHtml::submitButton('Подать заявление на регистрацию', array('class' => 'btn btn-success')); ?>
 
 <?php echo CHtml::endForm(); ?>
