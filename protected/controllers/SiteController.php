@@ -14,7 +14,7 @@ class SiteController extends Controller
         return parent::__construct($id, $module = null);
     }
 
-    public function actionIndex()
+  /*  public function actionIndex()
     {
         $title = 'Порядок подачи заявления';
         $this->pageTitle = Yii::app()->name . ' - ' . $title;
@@ -29,9 +29,9 @@ class SiteController extends Controller
                 'role' => Yii::app()->user->role,
             )
         );
-    }
+    }*/
 
-    public function actionAddStatement()
+    public function actionIndex()
     {
         $title = 'Подать заявление';
         $model = new Questionnaire();

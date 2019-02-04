@@ -56,4 +56,20 @@ class AdminController extends Controller
     }
 
 
+    public function actionStat()
+    {
+        $title = 'Статистика';
+
+        $this->pageTitle = Yii::app()->name . ' - ' . $title;
+        $questionnaire = new Questionnaire();
+        $questionnaire->type = $questionnaire->status = $questionnaire->paid = null;
+        $questionnairePost = Yii::app()->request->getParam('Questionnaire', array());
+        if ($questionnairePost) {
+            $questionnaire->attributes = $questionnairePost;
+        }
+
+        $this->render('stat', array('title' => $title, 'model' => $questionnaire));
+    }
+
+
 }

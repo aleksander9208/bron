@@ -56,8 +56,10 @@ class Questionnaire extends CActiveRecord
     const DLO_7 = 7;
     const DLO_8 = 8;
 
+    public $fromDate, $toDate;
     public $error_str;
     public $error_arr = array();
+    public $camp_id = 0;
 
 
     private $changedAttr = array();
@@ -89,7 +91,7 @@ class Questionnaire extends CActiveRecord
             array('type', 'in', 'range' => array(self::TYPE_FIZ, self::TYPE_UR)),
             array('status', 'validateStatus'),
             array('paid,create_admin,name_ur_check,fio_ur_contact_check,tel_ur_contact_check,email_ur_contact_check,fio_parent_check,residence_check,place_of_work_check,tel_parent_check,email_parent_check,fio_child_check,birthday_child_check,place_of_study_check', 'in', 'range' => array(0, 1)),
-            array('type, fio_parent,residence,place_of_work,tel_parent,email_parent,fio_child,birthday_child,place_of_study,name_ur,fio_ur_contact,tel_ur_contact,email_ur_contact', 'safe'),
+            array('camp_id, fromDate,toDate, type, fio_parent,residence,place_of_work,tel_parent,email_parent,fio_child,birthday_child,place_of_study,name_ur,fio_ur_contact,tel_ur_contact,email_ur_contact', 'safe'),
             array('paid,comment,name_ur_check,fio_ur_contact_check,tel_ur_contact_check,email_ur_contact_check,fio_parent_check,residence_check,place_of_work_check,tel_parent_check,email_parent_check,fio_child_check,birthday_child_check,place_of_study_check,status,paid,create_admin', 'safe', 'on' => 'mod'),
         );
     }
@@ -120,7 +122,8 @@ class Questionnaire extends CActiveRecord
             'dlo_id' => 'Интервал',
             'comment' => 'Комментарий',
             'paid' => 'Выкуплена',
-            'create_admin' =>'Создана админом'
+            'create_admin' =>'Создана админом',
+            'camp_id' => 'Лагерь'
 
         );
     }
@@ -141,6 +144,9 @@ class Questionnaire extends CActiveRecord
             'tel_ur_contact',
             'email_ur_contact',
             'type',
+            'fromDate',
+            'toDate',
+            'camp_id'
         );
     }
 
@@ -226,6 +232,13 @@ class Questionnaire extends CActiveRecord
         }
 
         return parent::afterSave();
+    }
+
+    public function afterFind()
+    {
+        $this->camp_id = self::getCAMPByShift($this->shift_id);
+
+        return parent::afterFind();
     }
 
     public function validateUser($attribute)
@@ -531,6 +544,30 @@ class Questionnaire extends CActiveRecord
         if (is_numeric($this->paid)) {
             $criteria->compare('t.paid', $this->paid);
         }
+
+        if (is_numeric($this->camp_id)) {
+            switch ($this->camp_id) {
+                case self::CAMP_KIROVEC:
+                case self::CAMP_BLUESCREEN:
+                case self::CAMP_EAST_4:
+                case self::CAMP_DIAMOND:
+                case self::CAMP_BONFIRE:
+                case self::CAMP_LIGHTHOUSE:
+                case self::CAMP_FLYGHT:
+                    $criteria->addInCondition('t.shift_id', self::getShiftsByParams($this->camp_id));
+                    break;
+            }
+        }
+
+        if (is_null($this->fromDate)) {
+            $this->fromDate = '2016-01-01';//date('Y-m-d', '2016-01-01');
+        }
+        if (is_null($this->toDate)) {
+            $this->toDate = date('Y-m-d');
+        }
+        $criteria->addCondition(array('t.created >=:start', 't.created<=:end'));
+        $criteria->params['start'] = date('Y-m-d 00:00:00', strtotime($this->fromDate));
+        $criteria->params['end'] = date('Y-m-d 23:59:59', strtotime($this->toDate));
 
         $criteria->compare('t.fio_child', $this->fio_child, true);
         $criteria->compare('t.fio_ur_contact', $this->fio_ur_contact, true);
