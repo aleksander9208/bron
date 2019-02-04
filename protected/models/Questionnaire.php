@@ -560,7 +560,7 @@ class Questionnaire extends CActiveRecord
         }
 
         if (is_null($this->fromDate)) {
-            $this->fromDate = '2016-01-01';//date('Y-m-d', '2016-01-01');
+            $this->fromDate = '2019-01-01';//date('Y-m-d', '2016-01-01');
         }
         if (is_null($this->toDate)) {
             $this->toDate = date('Y-m-d');
