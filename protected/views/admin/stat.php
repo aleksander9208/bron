@@ -138,6 +138,14 @@
                     'headerHtmlOptions' => array('class' => 'col'),
                     'filter' => array('НЕТ','ДА'),
                 ),
+                array(
+                    'header' => 'Номер брони',
+                    'name' => 'booking_id',
+                    'value' => '$data->booking_id',
+                    'htmlOptions' => array('align' => 'center'),
+                    'headerHtmlOptions' => array('class' => 'col'),
+                    'filter' => CHtml::activeTextField($model, 'booking_id', array('class' => 'form-control')),
+                ),
 
             ),
         ));

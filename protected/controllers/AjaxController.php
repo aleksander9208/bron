@@ -54,6 +54,30 @@ class AjaxController extends Controller
         }
     }
 
+    public function actionSetBooking()
+    {
+        if (Yii::app()->user->checkAccess(User::ROLE_ADMIN)) {
+            $bookingId = Yii::app()->request->getParam('booking_id');
+            $questionnaireId = Yii::app()->request->getParam('questionnaire_id', 0);
+            if (Yii::app()->request->isPostRequest) {
+                $q = Questionnaire::model()->findByPk($questionnaireId);
+                if (!$q) {
+                    $this->out['errors'] = array('Заказ не найден');
+                    Yii::$app->end();
+                }
+                $q->scenario = 'booking';
+                $q->booking_id = $bookingId;
+                if (!$q->save()) {
+                    $this->out['errors'] = $q->error_arr;
+                }
+            } else {
+                $this->out['errors'] = array('Парамерты не заданы');
+            }
+        } else {
+            throw new CHttpException(401, 'Страница не найдена');
+        }
+    }
+
     public function actionGetCampsList()
     {
         $shiftId = Yii::app()->request->getParam('shift', false);

@@ -83,6 +83,8 @@ class Questionnaire extends CActiveRecord
             array('shift_id', 'validateShift'),
             // array('fio_parent,residence,place_of_work,tel_parent,email_parent', 'required', 'on' => 'fl'),
             array('name_ur,fio_ur_contact,tel_ur_contact,email_ur_contact', 'required', 'on' => 'ur'),
+            array('booking_id', 'required', 'on' => 'booking'),
+            array('booking_id', 'validateBooking'),
             array('user_id', 'validateUser'),
             array('birthday_child', 'validateBirthday'),
             array('name_ur,fio_ur_contact,email_ur_contact,fio_parent,email_parent,fio_child,place_of_study', 'length', 'max' => 255),
@@ -92,7 +94,7 @@ class Questionnaire extends CActiveRecord
             array('status', 'validateStatus'),
             array('paid,create_admin,name_ur_check,fio_ur_contact_check,tel_ur_contact_check,email_ur_contact_check,fio_parent_check,residence_check,place_of_work_check,tel_parent_check,email_parent_check,fio_child_check,birthday_child_check,place_of_study_check', 'in', 'range' => array(0, 1)),
             array('camp_id, fromDate,toDate, type, fio_parent,residence,place_of_work,tel_parent,email_parent,fio_child,birthday_child,place_of_study,name_ur,fio_ur_contact,tel_ur_contact,email_ur_contact', 'safe'),
-            array('paid,comment,name_ur_check,fio_ur_contact_check,tel_ur_contact_check,email_ur_contact_check,fio_parent_check,residence_check,place_of_work_check,tel_parent_check,email_parent_check,fio_child_check,birthday_child_check,place_of_study_check,status,paid,create_admin', 'safe', 'on' => 'mod'),
+            array('booking_id,paid,comment,name_ur_check,fio_ur_contact_check,tel_ur_contact_check,email_ur_contact_check,fio_parent_check,residence_check,place_of_work_check,tel_parent_check,email_parent_check,fio_child_check,birthday_child_check,place_of_study_check,status,paid,create_admin', 'safe', 'on' => 'mod'),
         );
     }
 
@@ -122,9 +124,9 @@ class Questionnaire extends CActiveRecord
             'dlo_id' => 'Интервал',
             'comment' => 'Комментарий',
             'paid' => 'Выкуплена',
-            'create_admin' =>'Создана админом',
-            'camp_id' => 'Лагерь'
-
+            'create_admin' => 'Создана админом',
+            'camp_id' => 'Лагерь',
+            'booking_id' => 'Номер брони'
         );
     }
 
@@ -146,7 +148,8 @@ class Questionnaire extends CActiveRecord
             'type',
             'fromDate',
             'toDate',
-            'camp_id'
+            'camp_id',
+            'booking_id'
         );
     }
 
@@ -154,6 +157,7 @@ class Questionnaire extends CActiveRecord
     {
         if ($this->isNewRecord) {
             $this->status = self::STATUS_IN_MODER;
+            $this->booking_id = null;
             if (is_null($this->created)) {
                 $this->created = date('Y-m-d H:i:s');
             }
@@ -169,6 +173,9 @@ class Questionnaire extends CActiveRecord
             }
         } elseif ($this->scenario == 'mod') {
             if (isset($this->changedAttr['status']) && ($this->changedAttr['status'] != $this->status) && ($this->status == self::STATUS_OK)) {
+                if (is_null($this->booking_id)) {
+                    $this->booking_id = hexdec(uniqid());
+                }
                 $this->name_ur_check = 0;
                 $this->fio_ur_contact_check = 0;
                 $this->tel_ur_contact_check = 0;
@@ -182,7 +189,7 @@ class Questionnaire extends CActiveRecord
                 $this->birthday_child_check = 0;
                 $this->place_of_study_check = 0;
             }
-        } elseif($this->scenario == 'user_up') { //исправление ошибок пользователем или отменой заявки
+        } elseif ($this->scenario == 'user_up') { //исправление ошибок пользователем или отменой заявки
             if (isset($this->changedAttr['status']) && ($this->changedAttr['status'] != $this->status) && ($this->status == self::STATUS_IN_MODER)) {
                 $this->name_ur_check = 0;
                 $this->fio_ur_contact_check = 0;
@@ -267,7 +274,8 @@ class Questionnaire extends CActiveRecord
     }
 
 
-    public function validateStatus($attribute) {
+    public function validateStatus($attribute)
+    {
 
         if (($this->$attribute == 'user_up') && !in_array($this->$attribute, array(self::STATUS_IN_MODER, self::STATUS_CANCELED))) {
             $this->addError($attribute, 'Не верный статус заявки');
@@ -281,18 +289,18 @@ class Questionnaire extends CActiveRecord
     {
         if ($this->isNewRecord && $this->$attribute) {
             $year = date("Y");
-           /* $years = array();
-            for ($i = ($year - 18); $i <= $year; $i++) {
-                $years[] = $i;
-            }
-            if (!in_array(date("Y", strtotime($this->$attribute)), $years)) {
-                $this->addError($attribute, 'Нельзя подать заявку на взрослого человека');
-                return false;
-            }*/
+            /* $years = array();
+             for ($i = ($year - 18); $i <= $year; $i++) {
+                 $years[] = $i;
+             }
+             if (!in_array(date("Y", strtotime($this->$attribute)), $years)) {
+                 $this->addError($attribute, 'Нельзя подать заявку на взрослого человека');
+                 return false;
+             }*/
             $shifts = SiteService::getShifts();
-            $age = ($year -date("Y", strtotime($this->$attribute)));
-            if (($shifts[$this->shift_id]['min_age'] > $age ) || ($shifts[$this->shift_id]['max_age'] < $age)) {
-                $this->addError($attribute, 'Возраст ребенка не подходит для выбранной смены'.$age);
+            $age = ($year - date("Y", strtotime($this->$attribute)));
+            if (($shifts[$this->shift_id]['min_age'] > $age) || ($shifts[$this->shift_id]['max_age'] < $age)) {
+                $this->addError($attribute, 'Возраст ребенка не подходит для выбранной смены' . $age);
                 return false;
             }
 
@@ -314,7 +322,8 @@ class Questionnaire extends CActiveRecord
         return true;
     }
 
-    public function validateShift($attribute) {
+    public function validateShift($attribute)
+    {
         if (!self::getCAMPByShift($this->$attribute)) {
             $this->addError($attribute, 'Указанна несуществующая смена');
 
@@ -324,7 +333,30 @@ class Questionnaire extends CActiveRecord
         return true;
     }
 
-    public function validateDlo($attribute) {
+    public function validateBooking($attribute)
+    {
+
+        if (!$this->isNewRecord) {
+            $change = (isset($this->changedAttr[$attribute]) && ($this->changedAttr[$attribute] != $this->$attribute));
+            if ($change && (Yii::app()->user->role != User::ROLE_ADMIN)) {
+                $this->addError($attribute, 'Нет прав на именения номера брони');
+
+                return false;
+            }
+
+            if ($change && Questionnaire::model()->countByAttributes(array($attribute => $this->$attribute, 'status' => self::STATUS_OK))) {
+                $this->addError($attribute, 'Такой номер брони уже был задан ранее');
+
+                return false;
+            }
+
+        }
+
+        return true;
+    }
+
+    public function validateDlo($attribute)
+    {
         $dlos = self::getDLOName();
 
         if (!isset($dlos[$this->$attribute])) {
@@ -334,7 +366,7 @@ class Questionnaire extends CActiveRecord
         }
 
         $dlos = self::getDLOSByParams(false, $this->$attribute);
-        if (in_array($this->$attribute,$dlos)) {
+        if (in_array($this->$attribute, $dlos)) {
             $this->addError($attribute, 'Указанна несуществующий период для выбранной смены');
 
             return false;
@@ -573,6 +605,7 @@ class Questionnaire extends CActiveRecord
         $criteria->compare('t.fio_ur_contact', $this->fio_ur_contact, true);
         $criteria->compare('t.fio_parent', $this->fio_parent, true);
         $criteria->compare('t.tel_parent', $this->tel_parent, true);
+        $criteria->compare('t.booking_id', $this->booking_id, true);
 
         return new CActiveDataProvider('Questionnaire', array(
             'criteria' => $criteria,
@@ -586,7 +619,7 @@ class Questionnaire extends CActiveRecord
 
     public function __set($var, $value)
     {
-        if (in_array($var, array('status')) && !array_key_exists($var, $this->changedAttr)) {
+        if (in_array($var, array('status', 'booking_id')) && !array_key_exists($var, $this->changedAttr)) {
             $this->changedAttr[$var] = $this->$var;
         }
 
