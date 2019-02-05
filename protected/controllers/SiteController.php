@@ -3,39 +3,22 @@
 class SiteController extends Controller
 {
     public $id = 'site';
-    public $layout = "user";
+    public $layout = "main";
 
     public function __construct($id, $module = null)
     {
 
-        $cs = Yii::app()->getClientScript();
-        $cs->registerCoreScript('jquery');
+
 
         return parent::__construct($id, $module = null);
     }
 
-  /*  public function actionIndex()
-    {
-        $title = 'Порядок подачи заявления';
-        $this->pageTitle = Yii::app()->name . ' - ' . $title;
-
-        $cs = Yii::app()->getClientScript();
-        $cs->registerCssFile(Yii::app()->createUrl('/statics/css/fb.page.main.css'));
-        $cs->registerScriptFile(Yii::app()->createUrl('/statics/js/fb.page.main.js'), CClientScript::POS_END);
-
-        $this->render('index',
-            array(
-                'title' => $title,
-                'role' => Yii::app()->user->role,
-            )
-        );
-    }*/
-
     public function actionIndex()
     {
-        $title = 'Подать заявление';
+        $cs = Yii::app()->getClientScript();
+        $cs->registerScriptFile(Yii::app()->createUrl('/statics/js/site.statement.js'));
+        $title = 'Подача заявления';
         $model = new Questionnaire();
-        echo Yii::app()->user->role;
         $postQuestionnaire = Yii::app()->request->getPost('Questionnaire', array());
         $postShifts = Yii::app()->request->getPost('Shifts', array());
         $postDlos = Yii::app()->request->getPost('Dlos', array());
@@ -51,6 +34,9 @@ class SiteController extends Controller
                         Yii::app()->user->setFlash('q_error',Yii::app()->user->getFlash('q_error') . implode('<br>', $model->error_arr));
                     }
                 }
+            }
+            if (!$postShifts || !$postDlos) {
+                Yii::app()->user->setFlash('q_error', 'Неуказана смена или период');
             }
             if (Yii::app()->user->hasFlash('q_error')) {
                 $transaction->rollBack();
