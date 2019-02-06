@@ -10,9 +10,17 @@ class WebUser extends CWebUser {
         return 'guest';
     }
 
+    function getLogin() {
+        if($user = $this->getModel()){
+            // в таблице User есть поле role
+            return $user->login;
+        }
+        return 'guest';
+    }
+
     private function getModel(){
         if (!$this->isGuest && $this->_model === null){
-            $this->_model = User::model()->findByPk($this->id, array('select' => 'role'));
+            $this->_model = User::model()->findByPk($this->id, array('select' => 'role,login'));
         }
         return $this->_model;
     }
