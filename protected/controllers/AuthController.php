@@ -17,7 +17,7 @@ class AuthController extends Controller
     public function actionLogin()
     {
         if (!Yii::app()->user->getIsGuest()) {
-            $this->redirect(Yii::app()->createAbsoluteUrl('/'));
+            $this->redirect(Yii::app()->createAbsoluteUrl('/site/addstatement'));
         }
         $this->pageTitle = 'Авторизация - ' . Yii::app()->name;
 

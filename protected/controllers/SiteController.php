@@ -13,7 +13,13 @@ class SiteController extends Controller
         return parent::__construct($id, $module = null);
     }
 
-    public function actionIndex()
+
+    public function actionIndex() {
+
+        $this->forward('/auth/login');
+    }
+
+    public function actionAddStatement()
     {
         $cs = Yii::app()->getClientScript();
         $cs->registerScriptFile(Yii::app()->createUrl('/statics/js/site.statement.js'));
