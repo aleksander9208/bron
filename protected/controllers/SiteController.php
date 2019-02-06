@@ -21,8 +21,11 @@ class SiteController extends Controller
 
     public function actionAddStatement()
     {
+
         $cs = Yii::app()->getClientScript();
-        $cs->registerScriptFile(Yii::app()->createUrl('/statics/js/site.statement.js'));
+        $cs->registerCssFile(Yii::app()->createUrl('/statics/css/z.page.auth.css'));
+        $cs->registerScriptFile(Yii::app()->createUrl('/statics/js/z.page.auth.js'), CClientScript::POS_END);
+
         $title = 'Подача заявления';
         $model = new Questionnaire();
         $postQuestionnaire = Yii::app()->request->getPost('Questionnaire', array());

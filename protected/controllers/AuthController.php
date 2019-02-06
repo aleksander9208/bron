@@ -22,8 +22,8 @@ class AuthController extends Controller
         $this->pageTitle = 'Авторизация - ' . Yii::app()->name;
 
         $cs = Yii::app()->getClientScript();
-        $cs->registerCssFile(Yii::app()->createUrl('/statics/css/fb.page.auth.css'));
-        $cs->registerScriptFile(Yii::app()->createUrl('/statics/js/fb.page.auth.js'), CClientScript::POS_END);
+        $cs->registerCssFile(Yii::app()->createUrl('/statics/css/z.page.auth.css'));
+        $cs->registerScriptFile(Yii::app()->createUrl('/statics/js/z.page.auth.js'), CClientScript::POS_END);
 
 
         $model = new LoginForm;

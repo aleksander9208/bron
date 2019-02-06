@@ -128,6 +128,7 @@
                         'name' => 'birthday_child',
                         'attribute' => 'birthday_child',
                         'model' => $model,
+                        'language' => 'ru',
                         'options' => array(
                             'locale' => 'ru',
                             'defaultTimeZone' => 'Europe/Moscow',
