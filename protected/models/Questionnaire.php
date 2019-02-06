@@ -395,8 +395,8 @@ class Questionnaire extends CActiveRecord
     public static function getTypeName($type = false)
     {
         $arr = array(
-            self::TYPE_FIZ => 'Физ.лицо',
-            self::TYPE_UR => 'Юр.лицо',
+            self::TYPE_FIZ => 'Физическое лицо',
+            self::TYPE_UR => 'Юридическое лицо',
         );
         if (is_numeric($type)) {
             if (array_key_exists($type, $arr)) {

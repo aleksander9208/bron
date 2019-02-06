@@ -23,8 +23,8 @@ class SiteController extends Controller
     {
 
         $cs = Yii::app()->getClientScript();
-        $cs->registerCssFile(Yii::app()->createUrl('/statics/css/z.page.auth.css'));
-        $cs->registerScriptFile(Yii::app()->createUrl('/statics/js/z.page.auth.js'), CClientScript::POS_END);
+        $cs->registerCssFile(Yii::app()->createUrl('/statics/css/z.page.anketa.css'));
+        $cs->registerScriptFile(Yii::app()->createUrl('/statics/js/z.page.anketa.js'), CClientScript::POS_END);
 
         $title = 'Подача заявления';
         $model = new Questionnaire();

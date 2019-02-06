@@ -88,7 +88,7 @@ if (typeof window.z == 'object')
                     return _self.z.el.z_auth_user_fio.hasClass('is-valid');
                 },
 
-            //Валидация поля ввода ФИО
+            //Валидация поля ввода телефона
             validate_phone: function ()
                 {
                     var _self = this;
