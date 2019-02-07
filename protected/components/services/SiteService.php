@@ -352,14 +352,14 @@ class SiteService
         return $out;
     }
 
-    public static function templateChecker($shiftName, $shiftId, $seatsFrom, $seatsTo, $shiftsPost, $seatsReserv=0)
+    public static function templateChecker($shiftName, $shiftId, $seatsFrom, $seatsTo, $shiftsPost)
     {
         $checked = ((in_array($shiftId, $shiftsPost)) ? true : false);
         return ''.
             '<div class="custom-control custom-switch">' .
                 CHtml::checkBox('Shifts[]', $checked, array('class' => 'custom-control-input', 'id' => 'z_anketa_' . $shiftId, 'value' => $shiftId)) .
                 CHtml::label($shiftName, 'z_anketa_' . $shiftId, array('class' => 'custom-control-label')) .
-                '<div class="z_anketa_counts">'.$seatsFrom . ' из ' . $seatsTo.($seatsReserv>0?'. В резерве: '.$seatsReserv:'').'</div>'.
+                '<div class="z_anketa_counts">'.($seatsFrom>$seatsTo?$seatsTo:$seatsFrom) . ' из ' . $seatsTo.($seatsFrom>$seatsTo?'. В резерве: '.($seatsTo-$seatsFrom):'').'</div>'.
             '</div>';
     }
 
