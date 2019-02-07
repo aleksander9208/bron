@@ -620,10 +620,15 @@ class Questionnaire extends CActiveRecord
     }
 
 
-    public function getBidList($route)
+    public function getBidList($route,$mysort=false)
     {
         $sort = new CSort();
-        $sort->defaultOrder = 't.id DESC';
+        if ($mysort) {
+            $sort->defaultOrder = 't.is_main DESC, t.created ASC';
+        } else {
+            $sort->defaultOrder = 't.id DESC';
+        }
+
         $sort->route = $route;
         $criteria = new CDbCriteria;
         if (is_numeric($this->type)) {
