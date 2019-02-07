@@ -26,10 +26,15 @@ class SiteService
     {
         $shifts = SiteService::getShifts();
         $out = array();
+        $reserve = Yii::app()->db->createCommand()
+            ->select('srez_1,srez_2,srez_3,srez_4,srez_5,srez_6,srez_7,srez_8,srez_9,srez_10,srez_11,srez_12,srez_13,srez_14,srez_15,srez_16,srez_17,srez_18,srez_19,srez_20,srez_21,srez_22,srez_23,srez_24,srez_25,srez_26,srez_27')
+            ->from('{{questionnaire_rezerv}}')
+            ->where('id=1')
+            ->queryRow();
+
         foreach ($shifts as $s) {
-            $out[$s['id']] = array('all_seats' => 0, 'free_seats' => 0, 'seats' => 0);
+            $out[$s['id']] = array('all_seats' => $s['seats'], 'free_seats' => 0, 'seats' => $reserve['srez_' . $s['id']]);
         }
-        $shifts = SiteService::getShifts();
         $result = Yii::app()->db->createCommand()
             ->select('COUNT(id) as cnt,shift_id ')
             ->from('{{questionnaire}}')
@@ -39,8 +44,8 @@ class SiteService
             ->queryAll();
 
         foreach ($result as $r) {
-            $seats = (int)((isset($shifts[$r['shift_id']]['seats'])) ? $shifts[$r['shift_id']]['seats'] : 0);
-            $out[$r['shift_id']] = array('all_seats' => $seats, 'free_seats' => (int)($seats - $r['cnt']), 'seats' => (int)$result['cnt']);
+            $out[$r['shift_id']]['free_seats'] = (int)($out[$r['shift_id']]['all_seats'] - $r['cnt']);
+            $out[$r['shift_id']]['seats'] += (int)$r['cnt'];
         }
         if (is_numeric($shiftId)) {
             return $out[$shiftId];
@@ -355,11 +360,11 @@ class SiteService
     public static function templateChecker($shiftName, $shiftId, $seatsFrom, $seatsTo, $shiftsPost)
     {
         $checked = ((in_array($shiftId, $shiftsPost)) ? true : false);
-        return ''.
+        return '' .
             '<div class="custom-control custom-switch">' .
-                CHtml::checkBox('Shifts[]', $checked, array('class' => 'custom-control-input', 'id' => 'z_anketa_' . $shiftId, 'value' => $shiftId)) .
-                CHtml::label($shiftName, 'z_anketa_' . $shiftId, array('class' => 'custom-control-label')) .
-                '<div class="z_anketa_counts">'.($seatsFrom>$seatsTo?$seatsTo:$seatsFrom) . ' из ' . $seatsTo.($seatsFrom>$seatsTo?'. В резерве: '.($seatsTo-$seatsFrom):'').'</div>'.
+            CHtml::checkBox('Shifts[]', $checked, array('class' => 'custom-control-input', 'id' => 'z_anketa_' . $shiftId, 'value' => $shiftId)) .
+            CHtml::label($shiftName, 'z_anketa_' . $shiftId, array('class' => 'custom-control-label')) .
+            '<div class="z_anketa_counts">' . ($seatsFrom > $seatsTo ? $seatsTo : $seatsFrom) . ' из ' . $seatsTo . ($seatsFrom > $seatsTo ? '. В резерве: ' . abs($seatsTo - $seatsFrom) : '') . '</div>' .
             '</div>';
     }
 

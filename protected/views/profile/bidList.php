@@ -80,7 +80,7 @@
                     'header' => 'Информация',
                     'name' => 'status',
                     'type' => 'raw',
-                    'value' => '(($data->status=='.Questionnaire::STATUS_OK.')?( SiteService::checkTurn($data->user_id, $data->shift_id)?"Вам присвоен номер ".$data->id." брони на путевку":"Ваше заявление на путевку находится в листе ожидания") :"")',
+                    'value' => '(($data->status=='.Questionnaire::STATUS_OK.')?( SiteService::checkTurn($data->user_id, $data->shift_id)?"Вам присвоен номер ".$data->booking_id." брони на путевку":"Ваше заявление на путевку находится в листе ожидания") :"")',
                     'htmlOptions' => array('align' => 'center'),
                     'filter' => false,
                     'headerHtmlOptions' => array('class' => 'col')

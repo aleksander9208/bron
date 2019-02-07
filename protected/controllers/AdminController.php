@@ -33,7 +33,7 @@ class AdminController extends Controller
 
     public function actionbid($id = 0)
     {
-        $this->pageTitle = Yii::app()->name . ' - ' . 'Заявка #'.(int)$id;
+        $this->pageTitle = Yii::app()->name . ' - ' . 'Заявка #' . (int)$id;
         $q = Questionnaire::model()->findByPk($id);
         if (!$q) {
             throw new CHttpException(401, 'Страница не найдена');
@@ -52,7 +52,7 @@ class AdminController extends Controller
                 }
             }
         }
-        $this->render('bid', array('model' => $q,'shifts' => SiteService::getShifts()));
+        $this->render('bid', array('model' => $q, 'shifts' => SiteService::getShifts()));
     }
 
 
@@ -70,6 +70,28 @@ class AdminController extends Controller
         $questionnaire->status = Questionnaire::STATUS_OK;
 
         $this->render('stat', array('title' => $title, 'model' => $questionnaire));
+    }
+
+    public function actionReserve()
+    {
+        $title = 'Резервирование';
+        $this->pageTitle = Yii::app()->name . ' - ' . $title;
+        $r = Reserve::model()->findByPk(1);
+        if (!$r) {
+            throw new CHttpException(401, 'Резерв не найден в системе');
+        }
+        $reservePost = Yii::app()->request->getPost('Reserve', array());
+        if ($reservePost) {
+            $r->attributes = $reservePost;
+            if ($r->save()) {
+                Yii::app()->user->setFlash('r_done', 'Запись успешно отредактированна');
+                $this->refresh();
+            } else {
+                Yii::app()->user->setFlash('r_error', implode('<br>', $r->error_arr));
+            }
+        }
+
+        $this->render('reserve', array('title' => $title,'model' => $r, 'shifts' => SiteService::getShifts()));
     }
 
 

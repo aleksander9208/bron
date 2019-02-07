@@ -60,6 +60,7 @@ class Questionnaire extends CActiveRecord
     public $error_str;
     public $error_arr = array();
     public $camp_id = 0;
+    public $shift_name;
 
 
     private $changedAttr = array();
@@ -79,7 +80,7 @@ class Questionnaire extends CActiveRecord
         return array(
             array('id', 'unique'),
             array('fio_child', 'validateChild'),
-            array('user_id,created,fio_child,birthday_child,place_of_study,status,type, fio_parent,residence,place_of_work,tel_parent,email_parent,shift_id', 'required'),
+            array('created,fio_child,birthday_child,place_of_study,status,type, fio_parent,residence,place_of_work,tel_parent,email_parent,shift_id', 'required'),
             array('shift_id', 'validateShift'),
             // array('fio_parent,residence,place_of_work,tel_parent,email_parent', 'required', 'on' => 'fl'),
             array('name_ur,fio_ur_contact,tel_ur_contact,email_ur_contact', 'required', 'on' => 'ur'),
@@ -93,7 +94,7 @@ class Questionnaire extends CActiveRecord
             array('type', 'in', 'range' => array(self::TYPE_FIZ, self::TYPE_UR)),
             array('status', 'validateStatus'),
             array('paid,create_admin,name_ur_check,fio_ur_contact_check,tel_ur_contact_check,email_ur_contact_check,fio_parent_check,residence_check,place_of_work_check,tel_parent_check,email_parent_check,fio_child_check,birthday_child_check,place_of_study_check', 'in', 'range' => array(0, 1)),
-            array('camp_id, fromDate,toDate, type, fio_parent,residence,place_of_work,tel_parent,email_parent,fio_child,birthday_child,place_of_study,name_ur,fio_ur_contact,tel_ur_contact,email_ur_contact', 'safe'),
+            array('shift_name,camp_id, fromDate,toDate, type, fio_parent,residence,place_of_work,tel_parent,email_parent,fio_child,birthday_child,place_of_study,name_ur,fio_ur_contact,tel_ur_contact,email_ur_contact', 'safe'),
             array('booking_id,paid,comment,name_ur_check,fio_ur_contact_check,tel_ur_contact_check,email_ur_contact_check,fio_parent_check,residence_check,place_of_work_check,tel_parent_check,email_parent_check,fio_child_check,birthday_child_check,place_of_study_check,status,paid,create_admin', 'safe', 'on' => 'mod'),
         );
     }
@@ -149,7 +150,8 @@ class Questionnaire extends CActiveRecord
             'fromDate',
             'toDate',
             'camp_id',
-            'booking_id'
+            'booking_id',
+            'shift_name'
         );
     }
 
@@ -167,7 +169,11 @@ class Questionnaire extends CActiveRecord
                 $this->scenario = 'fl';
                 $this->name_ur = $this->fio_ur_contact = $this->tel_ur_contact = $this->email_ur_contact = null;
             }
-            $this->user_id = (int)Yii::app()->user->id;
+            if (!Yii::app()->user->getIsGuest() && Yii::app()->user->role != User::ROLE_ADMIN) {
+                $this->user_id = (int)Yii::app()->user->id;
+            }
+
+
             if (Yii::app()->user->role == User::ROLE_ADMIN) {
                 $this->create_admin = 1;
             }
@@ -175,6 +181,7 @@ class Questionnaire extends CActiveRecord
             if ($this->shift_id) {
                 $shifts = SiteService::getShifts();
                 $this->dlo_id = (int)(isset($shifts[$this->shift_id]['dlo'][0]) ? $shifts[$this->shift_id]['dlo'][0] : 0);
+                $this->camp_id = self::getCAMPByShift($this->shift_id);
             }
 
         } elseif ($this->scenario == 'mod') {
@@ -247,31 +254,36 @@ class Questionnaire extends CActiveRecord
         return parent::afterSave();
     }
 
-    public function afterFind()
+    /*public function afterFind()
     {
         $this->camp_id = self::getCAMPByShift($this->shift_id);
 
         return parent::afterFind();
-    }
+    }*/
 
     public function validateUser($attribute)
     {
         if ($this->isNewRecord && !$this->$attribute) {
             $login = trim($this->type == self::TYPE_UR ? $this->fio_ur_contact : $this->fio_parent);
             $tel = ($this->type == self::TYPE_UR ? $this->tel_ur_contact : $this->tel_parent);
+            Yii::log('FIND USER BY LOGIN:' . $login, 'profile', 'debug');
             $user = User::model()->findByAttributes(array('login' => $login));
             if (!$user) {
+                Yii::log('NOT FOUND USER:' . $login, 'profile', 'debug');
                 $u = new User();
                 $u->login = $login;
                 $u->password = md5($tel);
                 $u->role = User::ROLE_USER;
                 if (!$u->save()) {
                     $this->addError($attribute, $u->error_str);
+                    Yii::log('CREATE USER ERR:' . $u->error_str, 'profile', 'debug');
                     return false;
                 } else {
+                    Yii::log('CREATE USER OK:' . $u->id, 'profile', 'debug');
                     $this->user_id = $u->id;
                 }
             } else {
+                Yii::log('FOUND USER BY LOGIN:' . $login . ' ID:' . $user->id, 'profile', 'debug');
                 $this->user_id = $user->id;
             }
         }
@@ -689,14 +701,31 @@ class Questionnaire extends CActiveRecord
                 }
             }
             $result = Yii::app()->db->createCommand()
-                ->select('id')
+                ->select('id, shift_id, is_main')
                 ->from('{{questionnaire}}')
                 ->where(array('in', 'shift_id', $ids))
                 ->andWhere('status=:status', array('status' => Questionnaire::STATUS_OK))
                 ->order('is_main DESC, created ASC')
                 ->queryAll();
+            $reserve = Yii::app()->db->createCommand()
+                ->select('srez_1,srez_2,srez_3,srez_4,srez_5,srez_6,srez_7,srez_8,srez_9,srez_10,srez_11,srez_12,srez_13,srez_14,srez_15,srez_16,srez_17,srez_18,srez_19,srez_20,srez_21,srez_22,srez_23,srez_24,srez_25,srez_26,srez_27')
+                ->from('{{questionnaire_rezerv}}')
+                ->where('id=1')
+                ->queryRow();
+            $shifts = SiteService::getShifts();
+            foreach ($shifts as $sId => $s) {
+                $cnt[$s['id']] = 0;
+            }
             foreach ($result as $r) {
-                $qIds[] = $r['id'];
+                if ($r['is_main']) {
+                    $reserve['srez_' . (int)$r['shift_id']] -= 1;
+                } else {
+                    $cnt[$r['shift_id']] += 1;
+                }
+                if ($shifts[$r['shift_id']]['seats'] >= (int)($reserve['srez_' . (int)$r['shift_id']] + $cnt[$r['shift_id']])) {
+                    $qIds[] = $r['id'];
+
+                }
             }
 
             $criteria->addInCondition('t.id', $qIds);
@@ -719,8 +748,8 @@ class Questionnaire extends CActiveRecord
             $criteria->compare('t.paid', $this->paid);
         }
 
-        if (is_numeric($this->shift_id)) {
-            switch ($this->shift_id) {
+        if (is_numeric($this->shift_name)) {
+            switch ($this->shift_name) {
                 case 0:
                     $criteria->addInCondition('t.shift_id', array(self::SHIFT_BLUESCREEN_1, self::SHIFT_EAST_1, self::SHIFT_DIAMOND_1, self::SHIFT_BONFIRE_1, self::SHIFT_LIGHTHOUSE_1, self::SHIFT_FLYGHT_1));
                     break;
