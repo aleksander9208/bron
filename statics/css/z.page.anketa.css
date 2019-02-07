@@ -7,9 +7,11 @@
 {
     display: none;
 }
-
-#z_page_anketa .z_anketa_period,
-#z_page_anketa .z_anketa_rezerv
+#z_page_anketa #z_anketa_table label
+{
+    font-weight: bold;
+}
+#z_page_anketa #z_anketa_table .z_anketa_counts
 {
     font-size: 0.6rem;
 }
