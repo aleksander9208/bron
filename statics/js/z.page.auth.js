@@ -79,12 +79,11 @@ if (typeof window.z == 'object')
                             var val_len = val_fio.length;
                             for (var i=0; i<val_len; i++)
                                 {
-                                    console.log(i, val_mask, val_fio[i], val_mask.indexOf(val_fio[i]));
                                     if (val_mask.indexOf(val_fio[i])==-1)
-                                    {
-                                        is_valid = false;
-                                        break;
-                                    }
+                                        {
+                                            is_valid = false;
+                                            break;
+                                        }
                                 }
 
                         }

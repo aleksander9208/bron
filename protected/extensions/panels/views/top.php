@@ -5,10 +5,8 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-4">
+        <div class="col-8">
             <a class="nav-item btn btn-primary mr-2 <?php echo(in_array($action, array('addstatement')) ? 'active' : ''); ?>" href="<?php echo Yii::app()->createUrl('/site/addstatement'); ?>">Подать заявку</a>
-        </div>
-        <div class="col-4">
             <a class="nav-item btn btn-primary mr-2 <?php echo((($controller == 'profile') && in_array($action, array('index', 'bid'))) ? 'active' : ''); ?>" href="<?php echo Yii::app()->createUrl('/profile'); ?>">Мои заявки</a>
         </div>
         <div class="col-4 text-right">

@@ -6,7 +6,7 @@ if (typeof window.z == 'object')
             //Название модуля
             name:'z_page_anketa',
             //Версия библиотеки
-            version: '190206',
+            version: '190207',
             //Указатель на глобалный объект
             z: window.z,
             //Хранилище данных
@@ -29,6 +29,17 @@ if (typeof window.z == 'object')
                             {
                                 var type_val = $(this).filter(':checked').val();
                                 _self.z.el.z_page_anketa.toggleClass('z_anketa_block_0', type_val==0).toggleClass('z_anketa_block_1', type_val==1);
+
+                                if (type_val==0)
+                                    {
+                                        _self.z.el.z_anketa_form.find('.z_anketa_block_1 input').attr('disabled','disabled');
+                                        _self.z.el.z_anketa_form.find('.z_anketa_block_0 input').removeAttr('disabled');
+                                    }
+                                        else
+                                    {
+                                        _self.z.el.z_anketa_form.find('.z_anketa_block_0 input').attr('disabled','disabled');
+                                        _self.z.el.z_anketa_form.find('.z_anketa_block_1 input').removeAttr('disabled');
+                                    }
                             }
                     ).on(
                         [
@@ -114,52 +125,38 @@ if (typeof window.z == 'object')
             validate: function (event)
                 {
                     var _self = this;
-                    var is_valid = true;
-
-                    var type_val = $(this).filter(':checked').val();
+                    var type_val = _self.z.el.z_anketa_types.find(':checked').val();
                     if (type_val==0)
                         {
                             //Физ
-                            if (is_valid==true)
-                                is_valid = _self.validate_fio(_self.z.el.z_anketa_fio_parent);
+                            _self.validate_fio(_self.z.el.z_anketa_fio_parent);
+                            _self.validate_required(_self.z.el.z_anketa_residence);
+                            _self.validate_required(_self.z.el.z_anketa_place_of_work);
+                            _self.validate_email(_self.z.el.z_anketa_email_parent);
 
-                            if (is_valid==true)
-                                is_valid = _self.validate_required(_self.z.el.z_anketa_residence);
-
-                            if (is_valid==true)
-                                is_valid = _self.validate_required(_self.z.el.z_anketa_place_of_work);
-
-                            if (is_valid==true)
-                                is_valid = _self.validate_email(_self.z.el.z_anketa_email_parent);
+                            _self.z.el.z_anketa_name_ur.removeClass('is-valid is-invalid');
+                            _self.z.el.z_anketa_fio_ur_contact.removeClass('is-valid is-invalid');
+                            _self.z.el.z_anketa_tel_ur_contact.removeClass('is-valid is-invalid');
+                            _self.z.el.z_anketa_email_ur_contact.removeClass('is-valid is-invalid');
                         }
                             else
                         {
                             //Юр
-                            if (is_valid==true)
-                                is_valid = _self.validate_required(_self.z.el.z_anketa_name_ur);
+                            _self.validate_required(_self.z.el.z_anketa_name_ur);
+                            _self.validate_fio(_self.z.el.z_anketa_fio_ur_contact);
+                            _self.validate_phone(_self.z.el.z_anketa_tel_ur_contact);
+                            _self.validate_email(_self.z.el.z_anketa_email_ur_contact);
 
-                            if (is_valid==true)
-                                is_valid = _self.validate_fio(_self.z.el.z_anketa_fio_ur_contact);
-
-                            if (is_valid==true)
-                                is_valid = _self.validate_phone(_self.z.el.z_anketa_tel_ur_contact);
-
-                            if (is_valid==true)
-                                is_valid = _self.validate_email(_self.z.el.z_anketa_email_ur_contact);
+                            _self.z.el.z_anketa_fio_parent.removeClass('is-valid is-invalid');
+                            _self.z.el.z_anketa_residence.removeClass('is-valid is-invalid');
+                            _self.z.el.z_anketa_place_of_work.removeClass('is-valid is-invalid');
+                            _self.z.el.z_anketa_email_parent.removeClass('is-valid is-invalid');
                         }
 
-                    if (is_valid==true)
-                        is_valid = _self.validate_fio(_self.z.el.z_anketa_fio_child);
-
-                    if (is_valid==true)
-                        is_valid = _self.validate_required(_self.z.el.z_anketa_birthday_child);
-
-                    if (is_valid==true)
-                        is_valid = _self.validate_required(_self.z.el.z_anketa_place_of_study);
-
-                    if (is_valid==true)
-                        is_valid = _self.validate_phone(_self.z.el.z_anketa_tel_parent);
-
+                    _self.validate_fio(_self.z.el.z_anketa_fio_child);
+                    _self.validate_required(_self.z.el.z_anketa_birthday_child);
+                    _self.validate_required(_self.z.el.z_anketa_place_of_study);
+                    _self.validate_phone(_self.z.el.z_anketa_tel_parent);
 
                     var is_valid = (_self.z.el.z_anketa_form.find('.is-invalid').length==0);
                     _self.z.el.z_anketa_form.toggleClass('needs-validation', is_valid==false).toggleClass('was-validated', is_valid==true);

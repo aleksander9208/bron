@@ -6,7 +6,7 @@
                 <?php echo (Yii::app()->user->hasFlash('q_error')?Yii::app()->user->getFlash('q_error'):''); ?>
                 <?php echo (Yii::app()->user->hasFlash('q_done')?'Заявка успешон отправлена':''); ?>
             </div>
-            <?php echo CHtml::form('', 'post', array('class' => 'needs-validation', 'id'=>'z_anketa_form','novalidate'=>'novalidate')); ?>
+            <?php echo CHtml::form('', 'post', array('class' => 'needs-validation', 'id'=>'z_anketa_form')); ?>
 
             <?php if ($user->checkAccess(User::ROLE_ADMIN)) { ?>
                 <div class="form-group">
@@ -55,30 +55,30 @@
             <!--FIZ START-->
             <div class="form-group z_anketa_block_<?php echo Questionnaire::TYPE_FIZ; ?>">
                 <?php echo CHtml::activeLabel($model, 'fio_parent', array('for'=>'z_anketa_fio_parent')); ?>
-                <?php echo CHtml::activeTextField($model, 'fio_parent', array('class' => 'form-control', 'placeholder' => $model->getAttributeLabel('fio_parent'), 'required'=>'required', 'id'=>'z_anketa_fio_parent', 'data-mask'=>' абвгдеёжзийклмнопрстуфхцчшщъыьэюя-')); ?>
+                <?php echo CHtml::activeTextField($model, 'fio_parent', array((Questionnaire::TYPE_FIZ==$model->type?'_':'').'disabled'=>'disabled', 'class' => 'form-control', 'placeholder' => $model->getAttributeLabel('fio_parent'), 'required'=>'required', 'id'=>'z_anketa_fio_parent', 'data-mask'=>' абвгдеёжзийклмнопрстуфхцчшщъыьэюя-')); ?>
             </div>
             <div class="form-group z_anketa_block_<?php echo Questionnaire::TYPE_FIZ; ?>">
                 <?php echo CHtml::activeLabel($model, 'residence', array('for'=>'z_anketa_residence')); ?>
-                <?php echo CHtml::activeTextField($model, 'residence', array('class' => 'form-control', 'placeholder' => $model->getAttributeLabel('residence'), 'required'=>'required', 'id'=>'z_anketa_residence')); ?>
+                <?php echo CHtml::activeTextField($model, 'residence', array((Questionnaire::TYPE_FIZ==$model->type?'_':'').'disabled'=>'disabled', 'class' => 'form-control', 'placeholder' => $model->getAttributeLabel('residence'), 'required'=>'required', 'id'=>'z_anketa_residence')); ?>
             </div>
             <div class="form-group z_anketa_block_<?php echo Questionnaire::TYPE_FIZ; ?>">
                 <?php echo CHtml::activeLabel($model, 'place_of_work', array('for'=>'z_anketa_place_of_work')); ?>
-                <?php echo CHtml::activeTextField($model, 'place_of_work', array('class' => 'form-control', 'placeholder' => $model->getAttributeLabel('place_of_work'), 'required'=>'required', 'id'=>'z_anketa_place_of_work')); ?>
+                <?php echo CHtml::activeTextField($model, 'place_of_work', array((Questionnaire::TYPE_FIZ==$model->type?'_':'').'disabled'=>'disabled', 'class' => 'form-control', 'placeholder' => $model->getAttributeLabel('place_of_work'), 'required'=>'required', 'id'=>'z_anketa_place_of_work')); ?>
             </div>
             <div class="form-group z_anketa_block_<?php echo Questionnaire::TYPE_FIZ; ?>">
                 <?php echo CHtml::activeLabel($model, 'email_parent', array('for'=>'z_anketa_email_parent')); ?>
-                <?php echo CHtml::activeTextField($model, 'email_parent', array('class' => 'form-control', 'placeholder' => $model->getAttributeLabel('email_parent'), 'required'=>'required', 'id'=>'z_anketa_email_parent')); ?>
+                <?php echo CHtml::activeTextField($model, 'email_parent', array((Questionnaire::TYPE_FIZ==$model->type?'_':'').'disabled'=>'disabled', 'class' => 'form-control', 'placeholder' => $model->getAttributeLabel('email_parent'), 'required'=>'required', 'id'=>'z_anketa_email_parent')); ?>
             </div>
             <!--FIZ END-->
 
             <!--UR START-->
             <div class="form-group z_anketa_block_<?php echo Questionnaire::TYPE_UR; ?>">
                 <?php echo CHtml::activeLabel($model, 'name_ur', array('for'=>'z_anketa_name_ur')); ?>
-                <?php echo CHtml::activeTextField($model, 'name_ur', array('class' => 'form-control', 'placeholder' => $model->getAttributeLabel('name_ur'), 'required'=>'required', 'id'=>'z_anketa_name_ur')); ?>
+                <?php echo CHtml::activeTextField($model, 'name_ur', array((Questionnaire::TYPE_UR==$model->type?'_':'').'disabled'=>'disabled', 'class' => 'form-control', 'placeholder' => $model->getAttributeLabel('name_ur'), 'required'=>'required', 'id'=>'z_anketa_name_ur')); ?>
             </div>
             <div class="form-group z_anketa_block_<?php echo Questionnaire::TYPE_UR; ?>">
                 <?php echo CHtml::activeLabel($model, 'fio_ur_contact', array('for'=>'z_anketa_fio_ur_contact')); ?>
-                <?php echo CHtml::activeTextField($model, 'fio_ur_contact', array('class' => 'form-control', 'placeholder' => $model->getAttributeLabel('fio_ur_contact'), 'required'=>'required', 'id'=>'z_anketa_fio_ur_contact', 'data-mask'=>' абвгдеёжзийклмнопрстуфхцчшщъыьэюя-')); ?>
+                <?php echo CHtml::activeTextField($model, 'fio_ur_contact', array((Questionnaire::TYPE_UR==$model->type?'_':'').'disabled'=>'disabled', 'class' => 'form-control', 'placeholder' => $model->getAttributeLabel('fio_ur_contact'), 'required'=>'required', 'id'=>'z_anketa_fio_ur_contact', 'data-mask'=>' абвгдеёжзийклмнопрстуфхцчшщъыьэюя-')); ?>
             </div>
             <div class="form-group z_anketa_block_<?php echo Questionnaire::TYPE_UR; ?>">
                 <?php echo CHtml::activeLabel($model, 'tel_ur_contact', array('for'=>'z_anketa_tel_ur_contact')); ?>
@@ -86,12 +86,12 @@
                     <div class="input-group-prepend">
                         <div class="input-group-text">+7</div>
                     </div>
-                    <?php echo CHtml::activeTextField($model, 'tel_ur_contact', array('class' => 'form-control', 'placeholder' => $model->getAttributeLabel('tel_ur_contact'), 'required'=>'required', 'id'=>'z_anketa_tel_ur_contact', 'maxlength'=>10, 'data-mask'=>'0123456789')); ?>
+                    <?php echo CHtml::activeTextField($model, 'tel_ur_contact', array((Questionnaire::TYPE_UR==$model->type?'_':'').'disabled'=>'disabled', 'class' => 'form-control', 'placeholder' => $model->getAttributeLabel('tel_ur_contact'), 'required'=>'required', 'id'=>'z_anketa_tel_ur_contact', 'maxlength'=>10, 'data-mask'=>'0123456789')); ?>
                 </div>
             </div>
             <div class="form-group z_anketa_block_<?php echo Questionnaire::TYPE_UR; ?>">
                 <?php echo CHtml::activeLabel($model, 'email_ur_contact', array('for'=>'z_anketa_email_ur_contact')); ?>
-                <?php echo CHtml::activeTextField($model, 'email_ur_contact', array('class' => 'form-control', 'placeholder' => $model->getAttributeLabel('email_ur_contact'), 'required'=>'required', 'id'=>'z_anketa_email_ur_contact')); ?>
+                <?php echo CHtml::activeTextField($model, 'email_ur_contact', array((Questionnaire::TYPE_UR==$model->type?'_':'').'disabled'=>'disabled', 'class' => 'form-control', 'placeholder' => $model->getAttributeLabel('email_ur_contact'), 'required'=>'required', 'id'=>'z_anketa_email_ur_contact')); ?>
             </div>
             <!--UR END-->
 

@@ -26,8 +26,8 @@ class LoginForm extends CFormModel
     public function attributeLabels()
     {
         return array(
-            'username' => 'Логин',
-            'password' => 'Пароль',
+            'username' => 'ФИО',
+            'password' => 'Телефон',
 
         );
     }
@@ -56,7 +56,7 @@ class LoginForm extends CFormModel
                     return true;
                 }
             }
-            $this->addError('password', 'Учетная запись ненайдена');
+            $this->addError('password', 'Учетная запись не найдена');
 
             return false;
         }
