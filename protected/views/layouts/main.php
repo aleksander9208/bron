@@ -21,17 +21,23 @@
         <div id="fb_preloader" class="d-none">
             <div class="spinner-border" role="status"> </div>
         </div>
-        <?php if (!Yii::app()->user->getIsGuest()) { ?>
-        <nav id="fb_nav" class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-            <a class="navbar-brand" href="./"><?php echo Yii::app()->user->login; ?></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#fb_nav_items" aria-controls="fb_nav_items" aria-expanded="false" aria-label="Меню">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="fb_nav_items">
-                <?php $this->widget('application.extensions.panels.topPanel'); ?>
-                <a id="fb_auth_signout" class="btn btn-outline-info my-2 my-sm-0" href="<?php echo Yii::app()->createUrl('/auth/logout'); ?>">Выход</a>
+        <?php if (Yii::app()->user->getIsGuest()) { ?>
+            <div id="z_nav" class="container-fluid mb-5">
+                <div class="row mb-2">
+                    <div class="col">
+                        Вы вошли как: <strong><?php echo Yii::app()->user->login; ?></strong>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-8">
+                        <a class="nav-item btn btn-primary mr-2 active" href="<?php echo Yii::app()->createUrl('/site/addstatement'); ?>">Подать заявку</a>
+                    </div>
+                    <div class="col-4 text-right">
+                        <a class="nav-item btn btn-primary" href="<?php echo Yii::app()->createUrl('/auth/logout'); ?>">Выход</a>
+                        <?php //$this->widget('application.extensions.panels.topPanel'); ?>
+                    </div>
+                </div>
             </div>
-        </nav>
         <?php } ?>
         <div class="container-fluid">
             <?php echo $content; ?>
