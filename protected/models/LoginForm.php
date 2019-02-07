@@ -56,7 +56,7 @@ class LoginForm extends CFormModel
                     return true;
                 }
             }
-            $this->addError('password', 'Неверный логин или пароль');
+            $this->addError('password', 'Учетная запись ненайдена');
 
             return false;
         }

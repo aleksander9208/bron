@@ -9,7 +9,7 @@
         <?php
         $this->widget('MyGridView', array(
             'id' => 'vacr-grid',
-            'dataProvider' => $model->getBidList('/admin/stat'),
+            'dataProvider' => $model->getBidList('/admin/stat',true),
             'ajaxUpdate' =>  false,
             'summaryText' => '',
             'filter' => $model,

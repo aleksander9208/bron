@@ -67,6 +67,7 @@ class AdminController extends Controller
         if ($questionnairePost) {
             $questionnaire->attributes = $questionnairePost;
         }
+        $questionnaire->status = Questionnaire::STATUS_OK;
 
         $this->render('stat', array('title' => $title, 'model' => $questionnaire));
     }
