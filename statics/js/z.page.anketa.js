@@ -174,7 +174,7 @@ if (typeof window.z == 'object')
             validate_fio: function (el_fio)
                 {
                     var _self = this;
-                    var val_fio = el_fio.val();
+                    var val_fio = el_fio.val().toLowerCase();
                     var is_valid = _self.validate_required(el_fio);
                     if (is_valid==true)
                         {
@@ -211,7 +211,7 @@ if (typeof window.z == 'object')
                 {
                     var _self = this;
 
-                    var val_phone = el_phone.val();
+                    var val_phone = el_phone.val().toLowerCase();
                     var is_valid = (val_phone.length==(el_phone.attr('maxlength')));
                     if (is_valid==true)
                         {
@@ -237,7 +237,7 @@ if (typeof window.z == 'object')
                     var is_valid = _self.validate_required(el_email);
                     if (is_valid==true)
                         {
-                            var val_email = el_email.val();
+                            var val_email = el_email.val().toLowerCase();;
                             var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
                             is_valid = re.test(String(val_email).toLowerCase());
                         }

@@ -11,3 +11,5 @@ define('YII_PATH', '/var/www/framework/');
 define('YII_DEBUG', true);
 
 define('BASE_URL', '');
+
+define('AUTH_DURATION', 86400);

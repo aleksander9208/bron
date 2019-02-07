@@ -66,7 +66,7 @@ if (typeof window.z == 'object')
                 {
                     var _self = this;
                     _self.error('');
-                    var val_fio = _self.z.el.z_auth_user_fio.val();
+                    var val_fio = _self.z.el.z_auth_user_fio.val().toLowerCase();
                     var is_valid = (val_fio!='');
                     if (is_valid==true)
                         {
@@ -78,11 +78,15 @@ if (typeof window.z == 'object')
                             var val_mask = _self.z.el.z_auth_user_fio.attr('data-mask');
                             var val_len = val_fio.length;
                             for (var i=0; i<val_len; i++)
-                                if (val_mask.indexOf(val_fio[i])==-1)
+                                {
+                                    console.log(i, val_mask, val_fio[i], val_mask.indexOf(val_fio[i]));
+                                    if (val_mask.indexOf(val_fio[i])==-1)
                                     {
                                         is_valid = false;
                                         break;
                                     }
+                                }
+
                         }
                     _self.z.el.z_auth_user_fio.toggleClass('is-valid', is_valid==true).toggleClass('is-invalid', is_valid==false);
                     return _self.z.el.z_auth_user_fio.hasClass('is-valid');
@@ -93,7 +97,7 @@ if (typeof window.z == 'object')
                 {
                     var _self = this;
                     _self.error('');
-                    var val_phone = _self.z.el.z_auth_user_phone.val();
+                    var val_phone = _self.z.el.z_auth_user_phone.val().toLowerCase();
                     var is_valid = (val_phone.length==(_self.z.el.z_auth_user_phone.attr('maxlength')));
                     if (is_valid==true)
                         {
