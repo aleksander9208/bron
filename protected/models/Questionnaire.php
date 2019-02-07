@@ -86,6 +86,7 @@ class Questionnaire extends CActiveRecord
             array('name_ur,fio_ur_contact,tel_ur_contact,email_ur_contact', 'required', 'on' => 'ur'),
             array('booking_id', 'required', 'on' => 'booking'),
             array('booking_id', 'validateBooking'),
+            array('is_main', 'validateIsMain'),
             array('user_id', 'validateUser'),
             array('birthday_child', 'validateBirthday'),
             array('name_ur,fio_ur_contact,email_ur_contact,fio_parent,email_parent,fio_child,place_of_study', 'length', 'max' => 255),
@@ -94,7 +95,7 @@ class Questionnaire extends CActiveRecord
             array('type', 'in', 'range' => array(self::TYPE_FIZ, self::TYPE_UR)),
             array('status', 'validateStatus'),
             array('paid,create_admin,name_ur_check,fio_ur_contact_check,tel_ur_contact_check,email_ur_contact_check,fio_parent_check,residence_check,place_of_work_check,tel_parent_check,email_parent_check,fio_child_check,birthday_child_check,place_of_study_check', 'in', 'range' => array(0, 1)),
-            array('shift_name,camp_id, fromDate,toDate, type, fio_parent,residence,place_of_work,tel_parent,email_parent,fio_child,birthday_child,place_of_study,name_ur,fio_ur_contact,tel_ur_contact,email_ur_contact', 'safe'),
+            array('is_main,shift_name,camp_id, fromDate,toDate, type, fio_parent,residence,place_of_work,tel_parent,email_parent,fio_child,birthday_child,place_of_study,name_ur,fio_ur_contact,tel_ur_contact,email_ur_contact', 'safe'),
             array('booking_id,paid,comment,name_ur_check,fio_ur_contact_check,tel_ur_contact_check,email_ur_contact_check,fio_parent_check,residence_check,place_of_work_check,tel_parent_check,email_parent_check,fio_child_check,birthday_child_check,place_of_study_check,status,paid,create_admin', 'safe', 'on' => 'mod'),
         );
     }
@@ -127,7 +128,8 @@ class Questionnaire extends CActiveRecord
             'create_admin' => 'Создана админом',
             'camp_id' => 'Лагерь',
             'booking_id' => 'Номер брони',
-            'dlo_id' => 'Период'
+            'dlo_id' => 'Период',
+            'is_main' => 'Зарезервирован'
         );
     }
 
@@ -151,7 +153,8 @@ class Questionnaire extends CActiveRecord
             'toDate',
             'camp_id',
             'booking_id',
-            'shift_name'
+            'shift_name',
+            'is_main'
         );
     }
 
@@ -159,6 +162,7 @@ class Questionnaire extends CActiveRecord
     {
         if ($this->isNewRecord) {
             $this->status = self::STATUS_IN_MODER;
+            $this->is_main = 0;
             $this->booking_id = null;
             if (is_null($this->created)) {
                 $this->created = date('Y-m-d H:i:s');
@@ -298,6 +302,42 @@ class Questionnaire extends CActiveRecord
         if (($this->$attribute == 'user_up') && !in_array($this->$attribute, array(self::STATUS_IN_MODER, self::STATUS_CANCELED))) {
             $this->addError($attribute, 'Не верный статус заявки');
             return false;
+        }
+
+        return true;
+    }
+
+    public function validateIsMain($attribute)
+    {
+
+        if ($this->$attribute) {
+            if ($this->isNewRecord || (!$this->isNewRecord && $this->status != self::STATUS_OK)) {
+                $this->addError($attribute, 'Нельзя ставить в резерв не одобренные заявления');
+                return false;
+            }
+            $change = (isset($this->changedAttr[$attribute]) && ($this->changedAttr[$attribute] != $this->$attribute));
+            if ($change && !Yii::app()->user->getIsGuest() && Yii::app()->user->role != User::ROLE_ADMIN) {
+                $this->$attribute = $this->changedAttr[$attribute];
+                $this->addError($attribute, 'Только администратор может ');
+                return false;
+            }
+            $reserve = Yii::app()->db->createCommand()
+                ->select('srez_1,srez_2,srez_3,srez_4,srez_5,srez_6,srez_7,srez_8,srez_9,srez_10,srez_11,srez_12,srez_13,srez_14,srez_15,srez_16,srez_17,srez_18,srez_19,srez_20,srez_21,srez_22,srez_23,srez_24,srez_25,srez_26,srez_27')
+                ->from('{{questionnaire_rezerv}}')
+                ->where('id=1')
+                ->queryRow();
+
+            if ($reserve['srez_' . $this->shift_id] < 1) {
+                $this->addError($attribute, 'Нет резерва для данной смены');
+                return false;
+            }
+
+
+            $qr = Questionnaire::model()->countByAttributes(array('status' => self::STATUS_OK, 'shift_id' => $this->Shift_id, 'is_main' => 1));
+            if ($reserve['srez_' . $this->shift_id] <= $qr) {
+                $this->addError($attribute, 'Лимит резерва для данной смены исчерпан');
+                return false;
+            }
         }
 
         return true;
@@ -719,6 +759,7 @@ class Questionnaire extends CActiveRecord
             foreach ($result as $r) {
                 if ($r['is_main']) {
                     $reserve['srez_' . (int)$r['shift_id']] -= 1;
+                    $qIds[] = $r['id'];
                 } else {
                     $cnt[$r['shift_id']] += 1;
                 }
@@ -809,7 +850,7 @@ class Questionnaire extends CActiveRecord
 
     public function __set($var, $value)
     {
-        if (in_array($var, array('status', 'booking_id')) && !array_key_exists($var, $this->changedAttr)) {
+        if (in_array($var, array('status', 'booking_id','is_main')) && !array_key_exists($var, $this->changedAttr)) {
             $this->changedAttr[$var] = $this->$var;
         }
 
