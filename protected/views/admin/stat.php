@@ -58,6 +58,15 @@
                     'headerHtmlOptions' => array('class' => 'col')
                 ),
                 array(
+                    'header' => 'Смена',
+                    'name' => 'shift_id',
+                    'type' => 'raw',
+                    'value' => 'Questionnaire::getShiftName($data->shift_id)',
+                    'htmlOptions' => array('align' => 'center'),
+                    'filter' => array('Смена 1','Смена 2','Смена 3','Смена 4','Смена 5'),
+                    'headerHtmlOptions' => array('class' => 'col')
+                ),
+                array(
                     'header' => 'Дата подачи',
                     'name' => 'created',
                     'value' => '$data->created',

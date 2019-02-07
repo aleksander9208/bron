@@ -173,6 +173,24 @@
                     </div>
                 </div>
             </div>
+
+            <div class="control-group">
+                <label class="control-label" for="Questionnaire_birthday_child"><?php echo $model->getAttributeLabel('shift_id'); ?></label>
+                <div class="controls">
+                    <div class="input-append">
+                        <?php echo Questionnaire::getShiftName($model->shift_id); ?>
+                    </div>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="Questionnaire_birthday_child"><?php echo $model->getAttributeLabel('dlo_id'); ?></label>
+                <div class="controls">
+                    <div class="input-append">
+                        <?php foreach ($shifts[$model->shift_id]['dlo'] as $d) { echo Questionnaire::getDLOName($d).'; '; } ?>
+                    </div>
+                </div>
+            </div>
+
             <hr>
             <p>
                 <?php if (!in_array($model->status, array(Questionnaire::STATUS_OK, Questionnaire::STATUS_CANCELED))) { ?>

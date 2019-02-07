@@ -8,7 +8,8 @@ class ProfileController extends Controller
 
     public function __construct($id, $module = null)
     {
-        if (!Yii::app()->user->checkAccess(User::ROLE_USER) && Yii::app()->user->role != User::ROLE_USER) {
+       // if (!Yii::app()->user->checkAccess(User::ROLE_USER) && Yii::app()->user->role != User::ROLE_USER) {
+        if (Yii::app()->user->getIsGuest()) {
             $this->redirect(Yii::app()->createUrl('/site'));
         }
 

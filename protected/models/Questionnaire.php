@@ -125,7 +125,8 @@ class Questionnaire extends CActiveRecord
             'paid' => 'Выкуплена',
             'create_admin' => 'Создана админом',
             'camp_id' => 'Лагерь',
-            'booking_id' => 'Номер брони'
+            'booking_id' => 'Номер брони',
+            'dlo_id' => 'Период'
         );
     }
 
@@ -305,7 +306,7 @@ class Questionnaire extends CActiveRecord
             $shifts = SiteService::getShifts();
             $age = ($year - date("Y", strtotime($this->$attribute)));
             if (($shifts[$this->shift_id]['min_age'] > $age) || ($shifts[$this->shift_id]['max_age'] < $age)) {
-                $this->addError($attribute, 'Возраст ребенка не подходит для выбранной смены' . $age);
+                $this->addError($attribute, 'Возраст ребенка не подходит для выбранной смены');
                 return false;
             }
 
@@ -486,6 +487,59 @@ class Questionnaire extends CActiveRecord
         }
     }
 
+    public static function geShiftIdsByCampId($campId)
+    {
+        switch ($campId) {
+            case self::CAMP_KIROVEC:
+                return array();
+                break;
+
+            case self::SHIFT_KIROVEC_1:
+            case self::SHIFT_KIROVEC_2:
+            case self::SHIFT_KIROVEC_3:
+            case self::SHIFT_KIROVEC_4:
+            case self::SHIFT_KIROVEC_5:
+                return self::CAMP_KIROVEC;
+                break;
+            case self::SHIFT_BLUESCREEN_1:
+            case self::SHIFT_BLUESCREEN_2:
+            case self::SHIFT_BLUESCREEN_3:
+            case self::SHIFT_BLUESCREEN_4:
+                return self::CAMP_BLUESCREEN;
+                break;
+            case self::SHIFT_EAST_1:
+            case self::SHIFT_EAST_2:
+            case self::SHIFT_EAST_3:
+                return self::CAMP_EAST_4;
+                break;
+            case self::SHIFT_DIAMOND_1:
+            case self::SHIFT_DIAMOND_2:
+            case self::SHIFT_DIAMOND_3:
+            case self::SHIFT_DIAMOND_4:
+                return self::CAMP_DIAMOND;
+                break;
+            case self::SHIFT_BONFIRE_1:
+            case self::SHIFT_BONFIRE_2:
+            case self::SHIFT_BONFIRE_3:
+            case self::SHIFT_BONFIRE_4:
+                return self::CAMP_BONFIRE;
+                break;
+            case self::SHIFT_LIGHTHOUSE_1:
+            case self::SHIFT_LIGHTHOUSE_2:
+            case self::SHIFT_LIGHTHOUSE_3:
+                return self::CAMP_LIGHTHOUSE;
+                break;
+            case self::SHIFT_FLYGHT_1:
+            case self::SHIFT_FLYGHT_2:
+            case self::SHIFT_FLYGHT_3:
+            case self::SHIFT_FLYGHT_4:
+                return self::CAMP_FLYGHT;
+                break;
+            default:
+                return 0;
+        }
+    }
+
     public static function getShiftName($shiftId)
     {
         switch ($shiftId) {
@@ -620,17 +674,38 @@ class Questionnaire extends CActiveRecord
     }
 
 
-    public function getBidList($route,$mysort=false)
+    public function getBidList($route, $stat = false)
     {
+        $criteria = new CDbCriteria;
         $sort = new CSort();
-        if ($mysort) {
+        if ($stat) {
             $sort->defaultOrder = 't.is_main DESC, t.created ASC';
+            $ids = array();
+            $qIds = array();
+            foreach (self::getCAMPName() as $campId => $campName) {
+                $shiftsIds = self::getShiftsByParams($campId);
+                foreach ($shiftsIds as $s) {
+                    $ids[] = $s;
+                }
+            }
+            $result = Yii::app()->db->createCommand()
+                ->select('id')
+                ->from('{{questionnaire}}')
+                ->where(array('in', 'shift_id', $ids))
+                ->andWhere('status=:status', array('status' => Questionnaire::STATUS_OK))
+                ->order('is_main DESC, created ASC')
+                ->queryAll();
+            foreach ($result as $r) {
+                $qIds[] = $r['id'];
+            }
+
+            $criteria->addInCondition('t.id', $qIds);
+
         } else {
             $sort->defaultOrder = 't.id DESC';
         }
-
         $sort->route = $route;
-        $criteria = new CDbCriteria;
+
         if (is_numeric($this->type)) {
             $criteria->compare('t.type', $this->type);
         }
@@ -644,6 +719,25 @@ class Questionnaire extends CActiveRecord
             $criteria->compare('t.paid', $this->paid);
         }
 
+        if (is_numeric($this->shift_id)) {
+            switch ($this->shift_id) {
+                case 0:
+                    $criteria->addInCondition('t.shift_id', array(self::SHIFT_BLUESCREEN_1, self::SHIFT_EAST_1, self::SHIFT_DIAMOND_1, self::SHIFT_BONFIRE_1, self::SHIFT_LIGHTHOUSE_1, self::SHIFT_FLYGHT_1));
+                    break;
+                case 1:
+                    $criteria->addInCondition('t.shift_id', array(self::SHIFT_KIROVEC_2, self::SHIFT_BLUESCREEN_2, self::SHIFT_EAST_2, self::SHIFT_DIAMOND_2, self::SHIFT_BONFIRE_2, self::SHIFT_LIGHTHOUSE_2, self::SHIFT_FLYGHT_2));
+                    break;
+                case 2:
+                    $criteria->addInCondition('t.shift_id', array(self::SHIFT_KIROVEC_3, self::SHIFT_BLUESCREEN_3, self::SHIFT_EAST_3, self::SHIFT_DIAMOND_3, self::SHIFT_BONFIRE_3, self::SHIFT_LIGHTHOUSE_3, self::SHIFT_FLYGHT_3));
+                    break;
+                case 3:
+                    $criteria->addInCondition('t.shift_id', array(self::SHIFT_KIROVEC_4, self::SHIFT_BLUESCREEN_4, self::SHIFT_DIAMOND_4, self::SHIFT_BONFIRE_4, self::SHIFT_FLYGHT_4));
+                    break;
+                case 4:
+                    $criteria->addInCondition('t.shift_id', array(self::SHIFT_KIROVEC_5));
+                    break;
+            }
+        }
         if (is_numeric($this->camp_id)) {
             switch ($this->camp_id) {
                 case self::CAMP_KIROVEC:

@@ -221,7 +221,7 @@
                 <label class="control-label" for="Questionnaire_birthday_child"><?php echo $model->getAttributeLabel('dlo_id'); ?></label>
                 <div class="controls">
                     <div class="input-append">
-                        <?php foreach ($shifts[$model->shift_id]['dlo'] as $d) { echo Questionnaire::getDLOName($d).' '; } ?>
+                        <?php foreach ($shifts[$model->shift_id]['dlo'] as $d) { echo Questionnaire::getDLOName($d).'; '; } ?>
                     </div>
                 </div>
             </div>

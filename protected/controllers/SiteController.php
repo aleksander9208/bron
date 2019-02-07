@@ -71,6 +71,9 @@ class SiteController extends Controller
             } else {
                 $transaction->commit();
                 Yii::app()->user->setFlash('q_done', 'Заявка подана');
+                if (!Yii::app()->user->getIsGuest()) {
+                    $model->fio_ur_contact= $model->fio_parent = Yii::app()->user->login;
+                }
                 $identity = new UserIdentity('','');
                 $identity->authenticateById($model->user_id);
                 if (Yii::app()->user->getIsGuest() && !(boolean)Yii::app()->user->login($identity, AUTH_DURATION)) {

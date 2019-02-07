@@ -52,7 +52,7 @@ class AdminController extends Controller
                 }
             }
         }
-        $this->render('bid', array('model' => $q));
+        $this->render('bid', array('model' => $q,'shifts' => SiteService::getShifts()));
     }
 
 
