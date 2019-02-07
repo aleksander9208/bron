@@ -16,7 +16,7 @@ class SiteService
             ->limit($seats)
             ->queryRow();
         if ($full) {
-            return array('incamp' => ($result['incamp'] ? true : false), 'all_seats' => $seats, 'free_seats' => (int)($seats - $result['cnt']), 'seats' => (int)($seats - (int)($seats - $result['cnt'])));
+            return array('incamp' => ($result['incamp'] ? true : false), 'all_seats' => $seats, 'free_seats' => (int)($seats - $result['cnt']), 'seats' => (int)$result['cnt']);
         }
 
         return ($result['incamp'] ? true : false);
@@ -40,7 +40,7 @@ class SiteService
 
         foreach ($result as $r) {
             $seats = (int)((isset($shifts[$r['shift_id']]['seats'])) ? $shifts[$r['shift_id']]['seats'] : 0);
-            $out[$r['shift_id']] = array('all_seats' => $seats, 'free_seats' => (int)($seats - $r['cnt']), 'seats' => (int)($seats - (int)($seats - $r['cnt'])));
+            $out[$r['shift_id']] = array('all_seats' => $seats, 'free_seats' => (int)($seats - $r['cnt']), 'seats' => (int)$result['cnt']);
         }
         if (is_numeric($shiftId)) {
             return $out[$shiftId];
