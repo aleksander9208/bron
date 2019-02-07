@@ -54,6 +54,22 @@ class AjaxController extends Controller
         }
     }
 
+    public function actionSetComment()
+    {
+        if (Yii::app()->user->checkAccess(User::ROLE_ADMIN)) {
+            $comment = Yii::app()->request->getParam('comment');
+            $questionnaireId = Yii::app()->request->getParam('questionnaire_id', 0);
+            if (Yii::app()->request->isPostRequest) {
+                Yii::app()->db->createCommand()->update('{{questionnaire}}', array('comment' => $comment), 'id=:id', array('id' => (int)$questionnaireId));
+                $this->out['data'] = array('questionnaire_id' => (int)$questionnaireId, 'comment' => $comment);
+            } else {
+                $this->out['errors'] = array('Парамерты не заданы');
+            }
+        } else {
+            throw new CHttpException(401, 'Страница не найдена');
+        }
+    }
+
     public function actionSetBooking()
     {
         if (Yii::app()->user->checkAccess(User::ROLE_ADMIN)) {

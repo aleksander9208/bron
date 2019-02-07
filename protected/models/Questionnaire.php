@@ -173,7 +173,7 @@ class Questionnaire extends CActiveRecord
 
             if ($this->shift_id) {
                 $shifts = SiteService::getShifts();
-                $this->dlo_id = (int)(isset($shifts[$this->shift_id]['dlo'][0])?$shifts[$this->shift_id]['dlo'][0]:0);
+                $this->dlo_id = (int)(isset($shifts[$this->shift_id]['dlo'][0]) ? $shifts[$this->shift_id]['dlo'][0] : 0);
             }
 
         } elseif ($this->scenario == 'mod') {
@@ -335,7 +335,7 @@ class Questionnaire extends CActiveRecord
             return false;
         }
         if ($this->$attribute && !self::getCAMPByShift($this->$attribute)) {
-            $this->addError($attribute, 'Указанна несуществующая смена'.var_export($this->$attribute,true));
+            $this->addError($attribute, 'Указанна несуществующая смена' . var_export($this->$attribute, true));
 
             return false;
         }
@@ -451,8 +451,8 @@ class Questionnaire extends CActiveRecord
             case self::SHIFT_BLUESCREEN_2:
             case self::SHIFT_BLUESCREEN_3:
             case self::SHIFT_BLUESCREEN_4:
-            return self::CAMP_BLUESCREEN;
-            break;
+                return self::CAMP_BLUESCREEN;
+                break;
             case self::SHIFT_EAST_1:
             case self::SHIFT_EAST_2:
             case self::SHIFT_EAST_3:
@@ -485,6 +485,52 @@ class Questionnaire extends CActiveRecord
                 return 0;
         }
     }
+
+    public static function getShiftName($shiftId)
+    {
+        switch ($shiftId) {
+            case self::SHIFT_KIROVEC_1:
+            case self::SHIFT_BLUESCREEN_1:
+            case self::SHIFT_EAST_1:
+            case self::SHIFT_DIAMOND_1:
+            case self::SHIFT_BONFIRE_1:
+            case self::SHIFT_LIGHTHOUSE_1:
+            case self::SHIFT_FLYGHT_1:
+                return 'Смена 1';
+                break;
+            case self::SHIFT_KIROVEC_2:
+            case self::SHIFT_BLUESCREEN_2:
+            case self::SHIFT_EAST_2:
+            case self::SHIFT_DIAMOND_2:
+            case self::SHIFT_BONFIRE_2:
+            case self::SHIFT_LIGHTHOUSE_2:
+            case self::SHIFT_FLYGHT_2:
+                return 'Смена 2';
+                break;
+            case self::SHIFT_KIROVEC_3:
+            case self::SHIFT_BLUESCREEN_3:
+            case self::SHIFT_EAST_3:
+            case self::SHIFT_DIAMOND_3:
+            case self::SHIFT_BONFIRE_3:
+            case self::SHIFT_LIGHTHOUSE_3:
+            case self::SHIFT_FLYGHT_3:
+                return 'Смена 3';
+                break;
+            case self::SHIFT_KIROVEC_4:
+            case self::SHIFT_BLUESCREEN_4:
+            case self::SHIFT_DIAMOND_4:
+            case self::SHIFT_BONFIRE_4:
+            case self::SHIFT_FLYGHT_4:
+                return 'Смена 4';
+                break;
+            case self::SHIFT_KIROVEC_5:
+                return 'Смена 5';
+                break;
+            default:
+                return '';
+        }
+    }
+
 
     public static function getShiftsByParams($campId = false, $dloId = false, $full = false, $age = false)
     {
