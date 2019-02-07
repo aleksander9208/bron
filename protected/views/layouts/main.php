@@ -21,7 +21,7 @@
         <div id="fb_preloader" class="d-none">
             <div class="spinner-border" role="status"> </div>
         </div>
-        <?php if (Yii::app()->user->getIsGuest()) { ?>
+        <?php if (!Yii::app()->user->getIsGuest()) { ?>
             <div id="z_nav" class="container-fluid mb-5">
                 <div class="row mb-2">
                     <div class="col">
