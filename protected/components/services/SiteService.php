@@ -12,19 +12,46 @@ class SiteService
             ->select('SUM(IF(user_id=' . (int)$userID . ',1,0)) as incamp, COUNT(id) as cnt')
             ->from('{{questionnaire}}')
             ->where('status=:status AND shift_id=:shift', array('status' => Questionnaire::STATUS_OK, 'shift' => (int)$shift))
-            ->order('created ASC')
+            ->order('is_main DESC, created ASC')
             ->limit($seats)
             ->queryRow();
         if ($full) {
-            return array('incamp' => ($result['incamp'] ? true : false), 'all_seats' => $seats, 'free_seats' => (int)($seats - $result['cnt']));
+            return array('incamp' => ($result['incamp'] ? true : false), 'all_seats' => $seats, 'free_seats' => (int)($seats - $result['cnt']), 'seats' => (int)($seats - (int)($seats - $result['cnt'])));
         }
 
         return ($result['incamp'] ? true : false);
     }
 
-    public static function getShifts()
+    public static function seatsShifts($shiftId = false)
     {
-        return array(
+        $shifts = SiteService::getShifts();
+        $out = array();
+        foreach ($shifts as $s) {
+            $out[$s['id']] = array('all_seats' => 0, 'free_seats' => 0, 'seats' => 0);
+        }
+        $shifts = SiteService::getShifts();
+        $result = Yii::app()->db->createCommand()
+            ->select('COUNT(id) as cnt,shift_id ')
+            ->from('{{questionnaire}}')
+            ->where('status=:status ', array('status' => Questionnaire::STATUS_OK))
+            ->group('shift_id')
+            ->order('is_main DESC, created ASC')
+            ->queryAll();
+
+        foreach ($result as $r) {
+            $seats = (int)((isset($shifts[$r['shift_id']]['seats'])) ? $shifts[$r['shift_id']]['seats'] : 0);
+            $out[$r['shift_id']] = array('all_seats' => $seats, 'free_seats' => (int)($seats - $r['cnt']), 'seats' => (int)($seats - (int)($seats - $r['cnt'])));
+        }
+        if (is_numeric($shiftId)) {
+            return $out[$shiftId];
+        }
+
+        return $out;
+    }
+
+    public static function getShifts($campId = false)
+    {
+        $out = array(
             Questionnaire::SHIFT_KIROVEC_1 => array(
                 'id' => Questionnaire::SHIFT_KIROVEC_1,
                 'camp' => Questionnaire::CAMP_KIROVEC,
@@ -313,6 +340,25 @@ class SiteService
                 )
             ),
         );
+
+        if ($campId) {
+            foreach ($out as $shiftId => $v) {
+                if ($v['camp'] != $campId) {
+                    unset($out[$shiftId]);
+                }
+            }
+        }
+
+        return $out;
+    }
+
+    public static function templateChecker($shiftId, $seatsFrom, $seatsTo, $shiftsPost)
+    {
+        $checked = ((in_array($shiftId, $shiftsPost)) ? true : false);
+        return '<div class="custom-control custom-switch">' .
+        CHtml::checkBox('Shifts[]', $checked, array('class' => 'custom-control-input', 'id' => 'z_anketa_' . $shiftId, 'value' => $shiftId)) .
+        CHtml::label($seatsFrom . ' из ' . $seatsTo, 'z_anketa_' . $shiftId, array('class' => 'custom-control-label')) .
+        '</div>';
     }
 
 

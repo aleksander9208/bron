@@ -6,7 +6,7 @@
                 <?php echo (Yii::app()->user->hasFlash('q_error')?Yii::app()->user->getFlash('q_error'):''); ?>
                 <?php echo (Yii::app()->user->hasFlash('q_done')?'Заявка успешон отправлена':''); ?>
             </div>
-            <?php echo CHtml::form('', 'post', array('class' => 'needs-validation', 'id'=>'z_anketa_form')); ?>
+            <?php echo CHtml::form('', 'post', array('class' => 'needs-validation', 'id'=>'z_anketa_form','novalidate'=>'novalidate')); ?>
 
             <?php if ($user->checkAccess(User::ROLE_ADMIN)) { ?>
                 <div class="form-group">
@@ -146,108 +146,142 @@
 
             <hr />
 
-            <!--CAMP DATA START-->
-            <div class="form-group">
-                <label for="z_anketa_camp">Лагерь</label>
-                <?php echo CHtml::dropDownList('Questionnaire[camp_id]', $model->camp_id, Questionnaire::getCAMPName(), array('class' => 'custom-select', 'id'=>'z_anketa_camp')); ?>
-            </div>
 
-            <div class="form-group">
-                <label for="z_anketa_shift">Смена</label>
-                <?php echo CHtml::dropDownList('Shifts[]', $model->shift_id, Questionnaire::getShiftsByParams($model->camp_id), array('class' => 'custom-select', 'id'=>'z_anketa_shift')); ?>
-            </div>
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th scope="col">ДЛО</th>
+                    <th scope="col"><?php echo Questionnaire::getDLOName(Questionnaire::DLO_1); ?></th>
+                    <th scope="col"><?php echo Questionnaire::getDLOName(Questionnaire::DLO_2); ?></th>
+                    <th scope="col"><?php echo Questionnaire::getDLOName(Questionnaire::DLO_3); ?></th>
+                    <th scope="col"><?php echo Questionnaire::getDLOName(Questionnaire::DLO_4); ?></th>
+                    <th scope="col"><?php echo Questionnaire::getDLOName(Questionnaire::DLO_5); ?></th>
+                    <th scope="col"><?php echo Questionnaire::getDLOName(Questionnaire::DLO_6); ?></th>
+                    <th scope="col"><?php echo Questionnaire::getDLOName(Questionnaire::DLO_7); ?></th>
+                    <th scope="col"><?php echo Questionnaire::getDLOName(Questionnaire::DLO_8); ?></th>
+                </tr>
+                </thead>
+                <tbody>
 
-            <div class="form-group">
-                <label for="z_anketa_period">Период</label>
-                <?php echo CHtml::dropDownList('Dlos[]', 0, Questionnaire::getDLOSByParams($model->camp_id,$model->shift_id), array('class' => 'custom-select', 'id'=>'z_anketa_period')); ?>
-            </div>
-            <!--CAMP DATA END-->
+                <tr style="text-align: center;">
+                    <th scope="row"><?php echo Questionnaire::getCAMPName(Questionnaire::CAMP_KIROVEC); ?></th>
+                    <td data-dlo="<?php echo Questionnaire::DLO_1; ?>" data-shift="<?php echo Questionnaire::SHIFT_KIROVEC_1; ?>"><b>Смена 1</b>
+                        <?php echo SiteService::templateChecker(Questionnaire::SHIFT_KIROVEC_1, $seats[Questionnaire::SHIFT_KIROVEC_1]['seats'], $shifts[Questionnaire::SHIFT_KIROVEC_1]['seats'], $postShifts); ?>
+                    </td>
+                    <td data-dlo="<?php echo Questionnaire::DLO_2; ?>" data-shift="<?php echo Questionnaire::SHIFT_KIROVEC_2; ?>" colspan="2"><b>Смена 2</b>
+                        <?php echo SiteService::templateChecker(Questionnaire::SHIFT_KIROVEC_2, $seats[Questionnaire::SHIFT_KIROVEC_2]['seats'], $shifts[Questionnaire::SHIFT_KIROVEC_2]['seats'], $postShifts); ?>
+                    </td>
+                    <td data-dlo="<?php echo Questionnaire::DLO_4; ?>" data-shift="<?php echo Questionnaire::SHIFT_KIROVEC_3; ?>" colspan="2"><b>Смена 3</b>
+                        <?php echo SiteService::templateChecker(Questionnaire::SHIFT_KIROVEC_3, $seats[Questionnaire::SHIFT_KIROVEC_3]['seats'], $shifts[Questionnaire::SHIFT_KIROVEC_3]['seats'], $postShifts); ?>
+                    </td>
+                    <td data-dlo="<?php echo Questionnaire::DLO_6; ?>" data-shift="<?php echo Questionnaire::SHIFT_KIROVEC_4; ?>" colspan="2"><b>Смена 4</b>
+                        <?php echo SiteService::templateChecker(Questionnaire::SHIFT_KIROVEC_4, $seats[Questionnaire::SHIFT_KIROVEC_4]['seats'], $shifts[Questionnaire::SHIFT_KIROVEC_4]['seats'], $postShifts); ?>
+                    </td>
+                    <td data-dlo="<?php echo Questionnaire::DLO_8; ?>" data-shift="<?php echo Questionnaire::SHIFT_KIROVEC_5; ?>"><b>Смена 5</b>
+                        <?php echo SiteService::templateChecker(Questionnaire::SHIFT_KIROVEC_5, $seats[Questionnaire::SHIFT_KIROVEC_5]['seats'], $shifts[Questionnaire::SHIFT_KIROVEC_5]['seats'], $postShifts); ?>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row"><?php echo Questionnaire::getCAMPName(Questionnaire::CAMP_BLUESCREEN); ?></th>
+                    <td data-dlo="<?php echo Questionnaire::DLO_1; ?>" data-shift="<?php echo Questionnaire::SHIFT_BLUESCREEN_1; ?>"><b>Смена 1</b>
+                        <?php echo SiteService::templateChecker(Questionnaire::SHIFT_BLUESCREEN_1, $seats[Questionnaire::SHIFT_BLUESCREEN_1]['seats'], $shifts[Questionnaire::SHIFT_BLUESCREEN_1]['seats'], $postShifts); ?>
+                    </td>
+                    <td data-dlo="<?php echo Questionnaire::DLO_2; ?>" data-shift="<?php echo Questionnaire::SHIFT_BLUESCREEN_2; ?>" colspan="2"><b>Смена 2</b>
+                        <?php echo SiteService::templateChecker(Questionnaire::SHIFT_BLUESCREEN_2, $seats[Questionnaire::SHIFT_BLUESCREEN_2]['seats'], $shifts[Questionnaire::SHIFT_BLUESCREEN_2]['seats'], $postShifts); ?>
+                    </td>
+                    <td data-dlo="<?php echo Questionnaire::DLO_4; ?>" data-shift="<?php echo Questionnaire::SHIFT_BLUESCREEN_3; ?>" colspan="2"><b>Смена 3</b>
+                        <?php echo SiteService::templateChecker(Questionnaire::SHIFT_BLUESCREEN_3, $seats[Questionnaire::SHIFT_BLUESCREEN_3]['seats'], $shifts[Questionnaire::SHIFT_BLUESCREEN_3]['seats'], $postShifts); ?>
+                    </td>
+                    <td data-dlo="<?php echo Questionnaire::DLO_6; ?>" data-shift="<?php echo Questionnaire::SHIFT_BLUESCREEN_4; ?>" colspan="2"><b>Смена 4</b>
+                        <?php echo SiteService::templateChecker(Questionnaire::SHIFT_BLUESCREEN_4, $seats[Questionnaire::SHIFT_BLUESCREEN_4]['seats'], $shifts[Questionnaire::SHIFT_BLUESCREEN_4]['seats'], $postShifts); ?>
+                    </td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <th scope="row"><?php echo Questionnaire::getCAMPName(Questionnaire::CAMP_EAST_4); ?></th>
+                    <td>&nbsp;</td>
+                    <td data-dlo="<?php echo Questionnaire::DLO_2; ?>" data-shift="<?php echo Questionnaire::SHIFT_EAST_1; ?>" colspan="2"><b>Смена 1</b>
+                        <?php echo SiteService::templateChecker(Questionnaire::SHIFT_EAST_1, $seats[Questionnaire::SHIFT_EAST_1]['seats'], $shifts[Questionnaire::SHIFT_EAST_1]['seats'], $postShifts); ?>
+                    </td>
+                    <td data-dlo="<?php echo Questionnaire::DLO_4; ?>" data-shift="<?php echo Questionnaire::SHIFT_EAST_2; ?>" colspan="2"><b>Смена 2</b>
+                        <?php echo SiteService::templateChecker(Questionnaire::SHIFT_EAST_2, $seats[Questionnaire::SHIFT_EAST_2]['seats'], $shifts[Questionnaire::SHIFT_EAST_2]['seats'], $postShifts); ?>
+                    </td>
+                    <td data-dlo="<?php echo Questionnaire::DLO_6; ?>" data-shift="<?php echo Questionnaire::SHIFT_EAST_3; ?>" colspan="2"><b>Смена 3</b>
+                        <?php echo SiteService::templateChecker(Questionnaire::SHIFT_EAST_3, $seats[Questionnaire::SHIFT_EAST_3]['seats'], $shifts[Questionnaire::SHIFT_EAST_3]['seats'], $postShifts); ?>
+                    </td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <th scope="row"><?php echo Questionnaire::getCAMPName(Questionnaire::CAMP_DIAMOND); ?></th>
+                    <td>&nbsp;</td>
+                    <td data-dlo="<?php echo Questionnaire::DLO_2; ?>" data-shift="<?php echo Questionnaire::SHIFT_DIAMOND_1; ?>" colspan="2"><b>Смена 1</b>
+                        <?php echo SiteService::templateChecker(Questionnaire::SHIFT_DIAMOND_1, $seats[Questionnaire::SHIFT_DIAMOND_1]['seats'], $shifts[Questionnaire::SHIFT_DIAMOND_1]['seats'], $postShifts); ?>
+                    </td>
+                    <td data-dlo="<?php echo Questionnaire::DLO_4; ?>" data-shift="<?php echo Questionnaire::SHIFT_DIAMOND_2; ?>" ><b>Смена 2</b>
+                        <?php echo SiteService::templateChecker(Questionnaire::SHIFT_DIAMOND_2, $seats[Questionnaire::SHIFT_DIAMOND_2]['seats'], $shifts[Questionnaire::SHIFT_DIAMOND_2]['seats'], $postShifts); ?>
+                    </td>
+                    <td data-dlo="<?php echo Questionnaire::DLO_5; ?>" data-shift="<?php echo Questionnaire::SHIFT_DIAMOND_3; ?>"><b>Смена 3</b>
+                        <?php echo SiteService::templateChecker(Questionnaire::SHIFT_DIAMOND_3, $seats[Questionnaire::SHIFT_DIAMOND_3]['seats'], $shifts[Questionnaire::SHIFT_DIAMOND_3]['seats'], $postShifts); ?>
+                    </td>
+                    <td data-dlo="<?php echo Questionnaire::DLO_6; ?>" data-shift="<?php echo Questionnaire::SHIFT_DIAMOND_4; ?>" colspan="2"><b>Смена 4</b>
+                        <?php echo SiteService::templateChecker(Questionnaire::SHIFT_DIAMOND_4, $seats[Questionnaire::SHIFT_DIAMOND_4]['seats'], $shifts[Questionnaire::SHIFT_EAST_1]['seats'], $postShifts); ?>
+                    </td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <th scope="row"><?php echo Questionnaire::getCAMPName(Questionnaire::CAMP_BONFIRE); ?></th>
+                    <td>&nbsp;</td>
+                    <td data-dlo="<?php echo Questionnaire::DLO_2; ?>" data-shift="<?php echo Questionnaire::SHIFT_BONFIRE_1; ?>" colspan="2"><b>Смена 1</b>
+                        <?php echo SiteService::templateChecker(Questionnaire::SHIFT_BONFIRE_1, $seats[Questionnaire::SHIFT_BONFIRE_1]['seats'], $shifts[Questionnaire::SHIFT_BONFIRE_1]['seats'], $postShifts); ?>
+                    </td>
+                    <td data-dlo="<?php echo Questionnaire::DLO_4; ?>" data-shift="<?php echo Questionnaire::SHIFT_BONFIRE_2; ?>" ><b>Смена 2</b>
+                        <?php echo SiteService::templateChecker(Questionnaire::SHIFT_BONFIRE_2, $seats[Questionnaire::SHIFT_BONFIRE_2]['seats'], $shifts[Questionnaire::SHIFT_BONFIRE_2]['seats'], $postShifts); ?>
+                    </td>
+                    <td data-dlo="<?php echo Questionnaire::DLO_5; ?>" data-shift="<?php echo Questionnaire::SHIFT_BONFIRE_3; ?>"><b>Смена 3</b>
+                        <?php echo SiteService::templateChecker(Questionnaire::SHIFT_BONFIRE_3, $seats[Questionnaire::SHIFT_BONFIRE_3]['seats'], $shifts[Questionnaire::SHIFT_BONFIRE_3]['seats'], $postShifts); ?>
+                    </td>
+                    <td data-dlo="<?php echo Questionnaire::DLO_6; ?>" data-shift="<?php echo Questionnaire::SHIFT_BONFIRE_4; ?>" colspan="2"><b>Смена 4</b>
+                        <?php echo SiteService::templateChecker(Questionnaire::SHIFT_BONFIRE_3, $seats[Questionnaire::SHIFT_BONFIRE_3]['seats'], $shifts[Questionnaire::SHIFT_BONFIRE_3]['seats'], $postShifts); ?>
+                    </td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <th scope="row"><?php echo Questionnaire::getCAMPName(Questionnaire::CAMP_LIGHTHOUSE); ?></th>
+                    <td>&nbsp;</td>
+                    <td data-dlo="<?php echo Questionnaire::DLO_2; ?>" data-shift="<?php echo Questionnaire::SHIFT_LIGHTHOUSE_1; ?>" colspan="2"><b>Смена 1</b>
+                        <?php echo SiteService::templateChecker(Questionnaire::SHIFT_LIGHTHOUSE_1, $seats[Questionnaire::SHIFT_LIGHTHOUSE_1]['seats'], $shifts[Questionnaire::SHIFT_LIGHTHOUSE_1]['seats'], $postShifts); ?>
+                    </td>
+                    <td data-dlo="<?php echo Questionnaire::DLO_4; ?>" data-shift="<?php echo Questionnaire::SHIFT_LIGHTHOUSE_2; ?>" colspan="2"><b>Смена 2</b>
+                        <?php echo SiteService::templateChecker(Questionnaire::SHIFT_LIGHTHOUSE_2, $seats[Questionnaire::SHIFT_LIGHTHOUSE_2]['seats'], $shifts[Questionnaire::SHIFT_LIGHTHOUSE_2]['seats'], $postShifts); ?>
+                    </td>
+                    <td data-dlo="<?php echo Questionnaire::DLO_6; ?>" data-shift="<?php echo Questionnaire::SHIFT_LIGHTHOUSE_3; ?>"><b>Смена 3</b>
+                        <?php echo SiteService::templateChecker(Questionnaire::SHIFT_LIGHTHOUSE_3, $seats[Questionnaire::SHIFT_LIGHTHOUSE_3]['seats'], $shifts[Questionnaire::SHIFT_LIGHTHOUSE_3]['seats'], $postShifts); ?>
+                    </td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <th scope="row"><?php echo Questionnaire::getCAMPName(Questionnaire::CAMP_FLYGHT); ?></th>
+                    <td>&nbsp;</td>
+                    <td data-dlo="<?php echo Questionnaire::DLO_2; ?>" data-shift="<?php echo Questionnaire::SHIFT_FLYGHT_1; ?>"><b>Смена 1</b>
+                        <?php echo SiteService::templateChecker(Questionnaire::SHIFT_FLYGHT_1, $seats[Questionnaire::SHIFT_FLYGHT_1]['seats'], $shifts[Questionnaire::CAMP_LIGHTHOUSE]['seats'], $postShifts); ?>
+                    </td>
+                    <td data-dlo="<?php echo Questionnaire::DLO_3; ?>" data-shift="<?php echo Questionnaire::SHIFT_FLYGHT_2; ?>"><b>Смена 2</b>
+                        <?php echo SiteService::templateChecker(Questionnaire::SHIFT_FLYGHT_2, $seats[Questionnaire::SHIFT_FLYGHT_2]['seats'], $shifts[Questionnaire::SHIFT_FLYGHT_2]['seats'], $postShifts); ?>
+                    </td>
+                    <td data-dlo="<?php echo Questionnaire::DLO_4; ?>" data-shift="<?php echo Questionnaire::SHIFT_FLYGHT_3; ?>"><b>Смена 3</b>
+                        <?php echo SiteService::templateChecker(Questionnaire::SHIFT_FLYGHT_3, $seats[Questionnaire::SHIFT_FLYGHT_3]['seats'], $shifts[Questionnaire::SHIFT_FLYGHT_3]['seats'], $postShifts); ?>
+                    </td>
+                    <td data-dlo="<?php echo Questionnaire::DLO_5; ?>" data-shift="<?php echo Questionnaire::SHIFT_FLYGHT_4; ?>"><b>Смена 4</b>
+                        <?php echo SiteService::templateChecker(Questionnaire::SHIFT_FLYGHT_4, $seats[Questionnaire::SHIFT_FLYGHT_4]['seats'], $shifts[Questionnaire::SHIFT_FLYGHT_4]['seats'], $postShifts); ?>
+                    </td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
 
-
-            <div class="form-group">
-                <div class="row border-bottom">
-                    <div class="form-group col-md-2 font-weight-bold">Лагерь</div>
-                    <div class="form-group col-md-2 font-weight-bold">Смена №1</div>
-                    <div class="form-group col-md-2 font-weight-bold">Смена №2</div>
-                    <div class="form-group col-md-2 font-weight-bold">Смена №3</div>
-                    <div class="form-group col-md-2 font-weight-bold">Смена №4</div>
-                    <div class="form-group col-md-2 font-weight-bold">Смена №5</div>
-                </div>
-                <div class="row border-bottom">
-                    <div class="form-group col-md-2 my-2 font-italic">Кировец</div>
-                    <div class="form-group col-md-2 my-2">
-                        <div class="z_anketa_period"> с 01.06 по 20.06</div>
-                        <div class="custom-control custom-switch">
-                            <input type="checkbox" class="custom-control-input" id="z_anketa_dlo_1_1">
-                            <label class="custom-control-label" for="z_anketa_dlo_1_1">10 из 100</label>
-                        </div>
-                    </div>
-                    <div class="form-group col-md-2 my-2">
-                        <div class="z_anketa_period"> с 21.06 по 01.07</div>
-                        <div class="custom-control custom-switch">
-                            <input type="checkbox" class="custom-control-input" id="z_anketa_dlo_1_2">
-                            <label class="custom-control-label" for="z_anketa_dlo_1_2">12 из 36</label>
-                        </div>
-                    </div>
-                    <div class="form-group col-md-2 my-2">
-                        <div class="z_anketa_period"> с 02.07 по 10.07</div>
-                        <div class="custom-control custom-switch">
-                            <input type="checkbox" class="custom-control-input" id="z_anketa_dlo_1_3">
-                            <label class="custom-control-label" for="z_anketa_dlo_1_3">6 из 40</label>
-                        </div>
-                    </div>
-                    <div class="form-group col-md-2 my-2">
-                        <div class="z_anketa_period"> с 10.07 по 01.08</div>
-                        <div class="custom-control custom-switch">
-                            <input type="checkbox" class="custom-control-input" id="z_anketa_dlo_1_4" checked="checked" />
-                            <label class="custom-control-label" for="z_anketa_dlo_1_4">10 из 10</label>
-                        </div>
-                        <div class="z_anketa_rezerv">Ререзв: 12 человек</div>
-                    </div>
-                    <div class="form-group col-md-2 my-2">
-                        <div class="z_anketa_period"> с 02.08 по 31.08</div>
-                        <div class="custom-control custom-switch">
-                            <input type="checkbox" class="custom-control-input" id="z_anketa_dlo_1_5">
-                            <label class="custom-control-label" for="z_anketa_dlo_1_5">76 из 100</label>
-                        </div>
-                    </div>
-                </div>
-                <div class="row border-bottom">
-                    <div class="form-group col-md-2 my-2 font-italic">Голубой экран</div>
-                    <div class="form-group col-md-2 my-2">
-                        <div class="z_anketa_period"> с 05.06 по 22.06</div>
-                        <div class="custom-control custom-switch">
-                            <input type="checkbox" class="custom-control-input" id="z_anketa_dlo_2_1">
-                            <label class="custom-control-label" for="z_anketa_dlo_2_1">5 из 23</label>
-                        </div>
-                    </div>
-                    <div class="form-group col-md-2 my-2">
-                        <div class="z_anketa_period"> с 23.06 по 29.06</div>
-                        <div class="custom-control custom-switch">
-                            <input type="checkbox" class="custom-control-input" id="z_anketa_dlo_2_2">
-                            <label class="custom-control-label" for="z_anketa_dlo_2_2">2 из 22</label>
-                        </div>
-                    </div>
-                    <div class="form-group col-md-2 my-2">
-                        <div class="z_anketa_period"> с 30.06 по 12.07</div>
-                        <div class="custom-control custom-switch">
-                            <input type="checkbox" class="custom-control-input" id="z_anketa_dlo_2_3">
-                            <label class="custom-control-label" for="z_anketa_dlo_2_3">23 из 52</label>
-                        </div>
-                    </div>
-                    <div class="form-group col-md-2 my-2">
-                        <div class="z_anketa_period"> с 13.07 по 01.08</div>
-                        <div class="custom-control custom-switch">
-                            <input type="checkbox" class="custom-control-input" id="z_anketa_dlo_2_4">
-                            <label class="custom-control-label" for="z_anketa_dlo_2_4">43 из 45</label>
-                        </div>
-                    </div>
-                    <div class="form-group col-md-2 my-2"></div>
-                </div>
-            </div>
-            <?php
-                Questionnaire::DLO_4
-            ?>
+                </tbody>
+            </table>
 
             <div class="form-group text-right">
                 <?php echo CHtml::submitButton('Подать заявление на регистрацию', array('class' => 'btn btn-success')); ?>

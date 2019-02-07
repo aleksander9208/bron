@@ -31,21 +31,21 @@ class Questionnaire extends CActiveRecord
     const SHIFT_EAST_1 = 10;
     const SHIFT_EAST_2 = 11;
     const SHIFT_EAST_3 = 12;
-    const SHIFT_DIAMOND_1 = 10;
-    const SHIFT_DIAMOND_2 = 11;
-    const SHIFT_DIAMOND_3 = 12;
-    const SHIFT_DIAMOND_4 = 13;
-    const SHIFT_BONFIRE_1 = 14;
-    const SHIFT_BONFIRE_2 = 15;
-    const SHIFT_BONFIRE_3 = 16;
-    const SHIFT_BONFIRE_4 = 17;
-    const SHIFT_LIGHTHOUSE_1 = 18;
-    const SHIFT_LIGHTHOUSE_2 = 19;
-    const SHIFT_LIGHTHOUSE_3 = 20;
-    const SHIFT_FLYGHT_1 = 21;
-    const SHIFT_FLYGHT_2 = 22;
-    const SHIFT_FLYGHT_3 = 23;
-    const SHIFT_FLYGHT_4 = 24;
+    const SHIFT_DIAMOND_1 = 13;
+    const SHIFT_DIAMOND_2 = 14;
+    const SHIFT_DIAMOND_3 = 15;
+    const SHIFT_DIAMOND_4 = 16;
+    const SHIFT_BONFIRE_1 = 17;
+    const SHIFT_BONFIRE_2 = 18;
+    const SHIFT_BONFIRE_3 = 19;
+    const SHIFT_BONFIRE_4 = 20;
+    const SHIFT_LIGHTHOUSE_1 = 21;
+    const SHIFT_LIGHTHOUSE_2 = 22;
+    const SHIFT_LIGHTHOUSE_3 = 23;
+    const SHIFT_FLYGHT_1 = 24;
+    const SHIFT_FLYGHT_2 = 25;
+    const SHIFT_FLYGHT_3 = 26;
+    const SHIFT_FLYGHT_4 = 27;
 
     const DLO_1 = 1;
     const DLO_2 = 2;
@@ -79,7 +79,7 @@ class Questionnaire extends CActiveRecord
         return array(
             array('id', 'unique'),
             array('fio_child', 'validateChild'),
-            array('user_id,created,fio_child,birthday_child,place_of_study,status,type, fio_parent,residence,place_of_work,tel_parent,email_parent,shift_id,dlo_id', 'required'),
+            array('user_id,created,fio_child,birthday_child,place_of_study,status,type, fio_parent,residence,place_of_work,tel_parent,email_parent,shift_id', 'required'),
             array('shift_id', 'validateShift'),
             // array('fio_parent,residence,place_of_work,tel_parent,email_parent', 'required', 'on' => 'fl'),
             array('name_ur,fio_ur_contact,tel_ur_contact,email_ur_contact', 'required', 'on' => 'ur'),
@@ -121,7 +121,6 @@ class Questionnaire extends CActiveRecord
             'place_of_study' => 'Место учебы ребенка',
 
             'shift_id' => 'Смена',
-            'dlo_id' => 'Интервал',
             'comment' => 'Комментарий',
             'paid' => 'Выкуплена',
             'create_admin' => 'Создана админом',
@@ -171,6 +170,12 @@ class Questionnaire extends CActiveRecord
             if (Yii::app()->user->role == User::ROLE_ADMIN) {
                 $this->create_admin = 1;
             }
+
+            if ($this->shift_id) {
+                $shifts = SiteService::getShifts();
+                $this->dlo_id = (int)(isset($shifts[$this->shift_id]['dlo'][0])?$shifts[$this->shift_id]['dlo'][0]:0);
+            }
+
         } elseif ($this->scenario == 'mod') {
             if (isset($this->changedAttr['status']) && ($this->changedAttr['status'] != $this->status) && ($this->status == self::STATUS_OK)) {
                 if (is_null($this->booking_id)) {
@@ -312,7 +317,7 @@ class Questionnaire extends CActiveRecord
     public function validateChild($attribute)
     {
         if ($this->isNewRecord) {
-            $cq = Questionnaire::model()->countByAttributes(array('fio_child' => $this->$attribute, 'dlo_id' => $this->dlo_id, 'shift_id' => $this->shift_id));
+            $cq = Questionnaire::model()->countByAttributes(array('fio_child' => $this->$attribute, 'shift_id' => $this->shift_id));
             if ($cq) {
                 $this->addError($attribute, 'Указанный ребенок был ранее указан в другой заявке');
                 return false;
@@ -324,8 +329,13 @@ class Questionnaire extends CActiveRecord
 
     public function validateShift($attribute)
     {
-        if (!self::getCAMPByShift($this->$attribute)) {
-            $this->addError($attribute, 'Указанна несуществующая смена');
+        if (!$this->$attribute) {
+            $this->addError($attribute, 'Невыбрана смена');
+
+            return false;
+        }
+        if ($this->$attribute && !self::getCAMPByShift($this->$attribute)) {
+            $this->addError($attribute, 'Указанна несуществующая смена'.var_export($this->$attribute,true));
 
             return false;
         }
@@ -437,6 +447,12 @@ class Questionnaire extends CActiveRecord
             case self::SHIFT_KIROVEC_5:
                 return self::CAMP_KIROVEC;
                 break;
+            case self::SHIFT_BLUESCREEN_1:
+            case self::SHIFT_BLUESCREEN_2:
+            case self::SHIFT_BLUESCREEN_3:
+            case self::SHIFT_BLUESCREEN_4:
+            return self::CAMP_BLUESCREEN;
+            break;
             case self::SHIFT_EAST_1:
             case self::SHIFT_EAST_2:
             case self::SHIFT_EAST_3:
