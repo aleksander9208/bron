@@ -52,25 +52,6 @@
 
             <hr/>
 
-            <!--FIZ START-->
-            <div class="form-group z_anketa_block_<?php echo Questionnaire::TYPE_FIZ; ?>">
-                <?php echo CHtml::activeLabel($model, 'fio_parent', array('for'=>'z_anketa_fio_parent')); ?>
-                <?php echo CHtml::activeTextField($model, 'fio_parent', array((Questionnaire::TYPE_FIZ==$model->type?'_':'').'disabled'=>'disabled', 'class' => 'form-control', 'placeholder' => $model->getAttributeLabel('fio_parent'), 'required'=>'required', 'id'=>'z_anketa_fio_parent', 'data-mask'=>' абвгдеёжзийклмнопрстуфхцчшщъыьэюя-')); ?>
-            </div>
-            <div class="form-group z_anketa_block_<?php echo Questionnaire::TYPE_FIZ; ?>">
-                <?php echo CHtml::activeLabel($model, 'residence', array('for'=>'z_anketa_residence')); ?>
-                <?php echo CHtml::activeTextField($model, 'residence', array((Questionnaire::TYPE_FIZ==$model->type?'_':'').'disabled'=>'disabled', 'class' => 'form-control', 'placeholder' => $model->getAttributeLabel('residence'), 'required'=>'required', 'id'=>'z_anketa_residence')); ?>
-            </div>
-            <div class="form-group z_anketa_block_<?php echo Questionnaire::TYPE_FIZ; ?>">
-                <?php echo CHtml::activeLabel($model, 'place_of_work', array('for'=>'z_anketa_place_of_work')); ?>
-                <?php echo CHtml::activeTextField($model, 'place_of_work', array((Questionnaire::TYPE_FIZ==$model->type?'_':'').'disabled'=>'disabled', 'class' => 'form-control', 'placeholder' => $model->getAttributeLabel('place_of_work'), 'required'=>'required', 'id'=>'z_anketa_place_of_work')); ?>
-            </div>
-            <div class="form-group z_anketa_block_<?php echo Questionnaire::TYPE_FIZ; ?>">
-                <?php echo CHtml::activeLabel($model, 'email_parent', array('for'=>'z_anketa_email_parent')); ?>
-                <?php echo CHtml::activeTextField($model, 'email_parent', array((Questionnaire::TYPE_FIZ==$model->type?'_':'').'disabled'=>'disabled', 'class' => 'form-control', 'placeholder' => $model->getAttributeLabel('email_parent'), 'required'=>'required', 'id'=>'z_anketa_email_parent')); ?>
-            </div>
-            <!--FIZ END-->
-
             <!--UR START-->
             <div class="form-group z_anketa_block_<?php echo Questionnaire::TYPE_UR; ?>">
                 <?php echo CHtml::activeLabel($model, 'name_ur', array('for'=>'z_anketa_name_ur')); ?>
@@ -93,7 +74,28 @@
                 <?php echo CHtml::activeLabel($model, 'email_ur_contact', array('for'=>'z_anketa_email_ur_contact')); ?>
                 <?php echo CHtml::activeTextField($model, 'email_ur_contact', array((Questionnaire::TYPE_UR==$model->type?'_':'').'disabled'=>'disabled', 'class' => 'form-control', 'placeholder' => $model->getAttributeLabel('email_ur_contact'), 'required'=>'required', 'id'=>'z_anketa_email_ur_contact')); ?>
             </div>
+
+            <hr class="z_anketa_block_<?php echo Questionnaire::TYPE_UR; ?>"/>
             <!--UR END-->
+
+            <!--FIZ START-->
+            <div class="form-group">
+                <?php echo CHtml::activeLabel($model, 'fio_parent', array('for'=>'z_anketa_fio_parent')); ?>
+                <?php echo CHtml::activeTextField($model, 'fio_parent', array('class' => 'form-control', 'placeholder' => $model->getAttributeLabel('fio_parent'), 'required'=>'required', 'id'=>'z_anketa_fio_parent', 'data-mask'=>' абвгдеёжзийклмнопрстуфхцчшщъыьэюя-')); ?>
+            </div>
+            <div class="form-group">
+                <?php echo CHtml::activeLabel($model, 'residence', array('for'=>'z_anketa_residence')); ?>
+                <?php echo CHtml::activeTextField($model, 'residence', array('class' => 'form-control', 'placeholder' => $model->getAttributeLabel('residence'), 'required'=>'required', 'id'=>'z_anketa_residence')); ?>
+            </div>
+            <div class="form-group">
+                <?php echo CHtml::activeLabel($model, 'place_of_work', array('for'=>'z_anketa_place_of_work')); ?>
+                <?php echo CHtml::activeTextField($model, 'place_of_work', array('class' => 'form-control', 'placeholder' => $model->getAttributeLabel('place_of_work'), 'required'=>'required', 'id'=>'z_anketa_place_of_work')); ?>
+            </div>
+            <div class="form-group">
+                <?php echo CHtml::activeLabel($model, 'email_parent', array('for'=>'z_anketa_email_parent')); ?>
+                <?php echo CHtml::activeTextField($model, 'email_parent', array('class' => 'form-control', 'placeholder' => $model->getAttributeLabel('email_parent'), 'required'=>'required', 'id'=>'z_anketa_email_parent')); ?>
+            </div>
+            <!--FIZ END-->
 
             <hr />
 
@@ -123,7 +125,9 @@
                     'htmlOptions' => array(
                         'class' => 'form-control',
                         'id'    => 'z_anketa_birthday_child',
-                        'required'=>'required'
+                        'required'  =>'required',
+                        'data-mask' =>'01234567890-',
+                        'maxlength'=>10
                     ),
                 ));
 

@@ -2,7 +2,6 @@
 {
 }
 
-#z_page_anketa:not(.z_anketa_block_0) .z_anketa_block_0,
 #z_page_anketa:not(.z_anketa_block_1) .z_anketa_block_1
 {
     display: none;

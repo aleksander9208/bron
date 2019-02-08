@@ -6,11 +6,16 @@ if (typeof window.z == 'object')
             //Название модуля
             name:'z_page_anketa',
             //Версия библиотеки
-            version: '190207',
+            version: '190208',
             //Указатель на глобалный объект
             z: window.z,
             //Хранилище данных
             data: {},
+
+            constant: {
+                USER_ANKETA_TYPE_FIZ: 0,
+                USER_ANKETA_TYPE_UR: 1
+            },
 
             //Открыте страницы
             init: function (task_name)
@@ -28,18 +33,12 @@ if (typeof window.z == 'object')
                         function ()
                             {
                                 var type_val = $(this).filter(':checked').val();
-                                _self.z.el.z_page_anketa.toggleClass('z_anketa_block_0', type_val==0).toggleClass('z_anketa_block_1', type_val==1);
+                                _self.z.el.z_page_anketa.toggleClass('z_anketa_block_'+_self.constant.USER_ANKETA_TYPE_UR, type_val==1);
 
                                 if (type_val==0)
-                                    {
-                                        _self.z.el.z_anketa_form.find('.z_anketa_block_1 input').attr('disabled','disabled');
-                                        _self.z.el.z_anketa_form.find('.z_anketa_block_0 input').removeAttr('disabled');
-                                    }
+                                    _self.z.el.z_anketa_form.find('.z_anketa_block_'+_self.constant.USER_ANKETA_TYPE_UR+' input').attr('disabled','disabled');
                                         else
-                                    {
-                                        _self.z.el.z_anketa_form.find('.z_anketa_block_0 input').attr('disabled','disabled');
-                                        _self.z.el.z_anketa_form.find('.z_anketa_block_1 input').removeAttr('disabled');
-                                    }
+                                    _self.z.el.z_anketa_form.find('.z_anketa_block_'+_self.constant.USER_ANKETA_TYPE_UR+' input').removeAttr('disabled');
                             }
                     ).on(
                         [
@@ -77,9 +76,12 @@ if (typeof window.z == 'object')
                                         case 'z_anketa_residence':
                                         case 'z_anketa_place_of_work':
                                         case 'z_anketa_name_ur':
-                                        case 'z_anketa_birthday_child':
                                         case 'z_anketa_place_of_study':
                                             _self.validate_required($(this));
+                                        break;
+
+                                        case 'z_anketa_birthday_child':
+                                            _self.validate_date($(this));
                                         break;
 
                                         case 'z_anketa_tel_ur_contact':
@@ -126,35 +128,31 @@ if (typeof window.z == 'object')
                 {
                     var _self = this;
                     var type_val = _self.z.el.z_anketa_types.find(':checked').val();
-                    if (type_val==0)
-                        {
-                            //Физ
-                            _self.validate_fio(_self.z.el.z_anketa_fio_parent);
-                            _self.validate_required(_self.z.el.z_anketa_residence);
-                            _self.validate_required(_self.z.el.z_anketa_place_of_work);
-                            _self.validate_email(_self.z.el.z_anketa_email_parent);
-
-                            _self.z.el.z_anketa_name_ur.removeClass('is-valid is-invalid');
-                            _self.z.el.z_anketa_fio_ur_contact.removeClass('is-valid is-invalid');
-                            _self.z.el.z_anketa_tel_ur_contact.removeClass('is-valid is-invalid');
-                            _self.z.el.z_anketa_email_ur_contact.removeClass('is-valid is-invalid');
-                        }
-                            else
+                    if (type_val==1)
                         {
                             //Юр
                             _self.validate_required(_self.z.el.z_anketa_name_ur);
                             _self.validate_fio(_self.z.el.z_anketa_fio_ur_contact);
                             _self.validate_phone(_self.z.el.z_anketa_tel_ur_contact);
                             _self.validate_email(_self.z.el.z_anketa_email_ur_contact);
-
-                            _self.z.el.z_anketa_fio_parent.removeClass('is-valid is-invalid');
-                            _self.z.el.z_anketa_residence.removeClass('is-valid is-invalid');
-                            _self.z.el.z_anketa_place_of_work.removeClass('is-valid is-invalid');
-                            _self.z.el.z_anketa_email_parent.removeClass('is-valid is-invalid');
+                        }
+                            else
+                        {
+                            _self.z.el.z_anketa_name_ur.removeClass('is-valid is-invalid');
+                            _self.z.el.z_anketa_fio_ur_contact.removeClass('is-valid is-invalid');
+                            _self.z.el.z_anketa_tel_ur_contact.removeClass('is-valid is-invalid');
+                            _self.z.el.z_anketa_email_ur_contact.removeClass('is-valid is-invalid');
                         }
 
+
+                    //Физ
+                    _self.validate_fio(_self.z.el.z_anketa_fio_parent);
+                    _self.validate_required(_self.z.el.z_anketa_residence);
+                    _self.validate_required(_self.z.el.z_anketa_place_of_work);
+                    _self.validate_email(_self.z.el.z_anketa_email_parent);
+
                     _self.validate_fio(_self.z.el.z_anketa_fio_child);
-                    _self.validate_required(_self.z.el.z_anketa_birthday_child);
+                    _self.validate_date(_self.z.el.z_anketa_birthday_child);
                     _self.validate_required(_self.z.el.z_anketa_place_of_study);
                     _self.validate_phone(_self.z.el.z_anketa_tel_parent);
 
@@ -239,6 +237,39 @@ if (typeof window.z == 'object')
                             is_valid = re.test(String(val_email).toLowerCase());
                         }
                     el_email.toggleClass('is-valid', is_valid==true).toggleClass('is-invalid', is_valid!=true);
+                    return is_valid;
+                },
+
+            //Валидация даты
+            validate_date:function (el_date)
+                {
+                    var _self = this;
+
+                    var val_date = el_date.val().toLowerCase();
+                    var val_len = val_date.length;
+                    var is_valid = (val_len==(el_date.attr('maxlength')));
+                    if (is_valid==true)
+                        {
+                            var val_date_parts = val_date.split('-');
+                            var is_valid = (val_date_parts.length==3);
+                            if (is_valid==true)
+                                {
+                                    var val_mask = el_date.attr('data-mask');
+                                    for (var i=0; i<val_len; i++)
+                                        if (val_mask.indexOf(val_date[i])==-1)
+                                            {
+                                                is_valid = false;
+                                                break;
+                                            }
+                                }
+                            if (is_valid==true)
+                                {
+                                    var date_now = new Date();
+                                    var date_val = new Date(val_date);
+                                    is_valid = (date_now.getFullYear()-date_val.getFullYear()>=18);
+                                }
+                        }
+                    el_date.toggleClass('is-valid', is_valid==true).toggleClass('is-invalid', is_valid==false);
                     return is_valid;
                 }
         };
