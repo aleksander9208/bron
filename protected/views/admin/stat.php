@@ -14,8 +14,8 @@
                 });
             });
         </script>
-        <?php echo CHtml::form('', 'get', array('class' => 'needs-validation', 'id' => 'z_anketa_form')); ?>
-        <?php echo CHtml::dropDownList('stat_id', $statId, array(1 => 1, 2 => 2, 3 => 3, 4 => 4, 5 => 5), array('id' => 'stat_id')); ?>
+        <?php echo CHtml::form('/admin/stat', 'get', array('class' => 'needs-validation', 'id' => 'z_anketa_form')); ?>
+        <?php echo CHtml::dropDownList('stat_id', $statId, array(1 => 'Общая', 2 => 'По лагерям', 3 => 'По лагерям и сменам', 4 => 'По юр.лицам', 5 => 'По юр.лицам, лагерям и сменам'), array('id' => 'stat_id','class'=>'custom-select')); ?>
         <?php echo CHtml::endForm(); ?>
         <?php
         switch ($statId) {
