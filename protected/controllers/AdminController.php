@@ -72,12 +72,10 @@ class AdminController extends Controller
 
         switch ($statId) {
             case 2:
-                $statData = AdminService::getStatCamp($statId);
-                break;
             case 3:
             case 4:
             case 5:
-                $statData = array();
+            $statData = AdminService::getStatCamp($statId);
                 break;
             default:
                 $statData = array();
