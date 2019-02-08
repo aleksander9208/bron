@@ -8,7 +8,7 @@
         <div class="col">
             <?php
             $this->widget('MyGridView', array(
-                'id' => 'vacr-grid',
+                'id' => 'z_anketa_list_table',
                 'dataProvider' => $model->getBidList('/admin/index'),
                 'ajaxUpdate' => false, // 'vacr-grid',
                 'summaryText' => '',
@@ -50,9 +50,10 @@
                         'headerHtmlOptions' => array('class' => 'text-center', 'scope' => 'col'),
                     ),
                     array(
-                        'header' => 'Дата подачи',
-                        'name' => 'created',
-                        'value' => '$data->created',
+                        'header' => 'ФИО ребенка',
+                        'name' => 'fio_child',
+                        'type' => 'raw',
+                        'value' => '$data->fio_child',
                         'filter' => false,
                         'htmlOptions' => array('class' => 'text-center'),
                         'headerHtmlOptions' => array('class' => 'text-center', 'scope' => 'col'),
@@ -74,10 +75,9 @@
                         'headerHtmlOptions' => array('class' => 'text-center', 'scope' => 'col'),
                     ),
                     array(
-                        'header' => 'ФИО ребенка',
-                        'name' => 'fio_child',
-                        'type' => 'raw',
-                        'value' => 'CHtml::link($data->fio_child,"/profile/bid/".$data->id)',
+                        'header' => 'Дата подачи',
+                        'name' => 'created',
+                        'value' => '$data->created',
                         'filter' => false,
                         'htmlOptions' => array('class' => 'text-center'),
                         'headerHtmlOptions' => array('class' => 'text-center', 'scope' => 'col'),
