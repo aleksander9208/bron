@@ -9,8 +9,9 @@
             <?php
             $this->widget('MyGridView', array(
                 'id' => 'z_anketa_list_table',
-                'dataProvider' => $model->getBidList('/admin/index'),
-                'ajaxUpdate' => false, // 'vacr-grid',
+                'dataProvider' => $model->getBidList('/profile/index'),
+                'ajaxUpdate' =>  'z_anketa_list_table',
+                'ajaxUrl' => Yii::app()->createUrl('/profile/index'),
                 'summaryText' => '',
                 'filter' => $model,
                 'enableHistory' => false,
