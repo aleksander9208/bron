@@ -61,7 +61,8 @@ class ProfileController extends Controller
     public function actionPrint($id = 0)
     {
         $cs = Yii::app()->getClientScript();
-        $cs->registerCssFile(Yii::app()->createUrl('/statics/css/z.page.anketa_print.css'),  'print');
+        $cs->registerCssFile(Yii::app()->createUrl('/statics/css/z.page.anketa_print.css'));
+        $cs->registerCssFile(Yii::app()->createUrl('/statics/css/z.page.anketa_print.css?print'),  'print');
         $cs->registerScriptFile(Yii::app()->createUrl('/statics/js/z.page.anketa_print.js'), CClientScript::POS_END);
 
 

@@ -1,6 +1,6 @@
 <div id="z_nav" class="container-fluid mb-5">
     <div class="row mb-2">
-        <div class="col">
+        <div class="col text-right">
             Вы вошли как: <strong><?php echo Yii::app()->user->login; ?></strong>
         </div>
     </div>
