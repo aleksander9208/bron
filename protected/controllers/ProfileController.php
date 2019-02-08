@@ -18,6 +18,10 @@ class ProfileController extends Controller
 
     public function actionIndex()
     {
+        $cs = Yii::app()->getClientScript();
+        $cs->registerCssFile(Yii::app()->createUrl('/statics/css/z.page.anketa_list.css'));
+        $cs->registerScriptFile(Yii::app()->createUrl('/statics/js/z.page.anketa_list.js'), CClientScript::POS_END);
+
         $title = 'Мои заявки';
         $questionnaire = new Questionnaire();
         $questionnaire->type = $questionnaire->status = null;
@@ -29,6 +33,10 @@ class ProfileController extends Controller
 
     public function actionbid($id = 0)
     {
+        $cs = Yii::app()->getClientScript();
+        $cs->registerCssFile(Yii::app()->createUrl('/statics/css/z.page.anketa_view.css'));
+        $cs->registerScriptFile(Yii::app()->createUrl('/statics/js/z.page.anketa_view.js'), CClientScript::POS_END);
+
         $this->pageTitle = Yii::app()->name . ' - ' . 'Заявка #' . (int)$id;
         $q = Questionnaire::model()->findByPk($id);
         if (!$q || ($q->user_id != Yii::app()->user->id)) {

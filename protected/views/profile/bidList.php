@@ -17,7 +17,7 @@
                 'pagerCssClass' => 'pagination',
 
                 'htmlOptions' => array('class' => 'table table-bordered table-striped table-hover table-sm'),
-                //'headerHtmlOptions' => array('class' => 'thead-light'),
+                //'headerHtmlOptions' => array('class' => 'thead-dark'),
                 'itemsCssClass' => 'user-list-table table table-bordered table-hover',
                 'ajaxUrl' => Yii::app()->createUrl('/admin/index'),
                 'enableSorting' => true,
@@ -46,7 +46,7 @@
                         //  'value' => 'CHtml::link(($row + ($this->grid->dataProvider->pagination->currentPage * $this->grid->dataProvider->pagination->pageSize) + 1),"/admin/bid/".$data->id)',
                         'value' => 'CHtml::link($data->id,"/profile/bid/".$data->id)',
                         'htmlOptions' => array('class' => 'num_string'),
-                        'headerHtmlOptions' => array('class' => 'col'),
+                        'headerHtmlOptions' => array('scope' => 'col'),
                         'filter' => false,
                     ),
                     array(
@@ -55,15 +55,33 @@
                         'value' => '$data->created',
                         'htmlOptions' => array('align' => 'center'),
                         'filter' => false,
-                        'headerHtmlOptions' => array('class' => 'col')
+                        'headerHtmlOptions' => array('scope' => 'col')
                     ),
+
+                    array(
+                        'header' => 'Лагерь',
+                        'name' => 'camp_id',
+                        'value' => 'Questionnaire::getCAMPName($data->camp_id)',
+                        'htmlOptions' => array('align' => 'center'),
+                        'filter' => false,
+                        'headerHtmlOptions' => array('scope' => 'col')
+                    ),
+                    array(
+                        'header' => 'Cмена',
+                        'name' => 'shift_id',
+                        'value' => 'Questionnaire::getShiftName($data->shift_id)',
+                        'htmlOptions' => array('align' => 'center'),
+                        'filter' => false,
+                        'headerHtmlOptions' => array('scope' => 'col')
+                    ),
+
                     array(
                         'header' => 'ФИО ребенка',
                         'name' => 'fio_child',
                         'type' => 'raw',
                         'value' => 'CHtml::link($data->fio_child,"/profile/bid/".$data->id)',
                         'htmlOptions' => array('align' => 'center'),
-                        'headerHtmlOptions' => array('class' => 'col'),
+                        'headerHtmlOptions' => array('scope' => 'col'),
                         'filter' =>false,
                     ),
                     array(
@@ -73,7 +91,7 @@
                         'value' => 'Questionnaire::getSatusName($data->status)',
                         'htmlOptions' => array('align' => 'center'),
                         'filter' => false,
-                        'headerHtmlOptions' => array('class' => 'col')
+                        'headerHtmlOptions' => array('scope' => 'col')
                     ),
 
                     array(
@@ -83,7 +101,7 @@
                         'value' => '(($data->status=='.Questionnaire::STATUS_OK.')?( SiteService::checkTurn($data->user_id, $data->shift_id)?"Вам присвоен номер ".$data->booking_id." брони на путевку":"Ваше заявление на путевку находится в листе ожидания") :"")',
                         'htmlOptions' => array('align' => 'center'),
                         'filter' => false,
-                        'headerHtmlOptions' => array('class' => 'col')
+                        'headerHtmlOptions' => array('scope' => 'col')
                     ),
 
                 ),
