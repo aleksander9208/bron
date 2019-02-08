@@ -839,6 +839,23 @@ class Questionnaire extends CActiveRecord
         ));
     }
 
+    public function putData($userId) {
+        $result = Yii::app()->db->createCommand()
+            ->select('*')
+            ->from('{{questionnaire}}')
+            ->where('status=:status', array('status' => Questionnaire::STATUS_OK))
+            ->queryRow();
+        if ($result) {
+            $this->residence = $result['residence'];
+            $this->place_of_work = $result['place_of_work'];
+            $this->email_parent = $result['email_parent'];
+            $this->tel_parent = $result['tel_parent'];
+            $this->name_ur = $result['name_ur'];
+            $this->tel_ur_contact = $result['tel_ur_contact'];
+            $this->email_ur_contact = $result['email_ur_contact'];
+        }
+    }
+
     public function __set($var, $value)
     {
         if (in_array($var, array('status', 'booking_id','is_main')) && !array_key_exists($var, $this->changedAttr)) {

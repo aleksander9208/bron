@@ -35,6 +35,7 @@ class SiteController extends Controller
 
         if (!Yii::app()->user->getIsGuest()) {
             $model->fio_ur_contact= $model->fio_parent = Yii::app()->user->login;
+            $model->putData(Yii::app()->user->id);
         }
         if (Yii::app()->user->checkAccess(User::ROLE_ADMIN)) {
             $model->created = date('Y-m-d H:i:s');
