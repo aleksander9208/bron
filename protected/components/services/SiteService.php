@@ -60,9 +60,9 @@ class SiteService
             Questionnaire::SHIFT_KIROVEC_1 => array(
                 'id' => Questionnaire::SHIFT_KIROVEC_1,
                 'camp' => Questionnaire::CAMP_KIROVEC,
-                'seats' => 100,
-                'min_age' => 1,
-                'max_age' => 18,
+                'seats' => 192,
+                'min_age' => 17,
+                'max_age' => 17,
                 'dlo' => array(
                     Questionnaire::DLO_1
                 )
@@ -70,9 +70,9 @@ class SiteService
             Questionnaire::SHIFT_KIROVEC_2 => array(
                 'id' => Questionnaire::SHIFT_KIROVEC_2,
                 'camp' => Questionnaire::CAMP_KIROVEC,
-                'seats' => 100,
-                'min_age' => 1,
-                'max_age' => 18,
+                'seats' => 192,
+                'min_age' => 7,
+                'max_age' => 17,
                 'dlo' => array(
                     Questionnaire::DLO_2,
                     Questionnaire::DLO_3,
@@ -81,10 +81,9 @@ class SiteService
             Questionnaire::SHIFT_KIROVEC_3 => array(
                 'id' => Questionnaire::SHIFT_KIROVEC_3,
                 'camp' => Questionnaire::CAMP_KIROVEC,
-
-                'seats' => 100,
-                'min_age' => 1,
-                'max_age' => 18,
+                'seats' => 192,
+                'min_age' => 7,
+                'max_age' => 17,
                 'dlo' => array(
                     Questionnaire::DLO_4,
                     Questionnaire::DLO_5,
@@ -93,9 +92,9 @@ class SiteService
             Questionnaire::SHIFT_KIROVEC_4 => array(
                 'id' => Questionnaire::SHIFT_KIROVEC_4,
                 'camp' => Questionnaire::CAMP_KIROVEC,
-                'seats' => 100,
-                'min_age' => 1,
-                'max_age' => 18,
+                'seats' => 192,
+                'min_age' => 7,
+                'max_age' => 17,
                 'dlo' => array(
                     Questionnaire::DLO_6,
                     Questionnaire::DLO_7,
@@ -104,9 +103,9 @@ class SiteService
             Questionnaire::SHIFT_KIROVEC_5 => array(
                 'id' => Questionnaire::SHIFT_KIROVEC_5,
                 'camp' => Questionnaire::CAMP_KIROVEC,
-                'seats' => 100,
-                'min_age' => 1,
-                'max_age' => 18,
+                'seats' => 192,
+                'min_age' => 7,
+                'max_age' => 17,
                 'dlo' => array(
                     Questionnaire::DLO_8
                 )
@@ -114,9 +113,9 @@ class SiteService
             Questionnaire::SHIFT_BLUESCREEN_1 => array(
                 'id' => Questionnaire::SHIFT_BLUESCREEN_1,
                 'camp' => Questionnaire::CAMP_BLUESCREEN,
-                'seats' => 100,
-                'min_age' => 1,
-                'max_age' => 18,
+                'seats' => 112,
+                'min_age' => 7,
+                'max_age' => 11,
                 'dlo' => array(
                     Questionnaire::DLO_1
                 )
@@ -124,9 +123,9 @@ class SiteService
             Questionnaire::SHIFT_BLUESCREEN_2 => array(
                 'id' => Questionnaire::SHIFT_BLUESCREEN_2,
                 'camp' => Questionnaire::CAMP_BLUESCREEN,
-                'seats' => 100,
-                'min_age' => 1,
-                'max_age' => 18,
+                'seats' => 112,
+                'min_age' => 7,
+                'max_age' => 11,
                 'dlo' => array(
                     Questionnaire::DLO_2,
                     Questionnaire::DLO_3,
@@ -135,9 +134,9 @@ class SiteService
             Questionnaire::SHIFT_BLUESCREEN_3 => array(
                 'id' => Questionnaire::SHIFT_BLUESCREEN_3,
                 'camp' => Questionnaire::CAMP_BLUESCREEN,
-                'seats' => 100,
-                'min_age' => 1,
-                'max_age' => 18,
+                'seats' => 112,
+                'min_age' => 7,
+                'max_age' => 11,
                 'dlo' => array(
                     Questionnaire::DLO_4,
                     Questionnaire::DLO_5,
@@ -146,9 +145,9 @@ class SiteService
             Questionnaire::SHIFT_BLUESCREEN_4 => array(
                 'id' => Questionnaire::SHIFT_BLUESCREEN_4,
                 'camp' => Questionnaire::CAMP_BLUESCREEN,
-                'seats' => 100,
-                'min_age' => 1,
-                'max_age' => 18,
+                'seats' => 112,
+                'min_age' => 7,
+                'max_age' => 11,
                 'dlo' => array(
                     Questionnaire::DLO_6,
                     Questionnaire::DLO_7,
@@ -157,9 +156,9 @@ class SiteService
             Questionnaire::SHIFT_EAST_1 => array(
                 'id' => Questionnaire::SHIFT_EAST_1,
                 'camp' => Questionnaire::CAMP_EAST_4,
-                'seats' => 100,
-                'min_age' => 1,
-                'max_age' => 18,
+                'seats' => 154,
+                'min_age' => 7,
+                'max_age' => 17,
                 'dlo' => array(
                     Questionnaire::DLO_2,
                     Questionnaire::DLO_3,
@@ -168,9 +167,9 @@ class SiteService
             Questionnaire::SHIFT_EAST_2 => array(
                 'id' => Questionnaire::SHIFT_EAST_2,
                 'camp' => Questionnaire::CAMP_EAST_4,
-                'seats' => 100,
-                'min_age' => 1,
-                'max_age' => 18,
+                'seats' => 154,
+                'min_age' => 7,
+                'max_age' => 17,
                 'dlo' => array(
                     Questionnaire::DLO_4,
                     Questionnaire::DLO_5,
@@ -179,9 +178,9 @@ class SiteService
             Questionnaire::SHIFT_EAST_3 => array(
                 'id' => Questionnaire::SHIFT_EAST_3,
                 'camp' => Questionnaire::CAMP_EAST_4,
-                'seats' => 100,
-                'min_age' => 1,
-                'max_age' => 18,
+                'seats' => 154,
+                'min_age' => 7,
+                'max_age' => 17,
                 'dlo' => array(
                     Questionnaire::DLO_6,
                     Questionnaire::DLO_7,
@@ -190,9 +189,9 @@ class SiteService
             Questionnaire::SHIFT_DIAMOND_1 => array(
                 'id' => Questionnaire::SHIFT_DIAMOND_1,
                 'camp' => Questionnaire::CAMP_DIAMOND,
-                'seats' => 100,
-                'min_age' => 1,
-                'max_age' => 18,
+                'seats' => 168,
+                'min_age' => 11,
+                'max_age' => 17,
                 'dlo' => array(
                     Questionnaire::DLO_2,
                     Questionnaire::DLO_3,
@@ -201,9 +200,9 @@ class SiteService
             Questionnaire::SHIFT_DIAMOND_2 => array(
                 'id' => Questionnaire::SHIFT_DIAMOND_2,
                 'camp' => Questionnaire::CAMP_DIAMOND,
-                'seats' => 100,
-                'min_age' => 1,
-                'max_age' => 18,
+                'seats' => 168,
+                'min_age' => 11,
+                'max_age' => 17,
                 'dlo' => array(
                     Questionnaire::DLO_4,
 
@@ -212,9 +211,9 @@ class SiteService
             Questionnaire::SHIFT_DIAMOND_3 => array(
                 'id' => Questionnaire::SHIFT_DIAMOND_3,
                 'camp' => Questionnaire::CAMP_DIAMOND,
-                'seats' => 100,
-                'min_age' => 1,
-                'max_age' => 18,
+                'seats' => 168,
+                'min_age' => 11,
+                'max_age' => 17,
                 'dlo' => array(
                     Questionnaire::DLO_5,
                 )
@@ -222,9 +221,9 @@ class SiteService
             Questionnaire::SHIFT_DIAMOND_4 => array(
                 'id' => Questionnaire::SHIFT_DIAMOND_4,
                 'camp' => Questionnaire::CAMP_DIAMOND,
-                'seats' => 100,
-                'min_age' => 1,
-                'max_age' => 18,
+                'seats' => 168,
+                'min_age' => 11,
+                'max_age' => 17,
                 'dlo' => array(
                     Questionnaire::DLO_6,
                     Questionnaire::DLO_7,
@@ -233,9 +232,9 @@ class SiteService
             Questionnaire::SHIFT_BONFIRE_1 => array(
                 'id' => Questionnaire::SHIFT_BONFIRE_1,
                 'camp' => Questionnaire::CAMP_BONFIRE,
-                'seats' => 100,
-                'min_age' => 1,
-                'max_age' => 18,
+                'seats' => 192,
+                'min_age' => 11,
+                'max_age' => 17,
                 'dlo' => array(
                     Questionnaire::DLO_2,
                     Questionnaire::DLO_3,
@@ -244,9 +243,9 @@ class SiteService
             Questionnaire::SHIFT_BONFIRE_2 => array(
                 'id' => Questionnaire::SHIFT_BONFIRE_2,
                 'camp' => Questionnaire::CAMP_BONFIRE,
-                'seats' => 100,
-                'min_age' => 1,
-                'max_age' => 18,
+                'seats' => 192,
+                'min_age' => 7,
+                'max_age' => 17,
                 'dlo' => array(
                     Questionnaire::DLO_4
                 )
@@ -254,9 +253,9 @@ class SiteService
             Questionnaire::SHIFT_BONFIRE_3 => array(
                 'id' => Questionnaire::SHIFT_BONFIRE_3,
                 'camp' => Questionnaire::CAMP_BONFIRE,
-                'seats' => 100,
-                'min_age' => 1,
-                'max_age' => 18,
+                'seats' => 192,
+                'min_age' => 7,
+                'max_age' => 17,
                 'dlo' => array(
                     Questionnaire::DLO_5,
                 )
@@ -264,9 +263,9 @@ class SiteService
             Questionnaire::SHIFT_BONFIRE_4 => array(
                 'id' => Questionnaire::SHIFT_BONFIRE_4,
                 'camp' => Questionnaire::CAMP_BONFIRE,
-                'seats' => 100,
-                'min_age' => 1,
-                'max_age' => 18,
+                'seats' => 192,
+                'min_age' => 7,
+                'max_age' => 17,
                 'dlo' => array(
                     Questionnaire::DLO_6,
                     Questionnaire::DLO_7,
@@ -275,9 +274,9 @@ class SiteService
             Questionnaire::SHIFT_LIGHTHOUSE_1 => array(
                 'id' => Questionnaire::SHIFT_LIGHTHOUSE_1,
                 'camp' => Questionnaire::CAMP_LIGHTHOUSE,
-                'seats' => 100,
-                'min_age' => 1,
-                'max_age' => 18,
+                'seats' => 88,
+                'min_age' => 7,
+                'max_age' => 17,
                 'dlo' => array(
                     Questionnaire::DLO_2,
                     Questionnaire::DLO_3,
@@ -286,9 +285,9 @@ class SiteService
             Questionnaire::SHIFT_LIGHTHOUSE_2 => array(
                 'id' => Questionnaire::SHIFT_LIGHTHOUSE_2,
                 'camp' => Questionnaire::CAMP_LIGHTHOUSE,
-                'seats' => 100,
-                'min_age' => 1,
-                'max_age' => 18,
+                'seats' => 88,
+                'min_age' => 7,
+                'max_age' => 17,
                 'dlo' => array(
                     Questionnaire::DLO_4,
                     Questionnaire::DLO_5,
@@ -297,9 +296,9 @@ class SiteService
             Questionnaire::SHIFT_LIGHTHOUSE_3 => array(
                 'id' => Questionnaire::SHIFT_LIGHTHOUSE_3,
                 'camp' => Questionnaire::CAMP_LIGHTHOUSE,
-                'seats' => 100,
-                'min_age' => 1,
-                'max_age' => 18,
+                'seats' => 88,
+                'min_age' => 7,
+                'max_age' => 17,
                 'dlo' => array(
                     Questionnaire::DLO_6
                 )
@@ -307,9 +306,9 @@ class SiteService
             Questionnaire::SHIFT_FLYGHT_1 => array(
                 'id' => Questionnaire::SHIFT_FLYGHT_1,
                 'camp' => Questionnaire::CAMP_FLYGHT,
-                'seats' => 100,
-                'min_age' => 1,
-                'max_age' => 18,
+                'seats' => 132,
+                'min_age' => 7,
+                'max_age' => 17,
                 'dlo' => array(
                     Questionnaire::DLO_2
                 )
@@ -317,9 +316,9 @@ class SiteService
             Questionnaire::SHIFT_FLYGHT_2 => array(
                 'id' => Questionnaire::SHIFT_FLYGHT_2,
                 'camp' => Questionnaire::CAMP_FLYGHT,
-                'seats' => 100,
-                'min_age' => 1,
-                'max_age' => 18,
+                'seats' => 132,
+                'min_age' => 7,
+                'max_age' => 17,
                 'dlo' => array(
                     Questionnaire::DLO_3
                 )
@@ -327,9 +326,9 @@ class SiteService
             Questionnaire::SHIFT_FLYGHT_3 => array(
                 'id' => Questionnaire::SHIFT_FLYGHT_3,
                 'camp' => Questionnaire::CAMP_FLYGHT,
-                'seats' => 100,
-                'min_age' => 1,
-                'max_age' => 18,
+                'seats' => 132,
+                'min_age' => 7,
+                'max_age' => 17,
                 'dlo' => array(
                     Questionnaire::DLO_4,
                 )
@@ -337,9 +336,9 @@ class SiteService
             Questionnaire::SHIFT_FLYGHT_4 => array(
                 'id' => Questionnaire::SHIFT_FLYGHT_4,
                 'camp' => Questionnaire::CAMP_FLYGHT,
-                'seats' => 100,
-                'min_age' => 1,
-                'max_age' => 18,
+                'seats' => 132,
+                'min_age' => 7,
+                'max_age' => 17,
                 'dlo' => array(
                     Questionnaire::DLO_5
                 )
