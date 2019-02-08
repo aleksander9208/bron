@@ -95,7 +95,7 @@
                         'header' => 'Статус',
                         'name' => 'status',
                         'type' => 'raw',
-                        'value' => 'CHtml::link(Questionnaire::getSatusName($data->status),"/profile/bid/".$data->id, array("class"=>"btn btn-success btn-sm") )',
+                        'value' => 'CHtml::link(Questionnaire::getStatusName($data->status),"/profile/bid/".$data->id, array("class"=>"btn btn-success btn-sm") )',
                         'filter' => false,
                         'htmlOptions' => array('class' => 'text-center'),
                         'headerHtmlOptions' => array('class' => 'text-center', 'scope' => 'col'),

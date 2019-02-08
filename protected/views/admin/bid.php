@@ -34,7 +34,7 @@
 
                 <div class="controls">
                     <div class="input-append">
-                        <?php echo Questionnaire::getSatusName($model->status); ?>
+                        <?php echo Questionnaire::getStatusName($model->status); ?>
                     </div>
                 </div>
             </div>

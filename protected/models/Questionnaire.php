@@ -91,7 +91,7 @@ class Questionnaire extends CActiveRecord
             array('birthday_child', 'validateBirthday'),
             array('name_ur,fio_ur_contact,email_ur_contact,fio_parent,email_parent,fio_child,place_of_study', 'length', 'max' => 255),
             array('residence,place_of_work', 'length', 'max' => 255),
-            array('status', 'in', 'range' => array_keys(self::getSatusName())),
+            array('status', 'in', 'range' => array_keys(self::getStatusName())),
             array('type', 'in', 'range' => array(self::TYPE_FIZ, self::TYPE_UR)),
             array('status', 'validateStatus'),
             array('paid,create_admin,name_ur_check,fio_ur_contact_check,tel_ur_contact_check,email_ur_contact_check,fio_parent_check,residence_check,place_of_work_check,tel_parent_check,email_parent_check,fio_child_check,birthday_child_check,place_of_study_check', 'in', 'range' => array(0, 1)),
@@ -438,7 +438,7 @@ class Questionnaire extends CActiveRecord
         return true;
     }
 
-    public static function getSatusName($status = false)
+    public static function getStatusName($status = false)
     {
         $arr = array(
             self::STATUS_IN_MODER => 'На модерации',

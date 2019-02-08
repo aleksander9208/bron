@@ -10,7 +10,7 @@
 </div>
 <div class="row">
     <label >Текущий статус заявки</label>
-    <div><?php echo Questionnaire::getSatusName($model->status); ?></div>
+    <div><?php echo Questionnaire::getStatusName($model->status); ?></div>
 </div>
 
                 <?php if ($model->type == Questionnaire::TYPE_UR) { ?>

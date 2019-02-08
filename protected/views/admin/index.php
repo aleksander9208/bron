@@ -76,9 +76,9 @@
                     'header' => 'Статус',
                     'name' => 'status',
                     'type' => 'raw',
-                    'value' => 'Questionnaire::getSatusName($data->status)',
+                    'value' => 'Questionnaire::getStatusName($data->status)',
                     'htmlOptions' => array('class'=>'text-center'),
-                    'filter' => Questionnaire::getSatusName(),
+                    'filter' => Questionnaire::getStatusName(),
                     'headerHtmlOptions' => array('class' => 'text-center','scope'=>'col'),
                 ),
 

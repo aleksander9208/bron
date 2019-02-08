@@ -26,7 +26,7 @@
 
                 <div class="form-group row <?php echo($model->getError('status') ? 'error' : ''); ?>">
                     <label class="control-label font-weight-bold col-sm-4" for="Questionnaire_name">Текущий статус заявки</label>
-                    <div class="col-sm-8"><?php echo Questionnaire::getSatusName($model->status); ?></div>
+                    <div class="col-sm-8"><?php echo Questionnaire::getStatusName($model->status); ?></div>
                 </div>
 
                 <?php if ($model->type == Questionnaire::TYPE_UR) { ?>
