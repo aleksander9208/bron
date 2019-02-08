@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col">
             <h3><?php echo CHtml::encode($title); ?></h3>
-            <div id="page_profile_changer_send_alert" class="alert <?php echo (Yii::app()->user->hasFlash('q_error')?'alert-danger':(Yii::app()->user->hasFlash('q_done')?'alert-success':'')); ?>" role="alert">
+            <div id="page_profile_changer_send_alert" class="alert <?php echo (Yii::app()->user->hasFlash('q_error')?'alert-danger':(Yii::app()->user->hasFlash('q_done')?'alert-success':'d-none')); ?>" role="alert">
                 <?php echo (Yii::app()->user->hasFlash('q_error')?Yii::app()->user->getFlash('q_error'):''); ?>
                 <?php echo (Yii::app()->user->hasFlash('q_done')?'Заявка успешон отправлена':''); ?>
             </div>

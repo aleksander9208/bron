@@ -43,7 +43,7 @@
                         'header' => '№',
                         'name' => '#',
                         'type' => 'raw',
-                        'value' => 'CHtml::link(($row + ($this->grid->dataProvider->pagination->currentPage * $this->grid->dataProvider->pagination->pageSize) + 1),"/admin/bid/".$data->id)',
+                        'value' => '($row + ($this->grid->dataProvider->pagination->currentPage * $this->grid->dataProvider->pagination->pageSize) + 1)',
                         //'value' => 'CHtml::link($data->id,"/profile/bid/".$data->id)',
                         'filter' => false,
                         'htmlOptions' => array('class' => 'font-weight-bold text-center', 'scope' => 'row'),

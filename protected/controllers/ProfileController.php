@@ -38,10 +38,14 @@ class ProfileController extends Controller
         $cs->registerScriptFile(Yii::app()->createUrl('/statics/js/z.page.anketa_view.js'), CClientScript::POS_END);
 
         $this->pageTitle = Yii::app()->name . ' - ' . 'Заявка #' . (int)$id;
+        $title = 'Анкета';
         $q = Questionnaire::model()->findByPk($id);
         if (!$q || ($q->user_id != Yii::app()->user->id)) {
             throw new CHttpException(401, 'Страница не найдена');
         }
+        if ($q['booking_id'])
+            $title.= ' №'.$q['booking_id'];
+
         $questionnairePost = Yii::app()->request->getPost('Questionnaire', array());
         if ($questionnairePost) {
             $q->scenario = 'user_up';
@@ -51,7 +55,28 @@ class ProfileController extends Controller
                 $this->refresh();
             }
         }
-        $this->render('bid', array('model' => $q,'shifts' => SiteService::getShifts()));
+        $this->render('bid', array('title' => $title, 'model' => $q,'shifts' => SiteService::getShifts()));
+    }
+
+    public function actionPrint($id = 0)
+    {
+        $cs = Yii::app()->getClientScript();
+        $cs->registerCssFile(Yii::app()->createUrl('/statics/css/z.page.anketa_print.css'),  'print');
+        $cs->registerScriptFile(Yii::app()->createUrl('/statics/js/z.page.anketa_print.js'), CClientScript::POS_END);
+
+
+        $this->pageTitle = Yii::app()->name . ' - ' . 'Печать';
+        $title = 'Анкета';
+        $q = Questionnaire::model()->findByPk($id);
+        if (!$q || ($q->user_id != Yii::app()->user->id)) {
+            throw new CHttpException(401, 'Страница не найдена');
+        }
+        if ($q['booking_id'])
+            $title.= ' №'.$q['booking_id'];
+
+        $this->layout = "print";
+
+        $this->render('bidprint', array('title' => $title, 'model' => $q,'shifts' => SiteService::getShifts()));
     }
 
 

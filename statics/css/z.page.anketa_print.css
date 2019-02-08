@@ -1,0 +1,27 @@
+label {
+    font-weight: bold;
+    display: inline-block;
+}
+.row
+{
+    margin-bottom: 0.8em;
+}
+.row > div
+{
+    display: inline-block;
+}
+@media print {
+    /* здесь будут стили для печати */
+    label {
+        font-weight: bold;
+        display: inline-block;
+    }
+    .row
+        {
+            margin-bottom: 0.8em;
+        }
+    .row > div
+        {
+            display: inline-block;
+        }
+}

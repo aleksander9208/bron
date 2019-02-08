@@ -1,33 +1,17 @@
-<div id="z_page_anketa_view" class="container-fluid">
-    <div class="row">
-        <div class="col">
-            <h3><?php echo CHtml::encode($title); ?></h3>
-            <div id="page_profile_changer_send_alert" class="alert <?php echo ($model->getErrors()?'alert-danger':(Yii::app()->user->hasFlash('bid')?'alert-success':'d-none')); ?>" role="alert">
-                <?php echo ($model->getErrors()?CHtml::errorSummary($model):''); ?>
-                <?php echo (Yii::app()->user->hasFlash('bid')?Yii::app()->user->getFlash('bid'):''); ?>
-            </div>
-            <a class="btn btn-info" href="<?php echo Yii::app()->createUrl('/profile/print/'.$model->id); ?>" role="button" target="_blank">Печать</a>
-            <hr/>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <form id="z_anketa_view_form" method="POST">
+<h1 align="center"><?php echo CHtml::encode($title); ?></h1>
 
-                <div class="form-group row">
-                    <label class="control-label font-weight-bold col-sm-4" for="Questionnaire_name">Дата подачи заявки</label>
-                    <div class="col-sm-8"><?php echo $model->created; ?></div>
-                </div>
-
-                <div class="form-group row <?php echo($model->getError('type') ? 'error' : ''); ?>">
-                    <label class="control-label font-weight-bold col-sm-4" for="Questionnaire_name"><?php echo $model->getAttributeLabel('type'); ?></label>
-                    <div class="col-sm-8"><?php echo Questionnaire::getTypeName($model->type); ?></div>
-                </div>
-
-                <div class="form-group row <?php echo($model->getError('status') ? 'error' : ''); ?>">
-                    <label class="control-label font-weight-bold col-sm-4" for="Questionnaire_name">Текущий статус заявки</label>
-                    <div class="col-sm-8"><?php echo Questionnaire::getSatusName($model->status); ?></div>
-                </div>
+<div class="row">
+    <label>Дата подачи заявки</label>
+    <div><?php echo $model->created; ?></div>
+</div>
+<div class="row">
+    <label><?php echo $model->getAttributeLabel('type'); ?></label>
+    <div><?php echo Questionnaire::getTypeName($model->type); ?></div>
+</div>
+<div class="row">
+    <label >Текущий статус заявки</label>
+    <div><?php echo Questionnaire::getSatusName($model->status); ?></div>
+</div>
 
                 <?php if ($model->type == Questionnaire::TYPE_UR) { ?>
                     <div class="form-group row <?php echo($model->getError('name_ur') ? 'error' : ''); ?>">
@@ -35,7 +19,7 @@
                         <div class="col-sm-8">
                             <?php if($model->name_ur_check) {
                                 echo CHtml::activeTextField($model, 'name_ur_check');
-                             } else {
+                            } else {
                                 echo CHtml::encode($model->name_ur);
                             } ?>
                         </div>
@@ -182,23 +166,3 @@
                         <?php echo Questionnaire::getCAMPName($model->camp_id); ?>
                     </div>
                 </div>
-
-                <hr />
-
-                <div class="control-group">
-                    <?php if ($model->status != Questionnaire::STATUS_CANCELED) { ?>
-                        <button class="btn btn-success" name="Questionnaire[status]"
-                                value="<?php echo Questionnaire::STATUS_CANCELED; ?>" type="submit">Отменить заявку
-                        </button>
-                    <?php } ?>
-                    <?php if (($model->status == Questionnaire::STATUS_RETURNED) || (($model->status == Questionnaire::STATUS_OK) && $model->getErrors())) { ?>
-                        <button class="btn btn-primary" name="Questionnaire[status]"
-                                value="<?php echo Questionnaire::STATUS_IN_MODER; ?>" type="submit">Подать заявление на регистрацию
-                        </button>
-                    <?php } ?>
-                </div>
-            </form>
-
-        </div>
-    </div>
-</div>
