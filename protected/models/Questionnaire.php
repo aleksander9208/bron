@@ -370,8 +370,8 @@ class Questionnaire extends CActiveRecord
     public function validateChild($attribute)
     {
         if ($this->isNewRecord) {
-            $cq = Questionnaire::model()->countByAttributes(array('fio_child' => $this->$attribute, 'shift_id' => $this->shift_id));
-            if ($cq) {
+            $q = Questionnaire::model()->findByAttributes(array('fio_child' => $this->$attribute, 'shift_id' => $this->shift_id));
+            if ($q && ($q->status!=self::STATUS_CANCELED)) {
                 $this->addError($attribute, 'Указанный ребенок был ранее указан в другой заявке');
                 return false;
             }
@@ -642,7 +642,7 @@ class Questionnaire extends CActiveRecord
     {
         $out = array();
         $shifts = SiteService::getShifts();
-        foreach ($shifts as $k => $s) {
+        foreach ($shifts as $shiftId => $s) {
             if (is_numeric($campId) && $s['camp'] != $campId) {
                 continue;
             }
@@ -655,7 +655,7 @@ class Questionnaire extends CActiveRecord
             if ($full) {
                 $out[] = $s;
             } else {
-                $out[] = $k;
+                $out[] = $shiftId;
             }
 
         }
@@ -791,35 +791,26 @@ class Questionnaire extends CActiveRecord
 
         if (is_numeric($this->shift_name)) {
             switch ($this->shift_name) {
-                case 0:
-                    $criteria->addInCondition('t.shift_id', array(self::SHIFT_BLUESCREEN_1, self::SHIFT_EAST_1, self::SHIFT_DIAMOND_1, self::SHIFT_BONFIRE_1, self::SHIFT_LIGHTHOUSE_1, self::SHIFT_FLYGHT_1));
-                    break;
                 case 1:
-                    $criteria->addInCondition('t.shift_id', array(self::SHIFT_KIROVEC_2, self::SHIFT_BLUESCREEN_2, self::SHIFT_EAST_2, self::SHIFT_DIAMOND_2, self::SHIFT_BONFIRE_2, self::SHIFT_LIGHTHOUSE_2, self::SHIFT_FLYGHT_2));
+                    $criteria->addInCondition('t.shift_id', array(self::SHIFT_KIROVEC_1,self::SHIFT_BLUESCREEN_1, self::SHIFT_EAST_1, self::SHIFT_DIAMOND_1, self::SHIFT_BONFIRE_1, self::SHIFT_LIGHTHOUSE_1, self::SHIFT_FLYGHT_1));
                     break;
                 case 2:
-                    $criteria->addInCondition('t.shift_id', array(self::SHIFT_KIROVEC_3, self::SHIFT_BLUESCREEN_3, self::SHIFT_EAST_3, self::SHIFT_DIAMOND_3, self::SHIFT_BONFIRE_3, self::SHIFT_LIGHTHOUSE_3, self::SHIFT_FLYGHT_3));
+                    $criteria->addInCondition('t.shift_id', array(self::SHIFT_KIROVEC_2, self::SHIFT_BLUESCREEN_2, self::SHIFT_EAST_2, self::SHIFT_DIAMOND_2, self::SHIFT_BONFIRE_2, self::SHIFT_LIGHTHOUSE_2, self::SHIFT_FLYGHT_2));
                     break;
                 case 3:
-                    $criteria->addInCondition('t.shift_id', array(self::SHIFT_KIROVEC_4, self::SHIFT_BLUESCREEN_4, self::SHIFT_DIAMOND_4, self::SHIFT_BONFIRE_4, self::SHIFT_FLYGHT_4));
+                    $criteria->addInCondition('t.shift_id', array(self::SHIFT_KIROVEC_3, self::SHIFT_BLUESCREEN_3, self::SHIFT_EAST_3, self::SHIFT_DIAMOND_3, self::SHIFT_BONFIRE_3, self::SHIFT_LIGHTHOUSE_3, self::SHIFT_FLYGHT_3));
                     break;
                 case 4:
+                    $criteria->addInCondition('t.shift_id', array(self::SHIFT_KIROVEC_4, self::SHIFT_BLUESCREEN_4, self::SHIFT_DIAMOND_4, self::SHIFT_BONFIRE_4, self::SHIFT_FLYGHT_4));
+                    break;
+                case 5:
                     $criteria->addInCondition('t.shift_id', array(self::SHIFT_KIROVEC_5));
                     break;
             }
         }
-        if (is_numeric($this->camp_id)) {
-            switch ($this->camp_id) {
-                case self::CAMP_KIROVEC:
-                case self::CAMP_BLUESCREEN:
-                case self::CAMP_EAST_4:
-                case self::CAMP_DIAMOND:
-                case self::CAMP_BONFIRE:
-                case self::CAMP_LIGHTHOUSE:
-                case self::CAMP_FLYGHT:
-                    $criteria->addInCondition('t.shift_id', self::getShiftsByParams($this->camp_id));
-                    break;
-            }
+
+        if (is_numeric($this->camp_id) && $this->camp_id) {
+            $criteria->compare('t.camp_id', $this->camp_id);
         }
 
         if (is_null($this->fromDate)) {
@@ -841,7 +832,7 @@ class Questionnaire extends CActiveRecord
         return new CActiveDataProvider('Questionnaire', array(
             'criteria' => $criteria,
             'pagination' => array(
-                'pageSize' => 20,
+                'pageSize' => ($stat?2000:20),
                 'route' => $route,
             ),
             'sort' => $sort,

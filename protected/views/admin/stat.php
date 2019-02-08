@@ -6,166 +6,32 @@
     <!-- Вкладка «Статистика» -->
 
     <div class="container-fluid px-0">
+
+        <script>
+            $(function () {
+                $('#stat_id').change(function () {
+                    this.form.submit();
+                });
+            });
+        </script>
+        <?php echo CHtml::form('', 'get', array('class' => 'needs-validation', 'id' => 'z_anketa_form')); ?>
+        <?php echo CHtml::dropDownList('stat_id', $statId, array(1 => 1, 2 => 2, 3 => 3, 4 => 4, 5 => 5), array('id' => 'stat_id')); ?>
+        <?php echo CHtml::endForm(); ?>
         <?php
-        $this->widget('MyGridView', array(
-            'id' => 'vacr-grid',
-            'dataProvider' => $model->getBidList('/admin/stat',true),
-            'ajaxUpdate' =>  false,
-            'summaryText' => '',
-            'filter' => $model,
-            'enableHistory' => false,
-            'pagerCssClass' => 'pagination',
+        switch ($statId) {
+            case 1:
+                echo $this->renderPartial('stat/stat_' . $statId, array('model' => $model), true);
+                break;
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+                echo $this->renderPartial('stat/stat_' . $statId, array('statData' => $statData), true);
+                break;
+            default:
+                echo $this->renderPartial('stat/stat_1', array('model' => $model), true);
 
-            'htmlOptions' => array('class' => 'table table-hover'),
-            //'headerHtmlOptions' => array('class' => 'thead-light'),
-            'itemsCssClass' => 'user-list-table table table-bordered table-hover',
-            'ajaxUrl' => Yii::app()->createUrl('/admin/stat'),
-            'enableSorting' => true,
-            'pager' => array(
-                'cssFile' => false,
-                'class' => 'MyLinkPager',
-                'header' => '',
-                'prevPageLabel' => 'Назад',
-                'nextPageLabel' => 'Вперед',
-                'lastPageLabel' => false,
-                'firstPageLabel' => false,
-                'selectedPageCssClass' => 'active',
-                'hiddenPageCssClass' => 'disabled',
-                'previousPageCssClass' => 'page-item',
-                'nextPageCssClass' => 'page-item',
-                'internalPageCssClass' => 'page-item',
-                'htmlOptions' => array(
-                    'class' => 'pagination',
-                )
-            ),
-            'columns' => array(
-                array(
-                    'header' => '№',
-                    'name' => 'id',
-                    'type' => 'raw',
-                    'value' => 'CHtml::link($data->id,"/admin/bid/".$data->id)',
-                    'htmlOptions' => array('class' => 'num_string'),
-                    'headerHtmlOptions' => array('class' => 'col'),
-                    'filter' => CHtml::activeTextField($model, 'id', array('class' => 'form-control')),
-                ),
-                array(
-                    'header' => 'Лагерь',
-                    'name' => 'camp_id',
-                    'type' => 'raw',
-                    'value' => 'Questionnaire::getCAMPName($data->camp_id)',
-                    'htmlOptions' => array('align' => 'center'),
-                    'filter' => Questionnaire::getCAMPName(),
-                    'headerHtmlOptions' => array('class' => 'col')
-                ),
-                array(
-                    'header' => 'Смена',
-                    'name' => 'shift_id',
-                    'type' => 'raw',
-                    'value' => 'Questionnaire::getShiftName($data->shift_id)',
-                    'htmlOptions' => array('align' => 'center'),
-                    'filter' => array('Смена 1','Смена 2','Смена 3','Смена 4','Смена 5'),
-                    'headerHtmlOptions' => array('class' => 'col')
-                ),
-                array(
-                    'header' => 'Дата подачи',
-                    'name' => 'created',
-                    'value' => '$data->created',
-                    'htmlOptions' => array('align' => 'center'),
-                    'filter' => $this->widget('zii.widgets.jui.CJuiDatePicker', array(
-                            'model' => $model,
-                            'attribute' => 'fromDate',
-                            'options' => array('firstDay' => 6, 'dateFormat' => 'yy-mm-dd', 'language' => 'ru'), //, 'changeMonth' => true, 'changeYear' => true, 'yearRange' => '2013:2099'
-                            'language' => 'ru',
-                            'htmlOptions' => array('placeHolder' => 'С:', 'id' => 'from_date', 'readonly' => 'readonly', "class"=>"input-medium"),
-                        ), true) . ' ' . $this->widget('zii.widgets.jui.CJuiDatePicker', array(
-                            'model' => $model,
-                            'attribute' => 'toDate',
-                            'options' => array('firstDay' => 6, 'dateFormat' => 'yy-mm-dd', 'language' => 'ru'), //, 'changeMonth' => true, 'changeYear' => true, 'yearRange' => '2013:2099'
-                            'language' => 'ru',
-                            'htmlOptions' => array('placeHolder' => 'По:', 'id' => 'to_date', 'readonly' => 'readonly', "class"=>"input-medium"),
-                        ), true),
-                    'headerHtmlOptions' => array('class' => 'col')
-                ),
-                array(
-                    'header' => 'ФИО ребенка',
-                    'name' => 'fio_child',
-                    'type' => 'raw',
-                    'value' => 'CHtml::link($data->fio_child,"/admin/bid/".$data->id)',
-                    'htmlOptions' => array('align' => 'center'),
-                    'headerHtmlOptions' => array('class' => 'col'),
-                    'filter' => CHtml::activeTextField($model, 'fio_child', array('class' => 'form-control')),
-                ),
-                array(
-                    'header' => 'Тип',
-                    'name' => 'type',
-                    'value' => 'Questionnaire::getTypeName($data->type)',
-                    'htmlOptions' => array('align' => 'center'),
-                    'filter' => Questionnaire::getTypeName(),
-                    'headerHtmlOptions' => array('class' => 'col')
-                ),
-
-                array(
-                    'header' => 'Статус',
-                    'name' => 'status',
-                    'type' => 'raw',
-                    'value' => 'Questionnaire::getSatusName($data->status)',
-                    'htmlOptions' => array('align' => 'center'),
-                    'filter' => Questionnaire::getSatusName(),
-                    'headerHtmlOptions' => array('class' => 'col')
-                ),
-
-                array(
-                    'header' => 'ФИО представителя',
-                    'name' => 'fio_ur_contact',
-                    'value' => '$data->fio_ur_contact',
-                    'htmlOptions' => array('align' => 'center'),
-                    'headerHtmlOptions' => array('class' => 'col'),
-                    'filter' => CHtml::activeTextField($model, 'fio_ur_contact', array('class' => 'form-control')),
-                ),
-                array(
-                    'header' => 'ФИО Родителя',
-                    'name' => 'fio_parent',
-                    'value' => '$data->fio_parent',
-                    'htmlOptions' => array('align' => 'center'),
-                    'headerHtmlOptions' => array('class' => 'col'),
-                    'filter' => CHtml::activeTextField($model, 'fio_parent', array('class' => 'form-control')),
-                ),
-                array(
-                    'header' => 'Телефон родителя',
-                    'name' => 'tel_parent',
-                    'value' => '$data->tel_parent',
-                    'htmlOptions' => array('align' => 'center'),
-                    'headerHtmlOptions' => array('class' => 'col'),
-                    'filter' => CHtml::activeTextField($model, 'tel_parent', array('class' => 'form-control')),
-                ),
-                array(
-                    'header' => 'Выкуплена',
-                    'name' => 'paid',
-                    'type' => 'raw',
-                    'value' => '$data->paid?"ДА":"НЕТ"',
-                    'htmlOptions' => array('align' => 'center'),
-                    'headerHtmlOptions' => array('class' => 'col'),
-                    'filter' => array('НЕТ','ДА'),
-                ),
-                array(
-                    'header' => 'Комментарий',
-                    'name' => 'paid',
-                    'value' => '$data->comment',
-                    'htmlOptions' => array('align' => 'center'),
-                    'headerHtmlOptions' => array('class' => 'col'),
-                    'filter' => CHtml::activeTextField($model, 'comment', array('class' => 'form-control')),
-                ),
-                array(
-                    'header' => 'Номер брони',
-                    'name' => 'booking_id',
-                    'value' => '$data->booking_id',
-                    'htmlOptions' => array('align' => 'center'),
-                    'headerHtmlOptions' => array('class' => 'col'),
-                    'filter' => CHtml::activeTextField($model, 'booking_id', array('class' => 'form-control')),
-                ),
-
-            ),
-        ));
+        }
         ?>
     </div>
 </div>

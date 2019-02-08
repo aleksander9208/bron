@@ -59,7 +59,7 @@ class AdminController extends Controller
     public function actionStat()
     {
         $title = 'Статистика';
-
+        $statId = Yii::app()->request->getParam('stat_id', 1);
         $this->pageTitle = Yii::app()->name . ' - ' . $title;
         $questionnaire = new Questionnaire();
         $questionnaire->type = $questionnaire->status = $questionnaire->paid = null;
@@ -69,7 +69,22 @@ class AdminController extends Controller
         }
         $questionnaire->status = Questionnaire::STATUS_OK;
 
-        $this->render('stat', array('title' => $title, 'model' => $questionnaire));
+
+        switch ($statId) {
+            case 2:
+                $statData = AdminService::getStatCamp($statId);
+                break;
+            case 3:
+            case 4:
+            case 5:
+                $statData = array();
+                break;
+            default:
+                $statData = array();
+
+        }
+
+        $this->render('stat', array('title' => $title, 'model' => $questionnaire, 'statId' => $statId, 'statData' => $statData));
     }
 
     public function actionReserve()
@@ -91,7 +106,7 @@ class AdminController extends Controller
             }
         }
 
-        $this->render('reserve', array('title' => $title,'model' => $r, 'shifts' => SiteService::getShifts()));
+        $this->render('reserve', array('title' => $title, 'model' => $r, 'shifts' => SiteService::getShifts()));
     }
 
 
