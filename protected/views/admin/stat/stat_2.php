@@ -65,7 +65,6 @@ foreach (Questionnaire::getCAMPName() as $campId => $campName) { ?>
                     <td class="text-center"><?php echo CHtml::encode($v['tel_parent']); ?></td>
                     <td class="text-center"><?php echo CHtml::encode($v['email_ur_contact']); ?></td>
                     <td class="text-center"><?php echo CHtml::encode($v['email_parent']); ?></td>
-
                     <td class="text-center"><?php echo CHtml::encode($v['booking_id']); ?></td>
                     <td class="text-center"><?php echo ($v['paid']?'Да':'Нет'); ?></td>
                     <td class="text-center"><?php echo CHtml::encode($v['comment']); ?></td>

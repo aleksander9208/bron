@@ -33,4 +33,33 @@ class MyGridView extends CGridView
             $this->widget($class,$pager);
     }
 
+    public function renderTableHeader()
+    {
+        if(!$this->hideHeader)
+        {
+            echo "<thead class='thead-dark'>\n";
+
+            if($this->filterPosition===self::FILTER_POS_HEADER)
+                $this->renderFilter();
+
+            echo "<tr>\n";
+            foreach($this->columns as $column)
+                $column->renderHeaderCell();
+            echo "</tr>\n";;
+
+            if($this->filterPosition===self::FILTER_POS_BODY)
+                $this->renderFilter();
+
+            echo "</thead>\n";
+        }
+        elseif($this->filter!==null && ($this->filterPosition===self::FILTER_POS_HEADER || $this->filterPosition===self::FILTER_POS_BODY))
+        {
+            echo "<thead>\n";
+            $this->renderFilter();
+            echo "</thead>\n";
+        }
+    }
+
+
+
 }

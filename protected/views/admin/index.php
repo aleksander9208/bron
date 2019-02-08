@@ -15,10 +15,8 @@
             'filter' => $model,
             'enableHistory' => false,
             'pagerCssClass' => 'pagination',
-
             'htmlOptions' => array('class' => 'table table-hover'),
-            //'headerHtmlOptions' => array('class' => 'thead-light'),
-            'itemsCssClass' => 'user-list-table table table-bordered table-hover',
+            'itemsCssClass' => 'table table-bordered table-striped table-hover table-sm',
             'ajaxUrl' => Yii::app()->createUrl('/admin/index'),
             'enableSorting' => true,
             'pager' => array(
@@ -45,33 +43,33 @@
                     'type' => 'raw',
                     'value' => 'CHtml::link($data->id,"/admin/bid/".$data->id)',
                     'htmlOptions' => array('class' => 'num_string'),
-                    'headerHtmlOptions' => array('class' => 'col'),
+                    'headerHtmlOptions' => array('class' => 'text-center','scope'=>'col'),
                     'filter' => CHtml::activeTextField($model, 'id', array('class' => 'form-control')),
                 ),
                 array(
                     'header' => 'Дата подачи',
                     'name' => 'created',
                     'value' => '$data->created',
-                    'htmlOptions' => array('align' => 'center'),
+                    'htmlOptions' => array('class'=>'text-center'),
                     'filter' => false,
-                    'headerHtmlOptions' => array('class' => 'col')
+                    'headerHtmlOptions' => array('class' => 'text-center','scope'=>'col')
                 ),
                 array(
                     'header' => 'ФИО ребенка',
                     'name' => 'fio_child',
                     'type' => 'raw',
                     'value' => 'CHtml::link($data->fio_child,"/admin/bid/".$data->id)',
-                    'htmlOptions' => array('align' => 'center'),
-                    'headerHtmlOptions' => array('class' => 'col'),
+                    'htmlOptions' => array('class'=>'text-center'),
+                    'headerHtmlOptions' => array('class' => 'text-center','scope'=>'col'),
                     'filter' => CHtml::activeTextField($model, 'fio_child', array('class' => 'form-control')),
                 ),
                 array(
                     'header' => 'Тип',
                     'name' => 'type',
                     'value' => 'Questionnaire::getTypeName($data->type)',
-                    'htmlOptions' => array('align' => 'center'),
+                    'htmlOptions' => array('class'=>'text-center'),
                     'filter' => Questionnaire::getTypeName(),
-                    'headerHtmlOptions' => array('class' => 'col')
+                    'headerHtmlOptions' => array('class' => 'text-center','scope'=>'col'),
                 ),
 
                 array(
@@ -79,33 +77,33 @@
                     'name' => 'status',
                     'type' => 'raw',
                     'value' => 'Questionnaire::getSatusName($data->status)',
-                    'htmlOptions' => array('align' => 'center'),
+                    'htmlOptions' => array('class'=>'text-center'),
                     'filter' => Questionnaire::getSatusName(),
-                    'headerHtmlOptions' => array('class' => 'col')
+                    'headerHtmlOptions' => array('class' => 'text-center','scope'=>'col'),
                 ),
 
                 array(
                     'header' => 'ФИО представителя',
                     'name' => 'fio_ur_contact',
                     'value' => '$data->fio_ur_contact',
-                    'htmlOptions' => array('align' => 'center'),
-                    'headerHtmlOptions' => array('class' => 'col'),
+                    'htmlOptions' => array('class'=>'text-center'),
+                    'headerHtmlOptions' => array('class' => 'text-center','scope'=>'col'),
                     'filter' => CHtml::activeTextField($model, 'fio_ur_contact', array('class' => 'form-control')),
                 ),
                 array(
                     'header' => 'ФИО Родителя',
                     'name' => 'fio_parent',
                     'value' => '$data->fio_parent',
-                    'htmlOptions' => array('align' => 'center'),
-                    'headerHtmlOptions' => array('class' => 'col'),
+                    'htmlOptions' => array('class'=>'text-center'),
+                    'headerHtmlOptions' => array('class' => 'text-center','scope'=>'col'),
                     'filter' => CHtml::activeTextField($model, 'fio_parent', array('class' => 'form-control')),
                 ),
                 array(
                     'header' => 'Телефон родителя',
                     'name' => 'tel_parent',
                     'value' => '$data->tel_parent',
-                    'htmlOptions' => array('align' => 'center'),
-                    'headerHtmlOptions' => array('class' => 'col'),
+                    'htmlOptions' => array('class'=>'text-center'),
+                    'headerHtmlOptions' => array('class' => 'text-center','scope'=>'col'),
                     'filter' => CHtml::activeTextField($model, 'tel_parent', array('class' => 'form-control')),
                 ),
                 array(
@@ -113,8 +111,8 @@
                     'name' => 'paid',
                     'type' => 'raw',
                     'value' => 'CHtml::checkBox("paid",$data->paid,array("data-zid"=>$data->id))',
-                    'htmlOptions' => array('align' => 'center'),
-                    'headerHtmlOptions' => array('class' => 'col'),
+                    'htmlOptions' => array('class'=>'text-center'),
+                    'headerHtmlOptions' => array('class' => 'text-center','scope'=>'col'),
                     'filter' => array('НЕТ','ДА'),
                 ),
 
@@ -122,8 +120,10 @@
                     'header' => 'Номер брони',
                     'name' => 'booking_id',
                     'value' => '$data->booking_id',
-                    'htmlOptions' => array('align' => 'center'),
-                    'headerHtmlOptions' => array('class' => 'col'),
+                    'value' => '$data->booking_id',
+                    'value' => '$data->booking_id',
+                    'htmlOptions' => array('class'=>'text-center'),
+                    'headerHtmlOptions' => array('class' => 'text-center','scope'=>'col'),
                     'filter' => CHtml::activeTextField($model, 'booking_id', array('class' => 'form-control')),
                 ),
 
