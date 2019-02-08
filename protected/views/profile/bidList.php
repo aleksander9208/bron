@@ -46,6 +46,8 @@
                         //  'value' => 'CHtml::link(($row + ($this->grid->dataProvider->pagination->currentPage * $this->grid->dataProvider->pagination->pageSize) + 1),"/admin/bid/".$data->id)',
                         'value' => 'CHtml::link($data->id,"/profile/bid/".$data->id)',
                         'filter' => false,
+                        'htmlOptions' => array('class' => 'font-weight-bold', 'scope' => 'row'),
+                        'headerHtmlOptions' => array('class' => 'text-center', 'scope' => 'col'),
                     ),
                     array(
                         'header' => 'Дата подачи',

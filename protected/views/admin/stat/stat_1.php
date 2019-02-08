@@ -39,7 +39,7 @@ $this->widget('MyGridView', array(
             'type' => 'raw',
             'value' => 'CHtml::link($data->id,"/admin/bid/".$data->id)',
             'filter' => CHtml::activeTextField($model, 'id', array('class' => 'form-control')),
-            'htmlOptions' => array('class' => 'num_string'),
+            'htmlOptions' => array('class' => 'font-weight-bold', 'scope' => 'row'),
             'headerHtmlOptions' => array('class' => 'text-center', 'scope' => 'col'),
         ),
         array(

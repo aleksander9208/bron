@@ -42,7 +42,7 @@
                     'name' => 'id',
                     'type' => 'raw',
                     'value' => 'CHtml::link($data->id,"/admin/bid/".$data->id)',
-                    'htmlOptions' => array('class' => 'num_string'),
+                    'htmlOptions' => array('class' => 'font-weight-bold'),
                     'headerHtmlOptions' => array('class' => 'text-center','scope'=>'col'),
                     'filter' => CHtml::activeTextField($model, 'id', array('class' => 'form-control')),
                 ),
@@ -50,7 +50,7 @@
                     'header' => 'Дата подачи',
                     'name' => 'created',
                     'value' => '$data->created',
-                    'htmlOptions' => array('class'=>'text-center'),
+                    'htmlOptions' => array('class'=>'text-center', 'scope' => 'row'),
                     'filter' => false,
                     'headerHtmlOptions' => array('class' => 'text-center','scope'=>'col')
                 ),
