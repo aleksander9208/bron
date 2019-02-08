@@ -46,7 +46,7 @@
                         //  'value' => 'CHtml::link(($row + ($this->grid->dataProvider->pagination->currentPage * $this->grid->dataProvider->pagination->pageSize) + 1),"/admin/bid/".$data->id)',
                         'value' => 'CHtml::link($data->id,"/profile/bid/".$data->id)',
                         'filter' => false,
-                        'htmlOptions' => array('class' => 'font-weight-bold', 'scope' => 'row'),
+                        'htmlOptions' => array('class' => 'font-weight-bold text-center', 'scope' => 'row'),
                         'headerHtmlOptions' => array('class' => 'text-center', 'scope' => 'col'),
                     ),
                     array(
@@ -97,7 +97,7 @@
                         'type' => 'raw',
                         'value' => '(($data->status==' . Questionnaire::STATUS_OK . ')?( SiteService::checkTurn($data->user_id, $data->shift_id)?"Вам присвоен номер ".$data->booking_id." брони на путевку":"Ваше заявление на путевку находится в листе ожидания") :"")',
                         'filter' => false,
-                        'htmlOptions' => array('class' => 'text-center'),
+                        'htmlOptions' => array('class' => 'text-left'),
                         'headerHtmlOptions' => array('class' => 'text-center', 'scope' => 'col'),
                     ),
                 ),
