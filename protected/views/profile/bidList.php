@@ -54,7 +54,7 @@
                         'name' => 'created',
                         'value' => '$data->created',
                         'filter' => false,
-                        'htmlOptions' => array('class' => 'num_string'),
+                        'htmlOptions' => array('class' => 'text-center'),
                         'headerHtmlOptions' => array('class' => 'text-center', 'scope' => 'col'),
                     ),
                     array(
@@ -62,7 +62,7 @@
                         'name' => 'camp_id',
                         'value' => 'Questionnaire::getCAMPName($data->camp_id)',
                         'filter' => false,
-                        'htmlOptions' => array('class' => 'num_string'),
+                        'htmlOptions' => array('class' => 'text-center'),
                         'headerHtmlOptions' => array('class' => 'text-center', 'scope' => 'col'),
                     ),
                     array(
@@ -70,7 +70,7 @@
                         'name' => 'shift_id',
                         'value' => 'Questionnaire::getShiftName($data->shift_id)',
                         'filter' => false,
-                        'htmlOptions' => array('class' => 'num_string'),
+                        'htmlOptions' => array('class' => 'text-center'),
                         'headerHtmlOptions' => array('class' => 'text-center', 'scope' => 'col'),
                     ),
                     array(
@@ -79,7 +79,7 @@
                         'type' => 'raw',
                         'value' => 'CHtml::link($data->fio_child,"/profile/bid/".$data->id)',
                         'filter' => false,
-                        'htmlOptions' => array('class' => 'num_string'),
+                        'htmlOptions' => array('class' => 'text-center'),
                         'headerHtmlOptions' => array('class' => 'text-center', 'scope' => 'col'),
                     ),
                     array(
@@ -88,7 +88,7 @@
                         'type' => 'raw',
                         'value' => 'Questionnaire::getSatusName($data->status)',
                         'filter' => false,
-                        'htmlOptions' => array('class' => 'num_string'),
+                        'htmlOptions' => array('class' => 'text-center'),
                         'headerHtmlOptions' => array('class' => 'text-center', 'scope' => 'col'),
                     ),
                     array(
@@ -97,7 +97,7 @@
                         'type' => 'raw',
                         'value' => '(($data->status==' . Questionnaire::STATUS_OK . ')?( SiteService::checkTurn($data->user_id, $data->shift_id)?"Вам присвоен номер ".$data->booking_id." брони на путевку":"Ваше заявление на путевку находится в листе ожидания") :"")',
                         'filter' => false,
-                        'htmlOptions' => array('class' => 'num_string'),
+                        'htmlOptions' => array('class' => 'text-center'),
                         'headerHtmlOptions' => array('class' => 'text-center', 'scope' => 'col'),
                     ),
                 ),
