@@ -6,8 +6,6 @@
                 <?php echo ($model->getErrors()?CHtml::errorSummary($model):''); ?>
                 <?php echo (Yii::app()->user->hasFlash('bid')?Yii::app()->user->getFlash('bid'):''); ?>
             </div>
-            <a class="btn btn-info" href="<?php echo Yii::app()->createUrl('/profile/print/'.$model->id); ?>" role="button" target="_blank">Печать</a>
-            <hr/>
         </div>
     </div>
     <div class="row">
@@ -185,7 +183,8 @@
 
                 <hr />
 
-                <div class="control-group">
+                <div class="control-group text-right">
+                    <a class="btn btn-info" href="<?php echo Yii::app()->createUrl('/profile/print/'.$model->id); ?>" role="button" target="_blank">Печать</a>
                     <?php if ($model->status != Questionnaire::STATUS_CANCELED) { ?>
                         <button class="btn btn-success" name="Questionnaire[status]"
                                 value="<?php echo Questionnaire::STATUS_CANCELED; ?>" type="submit">Отменить заявку

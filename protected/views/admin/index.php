@@ -11,6 +11,7 @@
             'id' => 'z_anketa_admin_list_table',
             'dataProvider' => $model->getBidList('/admin/index'),
             'ajaxUpdate' =>  'z_anketa_admin_list_table', //false
+            'afterAjaxUpdate' => "function()  { $('#z_anketa_admin_list_table').find('.filters input, .filters select').addClass('form-control form-control-sm');  }",
             'summaryText' => '',
             'filter' => $model,
             'enableHistory' => false,
