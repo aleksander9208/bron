@@ -42,7 +42,9 @@
             <?php if ($model->type == Questionnaire::TYPE_UR) { ?>
                 <div class="control-group <?php echo($model->getError('name_ur') ? 'error' : ''); ?>">
                     <label class="control-label"
-                           for="Questionnaire_name_ur"><?php echo $model->getAttributeLabel('name_ur') . '(Требует исправление ' . CHtml::activeCheckBox($model, 'name_ur_check') . ')'; ?></label>
+                           for="Questionnaire_name_ur"><?php echo $model->getAttributeLabel('name_ur');
+                            echo ($model->status==Questionnaire::STATUS_IN_MODER?'(Требует исправление ' . CHtml::activeCheckBox($model, 'name_ur_check') . ')':'');
+                            ?></label>
 
                     <div class="controls">
                         <div class="input-append">
@@ -64,7 +66,8 @@
 
                 <div class="control-group <?php echo($model->getError('tel_ur_contact') ? 'error' : ''); ?>">
                     <label class="control-label"
-                           for="Questionnaire_tel_ur_contact"><?php echo $model->getAttributeLabel('tel_ur_contact') . '(Требует исправление ' . CHtml::activeCheckBox($model, 'tel_ur_contact_check') . ')'; ?></label>
+                           for="Questionnaire_tel_ur_contact"><?php echo $model->getAttributeLabel('tel_ur_contact') ;
+                        echo ($model->status==Questionnaire::STATUS_IN_MODER?'(Требует исправление ' . CHtml::activeCheckBox($model, 'tel_ur_contact_check') . ')':''); ?></label>
 
                     <div class="controls">
                         <div class="input-append">
@@ -75,7 +78,8 @@
 
                 <div class="control-group <?php echo($model->getError('email_ur_contact') ? 'error' : ''); ?>">
                     <label class="control-label"
-                           for="Questionnaire_email_ur_contact"><?php echo $model->getAttributeLabel('email_ur_contact') . '(Требует исправление ' . CHtml::activeCheckBox($model, 'email_ur_contact_check') . ')'; ?></label>
+                           for="Questionnaire_email_ur_contact"><?php echo $model->getAttributeLabel('email_ur_contact');
+                        echo ($model->status==Questionnaire::STATUS_IN_MODER?'(Требует исправление ' . CHtml::activeCheckBox($model, 'email_ur_contact_check') . ')':''); ?></label>
 
                     <div class="controls">
                         <div class="input-append">
@@ -88,7 +92,8 @@
 
             <div class="control-group <?php echo($model->getError('fio_parent') ? 'error' : ''); ?>">
                 <label class="control-label"
-                       for="Questionnaire_fio_parent"><?php echo $model->getAttributeLabel('fio_parent') . '(Требует исправление ' . CHtml::activeCheckBox($model, 'fio_parent_check') . ')'; ?></label>
+                       for="Questionnaire_fio_parent"><?php echo $model->getAttributeLabel('fio_parent') ;
+                    echo ($model->status==Questionnaire::STATUS_IN_MODER?'(Требует исправление ' . CHtml::activeCheckBox($model, 'fio_parent_check') . ')':''); ?></label>
 
                 <div class="controls">
                     <div class="input-append">
@@ -99,7 +104,8 @@
 
             <div class="control-group <?php echo($model->getError('residence') ? 'error' : ''); ?>">
                 <label class="control-label"
-                       for="Questionnaire_residence"><?php echo $model->getAttributeLabel('residence') . '(Требует исправление ' . CHtml::activeCheckBox($model, 'residence_check') . ')'; ?></label>
+                       for="Questionnaire_residence"><?php echo $model->getAttributeLabel('residence') ;
+                    echo ($model->status==Questionnaire::STATUS_IN_MODER?'(Требует исправление ' . CHtml::activeCheckBox($model, 'residence_check') . ')':''); ?></label>
 
                 <div class="controls">
                     <div class="input-append">
@@ -110,7 +116,8 @@
 
             <div class="control-group <?php echo($model->getError('place_of_work') ? 'error' : ''); ?>">
                 <label class="control-label"
-                       for="Questionnaire_place_of_work"><?php echo $model->getAttributeLabel('place_of_work') . '(Требует исправление ' . CHtml::activeCheckBox($model, 'place_of_work_check') . ')'; ?></label>
+                       for="Questionnaire_place_of_work"><?php echo $model->getAttributeLabel('place_of_work');
+                    echo ($model->status==Questionnaire::STATUS_IN_MODER?'(Требует исправление ' . CHtml::activeCheckBox($model, 'place_of_work_check') . ')':''); ?></label>
 
                 <div class="controls">
                     <div class="input-append">
@@ -121,7 +128,8 @@
 
             <div class="control-group <?php echo($model->getError('tel_parent') ? 'error' : ''); ?>">
                 <label class="control-label"
-                       for="Questionnaire_tel_parent"><?php echo $model->getAttributeLabel('tel_parent') . '(Требует исправление ' . CHtml::activeCheckBox($model, 'tel_parent_check') . ')'; ?></label>
+                       for="Questionnaire_tel_parent"><?php echo $model->getAttributeLabel('tel_parent');
+                    echo ($model->status==Questionnaire::STATUS_IN_MODER?'(Требует исправление ' . CHtml::activeCheckBox($model, 'tel_parent_check') . ')':''); ?></label>
 
                 <div class="controls">
                     <div class="input-append">
@@ -132,7 +140,8 @@
 
             <div class="control-group <?php echo($model->getError('email_parent') ? 'error' : ''); ?>">
                 <label class="control-label"
-                       for="Questionnaire_email_parent"><?php echo $model->getAttributeLabel('email_parent') . '(Требует исправление ' . CHtml::activeCheckBox($model, 'email_parent_check') . ')'; ?></label>
+                       for="Questionnaire_email_parent"><?php echo $model->getAttributeLabel('email_parent');
+                    echo ($model->status==Questionnaire::STATUS_IN_MODER?'(Требует исправление ' . CHtml::activeCheckBox($model, 'email_parent_check') . ')':''); ?></label>
 
                 <div class="controls">
                     <div class="input-append">
@@ -143,7 +152,8 @@
 
             <div class="control-group <?php echo($model->getError('fio_child') ? 'error' : ''); ?>">
                 <label class="control-label"
-                       for="Questionnaire_fio_child"><?php echo $model->getAttributeLabel('fio_child') . '(Требует исправление ' . CHtml::activeCheckBox($model, 'fio_child_check') . ')'; ?></label>
+                       for="Questionnaire_fio_child"><?php echo $model->getAttributeLabel('fio_child');
+                    echo ($model->status==Questionnaire::STATUS_IN_MODER?'(Требует исправление ' . CHtml::activeCheckBox($model, 'fio_child_check') . ')':''); ?></label>
 
                 <div class="controls">
                     <div class="input-append">
@@ -154,7 +164,8 @@
 
             <div class="control-group <?php echo($model->getError('birthday_child') ? 'error' : ''); ?>">
                 <label class="control-label"
-                       for="Questionnaire_birthday_child"><?php echo $model->getAttributeLabel('birthday_child') . '(Требует исправление ' . CHtml::activeCheckBox($model, 'birthday_child_check') . ')'; ?></label>
+                       for="Questionnaire_birthday_child"><?php echo $model->getAttributeLabel('birthday_child');
+                    echo ($model->status==Questionnaire::STATUS_IN_MODER?'(Требует исправление ' . CHtml::activeCheckBox($model, 'birthday_child_check') . ')':''); ?></label>
 
                 <div class="controls">
                     <div class="input-append">
@@ -165,7 +176,8 @@
 
             <div class="control-group <?php echo($model->getError('place_of_study') ? 'error' : ''); ?>">
                 <label class="control-label"
-                       for="Questionnaire_place_of_study"><?php echo $model->getAttributeLabel('place_of_study') . '(Требует исправление ' . CHtml::activeCheckBox($model, 'place_of_study_check') . ')'; ?></label>
+                       for="Questionnaire_place_of_study"><?php echo $model->getAttributeLabel('place_of_study');
+                    echo ($model->status==Questionnaire::STATUS_IN_MODER?'(Требует исправление ' . CHtml::activeCheckBox($model, 'place_of_study_check') . ')':''); ?></label>
 
                 <div class="controls">
                     <div class="input-append">
