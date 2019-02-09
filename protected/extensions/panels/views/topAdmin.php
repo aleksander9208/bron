@@ -6,7 +6,7 @@
     <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item <?php echo(in_array($action, array('index','bid')) ? 'active' : ''); ?>">
-                <a class="nav-link" href="<?php echo Yii::app()->createUrl('/admin'); ?>">Модерация <span class="badge badge-light"><?php echo ( $cmoder?$cmoder:''); ?></span></a>
+                <a class="nav-link" href="<?php echo Yii::app()->createUrl('/admin'); ?>">Модерация <span class="badge badge-info"><?php echo ( $cmoder?$cmoder:''); ?></span></a>
 
             </li>
             <li class="nav-item <?php echo(in_array($action, array('reserve')) ? 'active' : ''); ?>">
