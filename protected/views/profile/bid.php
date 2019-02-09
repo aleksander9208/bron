@@ -13,12 +13,12 @@
             <form id="z_anketa_view_form" method="POST" class="needs-validation">
 
                 <div class="form-group row">
-                    <label class="control-label font-weight-bold col-sm-4" for="Questionnaire_name">Дата подачи заявки</label>
+                    <label class="control-label font-weight-bold col-sm-4" for="Questionnaire_created">Дата подачи заявки</label>
                     <div class="col-sm-8"><?php echo $model->created; ?></div>
                 </div>
 
                 <div class="form-group row <?php echo($model->getError('type') ? 'error' : ''); ?>">
-                    <label class="control-label font-weight-bold col-sm-4" for="Questionnaire_name"><?php echo $model->getAttributeLabel('type'); ?></label>
+                    <label class="control-label font-weight-bold col-sm-4" for="Questionnaire_type"><?php echo $model->getAttributeLabel('type'); ?></label>
                     <div class="col-sm-8"><?php echo Questionnaire::getTypeName($model->type); ?></div>
                 </div>
 
@@ -227,7 +227,6 @@
                     <?php } ?>
                 </div>
             </form>
-
         </div>
     </div>
 </div>
