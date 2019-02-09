@@ -24,7 +24,7 @@
         <div class="spinner-border" role="status"> </div>
     </div>
     <?php $this->widget('application.extensions.panels.topAdminPanel'); ?>
-    <div id="fb_pages" class="container-fluid h-100">
+    <div id="fb_pages" class="container-fluid pt-3 h-100">
         <?php echo $content; ?>
     </div>
 </body>
