@@ -1,6 +1,11 @@
 <?php
 $shifts = SiteService::getShifts();
-foreach ($statData['questionnaire'] as $name_ur =>  $k) { ?>
+
+if (!$statData['questionnaire']) { ?>
+    <div id="page_stat_alert" class="alert alert-info mt-2" role="alert">Данные отсутствуют</div>
+<?php } ?>
+
+<?php foreach ($statData['questionnaire'] as $name_ur =>  $k) { ?>
     <?php foreach ($k as  $v) { ?>
     <label for="z_anketa_table">Сводная таблица по ЮЛ <b><?php echo CHtml::encode($name_ur); ?></b></label>
     <table id="z_anketa_table" class="table table-bordered table-striped table-hover table-sm">

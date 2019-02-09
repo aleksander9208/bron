@@ -1,6 +1,10 @@
 <?php
 $shifts = SiteService::getShifts();
-foreach ($statData['questionnaire'] as $name_ur => $k) { ?>
+if (!$statData['questionnaire']) { ?>
+    <div id="page_stat_alert" class="alert alert-info mt-2" role="alert">Данные отсутствуют</div>
+<?php } ?>
+
+<?php foreach ($statData['questionnaire'] as $name_ur => $k) { ?>
     <?php foreach ($statData['questionnaire'] as $name_ur => $vvvv) { ?>
         <?php foreach ($vvvv as $campId => $vvv) { ?>
             <?php foreach ($vvv as $shiftId => $vv) { ?>

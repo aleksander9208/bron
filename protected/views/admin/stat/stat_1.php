@@ -103,7 +103,7 @@ $this->widget('MyGridView', array(
             'name' => 'status',
             'type' => 'raw',
             'value' => 'Questionnaire::getStatusName($data->status)',
-            'filter' => Questionnaire::getStatusName(),
+            'filter' => false,//Questionnaire::getStatusName(),
             'htmlOptions' => array('class' => 'num_string'),
             'headerHtmlOptions' => array('class' => 'text-center', 'scope' => 'col'),
         ),

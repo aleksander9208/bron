@@ -26,9 +26,13 @@ foreach (Questionnaire::getCAMPName() as $campId => $campName) { ?>
         </thead>
         <tbody>
 
-        <?php
+        <?php if (!$statData['questionnaire_main'][$campId] && !$statData['questionnaire'][$campId]) { ?>
+            <tr>
+                <td class="text-center" colspan="16">Данные отсутствуют</td>
+            </tr>
+        <?php } ?>
 
-        foreach ($statData['questionnaire_main'][$campId] as $shiftId => $z) {
+        <?php foreach ($statData['questionnaire_main'][$campId] as $shiftId => $z) {
             foreach ($z as $v) { ?>
                 <tr class="<?php echo(($v['type'] == Questionnaire::TYPE_UR) ? 'table-info' : ''); ?>">
                     <th scope="row" class="align-middle"><?php echo Questionnaire::getCAMPName($campId); ?></th>

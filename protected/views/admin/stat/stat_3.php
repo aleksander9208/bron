@@ -27,6 +27,12 @@ foreach (Questionnaire::getCAMPName() as $campId => $campName) {
             </thead>
             <tbody>
 
+            <?php if ((!isset($statData['questionnaire_main'][$campId][$shiftId]) || !$statData['questionnaire_main'][$campId][$shiftId]) && (!isset($statData['questionnaire'][$campId][$shiftId]) || !$statData['questionnaire'][$campId][$shiftId])) { ?>
+                <tr>
+                    <td class="text-center" colspan="16">Данные отсутствуют</td>
+                </tr>
+            <?php } ?>
+
             <?php
             if (isset($statData['questionnaire_main'][$campId][$shiftId])) {
                 foreach ($statData['questionnaire_main'][$campId][$shiftId] as $v) { ?>
