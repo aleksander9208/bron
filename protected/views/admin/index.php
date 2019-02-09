@@ -58,7 +58,7 @@
                     'header' => 'ФИО ребенка',
                     'name' => 'fio_child',
                     'type' => 'raw',
-                    'value' => 'CHtml::link($data->fio_child,"/admin/bid/".$data->id)',
+                    'value' => '$data->fio_child',
                     'htmlOptions' => array('class'=>'text-center'),
                     'headerHtmlOptions' => array('class' => 'text-center','scope'=>'col'),
                     'filter' => CHtml::activeTextField($model, 'fio_child', array('class' => 'form-control')),
@@ -69,16 +69,6 @@
                     'value' => 'Questionnaire::getTypeName($data->type)',
                     'htmlOptions' => array('class'=>'text-center'),
                     'filter' => Questionnaire::getTypeName(),
-                    'headerHtmlOptions' => array('class' => 'text-center','scope'=>'col'),
-                ),
-
-                array(
-                    'header' => 'Статус',
-                    'name' => 'status',
-                    'type' => 'raw',
-                    'value' => 'Questionnaire::getStatusName($data->status)',
-                    'htmlOptions' => array('class'=>'text-center'),
-                    'filter' => Questionnaire::getStatusName(),
                     'headerHtmlOptions' => array('class' => 'text-center','scope'=>'col'),
                 ),
 
@@ -125,6 +115,16 @@
                     'htmlOptions' => array('class'=>'text-center'),
                     'headerHtmlOptions' => array('class' => 'text-center','scope'=>'col'),
                     'filter' => CHtml::activeTextField($model, 'booking_id', array('class' => 'form-control')),
+                ),
+
+                array(
+                    'header' => 'Статус',
+                    'name' => 'status',
+                    'type' => 'raw',
+                    'value' => 'CHtml::link(Questionnaire::getStatusName($data->status),"/admin/bid/".$data->id, array("class"=>"btn btn-success btn-sm") )',
+                    'htmlOptions' => array('class'=>'text-center'),
+                    'filter' => Questionnaire::getStatusName(),
+                    'headerHtmlOptions' => array('class' => 'text-center','scope'=>'col'),
                 ),
 
             ),

@@ -23,6 +23,8 @@ if (typeof window.z == 'object')
                         };
 
                     $(document);
+
+                    _self.z.el.z_anketa_admin_list_table.find('.filters input, .filters select').addClass('form-control form-control-sm');
                     _self.z.tasks.call(task_name, result_out);
                 }
         };
