@@ -93,6 +93,11 @@ class AdminController extends Controller
     {
         $title = 'Резервирование';
         $this->pageTitle = Yii::app()->name . ' - ' . $title;
+
+        $cs = Yii::app()->getClientScript();
+        $cs->registerCssFile(Yii::app()->createUrl('/statics/css/z.page.admin_reserve.css'));
+        $cs->registerScriptFile(Yii::app()->createUrl('/statics/js/z.page.admin_reserve.js'), CClientScript::POS_END);
+
         $r = Reserve::model()->findByPk(1);
         if (!$r) {
             throw new CHttpException(401, 'Резерв не найден в системе');
