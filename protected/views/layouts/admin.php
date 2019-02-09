@@ -29,7 +29,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="fb_nav_items">
-            <?php $this->widget('application.extensions.panels.topPanel'); ?>
+            <?php $this->widget('application.extensions.panels.topAdminPanel'); ?>
             <a id="fb_auth_signout" class="btn btn-outline-info my-2 my-sm-0" href="<?php echo Yii::app()->createUrl('/auth/logout'); ?>">Выход</a>
         </div>
     </nav>
