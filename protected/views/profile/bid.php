@@ -192,7 +192,7 @@
                     <?php } ?>
                     <?php if (($model->status == Questionnaire::STATUS_RETURNED) || (($model->status == Questionnaire::STATUS_OK) && $model->getErrors())) { ?>
                         <button class="btn btn-primary" name="Questionnaire[status]"
-                                value="<?php echo Questionnaire::STATUS_IN_MODER; ?>" type="submit">Подать заявление на регистрацию
+                                value="<?php echo Questionnaire::STATUS_IN_MODER; ?>" type="submit"><?php echo ($model->id?'Внести изменеия':'Подать заявление на регистрацию'); ?>
                         </button>
                     <?php } ?>
                 </div>
