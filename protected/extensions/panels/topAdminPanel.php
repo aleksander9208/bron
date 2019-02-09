@@ -7,8 +7,9 @@ class TopAdminPanel extends CWidget
     {
         $controller = Yii::app()->controller->id;
         $action = Yii::app()->controller->action->id;
+        $cntModerOrder = Questionnaire::model()->countByAttributes(array('status' => Questionnaire::STATUS_OK));
 
-        $this->render('/topAdmin', array('controller' => $controller, 'action' => $action, 'user' => Yii::app()->user));
+        $this->render('/topAdmin', array('controller' => $controller, 'action' => $action, 'user' => Yii::app()->user, 'cmoder' => $cntModerOrder));
     }
 
 }
