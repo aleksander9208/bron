@@ -22,13 +22,13 @@
                     <div class="col-sm-8"><?php echo Questionnaire::getTypeName($model->type); ?></div>
                 </div>
 
-                <div class="form-group row <?php echo($model->getError('status') ? 'error' : ''); ?>">
+                <div class="form-group row <?php echo($model->getError('status') ? 'error' : '');?>">
                     <label class="control-label font-weight-bold col-sm-4" for="Questionnaire_name">Текущий статус заявки</label>
                     <div class="col-sm-8"><?php echo Questionnaire::getStatusName($model->status); ?></div>
                 </div>
 
                 <?php if ($model->type == Questionnaire::TYPE_UR) { ?>
-                    <div class="form-group row <?php echo($model->getError('name_ur') ? 'error' : ''); ?>">
+                    <div class="form-group row <?php echo($model->getError('name_ur') ? 'error' : ''); echo ($model->name_ur_check?' bg-warning p-1':''); ?>">
                         <label class="control-label font-weight-bold col-sm-4" for="z_anketa_name_ur"><?php echo $model->getAttributeLabel('name_ur'); ?></label>
                         <div class="col-sm-8">
                             <?php if($model->name_ur_check) {
@@ -39,7 +39,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group row <?php echo($model->getError('fio_ur_contact') ? 'error' : ''); ?>">
+                    <div class="form-group row <?php echo($model->getError('fio_ur_contact') ? 'error' : ''); echo ($model->fio_ur_contact_check?' bg-warning p-1':''); ?>">
                         <label class="control-label font-weight-bold col-sm-4" for="z_anketa_fio_ur_contact"><?php echo $model->getAttributeLabel('fio_ur_contact'); ?></label>
                         <div class="col-sm-8">
                             <?php if($model->fio_ur_contact_check) {
@@ -50,18 +50,24 @@
                         </div>
                     </div>
 
-                    <div class="form-group row <?php echo($model->getError('tel_ur_contact') ? 'error' : ''); ?>">
+                    <div class="form-group row <?php echo($model->getError('tel_ur_contact') ? 'error' : ''); echo ($model->tel_ur_contact_check?' bg-warning p-1':''); ?>">
                         <label class="control-label font-weight-bold col-sm-4" for="z_anketa_tel_ur_contact"><?php echo $model->getAttributeLabel('tel_ur_contact'); ?></label>
                         <div class="col-sm-8">
                             <?php if($model->tel_ur_contact_check) {
-                                echo CHtml::activeTextField($model, 'tel_ur_contact',array('class' => 'form-control', 'placeholder' => $model->getAttributeLabel('tel_ur_contact'), 'required'=>'required', 'id'=>'z_anketa_tel_ur_contact', 'maxlength'=>10, 'data-mask'=>'0123456789'));
+                                echo ''.
+                                    '<div class="input-group">'.
+                                        '<div class="input-group-prepend">'.
+                                            '<div class="input-group-text">+7</div>'.
+                                        '</div>'.
+                                        CHtml::activeTextField($model, 'tel_ur_contact',array('class' => 'form-control', 'placeholder' => $model->getAttributeLabel('tel_ur_contact'), 'required'=>'required', 'id'=>'z_anketa_tel_ur_contact', 'maxlength'=>10, 'data-mask'=>'0123456789')).
+                                    '</div>';
                             } else {
                                 echo CHtml::encode($model->tel_ur_contact);
                             } ?>
                         </div>
                     </div>
 
-                    <div class="form-group row <?php echo($model->getError('email_ur_contact') ? 'error' : ''); ?>">
+                    <div class="form-group row <?php echo($model->getError('email_ur_contact') ? 'error' : ''); echo ($model->email_ur_contact_check?' bg-warning p-1':''); ?>">
                         <label class="control-label font-weight-bold col-sm-4" for="z_anketa_email_ur_contact"><?php echo $model->getAttributeLabel('email_ur_contact'); ?></label>
                         <div class="col-sm-8">
                             <?php if($model->email_ur_contact_check) {
@@ -73,7 +79,7 @@
                     </div>
                 <?php } ?>
 
-                <div class="form-group row <?php echo($model->getError('fio_parent') ? 'error' : ''); ?>">
+                <div class="form-group row <?php echo($model->getError('fio_parent') ? 'error' : ''); echo ($model->fio_parent_check?' bg-warning p-1':''); ?>">
                     <label class="control-label font-weight-bold col-sm-4" for="z_anketa_fio_parent"><?php echo $model->getAttributeLabel('fio_parent'); ?></label>
                     <div class="col-sm-8">
                         <?php if($model->fio_parent_check) {
@@ -84,7 +90,7 @@
                     </div>
                 </div>
 
-                <div class="form-group row <?php echo($model->getError('residence') ? 'error' : ''); ?>">
+                <div class="form-group row <?php echo($model->getError('residence') ? 'error' : ''); echo ($model->residence_check?' bg-warning p-1':''); ?>">
                     <label class="control-label font-weight-bold col-sm-4" for="z_anketa_residence"><?php echo $model->getAttributeLabel('residence'); ?></label>
                     <div class="col-sm-8">
                         <?php if($model->residence_check) {
@@ -95,7 +101,7 @@
                     </div>
                 </div>
 
-                <div class="form-group row <?php echo($model->getError('place_of_work') ? 'error' : ''); ?>">
+                <div class="form-group row <?php echo($model->getError('place_of_work') ? 'error' : ''); echo ($model->place_of_work_check?' bg-warning p-1':''); ?>">
                     <label class="control-label font-weight-bold col-sm-4" for="z_anketa_place_of_work"><?php echo $model->getAttributeLabel('place_of_work'); ?></label>
                     <div class="col-sm-8">
                         <?php if($model->place_of_work_check) {
@@ -106,7 +112,7 @@
                     </div>
                 </div>
 
-                <div class="form-group row <?php echo($model->getError('email_parent') ? 'error' : ''); ?>">
+                <div class="form-group row <?php echo($model->getError('email_parent') ? 'error' : ''); echo ($model->email_parent_check?' bg-warning p-1':''); ?>">
                     <label class="control-label font-weight-bold col-sm-4" for="z_anketa_email_parent"><?php echo $model->getAttributeLabel('email_parent'); ?></label>
                     <div class="col-sm-8">
                         <?php if($model->email_parent_check) {
@@ -117,7 +123,7 @@
                     </div>
                 </div>
 
-                <div class="form-group row <?php echo($model->getError('fio_child') ? 'error' : ''); ?>">
+                <div class="form-group row <?php echo($model->getError('fio_child') ? 'error' : ''); echo ($model->fio_child_check?' bg-warning p-1':''); ?>">
                     <label class="control-label font-weight-bold col-sm-4" for="z_anketa_fio_child"><?php echo $model->getAttributeLabel('fio_child'); ?></label>
                     <div class="col-sm-8">
                         <?php if($model->fio_child_check) {
@@ -128,7 +134,7 @@
                     </div>
                 </div>
 
-                <div class="form-group row <?php echo($model->getError('birthday_child') ? 'error' : ''); ?>">
+                <div class="form-group row <?php echo($model->getError('birthday_child') ? 'error' : ''); echo ($model->birthday_child_check?' bg-warning p-1':''); ?>">
                     <label class="control-label font-weight-bold col-sm-4" for="z_anketa_birthday_child"><?php echo $model->getAttributeLabel('birthday_child'); ?></label>
                     <div class="col-sm-8">
                         <?php if($model->birthday_child_check) {
@@ -161,7 +167,7 @@
                     </div>
                 </div>
 
-                <div class="form-group row <?php echo($model->getError('place_of_study') ? 'error' : ''); ?>">
+                <div class="form-group row <?php echo($model->getError('place_of_study') ? 'error' : ''); echo ($model->place_of_study_check?' bg-warning p-1':''); ?>">
                     <label class="control-label font-weight-bold col-sm-4" for="z_anketa_place_of_study"><?php echo $model->getAttributeLabel('place_of_study'); ?></label>
                     <div class="col-sm-8">
                         <?php if($model->place_of_study_check) {
@@ -172,7 +178,7 @@
                     </div>
                 </div>
 
-                <div class="form-group row <?php echo($model->getError('tel_parent') ? 'error' : ''); ?>">
+                <div class="form-group row <?php echo($model->getError('tel_parent') ? 'error' : ''); echo ($model->tel_parent_check?' bg-warning p-1':''); ?>">
                     <label class="control-label font-weight-bold col-sm-4" for="z_anketa_tel_parent"><?php echo $model->getAttributeLabel('tel_parent'); ?></label>
                     <div class="col-sm-8">
                         <?php if($model->tel_parent_check) {

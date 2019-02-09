@@ -95,24 +95,36 @@ if (typeof window.z == 'object')
                     var _self = this;
 
                     //Юр
-                    _self.validate_required(_self.z.el.z_anketa_name_ur);
-                    _self.validate_fio(_self.z.el.z_anketa_fio_ur_contact);
-                    _self.validate_phone(_self.z.el.z_anketa_tel_ur_contact);
-                    _self.validate_email(_self.z.el.z_anketa_email_ur_contact);
+                    if (typeof _self.z.el.z_anketa_name_ur == 'object')
+                        _self.validate_required(_self.z.el.z_anketa_name_ur);
+                    if (typeof _self.z.el.z_anketa_fio_ur_contact == 'object')
+                        _self.validate_fio(_self.z.el.z_anketa_fio_ur_contact);
+                    if (typeof _self.z.el.z_anketa_tel_ur_contact == 'object')
+                        _self.validate_phone(_self.z.el.z_anketa_tel_ur_contact);
+                    if (typeof _self.z.el.z_anketa_email_ur_contact == 'object')
+                        _self.validate_email(_self.z.el.z_anketa_email_ur_contact);
 
                     //Физ
-                    _self.validate_fio(_self.z.el.z_anketa_fio_parent);
-                    _self.validate_required(_self.z.el.z_anketa_residence);
-                    _self.validate_required(_self.z.el.z_anketa_place_of_work);
-                    _self.validate_email(_self.z.el.z_anketa_email_parent);
+                    if (typeof _self.z.el.z_anketa_fio_parent == 'object')
+                        _self.validate_fio(_self.z.el.z_anketa_fio_parent);
+                    if (typeof _self.z.el.z_anketa_residence == 'object')
+                        _self.validate_required(_self.z.el.z_anketa_residence);
+                    if (typeof _self.z.el.z_anketa_place_of_work == 'object')
+                        _self.validate_required(_self.z.el.z_anketa_place_of_work);
+                    if (typeof _self.z.el.z_anketa_email_parent == 'object')
+                        _self.validate_email(_self.z.el.z_anketa_email_parent);
 
-                    _self.validate_fio(_self.z.el.z_anketa_fio_child);
-                    _self.validate_date(_self.z.el.z_anketa_birthday_child);
-                    _self.validate_required(_self.z.el.z_anketa_place_of_study);
-                    _self.validate_phone(_self.z.el.z_anketa_tel_parent);
+                    if (typeof _self.z.el.z_anketa_fio_child == 'object')
+                        _self.validate_fio(_self.z.el.z_anketa_fio_child);
+                    if (typeof _self.z.el.z_anketa_birthday_child == 'object')
+                        _self.validate_date(_self.z.el.z_anketa_birthday_child);
+                    if (typeof _self.z.el.z_anketa_place_of_study == 'object')
+                        _self.validate_required(_self.z.el.z_anketa_place_of_study);
+                    if (typeof _self.z.el.z_anketa_tel_parent == 'object')
+                        _self.validate_phone(_self.z.el.z_anketa_tel_parent);
 
-                    var is_valid = (_self.z.el.z_anketa_form.find('.is-invalid').length==0);
-                    _self.z.el.z_anketa_form.toggleClass('needs-validation', is_valid==false).toggleClass('was-validated', is_valid==true);
+                    var is_valid = (_self.z.el.z_anketa_view_form.find('.is-invalid').length==0);
+                    _self.z.el.z_anketa_view_form.toggleClass('needs-validation', is_valid==false).toggleClass('was-validated', is_valid==true);
                     if (is_valid==false)
                         {
                             event.preventDefault();

@@ -1,3 +1,7 @@
 #z_page_admin_reserve
 {
 }
+#z_page_admin_reserve .z_anketa_counts
+{
+    font-size: 0.8em;
+}

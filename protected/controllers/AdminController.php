@@ -65,6 +65,11 @@ class AdminController extends Controller
         $title = 'Статистика';
         $statId = Yii::app()->request->getParam('stat_id', 1);
         $this->pageTitle = Yii::app()->name . ' - ' . $title;
+
+        $cs = Yii::app()->getClientScript();
+        $cs->registerCssFile(Yii::app()->createUrl('/statics/css/z.page.admin_statistics.css'));
+        $cs->registerScriptFile(Yii::app()->createUrl('/statics/js/z.page.admin_statistics.js'), CClientScript::POS_END);
+
         $questionnaire = new Questionnaire();
         $questionnaire->type = $questionnaire->status = $questionnaire->paid = null;
         $questionnairePost = Yii::app()->request->getParam('Questionnaire', array());

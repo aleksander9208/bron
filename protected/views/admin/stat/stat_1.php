@@ -1,10 +1,10 @@
 <?php
 $this->widget('MyGridView', array(
-    'id' => 'vacr-grid',
+    'id' => 'z_admin_statistics_table_1',
     'dataProvider' => $model->getBidList('/admin/stat', true),
-    'ajaxUpdate' => 'vacr-grid',// false,
+    'ajaxUpdate' => 'z_admin_statistics_table_1',// false,
     'ajaxUrl' => Yii::app()->createUrl('/admin/stat'),
-    'afterAjaxUpdate' => "function()  { jQuery.datepicker.regional['ru'].dateFormat='yy-mm-dd'; jQuery('#from_date').datepicker(jQuery.datepicker.regional['ru'],{'dateFormat':'yy-mm-dd','changeMonth':true, 'changeYear':true,'yearRange':'2000:2019'}); jQuery('#to_date').datepicker(jQuery.datepicker.regional['ru'],{'dateFormat':'yy-mm-dd','changeMonth':true, 'changeYear':true,'yearRange':'2000:2019'});  }",
+    'afterAjaxUpdate' => "function()  { $('#z_admin_statistics_table_1').find('.filters input, .filters select').addClass('form-control form-control-sm'); jQuery.datepicker.regional['ru'].dateFormat='yy-mm-dd'; jQuery('#from_date').datepicker(jQuery.datepicker.regional['ru'],{'dateFormat':'yy-mm-dd','changeMonth':true, 'changeYear':true,'yearRange':'2000:2019'}); jQuery('#to_date').datepicker(jQuery.datepicker.regional['ru'],{'dateFormat':'yy-mm-dd','changeMonth':true, 'changeYear':true,'yearRange':'2000:2019'});  }",
     'summaryText' => '',
     'filter' => $model,
     'enableHistory' => false,
