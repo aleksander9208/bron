@@ -37,6 +37,7 @@ class AdminController extends Controller
 
     public function actionbid($id = 0)
     {
+        $title = 'Модерация анкеты';
         $this->pageTitle = Yii::app()->name . ' - ' . 'Заявка #' . (int)$id;
         $q = Questionnaire::model()->findByPk($id);
         if (!$q) {
@@ -56,7 +57,7 @@ class AdminController extends Controller
                 }
             }
         }
-        $this->render('bid', array('model' => $q, 'shifts' => SiteService::getShifts()));
+        $this->render('bid', array('title' => $title,  'model' => $q, 'shifts' => SiteService::getShifts()));
     }
 
 
