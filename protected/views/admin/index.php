@@ -1,4 +1,4 @@
-<div id="wna_page_advertslist" class="container-fluid px-4">
+<div id="z_page_anketa_admin_list" class="container-fluid px-4">
     <div class="mb-4"></div>
     <div class="clearfix mb-4">
         <h1 class="float-left"><?php echo $title; ?></h1>
@@ -8,14 +8,14 @@
     <div class="container-fluid px-0">
         <?php
         $this->widget('MyGridView', array(
-            'id' => 'vacr-grid',
+            'id' => 'z_anketa_admin_list_table',
             'dataProvider' => $model->getBidList('/admin/index'),
-            'ajaxUpdate' =>  'vacr-grid', //false
+            'ajaxUpdate' =>  'z_anketa_admin_list_table', //false
             'summaryText' => '',
             'filter' => $model,
             'enableHistory' => false,
             'pagerCssClass' => 'pagination',
-            'htmlOptions' => array('class' => 'table table-hover'),
+            'htmlOptions' => array('class' => ''),
             'itemsCssClass' => 'table table-bordered table-striped table-hover table-sm',
             'ajaxUrl' => Yii::app()->createUrl('/admin/index'),
             'enableSorting' => true,
@@ -41,10 +41,10 @@
                     'header' => '№',
                     'name' => 'id',
                     'type' => 'raw',
-                    'value' => 'CHtml::link($data->id,"/admin/bid/".$data->id)',
-                    'htmlOptions' => array('class' => 'font-weight-bold'),
-                    'headerHtmlOptions' => array('class' => 'text-center','scope'=>'col'),
-                    'filter' => CHtml::activeTextField($model, 'id', array('class' => 'form-control')),
+                    'value' => '$data->id',
+                    'htmlOptions' => array('class' => 'font-weight-bold text-center', 'scope' => 'row'),
+                    'headerHtmlOptions' => array('class' => 'text-center', 'scope' => 'col'),
+                    'filter' => CHtml::activeTextField($model, 'id', array('class' => 'form-control'))
                 ),
                 array(
                     'header' => 'Дата подачи',

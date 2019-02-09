@@ -20,6 +20,10 @@ class AdminController extends Controller
     {
         $title = 'Заявки к рассмотрению';
 
+        $cs = Yii::app()->getClientScript();
+        $cs->registerCssFile(Yii::app()->createUrl('/statics/css/z.page.anketa_admin_list.css'));
+        $cs->registerScriptFile(Yii::app()->createUrl('/statics/js/z.page.anketa_admin_list.js'), CClientScript::POS_END);
+
         $this->pageTitle = Yii::app()->name . ' - ' . $title;
         $questionnaire = new Questionnaire();
         $questionnaire->type = $questionnaire->status = $questionnaire->paid = null;

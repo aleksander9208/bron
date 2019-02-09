@@ -17,7 +17,7 @@
                 'enableHistory' => false,
                 'pagerCssClass' => 'pagination',
 
-                'htmlOptions' => array('class' => 'table table-bordered table-striped table-hover table-sm'),
+                'htmlOptions' => array('class' => ''),
                 //'headerHtmlOptions' => array('class' => 'thead-dark'),
                 'itemsCssClass' => 'table table-bordered table-striped table-hover table-sm',
                 'ajaxUrl' => Yii::app()->createUrl('/admin/index'),
