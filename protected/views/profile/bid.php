@@ -32,7 +32,7 @@
                         <label class="control-label font-weight-bold col-sm-4" for="Questionnaire_name_ur"><?php echo $model->getAttributeLabel('name_ur'); ?></label>
                         <div class="col-sm-8">
                             <?php if($model->name_ur_check) {
-                                echo CHtml::activeTextField($model, 'name_ur_check');
+                                echo CHtml::activeTextField($model, 'name_ur');
                              } else {
                                 echo CHtml::encode($model->name_ur);
                             } ?>
