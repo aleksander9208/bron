@@ -107,10 +107,10 @@
                     'filter' => array('НЕТ','ДА'),
                 ),
                 array(
-                    'header' => 'забронирована',
+                    'header' => 'Забронирована',
                     'name' => 'is_main',
                     'type' => 'raw',
-                    'value' => 'CHtml::checkBox("is_main",$data->is_main,array("data-zid"=>$data->id))',
+                    'value' => 'CHtml::checkBox("is_main",$data->is_main,array("data-zbid"=>$data->id))',
                     'htmlOptions' => array('class'=>'text-center z_snippet'),
                     'headerHtmlOptions' => array('class' => 'text-center','scope'=>'col'),
                     'filter' => array('НЕТ','ДА'),

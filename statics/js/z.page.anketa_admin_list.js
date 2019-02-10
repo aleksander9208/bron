@@ -6,7 +6,7 @@ if (typeof window.z == 'object')
             //Название модуля
             name:'z_page_anketa_admin_list',
             //Версия библиотеки
-            version: '190209',
+            version: '190210',
             //Указатель на глобалный объект
             z: window.z,
             //Хранилище данных
@@ -46,6 +46,35 @@ if (typeof window.z == 'object')
                                                     _self.z.log(_self.name, 'init_listners', result.errors.join('<br/>'), false);
                                                         else
                                                     $('input[type="checkbox"][data-zid="'+result.data.questionnaire_id+'"]').prop('checked', result.data.paid==1);
+                                                $('.z-snipper').remove();
+                                            }
+                                    )
+                                );
+                            }
+                    ).on(
+                        'change.'+_self.name,
+                        'input[type="checkbox"][data-zbid]',
+                        function ()
+                            {
+                                $( '<div class="z-snipper d-flex justify-content-center align-items-center"><div class="spinner-border" role="status"><span class="sr-only">Обмен данными...</span></div></div>' ).insertBefore(this);
+                                _self.z.modules.ajax.get(
+                                    'setmain',
+                                    {
+                                        url: _self.z.path+'ajax/setmain',
+                                        data: {
+                                            questionnaire_id: $(this).attr('data-zbid')|0,
+                                            is_main: ($(this).is(':checked')?1:0)
+                                        }
+                                    },
+                                    _self.z.tasks.add(
+                                        'Смена состояния включения в списки бронирования',
+                                        '',
+                                        function (result)
+                                            {
+                                                if (result.errors.length>0)
+                                                    _self.z.log(_self.name, 'init_listners', result.errors.join('<br/>'), false);
+                                                        else
+                                                    $('input[type="checkbox"][data-zbid="'+result.data.questionnaire_id+'"]').prop('checked', result.data.is_main==1);
                                                 $('.z-snipper').remove();
                                             }
                                     )
