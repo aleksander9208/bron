@@ -103,7 +103,7 @@
                             <td class="text-center"><?php echo CHtml::encode($model->shift_id); ?></td>
                             <td class="text-center">&nbsp;</td>
                         </tr>
-                        <?php if ($model->$model->comment) { ?>
+                        <?php if ($model->comment) { ?>
                         <tr>
                             <th scope="row"><?php echo $model->getAttributeLabel('comment'); ?></th>
                             <td class="text-center"><?php echo CHtml::encode($model->comment); ?></td>
