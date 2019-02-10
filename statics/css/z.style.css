@@ -161,13 +161,15 @@ html
 }
 
 .z_snippet,
+[data-booking-id],
 [data-comment-id]
 {
     position: relative;
     cursor: pointer;
 }
-.z_snippet .comment-snipper,
-[data-comment-id] .comment-snipper
+.z_snippet .z-snipper,
+[data-comment-id] .z-snipper,
+[data-booking-id] .z-snipper
 {
     position: absolute;
     background-color: rgba(255,255,255,0.7);

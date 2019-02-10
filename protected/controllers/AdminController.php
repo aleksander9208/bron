@@ -68,7 +68,7 @@ class AdminController extends Controller
         $this->pageTitle = Yii::app()->name . ' - ' . $title;
 
         $cs = Yii::app()->getClientScript();
-        $cs->registerCssFile(Yii::app()->createUrl('/statics/css/z.page.admin_statistics.css'));
+        $cs->registerCssFile(Yii::app()->createUrl('/statics/css/z.page.admin_statistics_'.$statId.'.css'));
         $cs->registerScriptFile(Yii::app()->createUrl('/statics/js/z.page.admin_statistics.js'), CClientScript::POS_END);
 
         $questionnaire = new Questionnaire();

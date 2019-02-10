@@ -103,6 +103,8 @@ class AjaxController extends Controller
                 if (!$q->save()) {
                     $this->out['errors'] = $q->error_arr;
                 }
+                    else
+                $this->out['data'] = array('questionnaire_id' => (int)$questionnaireId, 'booking_id' => $bookingId);
             } else {
                 $this->out['errors'] = array('Парамерты не заданы');
             }

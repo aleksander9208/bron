@@ -135,7 +135,7 @@ $this->widget('MyGridView', array(
             'header' => 'Комментарий',
             'name' => 'paid',
             'type' => 'raw',
-            'value' => '"<div data-anketa-id=\"".$data->id."\"></div>".$data->comment',
+            'value' => '"<div data-canketa-id=\"".$data->id."\"></div>".$data->comment',
             'filter' => CHtml::activeTextField($model, 'comment', array('class' => 'form-control')),
             'htmlOptions' => array('class' => 'text-center'),
             'headerHtmlOptions' => array('class' => 'text-center', 'scope' => 'col'),
@@ -143,7 +143,8 @@ $this->widget('MyGridView', array(
         array(
             'header' => 'Номер брони',
             'name' => 'booking_id',
-            'value' => '$data->booking_id',
+            'type' => 'raw',
+            'value' => '"<div data-banketa-id=\"".$data->id."\"></div>".$data->booking_id',
             'filter' => CHtml::activeTextField($model, 'booking_id', array('class' => 'form-control')),
             'htmlOptions' => array('class' => 'text-center'),
             'headerHtmlOptions' => array('class' => 'text-center', 'scope' => 'col'),

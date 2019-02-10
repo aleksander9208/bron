@@ -48,7 +48,7 @@ if (!$statData['questionnaire']) { ?>
             <td class="text-center"><?php echo CHtml::encode($v['email_parent']); ?></td>
             <td class="text-center"><?php echo CHtml::encode($v['booking_id']); ?></td>
             <td class="text-center"><?php echo($v['paid'] ? 'Да' : 'Нет'); ?></td>
-            <td class="text-center"><?php echo CHtml::encode($v['comment']); ?></td>
+            <td class="text-center" data-comment-id="<?php echo $v['id'];?>"><?php echo CHtml::encode($v['comment']); ?></td>
             <td class="text-center"><?php echo($v['create_admin'] ? 'Да' : 'Нет'); ?></td>
         </tr>
 

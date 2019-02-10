@@ -97,11 +97,19 @@ window.z =
         comment_edit: function ()
             {
                 var _self = this;
-                $('[data-anketa-id]').each(
+                $('[data-canketa-id]').each(
                     function ()
                         {
-                            var a_id = $(this).attr('data-anketa-id');
+                            var a_id = $(this).attr('data-canketa-id');
                             $(this).parent().attr('data-comment-id', a_id);
+                            $(this).remove();
+                        }
+                );
+                $('[data-banketa-id]').each(
+                    function ()
+                        {
+                            var a_id = $(this).attr('data-banketa-id');
+                            $(this).parent().attr('data-booking-id', a_id);
                             $(this).remove();
                         }
                 );
@@ -165,19 +173,19 @@ window.z =
                                     var val_anketa_id = $(this).attr('data-comment-id')|0;
                                     var val = $(this).html();
                                     var el_text_area = $('<textarea class="form-control" rows="3"></textarea>');
-                                    el_text_area.attr('data-aid', val_anketa_id).val(val);
+                                    el_text_area.attr('data-caid', val_anketa_id).val(val);
                                     $(this).html(el_text_area);
                                     el_text_area.focus();
                                 }
                         }
                 ).on(
                     'blur.'+_self.name,
-                    'textarea[data-aid]',
+                    'textarea[data-caid]',
                     function ()
                         {
                             var val = $(this).val();
-                            var val_anketa_id = $(this).attr('data-aid')|0;
-                            $( '<div class="comment-snipper d-flex justify-content-center align-items-center"><div class="spinner-border" role="status"><span class="sr-only">Обмен данными...</span></div></div>' ).insertBefore(this);
+                            var val_anketa_id = $(this).attr('data-caid')|0;
+                            $( '<div class="z-snipper d-flex justify-content-center align-items-center"><div class="spinner-border" role="status"><span class="sr-only">Обмен данными...</span></div></div>' ).insertBefore(this);
 
                             _self.modules.ajax.get(
                                 'setcomment',
@@ -196,10 +204,59 @@ window.z =
                                             if (result.errors.length>0)
                                                 {
                                                     _self.log(_self.name, 'init_listners', result.errors.join('<br/>'), false);
-                                                    $('.comment-snipper').remove();
+                                                    $('.z-snipper').remove();
                                                 }
                                                     else
                                                 $('[data-comment-id="'+result.data.questionnaire_id+'"]').html(result.data.comment);
+                                        }
+                                )
+                            );
+                        }
+                ).on(
+                    'click.'+_self.name,
+                    '[data-booking-id]',
+                    function ()
+                        {
+                            if ($(this).children('input').length==0)
+                                {
+                                    var val_anketa_id = $(this).attr('data-booking-id')|0;
+                                    var val = $(this).html();
+                                    var el_text_area = $('<input class="form-control" type="text" data-mask="0123456789" />');
+                                    el_text_area.attr('data-baid', val_anketa_id).val(val);
+                                    $(this).html(el_text_area);
+                                    el_text_area.focus();
+                                }
+                        }
+                ).on(
+                    'blur.'+_self.name,
+                    'input[data-baid]',
+                    function ()
+                        {
+                            var val = $(this).val()|0;
+                            var val_anketa_id = $(this).attr('data-baid')|0;
+                            $( '<div class="z-snipper d-flex justify-content-center align-items-center"><div class="spinner-border" role="status"><span class="sr-only">Обмен данными...</span></div></div>' ).insertBefore(this);
+
+                            _self.modules.ajax.get(
+                                'setbooking',
+                                    {
+                                        url: _self.path+'ajax/setbooking',
+                                        data: {
+                                            questionnaire_id: val_anketa_id,
+                                            booking_id: val
+                                        }
+                                    },
+                                _self.tasks.add(
+                                    'Изменение номера брони',
+                                    '',
+                                    function (result)
+                                        {
+                                            if (result.errors.length>0)
+                                                {
+                                                    _self.log(_self.name, 'init_listners', result.errors.join('<br/>'), false);
+                                                    $('.z-snipper').remove();
+                                                }
+                                                    else
+                                                $('[data-booking-id="'+result.data.questionnaire_id+'"]').html(result.data.booking_id);
                                         }
                                 )
                             );

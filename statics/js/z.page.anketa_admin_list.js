@@ -27,7 +27,7 @@ if (typeof window.z == 'object')
                         'input[type="checkbox"][data-zid]',
                         function ()
                             {
-                                $( '<div class="comment-snipper d-flex justify-content-center align-items-center"><div class="spinner-border" role="status"><span class="sr-only">Обмен данными...</span></div></div>' ).insertBefore(this);
+                                $( '<div class="z-snipper d-flex justify-content-center align-items-center"><div class="spinner-border" role="status"><span class="sr-only">Обмен данными...</span></div></div>' ).insertBefore(this);
                                 _self.z.modules.ajax.get(
                                     'setpaid',
                                     {
@@ -46,7 +46,7 @@ if (typeof window.z == 'object')
                                                     _self.z.log(_self.name, 'init_listners', result.errors.join('<br/>'), false);
                                                         else
                                                     $('input[type="checkbox"][data-zid="'+result.data.questionnaire_id+'"]').prop('checked', result.data.paid==1);
-                                                $('.comment-snipper').remove();
+                                                $('.z-snipper').remove();
                                             }
                                     )
                                 );

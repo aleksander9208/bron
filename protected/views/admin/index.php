@@ -110,7 +110,8 @@
                 array(
                     'header' => 'Номер брони',
                     'name' => 'booking_id',
-                    'value' => '$data->booking_id',
+                    'type' => 'raw',
+                    'value' => '"<div data-banketa-id=\"".$data->id."\"></div>".$data->booking_id',
                     'htmlOptions' => array('class'=>'text-center'),
                     'headerHtmlOptions' => array('class' => 'text-center','scope'=>'col'),
                     'filter' => CHtml::activeTextField($model, 'booking_id', array('class' => 'form-control')),
@@ -119,7 +120,7 @@
                     'header' => 'Комментарий',
                     'name' => 'comment',
                     'type' => 'raw',
-                    'value' => '"<div data-anketa-id=\"".$data->id."\"></div>".$data->comment',
+                    'value' => '"<div data-canketa-id=\"".$data->id."\"></div>".$data->comment',
                     'htmlOptions' => array('class'=>'text-center'),
                     'headerHtmlOptions' => array('class' => 'text-center','scope'=>'col'),
                     'filter' => CHtml::activeTextField($model, 'comment', array('class' => 'form-control')),
