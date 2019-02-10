@@ -115,7 +115,15 @@
                     'headerHtmlOptions' => array('class' => 'text-center','scope'=>'col'),
                     'filter' => CHtml::activeTextField($model, 'booking_id', array('class' => 'form-control')),
                 ),
-
+                array(
+                    'header' => 'Комментарий',
+                    'name' => 'comment',
+                    'type' => 'raw',
+                    'value' => '"<div data-comment-id=\"".$data->id."\">".$data->comment."</div>"',
+                    'htmlOptions' => array('class'=>'text-center'),
+                    'headerHtmlOptions' => array('class' => 'text-center','scope'=>'col'),
+                    'filter' => CHtml::activeTextField($model, 'comment', array('class' => 'form-control')),
+                ),
                 array(
                     'header' => 'Статус',
                     'name' => 'status',
@@ -124,18 +132,7 @@
                     'htmlOptions' => array('class'=>'text-center'),
                     'filter' => Questionnaire::getStatusName(),
                     'headerHtmlOptions' => array('class' => 'text-center','scope'=>'col'),
-                ),
-
-                array(
-                    'header' => 'Комментарий',
-                    'name' => 'comment',
-                    'type' => 'raw',
-                    'value' => '$data->comment',
-                    'htmlOptions' => array('class'=>'text-center'),
-                    'headerHtmlOptions' => array('class' => 'text-center','scope'=>'col'),
-                    'filter' => CHtml::activeTextField($model, 'comment', array('class' => 'form-control')),
-                ),
-
+                )
             ),
         ));
         ?>

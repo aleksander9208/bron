@@ -7,7 +7,7 @@ window.z =
         //Название модуля
         name:'z_core',
         //Версия библиотеки
-        version: '190206',
+        version: '190210',
         //Поддиректория проекта
         path: '/',
         //Активность системы
@@ -139,6 +139,55 @@ window.z =
                         {
                             event.preventDefault();
                             return false;
+                        }
+                ).on(
+                    'click.'+_self.name,
+                    '[data-comment-id]',
+                    function ()
+                        {
+                            if ($(this).children('textarea').length==0)
+                                {
+                                    var val_anketa_id = $(this).attr('data-comment-id')|0;
+                                    var val = $(this).html();
+                                    var el_text_area = $('<textarea class="form-control" rows="3"></textarea>');
+                                    el_text_area.attr('data-aid', val_anketa_id).val(val);
+                                    $(this).html(el_text_area);
+                                    el_text_area.focus();
+                                }
+                        }
+                ).on(
+                    'blur.'+_self.name,
+                    'textarea[data-aid]',
+                    function ()
+                        {
+                            var val = $(this).val();
+                            var val_anketa_id = $(this).attr('data-aid')|0;
+                            $( '<div class="comment-snipper d-flex justify-content-center align-items-center"><div class="spinner-border" role="status"><span class="sr-only">Обмен данными...</span></div></div>' ).insertBefore(this);
+
+                            _self.modules.ajax.get(
+                                'setcomment',
+                                {
+                                    url: _self.path+'ajax/setcomment',
+                                    data: {
+                                        questionnaire_id: val_anketa_id,
+                                        comment: val
+                                    }
+                                },
+                                _self.tasks.add(
+                                    'Добавление комметария',
+                                    '',
+                                    function (result)
+                                        {
+                                            if (result.errors.length>0)
+                                                {
+                                                    _self.log(_self.name, 'init_listners', result.errors.join('<br/>'), false);
+                                                    $('.comment-snipper').remove();
+                                                }
+                                                    else
+                                                $('[data-comment-id="'+result.data.questionnaire_id+'"]').html(result.data.comment);
+                                        }
+                                )
+                            );
                         }
                 );
 
