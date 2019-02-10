@@ -54,6 +54,23 @@ class AjaxController extends Controller
         }
     }
 
+
+    public function actionSetMain()
+    {
+        if (Yii::app()->user->checkAccess(User::ROLE_ADMIN)) {
+            $questionnaireId = Yii::app()->request->getParam('questionnaire_id', 0);
+            $main = Yii::app()->request->getParam('is_main', 0);
+            if (Yii::app()->request->isPostRequest) {
+                Yii::app()->db->createCommand()->update('{{questionnaire}}', array('is_main' => (int)$main), 'id=:id', array('id' => (int)$questionnaireId));
+                $this->out['data'] = array('questionnaire_id' => (int)$questionnaireId, 'is_main' => (int)$main);
+            } else {
+                $this->out['errors'] = array('Парамерты не заданы');
+            }
+        } else {
+            throw new CHttpException(401, 'Страница не найдена');
+        }
+    }
+
     public function actionSetComment()
     {
         if (Yii::app()->user->checkAccess(User::ROLE_ADMIN)) {
