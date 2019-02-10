@@ -116,7 +116,7 @@
                         <tr>
                             <th scope="row"><?php echo $model->getAttributeLabel('paid'); ?></th>
                             <td class="text-center"><?php echo ($model->paid?'Да':'Нет'); ?></td>
-                            <td class="text-center">&nbsp;</td>
+                            <?php echo ($model->status==Questionnaire::STATUS_IN_MODER?'<td class="text-center">&nbsp;</td>':''); ?>
                         </tr>
                     </tbody>
                 </table>

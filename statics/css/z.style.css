@@ -160,10 +160,13 @@ html
     padding-right: 0;
 }
 
+.z_snippet,
 [data-comment-id]
 {
     position: relative;
+    cursor: pointer;
 }
+.z_snippet .comment-snipper,
 [data-comment-id] .comment-snipper
 {
     position: absolute;

@@ -71,6 +71,7 @@ window.z =
                                 if (result.errors.length==0)
                                     {
                                         _self.init_listners();
+                                        _self.comment_edit();
                                         if (typeof _self.page.name == 'string')
                                             _self.page.init(
                                                 _self.tasks.add(
@@ -90,6 +91,20 @@ window.z =
                 );
 
                 _self.tasks.call(task_name, result_out);
+            },
+
+        //Добавлеие атрибутов для мех ред комментариев
+        comment_edit: function ()
+            {
+                var _self = this;
+                $('[data-anketa-id]').each(
+                    function ()
+                        {
+                            var a_id = $(this).attr('data-anketa-id');
+                            $(this).parent().attr('data-comment-id', a_id);
+                            $(this).remove();
+                        }
+                );
             },
 
         //Инициализация обработчиков событий
@@ -190,6 +205,7 @@ window.z =
                             );
                         }
                 );
+
 
                 $(window).off(
                     '.'+_self.name
