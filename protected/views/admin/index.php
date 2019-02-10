@@ -106,7 +106,15 @@
                     'headerHtmlOptions' => array('class' => 'text-center','scope'=>'col'),
                     'filter' => array('НЕТ','ДА'),
                 ),
-
+                array(
+                    'header' => 'забронирована',
+                    'name' => 'is_main',
+                    'type' => 'raw',
+                    'value' => 'CHtml::checkBox("is_main",$data->is_main,array("data-zid"=>$data->id))',
+                    'htmlOptions' => array('class'=>'text-center z_snippet'),
+                    'headerHtmlOptions' => array('class' => 'text-center','scope'=>'col'),
+                    'filter' => array('НЕТ','ДА'),
+                ),
                 array(
                     'header' => 'Номер брони',
                     'name' => 'booking_id',
