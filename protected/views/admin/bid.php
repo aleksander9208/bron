@@ -118,6 +118,11 @@
                             <td class="text-center"><?php echo ($model->paid?'Да':'Нет'); ?></td>
                             <?php echo ($model->status==Questionnaire::STATUS_IN_MODER?'<td class="text-center">&nbsp;</td>':''); ?>
                         </tr>
+                        <tr>
+                            <th scope="row"><?php echo $model->getAttributeLabel('is_main'); ?></th>
+                            <td class="text-center"><?php echo ($model->is_main?'Да':'Нет'); ?></td>
+                            <?php echo ($model->status==Questionnaire::STATUS_IN_MODER?'<td class="text-center">&nbsp;</td>':''); ?>
+                        </tr>
                     </tbody>
                 </table>
                 <div class="text-right">
