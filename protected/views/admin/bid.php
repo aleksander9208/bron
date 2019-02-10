@@ -103,6 +103,13 @@
                             <td class="text-center"><?php echo CHtml::encode($model->shift_id); ?></td>
                             <td class="text-center">&nbsp;</td>
                         </tr>
+                        <?php if ($model->$model->comment) { ?>
+                        <tr>
+                            <th scope="row"><?php echo $model->getAttributeLabel('comment'); ?></th>
+                            <td class="text-center"><?php echo CHtml::encode($model->comment); ?></td>
+                            <td class="text-center">&nbsp;</td>
+                        </tr>
+                        <?php } ?>
                         <tr>
                             <th scope="row"><?php echo $model->getAttributeLabel('dlo_id'); ?></th>
                             <td class="text-center"><?php foreach ($shifts[$model->shift_id]['dlo'] as $d) { echo Questionnaire::getDLOName($d).'; '; } ?></td>
