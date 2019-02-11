@@ -4,14 +4,14 @@
             <h3><?php echo CHtml::encode($title); ?></h3>
             <div id="page_profile_changer_send_alert" class="alert <?php echo (Yii::app()->user->hasFlash('q_error')?'alert-danger':(Yii::app()->user->hasFlash('q_done')?'alert-success':'d-none')); ?>" role="alert">
                 <?php echo (Yii::app()->user->hasFlash('q_error')?Yii::app()->user->getFlash('q_error'):''); ?>
-                <?php echo (Yii::app()->user->hasFlash('q_done')?'Заявка успешон отправлена':''); ?>
+                <?php echo (Yii::app()->user->hasFlash('q_done')?'Заявка успешно отправлена':''); ?>
             </div>
             <?php echo CHtml::form('', 'post', array('class' => 'needs-validation', 'id'=>'z_anketa_form')); ?>
 
             <?php if ($user->checkAccess(User::ROLE_ADMIN)) { ?>
                 <div class="form-group">
                     <?php echo CHtml::activeLabel($model, 'created', array('for'=>'z_anketa_created')); ?>
-                    <?php
+                    <?php echo $model->created;
                     $this->widget('zii.widgets.jui.CJuiDatePicker', array(
                         'name' => 'created',
                         'attribute' => 'created',
@@ -20,12 +20,12 @@
                         'options' => array(
                             'locale' => 'ru',
                             'defaultTimeZone' => 'Europe/Moscow',
-                            'dateFormat' => 'yy-mm-dd',
-                            'defaultDate' => date("Y-m-d"), //$model->birthday_child,
-                            'altFormat' => 'yy-mm-dd',
+                            'dateFormat' => 'dd-mm-yy',
+                            'defaultDate' => date("d-m-Y"), //$model->birthday_child,
+                            'altFormat' => 'dd-mm-yy',
                             'changeMonth' => true,
                             'changeYear' => true,
-                            //  'appendText' => 'yyyy-mm-dd',
+                            'appendText' => 'yyyy-mm-dd',
                             'yearRange' => '-18:+0',
                         ),
                         'htmlOptions' => array(
@@ -115,9 +115,9 @@
                     'options' => array(
                         'locale' => 'ru',
                         'defaultTimeZone' => 'Europe/Moscow',
-                        'dateFormat' => 'yy-mm-dd',
+                        'dateFormat' => 'dd-mm-yy',
                         //    'defaultDate' => $model->birthday_child,
-                        'altFormat' => 'yy-mm-dd',
+                        'altFormat' => 'dd-mm-yy',
                         'changeMonth' => true,
                         'changeYear' => true,
                         'yearRange' => '-18:+0',

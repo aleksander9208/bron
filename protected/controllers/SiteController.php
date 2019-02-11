@@ -38,7 +38,7 @@ class SiteController extends Controller
             $model->putData(Yii::app()->user->id);
         }
         if (Yii::app()->user->checkAccess(User::ROLE_ADMIN)) {
-            $model->created = date('Y-m-d H:i:s');
+            $model->created = date('d-m-Y H:i:s');
         }
 
         $postQuestionnaire = Yii::app()->request->getPost('Questionnaire', array());
