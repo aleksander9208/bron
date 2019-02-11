@@ -14,7 +14,8 @@
 {
     font-weight: bold;
 }
-#z_page_anketa #z_anketa_table .z_anketa_counts
+#z_page_anketa #z_anketa_table .z_anketa_counts,
+#z_page_anketa #z_anketa_table .z_anketa_age
 {
     font-size: 0.6rem;
 }
