@@ -6,7 +6,7 @@ if (typeof window.z == 'object')
             //Название модуля
             name:'z_page_anketa_view',
             //Версия библиотеки
-            version: '190209',
+            version: '190211',
             //Указатель на глобалный объект
             z: window.z,
             //Хранилище данных
