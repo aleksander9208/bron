@@ -371,7 +371,7 @@ class Questionnaire extends CActiveRecord
     {
         if ($this->isNewRecord) {
             $q = Questionnaire::model()->findByAttributes(array('fio_child' => $this->$attribute, 'shift_id' => $this->shift_id));
-            if ($q && ($q->status!=self::STATUS_CANCELED)) {
+            if ($q && ($q->status != self::STATUS_CANCELED)) {
                 $this->addError($attribute, 'Указанный ребенок был ранее указан в другой заявке');
                 return false;
             }
@@ -792,7 +792,7 @@ class Questionnaire extends CActiveRecord
         if (is_numeric($this->shift_name)) {
             switch ($this->shift_name) {
                 case 1:
-                    $criteria->addInCondition('t.shift_id', array(self::SHIFT_KIROVEC_1,self::SHIFT_BLUESCREEN_1, self::SHIFT_EAST_1, self::SHIFT_DIAMOND_1, self::SHIFT_BONFIRE_1, self::SHIFT_LIGHTHOUSE_1, self::SHIFT_FLYGHT_1));
+                    $criteria->addInCondition('t.shift_id', array(self::SHIFT_KIROVEC_1, self::SHIFT_BLUESCREEN_1, self::SHIFT_EAST_1, self::SHIFT_DIAMOND_1, self::SHIFT_BONFIRE_1, self::SHIFT_LIGHTHOUSE_1, self::SHIFT_FLYGHT_1));
                     break;
                 case 2:
                     $criteria->addInCondition('t.shift_id', array(self::SHIFT_KIROVEC_2, self::SHIFT_BLUESCREEN_2, self::SHIFT_EAST_2, self::SHIFT_DIAMOND_2, self::SHIFT_BONFIRE_2, self::SHIFT_LIGHTHOUSE_2, self::SHIFT_FLYGHT_2));
@@ -832,18 +832,20 @@ class Questionnaire extends CActiveRecord
         return new CActiveDataProvider('Questionnaire', array(
             'criteria' => $criteria,
             'pagination' => array(
-                'pageSize' => ($stat?2000:20),
+                'pageSize' => ($stat ? 2000 : 20),
                 'route' => $route,
             ),
             'sort' => $sort,
         ));
     }
 
-    public function putData($userId) {
+    public function putData($userId)
+    {
         $result = Yii::app()->db->createCommand()
             ->select('*')
             ->from('{{questionnaire}}')
-            ->where('status=:status', array('status' => Questionnaire::STATUS_OK))
+            ->where('user_id=:user', array('user' => $userId))
+            ->order('id DESC')
             ->queryRow();
         if ($result) {
             $this->residence = $result['residence'];
@@ -858,7 +860,7 @@ class Questionnaire extends CActiveRecord
 
     public function __set($var, $value)
     {
-        if (in_array($var, array('status', 'booking_id','is_main')) && !array_key_exists($var, $this->changedAttr)) {
+        if (in_array($var, array('status', 'booking_id', 'is_main')) && !array_key_exists($var, $this->changedAttr)) {
             $this->changedAttr[$var] = $this->$var;
         }
 
