@@ -6,6 +6,10 @@
 {
     display: none;
 }
+#z_page_anketa #z_anketa_table
+{
+    font-size: 0.8rem;
+}
 #z_page_anketa #z_anketa_table label
 {
     font-weight: bold;
