@@ -179,10 +179,11 @@ if (typeof window.z == 'object')
                 {
                     var _self = this;
 
-                    var val_phone = el_phone.val().toLowerCase().split('-').join('').split(' ').join('').split('(').join('').split(')').join('');
+                    var val_phone = el_phone.val().toLowerCase();
                     var is_valid = (val_phone.length==(el_phone.attr('maxlength')));
                     if (is_valid==true)
                         {
+                            val_phone = val_phone.split('-').join('').split(' ').join('').split('(').join('').split(')').join('');
                             var val_mask = el_phone.attr('data-mask');
                             var val_len = val_phone.length;
                             for (var i=0; i<val_len; i++)

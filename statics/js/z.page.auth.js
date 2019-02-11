@@ -43,6 +43,30 @@ if (typeof window.z == 'object')
                             {
                                 _self.validate_phone();
                             }
+                    ).on(
+                        'keypress.'+_self.name,
+                        '#z_auth_user_fio',
+                        function (event)
+                            {
+
+                                var char_one = (event.which || event.keyCode);
+                                var val_mask = ($(this).data('mask')).toUpperCase();
+                                var val_key = String.fromCharCode(char_one).toUpperCase();
+                                var val_eng_abc = 'abcdefghijklmnopqrstuvwxyz'.toUpperCase();
+                                if (
+                                    val_mask.indexOf(val_key)==-1 &&
+                                    val_eng_abc.indexOf(val_key)!=-1
+                                )
+                                    $(this).popover(
+                                        {
+                                            container: 'body',
+                                            content: 'Переключитесь на русский язык',
+                                            placement: 'bottom'
+                                        }
+                                    ).popover('show');
+                                        else
+                                    $(this).popover('hide');
+                            }
                     );
 
                     $(_self.z.el.z_auth_user_phone).mask('(999) 999-99-99');
@@ -98,10 +122,11 @@ if (typeof window.z == 'object')
                 {
                     var _self = this;
                     _self.error('');
-                    var val_phone = _self.z.el.z_auth_user_phone.val().toLowerCase().split('-').join('').split(' ').join('').split('(').join('').split(')').join('');
+                    var val_phone = _self.z.el.z_auth_user_phone.val().toLowerCase();
                     var is_valid = (val_phone.length==(_self.z.el.z_auth_user_phone.attr('maxlength')));
                     if (is_valid==true)
                         {
+                            val_phone = val_phone.split('-').join('').split(' ').join('').split('(').join('').split(')').join('');
                             var val_mask = _self.z.el.z_auth_user_phone.attr('data-mask');
                             var val_len = val_phone.length;
                             for (var i=0; i<val_len; i++)
