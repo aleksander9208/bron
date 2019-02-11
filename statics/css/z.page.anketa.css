@@ -19,3 +19,8 @@
 {
     font-size: 0.6rem;
 }
+
+#z_page_anketa #z_anketa_table .custom-control-label
+{
+    white-space: nowrap;
+}
