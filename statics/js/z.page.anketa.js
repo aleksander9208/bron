@@ -6,7 +6,7 @@ if (typeof window.z == 'object')
             //Название модуля
             name:'z_page_anketa',
             //Версия библиотеки
-            version: '190208',
+            version: '190211',
             //Указатель на глобалный объект
             z: window.z,
             //Хранилище данных
@@ -104,6 +104,10 @@ if (typeof window.z == 'object')
                                 _self.validate(event);
                             }
                     );
+
+                    $.noConflict();
+                    $(_self.z.el.z_anketa_tel_ur_contact).mask('(999) 999-99-99');
+                    $(_self.z.el.z_anketa_tel_parent).mask('(999) 999-99-99');
 
                     _self.z.tasks.call(task_name, result_out);
                 },
@@ -206,7 +210,8 @@ if (typeof window.z == 'object')
                 {
                     var _self = this;
 
-                    var val_phone = el_phone.val().toLowerCase();
+                    var val_phone = el_phone.val().toLowerCase().split('-').join('').split(' ').join('').split('(').join('').split(')').join('');
+                    console.log(val_phone);
                     var is_valid = (val_phone.length==(el_phone.attr('maxlength')));
                     if (is_valid==true)
                         {

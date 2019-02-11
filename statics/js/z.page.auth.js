@@ -6,7 +6,7 @@ if (typeof window.z == 'object')
             //Название модуля
             name:'z_page_auth',
             //Версия библиотеки
-            version: '190206',
+            version: '190211',
             //Указатель на глобалный объект
             z: window.z,
             //Хранилище данных
@@ -44,6 +44,8 @@ if (typeof window.z == 'object')
                                 _self.validate_phone();
                             }
                     );
+
+                    $(_self.z.el.z_auth_user_phone).mask('(999) 999-99-99');
 
                     _self.z.tasks.call(task_name, result_out);
                 },
@@ -96,7 +98,7 @@ if (typeof window.z == 'object')
                 {
                     var _self = this;
                     _self.error('');
-                    var val_phone = _self.z.el.z_auth_user_phone.val().toLowerCase();
+                    var val_phone = _self.z.el.z_auth_user_phone.val().toLowerCase().split('-').join('').split(' ').join('').split('(').join('').split(')').join('');
                     var is_valid = (val_phone.length==(_self.z.el.z_auth_user_phone.attr('maxlength')));
                     if (is_valid==true)
                         {

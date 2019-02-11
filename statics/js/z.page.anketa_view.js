@@ -86,6 +86,12 @@ if (typeof window.z == 'object')
                             }
                     );
 
+                    $.noConflict();
+                    if (typeof _self.z.el.z_anketa_tel_ur_contact == 'object')
+                        $(_self.z.el.z_anketa_tel_ur_contact).mask('(999) 999-99-99');
+                    if (typeof _self.z.el.z_anketa_tel_parent == 'object')
+                        $(_self.z.el.z_anketa_tel_parent).mask('(999) 999-99-99');
+
                     _self.z.tasks.call(task_name, result_out);
                 },
 
@@ -173,7 +179,7 @@ if (typeof window.z == 'object')
                 {
                     var _self = this;
 
-                    var val_phone = el_phone.val().toLowerCase();
+                    var val_phone = el_phone.val().toLowerCase().split('-').join('').split(' ').join('').split('(').join('').split(')').join('');
                     var is_valid = (val_phone.length==(el_phone.attr('maxlength')));
                     if (is_valid==true)
                         {

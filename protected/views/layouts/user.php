@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/statics/css/fb.style.css" type="text/css" media="screen" />
 
         <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/js/jquery/jquery.min.js"></script>
-        <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/js/jquery/jquery.sortelements.js"></script>
+        <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/js/jquery/jquery.mask.js"></script>
         <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/js/fb.core.js"></script>
         <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/js/fb.tasks.js"></script>
         <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/statics/js/fb.module.ajax.js"></script>
