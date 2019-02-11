@@ -245,8 +245,8 @@ class Questionnaire extends CActiveRecord
 
     public function beforeSave()
     {
-        $this->created = date('Y-m-d H:i:s',strtotime($this->created));
-        $this->birthday_child = date('Y-m-d H:i:s',strtotime($this->birthday_child));
+        $this->created = date('Y-m-d H:i:s', strtotime($this->created));
+        $this->birthday_child = date('Y-m-d H:i:s', strtotime($this->birthday_child));
 
         return parent::beforeSave();
     }
@@ -390,9 +390,23 @@ class Questionnaire extends CActiveRecord
             return false;
         }
         if ($this->$attribute && !self::getCAMPByShift($this->$attribute)) {
-            $this->addError($attribute, 'Указанна несуществующая смена' . var_export($this->$attribute, true));
+            $this->addError($attribute, 'Указанна несуществующая смена');
 
             return false;
+        }
+
+        $dlos = self::getDLOSByParams(false, $this->$attribute);
+        foreach ($dlos as $d) {
+            foreach (self::getShiftsByParams(false, $d) as $shiftId) {
+                if ($shiftId != $this->$attribute) {
+                    $cq = Questionnaire::model()->countByAttributes(array('fio_child' => $this->fio_child, 'shift_id' => $shiftId), 'status!=:stat', array('stat' => Questionnaire::STATUS_CANCELED));
+                    if ($cq) {
+                        $this->addError($attribute, 'Выбранные смены не могут пересекаться по временным периодам');
+
+                        return false;
+                    }
+                }
+            }
         }
 
         return true;
