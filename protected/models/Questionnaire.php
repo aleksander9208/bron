@@ -191,7 +191,15 @@ class Questionnaire extends CActiveRecord
         } elseif ($this->scenario == 'mod') {
             if (isset($this->changedAttr['status']) && ($this->changedAttr['status'] != $this->status) && ($this->status == self::STATUS_OK)) {
                 if (is_null($this->booking_id)) {
-                    $this->booking_id = hexdec(uniqid());
+                    $shifts = SiteService::getShifts();
+                    if (Questionnaire::model()->countByAttributes(array('shift_id'=>$this->shift_id,'status'=>self::STATUS_OK)) <  $shifts[$this->shift_id]['seats']) {
+                        do {
+                            $this->booking_id = $this->getPref($this->shift_id).rand(1,10000);
+                            if (!Questionnaire::model()->countByAttributes(array('booking_id' =>  $this->booking_id))) {
+                                break;
+                            }
+                        } while (0);
+                    }
                 }
                 $this->name_ur_check = 0;
                 $this->fio_ur_contact_check = 0;
@@ -879,6 +887,95 @@ class Questionnaire extends CActiveRecord
             $this->name_ur = $result['name_ur'];
             $this->tel_ur_contact = $result['tel_ur_contact'];
             $this->email_ur_contact = $result['email_ur_contact'];
+        }
+    }
+
+    protected function getPref($shiftId)
+    {
+        switch ($shiftId) {
+            case self::SHIFT_KIROVEC_1:
+                return '1К';
+                break;
+            case self::SHIFT_KIROVEC_2:
+                return '2К';
+                break;
+            case self::SHIFT_KIROVEC_3:
+                return '3К';
+                break;
+            case self::SHIFT_KIROVEC_4:
+                return '4К';
+                break;
+            case self::SHIFT_KIROVEC_5:
+                return '5К';
+                break;
+            case self::SHIFT_BLUESCREEN_1:
+                return '1Г';
+                break;
+            case self::SHIFT_BLUESCREEN_2:
+                return '2Г';
+                break;
+            case self::SHIFT_BLUESCREEN_3:
+                return '3Г';
+                break;
+            case self::SHIFT_BLUESCREEN_4:
+                return '4Г';
+                break;
+            case self::SHIFT_EAST_1:
+                return '1В';
+                break;
+            case self::SHIFT_EAST_2:
+                return '1В';
+                break;
+            case self::SHIFT_EAST_3:
+                return '1В';
+                break;
+            case self::SHIFT_DIAMOND_1:
+                return '1А';
+                break;
+            case self::SHIFT_DIAMOND_2:
+                return '2А';
+                break;
+            case self::SHIFT_DIAMOND_3:
+                return '3А';
+                break;
+            case self::SHIFT_DIAMOND_4:
+                return '4А';
+                break;
+            case self::SHIFT_BONFIRE_1:
+                return '1КС';
+                break;
+            case self::SHIFT_BONFIRE_2:
+                return '2КС';
+                break;
+            case self::SHIFT_BONFIRE_3:
+                return '3КС';
+                break;
+            case self::SHIFT_BONFIRE_4:
+                return '4КС';
+                break;
+            case self::SHIFT_LIGHTHOUSE_1:
+                return '1М';
+                break;
+            case self::SHIFT_LIGHTHOUSE_2:
+                return '2М';
+                break;
+            case self::SHIFT_LIGHTHOUSE_3:
+                return '3М';
+                break;
+            case self::SHIFT_FLYGHT_1:
+                return '1П';
+                break;
+            case self::SHIFT_FLYGHT_2:
+                return '2П';
+                break;
+            case self::SHIFT_FLYGHT_3:
+                return '3П';
+                break;
+            case self::SHIFT_FLYGHT_4:
+                return '4П';
+                break;
+            default:
+                return '';
         }
     }
 
