@@ -205,7 +205,7 @@ if (typeof window.z == 'object')
                     var is_valid = _self.validate_required(el_email);
                     if (is_valid==true)
                         {
-                            var val_email = el_email.val().toLowerCase();;
+                            var val_email = el_email.val().toLowerCase();
                             var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
                             is_valid = re.test(String(val_email).toLowerCase());
                         }
@@ -218,7 +218,7 @@ if (typeof window.z == 'object')
                 {
                     var _self = this;
 
-                    var val_date = el_date.val().toLowerCase();
+                    var val_date = el_date.val().toLowerCase().split('-').reverse().join('-');
                     var val_len = val_date.length;
                     var is_valid = (val_len==(el_date.attr('maxlength')));
                     if (is_valid==true)

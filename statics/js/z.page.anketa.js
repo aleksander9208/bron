@@ -250,7 +250,7 @@ if (typeof window.z == 'object')
                 {
                     var _self = this;
 
-                    var val_date = el_date.val().toLowerCase();
+                    var val_date = el_date.val().toLowerCase().split('-').reverse().join('-');
                     var val_len = val_date.length;
                     var is_valid = (val_len==(el_date.attr('maxlength')));
                     if (is_valid==true)
