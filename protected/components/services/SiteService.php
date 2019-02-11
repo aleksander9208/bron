@@ -372,5 +372,20 @@ class SiteService
         return '<div class="z_anketa_counts">' . ($seatsFrom > $seatsTo ? $seatsTo : $seatsFrom) . ' из ' . $seatsTo . ($seatsFrom > $seatsTo ? '. В резерве: ' . abs($seatsTo - $seatsFrom) : '') . '</div>' ;
     }
 
+    public static function templateDloRange($shiftId)
+    {
+        $shifts = self::getShifts();
+        $dloArr = array();
+        if (isset($shifts[$shiftId])) {
+            foreach ($shifts[$shiftId]['dlo'] as $d) {
+                $dloArr[] = Questionnaire::getDLOName($d);
+            }
+            if ($dloArr) {
+                return '('.implode(';', $dloArr).')';
+            }
+
+        }
+        return '';
+    }
 
 }

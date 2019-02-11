@@ -70,19 +70,20 @@
                     array(
                         'header' => 'Cмена',
                         'name' => 'shift_id',
-                        'value' => 'Questionnaire::getShiftName($data->shift_id)',
+                        'type' => 'raw',
+                        'value' => 'Questionnaire::getShiftName($data->shift_id)."<br>".SiteService::templateDloRange($data->shift_id)',
                         'filter' => false,
                         'htmlOptions' => array('class' => 'text-center'),
                         'headerHtmlOptions' => array('class' => 'text-center', 'scope' => 'col'),
                     ),
-                    array(
+                    /*array(
                         'header' => 'Дата подачи',
                         'name' => 'created',
                         'value' => '$data->created',
                         'filter' => false,
                         'htmlOptions' => array('class' => 'text-center'),
                         'headerHtmlOptions' => array('class' => 'text-center', 'scope' => 'col'),
-                    ),
+                    ),*/
                     array(
                         'header' => 'Информация',
                         'name' => 'status',

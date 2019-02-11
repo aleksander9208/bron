@@ -394,16 +394,17 @@ class Questionnaire extends CActiveRecord
 
             return false;
         }
+        if ($this->isNewRecord) {
+            $dlos = self::getDLOSByParams(false, $this->$attribute);
+            foreach ($dlos as $d) {
+                foreach (self::getShiftsByParams(false, $d) as $shiftId) {
+                    if ($shiftId != $this->$attribute) {
+                        $cq = Questionnaire::model()->countByAttributes(array('fio_child' => $this->fio_child, 'shift_id' => $shiftId), 'status!=:stat', array('stat' => Questionnaire::STATUS_CANCELED));
+                        if ($cq) {
+                            $this->addError($attribute, 'Выбранные смены не могут пересекаться по временным периодам');
 
-        $dlos = self::getDLOSByParams(false, $this->$attribute);
-        foreach ($dlos as $d) {
-            foreach (self::getShiftsByParams(false, $d) as $shiftId) {
-                if ($shiftId != $this->$attribute) {
-                    $cq = Questionnaire::model()->countByAttributes(array('fio_child' => $this->fio_child, 'shift_id' => $shiftId), 'status!=:stat', array('stat' => Questionnaire::STATUS_CANCELED));
-                    if ($cq) {
-                        $this->addError($attribute, 'Выбранные смены не могут пересекаться по временным периодам');
-
-                        return false;
+                            return false;
+                        }
                     }
                 }
             }
