@@ -84,6 +84,34 @@ if (typeof window.z == 'object')
                             {
                                 _self.validate(event);
                             }
+                    ).on(
+                        'keypress.'+_self.name,
+                        [
+                            '#z_anketa_name_ur',
+                            '#z_anketa_fio_child',
+                            '#z_anketa_fio_parent'
+                        ].join(),
+                        function (event)
+                            {
+
+                                var char_one = (event.which || event.keyCode);
+                                var val_mask = ($(this).data('mask')).toUpperCase();
+                                var val_key = String.fromCharCode(char_one).toUpperCase();
+                                var val_eng_abc = 'abcdefghijklmnopqrstuvwxyz'.toUpperCase();
+                                if (
+                                    val_mask.indexOf(val_key)==-1 &&
+                                    val_eng_abc.indexOf(val_key)!=-1
+                                )
+                                    $(this).popover(
+                                        {
+                                            container: 'body',
+                                            content: 'Переключитесь на русский язык',
+                                            placement: 'bottom'
+                                        }
+                                    ).popover('show');
+                                        else
+                                    $(this).popover('hide');
+                            }
                     );
 
                     $.noConflict();
