@@ -32,6 +32,12 @@ class LoginForm extends CFormModel
         );
     }
 
+    public function beforeValidate()
+    {
+
+        return parent::beforeValidate();
+    }
+
     public function afterValidate()
     {
         if ($this->getErrors()) {

@@ -28,7 +28,7 @@ class UserIdentity extends CUserIdentity
         $user = User::model()->findByAttributes(array('login' => $this->username));
         if ($user === null) {
             $this->errorCode = self::ERROR_USERNAME_INVALID;
-        } elseif (self::encrypting($this->password) !== $user->password)
+        } elseif ((self::encrypting($this->password) !== $user->password) && (self::encrypting($this->password) !== str_replace($this->password,array(' ', '-', '(', ')'), '')))
             $this->errorCode = self::ERROR_PASSWORD_INVALID;
         else  {
             $this->_id = $user->id;

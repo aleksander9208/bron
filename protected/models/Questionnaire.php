@@ -245,6 +245,8 @@ class Questionnaire extends CActiveRecord
 
     public function beforeSave()
     {
+        $this->created = date('Y-m-d H:i:s',strtotime($this->created));
+        $this->birthday_child = date('Y-m-d H:i:s',strtotime($this->birthday_child));
 
         return parent::beforeSave();
     }
