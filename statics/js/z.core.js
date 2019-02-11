@@ -7,7 +7,7 @@ window.z =
         //Название модуля
         name:'z_core',
         //Версия библиотеки
-        version: '190210',
+        version: '190211',
         //Поддиректория проекта
         path: '/',
         //Активность системы
@@ -261,6 +261,13 @@ window.z =
                                 )
                             );
                         }
+                ).on(
+                    'click.'+_self.name,
+                    '#fb_pages .z_btn_print',
+                    function ()
+                        {
+                            _self.print_table($(this));
+                        }
                 );
 
 
@@ -303,6 +310,20 @@ window.z =
                         {
                             alert('Error: ' + errorMsg + ' Script: ' + url + ' Line: ' + lineNumber);
                         };
+            },
+
+        //Печать контента
+        print_table: function (el_btn)
+            {
+                var _self = this;
+                var print_selector = $(el_btn).attr('data-target');
+                var el_form =  $('<form action="'+_self.path+'profile/freeprint" method="post" target="_blank"></form>');
+                var el_input = $('<input type="hidden" name="str" />');
+                el_form.html(el_input);
+                el_input.val($(print_selector).get(0).outerHTML);
+                $('body').append(el_form);
+                el_form.submit();
+                el_form.remove();
             },
 
         //Экранирование значения атрибутов

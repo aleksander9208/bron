@@ -6,6 +6,9 @@
     <!-- Вкладка «Статистика» -->
 
     <div class="container-fluid px-0">
+        <div class="text-right">
+            <button class="btn btn-info btn-sm my-1 z_btn_print" role="button" data-target="#z_anketa_admin_list_table">Печать таблицы</button>
+        </div>
         <?php
         $this->widget('MyGridView', array(
             'id' => 'z_anketa_admin_list_table',
@@ -71,6 +74,15 @@
                     'htmlOptions' => array('class'=>'text-center'),
                     'filter' => Questionnaire::getTypeName(),
                     'headerHtmlOptions' => array('class' => 'text-center','scope'=>'col'),
+                ),
+
+                array(
+                    'header' => 'Название юр. лица',
+                    'name' => 'name_ur',
+                    'value' => '$data->name_ur',
+                    'htmlOptions' => array('class'=>'text-center'),
+                    'headerHtmlOptions' => array('class' => 'text-center','scope'=>'col'),
+                    'filter' => CHtml::activeTextField($model, 'name_ur', array('class' => 'form-control')),
                 ),
 
                 array(
