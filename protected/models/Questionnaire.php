@@ -489,13 +489,13 @@ class Questionnaire extends CActiveRecord
     public static function getCAMPName($campID = false)
     {
         $arr = array(
-            self::CAMP_KIROVEC => 'Кировец',
-            self::CAMP_BLUESCREEN => 'Голубой экран',
-            self::CAMP_EAST_4 => 'Восток-4',
-            self::CAMP_DIAMOND => 'Алмаз',
-            self::CAMP_BONFIRE => 'Костер',
-            self::CAMP_LIGHTHOUSE => 'Маяк',
-            self::CAMP_FLYGHT => 'Полет',
+            self::CAMP_KIROVEC => '«Кировец»',
+            self::CAMP_BLUESCREEN => '«Голубой экран»',
+            self::CAMP_EAST_4 => '«Восток-4»',
+            self::CAMP_DIAMOND => '«Алмаз»',
+            self::CAMP_BONFIRE => '«Костер»',
+            self::CAMP_LIGHTHOUSE => '«Маяк»',
+            self::CAMP_FLYGHT => '«Полет»',
         );
         if (is_numeric($campID)) {
             if (array_key_exists($campID, $arr)) {

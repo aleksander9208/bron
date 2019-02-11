@@ -49,7 +49,7 @@ class AdminController extends Controller
             $q->attributes = $questionnairePost;
             if ($q->save()) {
                 if ($id) {
-                    Yii::app()->user->setFlash('bid', 'Запись успешно отредактированна');
+                    Yii::app()->user->setFlash('bid', 'Запись успешно отредактирована');
                     $this->refresh();
                 } else {
                     Yii::app()->user->setFlash('bid', 'Запись успешно добавлена');
@@ -112,7 +112,7 @@ class AdminController extends Controller
         if ($reservePost) {
             $r->attributes = $reservePost;
             if ($r->save()) {
-                Yii::app()->user->setFlash('r_done', 'Запись успешно отредактированна');
+                Yii::app()->user->setFlash('r_done', 'Запись успешно отредактирована');
                 $this->refresh();
             } else {
                 Yii::app()->user->setFlash('r_error', implode('<br>', $r->error_arr));

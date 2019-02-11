@@ -51,7 +51,7 @@ class ProfileController extends Controller
             $q->scenario = 'user_up';
             $q->attributes = $questionnairePost;
             if ($q->save()) {
-                Yii::app()->user->setFlash('bid', 'Запись успешно отредактированна');
+                Yii::app()->user->setFlash('bid', (($q->status==Questionnaire::STATUS_CANCELED)?'Заявка отменена':'Запись успешно отредактирована'));
                 $this->refresh();
             }
         }
