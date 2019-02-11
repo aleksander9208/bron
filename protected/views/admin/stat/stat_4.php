@@ -7,8 +7,11 @@ if (!$statData['questionnaire']) { ?>
 
 <?php foreach ($statData['questionnaire'] as $name_ur =>  $k) { ?>
     <?php foreach ($k as  $v) { ?>
-    <label for="z_anketa_table">Сводная таблица по ЮЛ <b><?php echo CHtml::encode($name_ur); ?></b></label>
-    <table id="z_anketa_table" class="table table-bordered table-striped table-hover table-sm">
+        <div class="text-right">
+            <button class="btn btn-info btn-sm my-1 z_btn_print" role="button" data-target="#z_anketa_table_<?php echo $v['id']; ?>">Печать таблицы</button>
+        </div>
+    <label for="z_anketa_table_<?php echo $v['id']; ?>">Сводная таблица по ЮЛ <b><?php echo CHtml::encode($name_ur); ?></b></label>
+    <table id="z_anketa_table_<?php echo $v['id']; ?>" class="table table-bordered table-striped table-hover table-sm">
         <thead class="thead-dark">
         <tr>
             <th scope="col" class="text-center">Лагерь</th>

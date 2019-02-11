@@ -83,6 +83,11 @@ class ProfileController extends Controller
     public function actionFreePrint()
     {
         $this->layout = "print";
+        $cs = Yii::app()->getClientScript();
+        $cs->registerCssFile(Yii::app()->createUrl('/statics/css/z.page.freeprint.css'));
+        $cs->registerCssFile(Yii::app()->createUrl('/statics/css/z.page.freeprint.css?print'), 'print');
+        $cs->registerScriptFile(Yii::app()->createUrl('/statics/js/z.page.freeprint.js'), CClientScript::POS_END);
+
         $text = Yii::app()->request->getParam('str', '');
 
         $this->render('print', array('text' => $text));

@@ -8,7 +8,9 @@
 
         <div id="camp_<?php echo $campId; ?>" class="collapse" aria-labelledby="camp_header_<?php echo $campId; ?>" data-parent="#accordion_dlo">
             <div class="card-body p-0">
-
+                <div class="text-right">
+                    <button class="btn btn-info btn-sm my-1 z_btn_print" role="button" data-target="#z_anketa_table_<?php echo $campId; ?>">Печать таблицы</button>
+                </div>
                 <table id="z_anketa_table_<?php echo $campId; ?>" class="table table-bordered table-striped table-hover table-sm mb-0">
                     <thead class="thead-dark">
                         <tr>

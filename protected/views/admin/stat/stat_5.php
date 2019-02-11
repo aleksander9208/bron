@@ -9,10 +9,13 @@ if (!$statData['questionnaire']) { ?>
         <?php foreach ($vvvv as $campId => $vvv) { ?>
             <?php foreach ($vvv as $shiftId => $vv) { ?>
                 <?php foreach ($vv as $v) { ?>
-                    <label for="z_anketa_table">Сводная таблица по ЮЛ <b><?php echo CHtml::encode($name_ur); ?></b>
+                    <div class="text-right">
+                        <button class="btn btn-info btn-sm my-1 z_btn_print" role="button" data-target="#z_anketa_table_<?php echo $v['id']; ?>_<?php echo $campId; ?>_<?php echo $shiftId; ?>">Печать таблицы</button>
+                    </div>
+                    <label for="z_anketa_table_<?php echo $v['id']; ?>_<?php echo $campId; ?>_<?php echo $shiftId; ?>">Сводная таблица по ЮЛ <b><?php echo CHtml::encode($name_ur); ?></b>
                         ,лагерю <b><?php echo Questionnaire::getCAMPName($campId); ?></b> и их смене
                         <b><?php echo Questionnaire::getShiftName($shiftId); ?></b></label>
-                    <table id="z_anketa_table" class="table table-bordered table-striped table-hover table-sm">
+                    <table id="z_anketa_table_<?php echo $v['id']; ?>_<?php echo $campId; ?>_<?php echo $shiftId; ?>" class="table table-bordered table-striped table-hover table-sm">
                         <thead class="thead-dark">
                             <tr>
                                 <th scope="col" class="text-center">Лагерь</th>

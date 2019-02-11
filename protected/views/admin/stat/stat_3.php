@@ -15,7 +15,10 @@
                                             <div class="card-header btn btn-link text-left" id="camp_header_<?php echo $campId; ?>_<?php echo $shiftId; ?>"  data-toggle="collapse" data-target="#camp_<?php echo $campId; ?>_<?php echo $shiftId; ?>" aria-expanded="false" aria-controls="camp_<?php echo $campId; ?>_<?php echo $shiftId; ?>">Смена <b><?php echo Questionnaire::getShiftName($shiftId); ?></b></div>
                                             <div id="camp_<?php echo $campId; ?>_<?php echo $shiftId; ?>" class="collapse" aria-labelledby="camp_header_<?php echo $campId; ?>_<?php echo $shiftId; ?>" data-parent="#accordion_dlo_<?php echo $campId; ?>">
                                                 <div class="card-body p-0">
-                                                    <table id="z_anketa_table" class="table table-bordered table-striped table-hover table-sm">
+                                                    <div class="text-right">
+                                                        <button class="btn btn-info btn-sm my-1 z_btn_print" role="button" data-target="#z_anketa_table_<?php echo $campId; ?>_<?php echo $shiftId; ?>">Печать таблицы</button>
+                                                    </div>
+                                                    <table id="z_anketa_table_<?php echo $campId; ?>_<?php echo $shiftId; ?>" class="table table-bordered table-striped table-hover table-sm">
                                                         <thead class="thead-dark">
                                                         <tr>
                                                             <th scope="col" class="text-center">Лагерь</th>

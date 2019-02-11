@@ -1,3 +1,6 @@
+<div class="text-right">
+    <button class="btn btn-info btn-sm mb-1 z_btn_print" role="button" data-target="#z_admin_statistics_table_1">Печать таблицы</button>
+</div>
 <?php
 $this->widget('MyGridView', array(
     'id' => 'z_admin_statistics_table_1',
