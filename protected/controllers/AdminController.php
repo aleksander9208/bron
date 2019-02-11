@@ -26,7 +26,7 @@ class AdminController extends Controller
 
         $this->pageTitle = Yii::app()->name . ' - ' . $title;
         $questionnaire = new Questionnaire();
-        $questionnaire->type = $questionnaire->status = $questionnaire->paid = null;
+        $questionnaire->type = $questionnaire->status = $questionnaire->paid = $questionnaire->is_main = null;
         $questionnairePost = Yii::app()->request->getParam('Questionnaire', array());
         if ($questionnairePost) {
             $questionnaire->attributes = $questionnairePost;
@@ -49,6 +49,13 @@ class AdminController extends Controller
             $q->attributes = $questionnairePost;
             if ($q->save()) {
                 if ($id) {
+
+                    $str = 'Запись успешно отредактирована';
+                    if ($q->status == Questionnaire::STATUS_RETURNED) {
+                        $str = 'Отправлено на доработку';
+                    }
+
+
                     Yii::app()->user->setFlash('bid', 'Запись успешно отредактирована');
                     $this->refresh();
                 } else {

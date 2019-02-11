@@ -793,6 +793,10 @@ class Questionnaire extends CActiveRecord
         }
         $sort->route = $route;
 
+        if (is_numeric($this->id)) {
+            $criteria->compare('t.id', $this->id);
+        }
+
         if (is_numeric($this->type)) {
             $criteria->compare('t.type', $this->type);
         }
@@ -831,10 +835,10 @@ class Questionnaire extends CActiveRecord
         }
 
         if (is_null($this->fromDate)) {
-            $this->fromDate = '2019-01-01';//date('Y-m-d', '2016-01-01');
+            $this->fromDate = '01-01-2019';//date('Y-m-d', '2016-01-01');
         }
         if (is_null($this->toDate)) {
-            $this->toDate = date('Y-m-d');
+            $this->toDate = date('m-d-Y');
         }
         $criteria->addCondition(array('t.created >=:start', 't.created<=:end'));
         $criteria->params['start'] = date('Y-m-d 00:00:00', strtotime($this->fromDate));
@@ -845,6 +849,9 @@ class Questionnaire extends CActiveRecord
         $criteria->compare('t.fio_parent', $this->fio_parent, true);
         $criteria->compare('t.tel_parent', $this->tel_parent, true);
         $criteria->compare('t.booking_id', $this->booking_id, true);
+         if (is_numeric($this->is_main)) {
+             $criteria->compare('t.is_main', $this->is_main);
+         }
 
         return new CActiveDataProvider('Questionnaire', array(
             'criteria' => $criteria,

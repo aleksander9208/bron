@@ -99,13 +99,13 @@
                             <?php echo ($model->status==Questionnaire::STATUS_IN_MODER?'<td class="text-center">'.CHtml::activeCheckBox($model, 'place_of_study_check').'</td>':''); ?>
                         </tr>
                         <tr>
-                            <th scope="row"><?php echo $model->getAttributeLabel('shift_id'); ?></th>
-                            <td class="text-center"><?php echo CHtml::encode($model->shift_id); ?></td>
+                            <th scope="row"><?php echo $model->getAttributeLabel('camp_id'); ?></th>
+                            <td class="text-center"><?php echo CHtml::encode(Questionnaire::getCAMPName($model->camp_id)); ?></td>
                             <?php echo ($model->status==Questionnaire::STATUS_IN_MODER?'<td class="text-center">&nbsp;</td>':''); ?>
                         </tr>
                         <tr>
-                            <th scope="row"><?php echo $model->getAttributeLabel('dlo_id'); ?></th>
-                            <td class="text-center"><?php foreach ($shifts[$model->shift_id]['dlo'] as $d) { echo Questionnaire::getDLOName($d).'; '; } ?></td>
+                            <th scope="row"><?php echo $model->getAttributeLabel('shift_id'); ?></th>
+                            <td class="text-center"><?php echo Questionnaire::getShiftName($model->shift_id).'<br>'.SiteService::templateDloRange($model->shift_id); ?></td>
                             <?php echo ($model->status==Questionnaire::STATUS_IN_MODER?'<td class="text-center">&nbsp;</td>':''); ?>
                         </tr>
                         <tr>
@@ -126,7 +126,7 @@
                     </tbody>
                 </table>
                 <div class="text-right">
-                    <?php if (!in_array($model->status, array(Questionnaire::STATUS_OK, Questionnaire::STATUS_CANCELED))) { ?>
+                    <?php if (!in_array($model->status, array(Questionnaire::STATUS_OK, Questionnaire::STATUS_CANCELED, Questionnaire::STATUS_RETURNED))) { ?>
                         <button class="btn btn-success" name="Questionnaire[status]" value="<?php echo Questionnaire::STATUS_OK; ?>" type="submit">Зарегистрировать</button>
                     <?php } ?>
                     <?php if (in_array($model->status, array(Questionnaire::STATUS_IN_MODER))) { ?>

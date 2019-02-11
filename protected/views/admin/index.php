@@ -14,7 +14,7 @@
             'id' => 'z_anketa_admin_list_table',
             'dataProvider' => $model->getBidList('/admin/index'),
             'ajaxUpdate' =>  'z_anketa_admin_list_table', //false
-            'afterAjaxUpdate' => "function()  { $('#z_anketa_admin_list_table').find('.filters input, .filters select').addClass('form-control form-control-sm'); window.z.comment_edit();  }",
+            'afterAjaxUpdate' => "function()  { $('#z_anketa_admin_list_table').find('.filters input, .filters select').addClass('form-control form-control-sm'); window.z.comment_edit(); jQuery.datepicker.regional['ru'].dateFormat='dd-mm-yy'; jQuery('#from_date').datepicker(jQuery.datepicker.regional['ru'],{'dateFormat':'dd-mm-yy','changeMonth':true, 'changeYear':true,'yearRange':'2000:2019'}); jQuery('#to_date').datepicker(jQuery.datepicker.regional['ru'],{'dateFormat':'dd-mm-yy','changeMonth':true, 'changeYear':true,'yearRange':'2000:2019'});  }",
             'summaryText' => '',
             'filter' => $model,
             'enableHistory' => false,
@@ -51,11 +51,41 @@
                     'filter' => CHtml::activeTextField($model, 'id', array('class' => 'form-control'))
                 ),
                 array(
+                    'header' => 'Лагерь',
+                    'name' => 'camp_id',
+                    'type' => 'raw',
+                    'value' => 'Questionnaire::getCAMPName($data->camp_id)',
+                    'filter' => Questionnaire::getCAMPName(),
+                    'htmlOptions' => array('class' => 'text-center'),
+                    'headerHtmlOptions' => array('class' => 'text-center', 'scope' => 'col'),
+                ),
+                array(
+                    'header' => 'Смена',
+                    'name' => 'shift_name',
+                    'type' => 'raw',
+                    'value' => 'Questionnaire::getShiftName($data->shift_id)',
+                    'filter' => array(1 => 'Смена 1', 2 => 'Смена 2', 3 => 'Смена 3', 4 => 'Смена 4', 5 => 'Смена 5'),
+                    'htmlOptions' => array('class' => 'text-center'),
+                    'headerHtmlOptions' => array('class' => 'text-center', 'scope' => 'col'),
+                ),
+                array(
                     'header' => 'Дата подачи',
                     'name' => 'created',
-                    'value' => '$data->created',
+                    'value' => 'date("d-m-Y h:i:s", strtotime($data->created))',
                     'htmlOptions' => array('class'=>'text-center', 'scope' => 'row'),
-                    'filter' => false,
+                    'filter' => $this->widget('zii.widgets.jui.CJuiDatePicker', array(
+                            'model' => $model,
+                            'attribute' => 'fromDate',
+                            'options' => array('firstDay' => 6, 'dateFormat' => 'dd-mm-yy', 'language' => 'ru'), //, 'changeMonth' => true, 'changeYear' => true, 'yearRange' => '2013:2099'
+                            'language' => 'ru',
+                            'htmlOptions' => array('placeHolder' => 'С:', 'id' => 'from_date', 'readonly' => 'readonly', "class" => "input-medium"),
+                        ), true) . ' ' . $this->widget('zii.widgets.jui.CJuiDatePicker', array(
+                            'model' => $model,
+                            'attribute' => 'toDate',
+                            'options' => array('firstDay' => 6, 'dateFormat' => 'dd-mm-yy', 'language' => 'ru'), //, 'changeMonth' => true, 'changeYear' => true, 'yearRange' => '2013:2099'
+                            'language' => 'ru',
+                            'htmlOptions' => array('placeHolder' => 'По:', 'id' => 'to_date', 'readonly' => 'readonly', "class" => "input-medium"),
+                        ), true),
                     'headerHtmlOptions' => array('class' => 'text-center','scope'=>'col')
                 ),
                 array(
