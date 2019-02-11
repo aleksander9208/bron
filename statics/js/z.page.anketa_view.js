@@ -114,7 +114,7 @@ if (typeof window.z == 'object')
                             }
                     );
 
-                    $.noConflict();
+                    //$.noConflict();
                     if (typeof _self.z.el.z_anketa_tel_ur_contact == 'object')
                         $(_self.z.el.z_anketa_tel_ur_contact).mask('(999) 999-99-99');
                     if (typeof _self.z.el.z_anketa_tel_parent == 'object')
