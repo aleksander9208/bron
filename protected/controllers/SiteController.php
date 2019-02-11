@@ -31,6 +31,7 @@ class SiteController extends Controller
         $cs->registerScriptFile(Yii::app()->createUrl('/statics/js/z.page.anketa.js'), CClientScript::POS_END);
 
         $title = 'Подача заявления';
+        $this->pageTitle = $title;
         $model = new Questionnaire();
 
         if (!Yii::app()->user->getIsGuest()) {

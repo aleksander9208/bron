@@ -67,6 +67,13 @@ if (typeof window.z == 'object')
                                         else
                                     $(this).popover('hide');
                             }
+                    ).on(
+                        'blur.'+_self.name,
+                        '#z_auth_user_fio',
+                        function (event)
+                            {
+                                $(this).popover('hide');
+                            }
                     );
 
                     $(_self.z.el.z_auth_user_phone).mask('(999) 999-99-99');

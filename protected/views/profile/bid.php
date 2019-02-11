@@ -33,6 +33,7 @@
                         <div class="col-sm-8">
                             <?php if($model->name_ur_check) {
                                 echo CHtml::activeTextField($model, 'name_ur', array('class' => 'form-control', 'placeholder' => $model->getAttributeLabel('name_ur'), 'required'=>'required', 'id'=>'z_anketa_name_ur'));
+                                echo '<div class="invalid-feedback">Заполните поле корректно</div>';
                              } else {
                                 echo CHtml::encode($model->name_ur);
                             } ?>
@@ -44,6 +45,7 @@
                         <div class="col-sm-8">
                             <?php if($model->fio_ur_contact_check) {
                                 echo CHtml::activeTextField($model, 'fio_ur_contact', array('class' => 'form-control', 'placeholder' => $model->getAttributeLabel('fio_ur_contact'), 'required'=>'required', 'id'=>'z_anketa_fio_ur_contact', 'data-mask'=>' абвгдеёжзийклмнопрстуфхцчшщъыьэюя-'));
+                                echo '<div class="invalid-feedback">Заполните поле корректно</div>';
                             } else {
                                 echo CHtml::encode($model->fio_ur_contact);
                             } ?>
@@ -60,6 +62,7 @@
                                             '<div class="input-group-text">+7</div>'.
                                         '</div>'.
                                         CHtml::activeTextField($model, 'tel_ur_contact',array('class' => 'form-control', 'placeholder' => $model->getAttributeLabel('tel_ur_contact'), 'required'=>'required', 'id'=>'z_anketa_tel_ur_contact', 'maxlength'=>15, 'data-mask'=>'0123456789')).
+                                        '<div class="invalid-feedback">Заполните поле корректно</div>'.
                                     '</div>';
                             } else {
                                 echo CHtml::encode($model->tel_ur_contact);
@@ -72,6 +75,7 @@
                         <div class="col-sm-8">
                             <?php if($model->email_ur_contact_check) {
                                 echo CHtml::activeTextField($model, 'email_ur_contact', array('class' => 'form-control', 'placeholder' => $model->getAttributeLabel('email_ur_contact'), 'required'=>'required', 'id'=>'z_anketa_email_ur_contact'));
+                                echo '<div class="invalid-feedback">Заполните поле корректно</div>';
                             } else {
                                 echo CHtml::encode($model->email_ur_contact);
                             } ?>
@@ -84,6 +88,7 @@
                     <div class="col-sm-8">
                         <?php if($model->fio_parent_check) {
                             echo CHtml::activeTextField($model, 'fio_parent', array('class' => 'form-control', 'placeholder' => $model->getAttributeLabel('fio_parent'), 'required'=>'required', 'id'=>'z_anketa_fio_parent', 'data-mask'=>' абвгдеёжзийклмнопрстуфхцчшщъыьэюя-'));
+                            echo '<div class="invalid-feedback">Заполните поле корректно</div>';
                         } else {
                             echo CHtml::encode($model->fio_parent);
                         } ?>
@@ -95,6 +100,7 @@
                     <div class="col-sm-8">
                         <?php if($model->residence_check) {
                             echo CHtml::activeTextField($model, 'residence', array('class' => 'form-control', 'placeholder' => $model->getAttributeLabel('residence'), 'required'=>'required', 'id'=>'z_anketa_residence'));
+                            echo '<div class="invalid-feedback">Заполните поле корректно</div>';
                         } else {
                             echo CHtml::encode($model->residence);
                         } ?>
@@ -106,6 +112,7 @@
                     <div class="col-sm-8">
                         <?php if($model->place_of_work_check) {
                             echo CHtml::activeTextField($model, 'place_of_work', array('class' => 'form-control', 'placeholder' => $model->getAttributeLabel('place_of_work'), 'required'=>'required', 'id'=>'z_anketa_place_of_work'));
+                            echo '<div class="invalid-feedback">Заполните поле корректно</div>';
                         } else {
                             echo CHtml::encode($model->place_of_work);
                         } ?>
@@ -117,6 +124,7 @@
                     <div class="col-sm-8">
                         <?php if($model->email_parent_check) {
                             echo CHtml::activeTextField($model, 'email_parent', array('class' => 'form-control', 'placeholder' => $model->getAttributeLabel('email_parent'), 'required'=>'required', 'id'=>'z_anketa_email_parent'));
+                            echo '<div class="invalid-feedback">Заполните поле корректно</div>';
                         } else {
                             echo CHtml::encode($model->email_parent);
                         } ?>
@@ -128,6 +136,7 @@
                     <div class="col-sm-8">
                         <?php if($model->fio_child_check) {
                             echo CHtml::activeTextField($model, 'fio_child', array('class' => 'form-control', 'placeholder' => $model->getAttributeLabel('fio_child'), 'required'=>'required', 'id'=>'z_anketa_fio_child', 'data-mask'=>' абвгдеёжзийклмнопрстуфхцчшщъыьэюя-'));
+                            echo '<div class="invalid-feedback">Заполните поле корректно</div>';
                         } else {
                             echo CHtml::encode($model->fio_child);
                         } ?>
@@ -161,6 +170,7 @@
                                     'maxlength'=>10
                                 ),
                             ));
+                            echo '<div class="invalid-feedback">Заполните поле корректно</div>';
                         } else {
                             echo CHtml::encode($model->birthday_child);
                         } ?>
@@ -172,6 +182,7 @@
                     <div class="col-sm-8">
                         <?php if($model->place_of_study_check) {
                             echo CHtml::activeTextField($model, 'place_of_study', array('class' => 'form-control', 'placeholder' => $model->getAttributeLabel('place_of_study'), 'required'=>'required', 'id'=>'z_anketa_place_of_study'));
+                            echo '<div class="invalid-feedback">Заполните поле корректно</div>';
                         } else {
                             echo CHtml::encode($model->place_of_study);
                         } ?>
@@ -188,6 +199,7 @@
                                         '<div class="input-group-text">+7</div>'.
                                     '</div>'.
                                     CHtml::activeTextField($model, 'tel_parent', array('class' => 'form-control', 'placeholder' => $model->getAttributeLabel('tel_parent'), 'required'=>'required', 'id'=>'z_anketa_tel_parent', 'maxlength'=>15, 'data-mask'=>'0123456789')).
+                                    '<div class="invalid-feedback">Заполните поле корректно</div>'.
                                 '</div>';
                         } else {
                             echo CHtml::encode($model->tel_parent);

@@ -24,7 +24,7 @@ class AdminController extends Controller
         $cs->registerCssFile(Yii::app()->createUrl('/statics/css/z.page.anketa_admin_list.css'));
         $cs->registerScriptFile(Yii::app()->createUrl('/statics/js/z.page.anketa_admin_list.js'), CClientScript::POS_END);
 
-        $this->pageTitle = Yii::app()->name . ' - ' . $title;
+        $this->pageTitle = $title;
         $questionnaire = new Questionnaire();
         $questionnaire->type = $questionnaire->status = $questionnaire->paid = $questionnaire->is_main = null;
         $questionnairePost = Yii::app()->request->getParam('Questionnaire', array());
@@ -38,7 +38,7 @@ class AdminController extends Controller
     public function actionbid($id = 0)
     {
         $title = 'Модерация анкеты';
-        $this->pageTitle = Yii::app()->name . ' - ' . 'Заявка #' . (int)$id;
+        $this->pageTitle = 'Модерация анкеты. Заявка №' . (int)$id;
         $q = Questionnaire::model()->findByPk($id);
         if (!$q) {
             throw new CHttpException(401, 'Страница не найдена');
@@ -72,7 +72,7 @@ class AdminController extends Controller
     {
         $title = 'Статистика';
         $statId = Yii::app()->request->getParam('stat_id', 1);
-        $this->pageTitle = Yii::app()->name . ' - ' . $title;
+        $this->pageTitle = $title;
 
         $cs = Yii::app()->getClientScript();
         $cs->registerCssFile(Yii::app()->createUrl('/statics/css/z.page.admin_statistics_'.$statId.'.css'));
@@ -105,7 +105,7 @@ class AdminController extends Controller
     public function actionReserve()
     {
         $title = 'Резервирование';
-        $this->pageTitle = Yii::app()->name . ' - ' . $title;
+        $this->pageTitle = $title;
 
         $cs = Yii::app()->getClientScript();
         $cs->registerCssFile(Yii::app()->createUrl('/statics/css/z.page.admin_reserve.css'));

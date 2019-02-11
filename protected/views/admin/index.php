@@ -63,7 +63,7 @@
                     'header' => 'Смена',
                     'name' => 'shift_name',
                     'type' => 'raw',
-                    'value' => 'Questionnaire::getShiftName($data->shift_id)',
+                    'value' => 'Questionnaire::getShiftName($data->shift_id)."<br/>".SiteService::templateDloRange($data->shift_id)',
                     'filter' => array(1 => 'Смена 1', 2 => 'Смена 2', 3 => 'Смена 3', 4 => 'Смена 4', 5 => 'Смена 5'),
                     'htmlOptions' => array('class' => 'text-center'),
                     'headerHtmlOptions' => array('class' => 'text-center', 'scope' => 'col'),

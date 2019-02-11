@@ -4,7 +4,7 @@
     foreach (Questionnaire::getCAMPName() as $campId => $campName) { ?>
 
     <div class="card">
-        <div class="card-header btn btn-link text-left" id="camp_header_<?php echo $campId; ?>"  data-toggle="collapse" data-target="#camp_<?php echo $campId; ?>" aria-expanded="false" aria-controls="camp_<?php echo $campId; ?>">Сводная таблица по лагерю <b><?php echo $campName; ?></div>
+        <div class="card-header btn btn-link text-left" id="camp_header_<?php echo $campId; ?>"  data-toggle="collapse" data-target="#camp_<?php echo $campId; ?>" aria-expanded="false" aria-controls="camp_<?php echo $campId; ?>">Сводная таблица по лагерю <b><?php echo $campName; ?></b></div>
 
         <div id="camp_<?php echo $campId; ?>" class="collapse" aria-labelledby="camp_header_<?php echo $campId; ?>" data-parent="#accordion_dlo">
             <div class="card-body p-0">

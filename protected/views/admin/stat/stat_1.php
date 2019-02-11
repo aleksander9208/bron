@@ -36,6 +36,7 @@ $this->widget('MyGridView', array(
         )
     ),
     'columns' => array(
+            /*
         array(
             'header' => '№',
             'name' => 'id',
@@ -45,6 +46,7 @@ $this->widget('MyGridView', array(
             'htmlOptions' => array('class' => 'font-weight-bold text-center', 'scope' => 'row'),
             'headerHtmlOptions' => array('class' => 'text-center', 'scope' => 'col'),
         ),
+            */
         array(
             'header' => 'Лагерь',
             'name' => 'camp_id',

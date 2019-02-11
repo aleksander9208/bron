@@ -5,7 +5,7 @@
             {
     ?>
                 <div class="card">
-                    <div class="card-header btn btn-link text-left" id="camp_header_<?php echo $campId; ?>"  data-toggle="collapse" data-target="#camp_<?php echo $campId; ?>" aria-expanded="false" aria-controls="camp_<?php echo $campId; ?>">Сводная таблица по лагерю <b><?php echo $campName; ?></div>
+                    <div class="card-header btn btn-link text-left" id="camp_header_<?php echo $campId; ?>"  data-toggle="collapse" data-target="#camp_<?php echo $campId; ?>" aria-expanded="false" aria-controls="camp_<?php echo $campId; ?>">Сводная таблица по лагерю <b><?php echo $campName; ?></b></div>
                     <div id="camp_<?php echo $campId; ?>" class="collapse" aria-labelledby="camp_header_<?php echo $campId; ?>" data-parent="#accordion_dlo">
                         <div class="card-body p-0">
                             <div class="accordion" id="accordion_dlo_<?php echo $campId; ?>">
@@ -20,24 +20,24 @@
                                                     </div>
                                                     <table id="z_anketa_table_<?php echo $campId; ?>_<?php echo $shiftId; ?>" class="table table-bordered table-striped table-hover table-sm">
                                                         <thead class="thead-dark">
-                                                        <tr>
-                                                            <th scope="col" class="text-center">Лагерь</th>
-                                                            <th scope="col" class="text-center">Смена</th>
-                                                            <th scope="col" class="text-center">Период</th>
-                                                            <th scope="col" class="text-center">Тип</th>
-                                                            <th scope="col" class="text-center">Дата подачи</th>
-                                                            <th scope="col" class="text-center">ФИО представителя</th>
-                                                            <th scope="col" class="text-center">ФИО Родителя</th>
-                                                            <th scope="col" class="text-center">ФИО ребенка</th>
-                                                            <th scope="col" class="text-center">Телефон представителя</th>
-                                                            <th scope="col" class="text-center">Телефон родителя</th>
-                                                            <th scope="col" class="text-center">E-mail представителя</th>
-                                                            <th scope="col" class="text-center">E-mail родителя</th>
-                                                            <th scope="col" class="text-center">Номер брони</th>
-                                                            <th scope="col" class="text-center">Выкуплена</th>
-                                                            <th scope="col" class="text-center">Комментарий</th>
-                                                            <th scope="col" class="text-center">Создано администратором</th>
-                                                        </tr>
+                                                            <tr>
+                                                                <th scope="col" class="text-center">Лагерь</th>
+                                                                <th scope="col" class="text-center">Смена</th>
+                                                                <th scope="col" class="text-center">Период</th>
+                                                                <th scope="col" class="text-center">Тип</th>
+                                                                <th scope="col" class="text-center">Дата подачи</th>
+                                                                <th scope="col" class="text-center">ФИО представителя</th>
+                                                                <th scope="col" class="text-center">ФИО Родителя</th>
+                                                                <th scope="col" class="text-center">ФИО ребенка</th>
+                                                                <th scope="col" class="text-center">Телефон представителя</th>
+                                                                <th scope="col" class="text-center">Телефон родителя</th>
+                                                                <th scope="col" class="text-center">E-mail представителя</th>
+                                                                <th scope="col" class="text-center">E-mail родителя</th>
+                                                                <th scope="col" class="text-center">Номер брони</th>
+                                                                <th scope="col" class="text-center">Выкуплена</th>
+                                                                <th scope="col" class="text-center">Комментарий</th>
+                                                                <th scope="col" class="text-center">Создано администратором</th>
+                                                            </tr>
                                                         </thead>
                                                         <tbody>
 

@@ -87,7 +87,6 @@ if (typeof window.z == 'object')
                     ).on(
                         'keypress.'+_self.name,
                         [
-                            '#z_anketa_name_ur',
                             '#z_anketa_fio_child',
                             '#z_anketa_fio_parent'
                         ].join(),
@@ -112,9 +111,20 @@ if (typeof window.z == 'object')
                                         else
                                     $(this).popover('hide');
                             }
+                    ).on(
+                        'blur.'+_self.name,
+                        [
+                            '#z_anketa_name_ur',
+                            '#z_anketa_fio_child',
+                            '#z_anketa_fio_parent'
+                        ].join(),
+                        function (event)
+                            {
+                                $(this).popover('hide');
+                            }
                     );
 
-                    //$.noConflict();
+                    $.noConflict();
                     if (typeof _self.z.el.z_anketa_tel_ur_contact == 'object')
                         $(_self.z.el.z_anketa_tel_ur_contact).mask('(999) 999-99-99');
                     if (typeof _self.z.el.z_anketa_tel_parent == 'object')

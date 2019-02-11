@@ -20,17 +20,20 @@
                         'options' => array(
                             'locale' => 'ru',
                             'defaultTimeZone' => 'Europe/Moscow',
-                            'dateFormat' => 'dd-mm-yy',
-                            'defaultDate' => date("d-m-Y"), //$model->birthday_child,
-                            'altFormat' => 'dd-mm-yy',
+                            'dateFormat' => 'dd-mm-yy 00:00:00',
+                            'defaultDate' => date("d-m-Y 00:00:00"), //$model->birthday_child,
+                            'altFormat' => 'dd-mm-yy 00:00:00',
                             'changeMonth' => true,
                             'changeYear' => true,
-                            'appendText' => 'yyyy-mm-dd',
+                            //'appendText' => 'yyyy-mm-dd',
                             'yearRange' => '-18:+0',
                         ),
                         'htmlOptions' => array(
                             'class' => 'form-control',
-                            'id'=>'z_anketa_created'
+                            'id'=>'z_anketa_created',
+                            'required'  =>'required',
+                            'data-mask' =>'01234567890-: ',
+                            'maxlength'=>19
                         ),
                     )); ?>
                 </div>
@@ -56,10 +59,12 @@
             <div class="form-group z_anketa_block_<?php echo Questionnaire::TYPE_UR; ?>">
                 <?php echo CHtml::activeLabel($model, 'name_ur', array('for'=>'z_anketa_name_ur')); ?>
                 <?php echo CHtml::activeTextField($model, 'name_ur', array((Questionnaire::TYPE_UR==$model->type?'_':'').'disabled'=>'disabled', 'class' => 'form-control', 'placeholder' => $model->getAttributeLabel('name_ur'), 'required'=>'required', 'id'=>'z_anketa_name_ur')); ?>
+                <div class="invalid-feedback">Заполните поле корректно</div>
             </div>
             <div class="form-group z_anketa_block_<?php echo Questionnaire::TYPE_UR; ?>">
                 <?php echo CHtml::activeLabel($model, 'fio_ur_contact', array('for'=>'z_anketa_fio_ur_contact')); ?>
                 <?php echo CHtml::activeTextField($model, 'fio_ur_contact', array((Questionnaire::TYPE_UR==$model->type?'_':'').'disabled'=>'disabled', 'class' => 'form-control', 'placeholder' => $model->getAttributeLabel('fio_ur_contact'), 'required'=>'required', 'id'=>'z_anketa_fio_ur_contact', 'data-mask'=>' абвгдеёжзийклмнопрстуфхцчшщъыьэюя-')); ?>
+                <div class="invalid-feedback">Заполните поле корректно</div>
             </div>
             <div class="form-group z_anketa_block_<?php echo Questionnaire::TYPE_UR; ?>">
                 <?php echo CHtml::activeLabel($model, 'tel_ur_contact', array('for'=>'z_anketa_tel_ur_contact')); ?>
@@ -68,11 +73,13 @@
                         <div class="input-group-text">+7</div>
                     </div>
                     <?php echo CHtml::activeTextField($model, 'tel_ur_contact', array((Questionnaire::TYPE_UR==$model->type?'_':'').'disabled'=>'disabled', 'class' => 'form-control', 'placeholder' => $model->getAttributeLabel('tel_ur_contact'), 'required'=>'required', 'id'=>'z_anketa_tel_ur_contact', 'maxlength'=>15, 'data-mask'=>'0123456789')); ?>
+                    <div class="invalid-feedback">Заполните поле корректно</div>
                 </div>
             </div>
             <div class="form-group z_anketa_block_<?php echo Questionnaire::TYPE_UR; ?>">
                 <?php echo CHtml::activeLabel($model, 'email_ur_contact', array('for'=>'z_anketa_email_ur_contact')); ?>
                 <?php echo CHtml::activeTextField($model, 'email_ur_contact', array((Questionnaire::TYPE_UR==$model->type?'_':'').'disabled'=>'disabled', 'class' => 'form-control', 'placeholder' => $model->getAttributeLabel('email_ur_contact'), 'required'=>'required', 'id'=>'z_anketa_email_ur_contact')); ?>
+                <div class="invalid-feedback">Заполните поле корректно</div>
             </div>
 
             <hr class="z_anketa_block_<?php echo Questionnaire::TYPE_UR; ?>"/>
@@ -82,18 +89,22 @@
             <div class="form-group">
                 <?php echo CHtml::activeLabel($model, 'fio_parent', array('for'=>'z_anketa_fio_parent')); ?>
                 <?php echo CHtml::activeTextField($model, 'fio_parent', array('class' => 'form-control', 'placeholder' => $model->getAttributeLabel('fio_parent'), 'required'=>'required', 'id'=>'z_anketa_fio_parent', 'data-mask'=>' абвгдеёжзийклмнопрстуфхцчшщъыьэюя-')); ?>
+                <div class="invalid-feedback">Заполните поле корректно</div>
             </div>
             <div class="form-group">
                 <?php echo CHtml::activeLabel($model, 'residence', array('for'=>'z_anketa_residence')); ?>
                 <?php echo CHtml::activeTextField($model, 'residence', array('class' => 'form-control', 'placeholder' => $model->getAttributeLabel('residence'), 'required'=>'required', 'id'=>'z_anketa_residence')); ?>
+                <div class="invalid-feedback">Заполните поле корректно</div>
             </div>
             <div class="form-group">
                 <?php echo CHtml::activeLabel($model, 'place_of_work', array('for'=>'z_anketa_place_of_work')); ?>
                 <?php echo CHtml::activeTextField($model, 'place_of_work', array('class' => 'form-control', 'placeholder' => $model->getAttributeLabel('place_of_work'), 'required'=>'required', 'id'=>'z_anketa_place_of_work')); ?>
+                <div class="invalid-feedback">Заполните поле корректно</div>
             </div>
             <div class="form-group">
                 <?php echo CHtml::activeLabel($model, 'email_parent', array('for'=>'z_anketa_email_parent')); ?>
                 <?php echo CHtml::activeTextField($model, 'email_parent', array('class' => 'form-control', 'placeholder' => $model->getAttributeLabel('email_parent'), 'required'=>'required', 'id'=>'z_anketa_email_parent')); ?>
+                <div class="invalid-feedback">Заполните поле корректно</div>
             </div>
             <!--FIZ END-->
 
@@ -103,6 +114,7 @@
             <div class="form-group">
                 <?php echo CHtml::activeLabel($model, 'fio_child', array('for'=>'z_anketa_fio_child')); ?>
                 <?php echo CHtml::activeTextField($model, 'fio_child', array('class' => 'form-control', 'placeholder' => $model->getAttributeLabel('fio_child'), 'required'=>'required', 'id'=>'z_anketa_fio_child', 'data-mask'=>' абвгдеёжзийклмнопрстуфхцчшщъыьэюя-')); ?>
+                <div class="invalid-feedback">Заполните поле корректно</div>
             </div>
             <div class="form-group">
                 <?php echo CHtml::activeLabel($model, 'birthday_child', array('for' => 'z_anketa_birthday_child')); ?>
@@ -130,12 +142,13 @@
                         'maxlength'=>10
                     ),
                 ));
-
                 ?>
+                <div class="invalid-feedback">Заполните поле корректно</div>
             </div>
             <div class="form-group">
                 <?php echo CHtml::activeLabel($model, 'place_of_study', array('for'=>'z_anketa_place_of_study')); ?>
                 <?php echo CHtml::activeTextField($model, 'place_of_study', array('class' => 'form-control', 'placeholder' => $model->getAttributeLabel('place_of_study'), 'required'=>'required', 'id'=>'z_anketa_place_of_study')); ?>
+                <div class="invalid-feedback">Заполните поле корректно</div>
             </div>
             <div class="form-group">
                 <?php echo CHtml::activeLabel($model, 'tel_parent', array('for'=>'z_anketa_tel_parent')); ?>
@@ -144,6 +157,7 @@
                         <div class="input-group-text">+7</div>
                     </div>
                     <?php echo CHtml::activeTextField($model, 'tel_parent', array('class' => 'form-control', 'placeholder' => $model->getAttributeLabel('tel_parent'), 'required'=>'required', 'id'=>'z_anketa_tel_parent', 'maxlength'=>15, 'data-mask'=>'0123456789')); ?>
+                    <div class="invalid-feedback">Заполните поле корректно</div>
                 </div>
             </div>
             <!--CHILD DATA END-->

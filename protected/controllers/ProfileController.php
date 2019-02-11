@@ -23,6 +23,7 @@ class ProfileController extends Controller
         $cs->registerScriptFile(Yii::app()->createUrl('/statics/js/z.page.anketa_list.js'), CClientScript::POS_END);
 
         $title = 'Мои заявки';
+        $this->pageTitle = $title;
         $questionnaire = new Questionnaire();
         $questionnaire->type = $questionnaire->status = $questionnaire->paid = null;
         $questionnaire->user_id = Yii::app()->user->id;
@@ -37,7 +38,7 @@ class ProfileController extends Controller
         $cs->registerCssFile(Yii::app()->createUrl('/statics/css/z.page.anketa_view.css'));
         $cs->registerScriptFile(Yii::app()->createUrl('/statics/js/z.page.anketa_view.js'), CClientScript::POS_END);
 
-        $this->pageTitle = Yii::app()->name . ' - ' . 'Заявка #' . (int)$id;
+        $this->pageTitle = 'Заявка #' . (int)$id;
         $title = 'Анкета';
         $q = Questionnaire::model()->findByPk($id);
         if (!$q || ($q->user_id != Yii::app()->user->id)) {
@@ -66,7 +67,7 @@ class ProfileController extends Controller
         $cs->registerScriptFile(Yii::app()->createUrl('/statics/js/z.page.anketa_print.js'), CClientScript::POS_END);
 
 
-        $this->pageTitle = Yii::app()->name . ' - ' . 'Печать';
+        $this->pageTitle = 'Печать заявки №'.$id;
         $title = 'Анкета';
         $q = Questionnaire::model()->findByPk($id);
         if (!$q || ($q->user_id != Yii::app()->user->id)) {
@@ -82,6 +83,8 @@ class ProfileController extends Controller
 
     public function actionFreePrint()
     {
+        $this->pageTitle = 'Печать';
+
         $this->layout = "print";
         $cs = Yii::app()->getClientScript();
         $cs->registerCssFile(Yii::app()->createUrl('/statics/css/z.page.freeprint.css'));

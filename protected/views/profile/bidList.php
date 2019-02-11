@@ -71,7 +71,7 @@
                         'header' => 'Cмена',
                         'name' => 'shift_id',
                         'type' => 'raw',
-                        'value' => 'Questionnaire::getShiftName($data->shift_id)."<br>".SiteService::templateDloRange($data->shift_id)',
+                        'value' => 'Questionnaire::getShiftName($data->shift_id)."<br/>".SiteService::templateDloRange($data->shift_id)',
                         'filter' => false,
                         'htmlOptions' => array('class' => 'text-center'),
                         'headerHtmlOptions' => array('class' => 'text-center', 'scope' => 'col'),

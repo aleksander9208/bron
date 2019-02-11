@@ -53,6 +53,8 @@ if (typeof window.z == 'object')
                             'focusout.'+_self.name
                         ].join(' '),
                         [
+                            '#z_anketa_created',
+
                             '#z_anketa_fio_parent',
                             '#z_anketa_fio_ur_contact',
                             '#z_anketa_fio_child',
@@ -90,6 +92,9 @@ if (typeof window.z == 'object')
                                         case 'z_anketa_birthday_child':
                                             _self.validate_date($(this));
                                         break;
+                                        case 'z_anketa_created':
+                                            _self.validate_datetime($(this));
+                                        break;
 
                                         case 'z_anketa_tel_ur_contact':
                                         case 'z_anketa_tel_parent':
@@ -113,13 +118,11 @@ if (typeof window.z == 'object')
                     ).on(
                         'keypress.'+_self.name,
                         [
-                            '#z_anketa_name_ur',
                             '#z_anketa_fio_child',
                             '#z_anketa_fio_parent'
                         ].join(),
                         function (event)
                             {
-
                                 var char_one = (event.which || event.keyCode);
                                 var val_mask = ($(this).data('mask')).toUpperCase();
                                 var val_key = String.fromCharCode(char_one).toUpperCase();
@@ -137,6 +140,17 @@ if (typeof window.z == 'object')
                                     ).popover('show');
                                 else
                                     $(this).popover('hide');
+                            }
+                    ).on(
+                        'blur.'+_self.name,
+                        [
+                            '#z_anketa_name_ur',
+                            '#z_anketa_fio_child',
+                            '#z_anketa_fio_parent'
+                        ].join(),
+                        function (event)
+                            {
+                                $(this).popover('hide');
                             }
                     );
 
@@ -196,6 +210,9 @@ if (typeof window.z == 'object')
                     _self.validate_phone(_self.z.el.z_anketa_tel_parent);
 
                     _self.validate_smen();
+
+                    if (typeof _self.z.el.z_anketa_created == 'object')
+                        _self.validate_datetime(_self.z.el.z_anketa_created);
 
                     var is_valid = (_self.z.el.z_anketa_form.find('.is-invalid').length==0);
                     _self.z.el.z_anketa_form.toggleClass('needs-validation', is_valid==false).toggleClass('was-validated', is_valid==true);
@@ -345,6 +362,52 @@ if (typeof window.z == 'object')
                                     var date_val = new Date(val_date);
                                     var data_dif = date_now.getFullYear()-date_val.getFullYear();
                                     is_valid = (data_dif<=17 && data_dif>=7);
+                                }
+                        }
+                    el_date.toggleClass('is-valid', is_valid==true).toggleClass('is-invalid', is_valid==false);
+                    return is_valid;
+                },
+
+            //Валидация даты и времени
+            validate_datetime:function (el_date)
+                {
+                    var _self = this;
+                    var val_date = el_date.val().toLowerCase();
+                    var val_len = val_date.length;
+                    var is_valid = (val_len==(el_date.attr('maxlength')));
+                    if (is_valid==true)
+                        {
+                            var val_date_parts_big = val_date.split(' ');
+                            var is_valid = (val_date_parts_big.length==2);
+                            if (is_valid==true)
+                                {
+                                    var val_date_parts_0 = val_date_parts_big[0].split('-');
+                                    var val_date_parts_1 = val_date_parts_big[1].split(':');
+                                    var is_valid = (
+                                        val_date_parts_0.length==3 &&
+                                            val_date_parts_0[0]>=1 &&
+                                            val_date_parts_0[0]<=31 &&
+                                            val_date_parts_0[1]>=1 &&
+                                            val_date_parts_0[1]<=12 &&
+                                            val_date_parts_0[2]>=2019 &&
+                                        val_date_parts_1.length==3 &&
+                                            val_date_parts_1[0]>=0 &&
+                                            val_date_parts_1[0]<=23 &&
+                                            val_date_parts_1[1]>=0 &&
+                                            val_date_parts_1[1]<=59 &&
+                                            val_date_parts_1[2]>=0 &&
+                                            val_date_parts_1[2]<=59
+                                    );
+                                    if (is_valid==true)
+                                        {
+                                            var val_mask = el_date.attr('data-mask');
+                                            for (var i=0; i<val_len; i++)
+                                                if (val_mask.indexOf(val_date[i])==-1)
+                                                    {
+                                                        is_valid = false;
+                                                        break;
+                                                    }
+                                        }
                                 }
                         }
                     el_date.toggleClass('is-valid', is_valid==true).toggleClass('is-invalid', is_valid==false);

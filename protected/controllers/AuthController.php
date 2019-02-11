@@ -19,7 +19,7 @@ class AuthController extends Controller
         if (!Yii::app()->user->getIsGuest()) {
             $this->redirect(Yii::app()->createAbsoluteUrl('/site/addstatement'));
         }
-        $this->pageTitle = 'Авторизация - ' . Yii::app()->name;
+        $this->pageTitle = 'Авторизация';// . Yii::app()->name;
 
         $cs = Yii::app()->getClientScript();
         $cs->registerCssFile(Yii::app()->createUrl('/statics/css/z.page.auth.css'));
