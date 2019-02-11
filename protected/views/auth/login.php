@@ -18,7 +18,7 @@
                             <div class="input-group-prepend">
                                 <div class="input-group-text">+7</div>
                             </div>
-                            <?php echo CHtml::activeTextField($model, 'password', array('placeholder' => 'Введите телефон', 'class' => 'form-control', 'required'=>'required', 'id'=>'z_auth_user_phone', 'maxlength'=>10, 'data-mask'=>'0123456789')); ?>
+                            <?php echo CHtml::activeTextField($model, 'password', array('placeholder' => 'Введите телефон', 'class' => 'form-control', 'required'=>'required', 'id'=>'z_auth_user_phone', 'maxlength'=>16, 'data-mask'=>'0123456789')); ?>
                             <div class="invalid-feedback">Укажите телефон подавшего заявку (Например: 9051234567)</div>
                         </div>
                     </div>

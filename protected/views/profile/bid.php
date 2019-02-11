@@ -59,7 +59,7 @@
                                         '<div class="input-group-prepend">'.
                                             '<div class="input-group-text">+7</div>'.
                                         '</div>'.
-                                        CHtml::activeTextField($model, 'tel_ur_contact',array('class' => 'form-control', 'placeholder' => $model->getAttributeLabel('tel_ur_contact'), 'required'=>'required', 'id'=>'z_anketa_tel_ur_contact', 'maxlength'=>10, 'data-mask'=>'0123456789')).
+                                        CHtml::activeTextField($model, 'tel_ur_contact',array('class' => 'form-control', 'placeholder' => $model->getAttributeLabel('tel_ur_contact'), 'required'=>'required', 'id'=>'z_anketa_tel_ur_contact', 'maxlength'=>16, 'data-mask'=>'0123456789')).
                                     '</div>';
                             } else {
                                 echo CHtml::encode($model->tel_ur_contact);
@@ -187,7 +187,7 @@
                                     '<div class="input-group-prepend">'.
                                         '<div class="input-group-text">+7</div>'.
                                     '</div>'.
-                                    CHtml::activeTextField($model, 'tel_parent', array('class' => 'form-control', 'placeholder' => $model->getAttributeLabel('tel_parent'), 'required'=>'required', 'id'=>'z_anketa_tel_parent', 'maxlength'=>10, 'data-mask'=>'0123456789')).
+                                    CHtml::activeTextField($model, 'tel_parent', array('class' => 'form-control', 'placeholder' => $model->getAttributeLabel('tel_parent'), 'required'=>'required', 'id'=>'z_anketa_tel_parent', 'maxlength'=>16, 'data-mask'=>'0123456789')).
                                 '</div>';
                         } else {
                             echo CHtml::encode($model->tel_parent);
