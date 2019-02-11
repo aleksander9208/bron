@@ -41,6 +41,13 @@ if (typeof window.z == 'object')
                                     _self.z.el.z_anketa_form.find('.z_anketa_block_'+_self.constant.USER_ANKETA_TYPE_UR+' input').removeAttr('disabled');
                             }
                     ).on(
+                        'change.'+_self.name,
+                        '#z_anketa_table input[type="checkbox"]',
+                        function ()
+                            {
+                                _self.validate_smen();
+                            }
+                    ).on(
                         [
                             'change.'+_self.name,
                             'focusout.'+_self.name
@@ -188,6 +195,8 @@ if (typeof window.z == 'object')
                     _self.validate_required(_self.z.el.z_anketa_place_of_study);
                     _self.validate_phone(_self.z.el.z_anketa_tel_parent);
 
+                    _self.validate_smen();
+
                     var is_valid = (_self.z.el.z_anketa_form.find('.is-invalid').length==0);
                     _self.z.el.z_anketa_form.toggleClass('needs-validation', is_valid==false).toggleClass('was-validated', is_valid==true);
                     if (is_valid==false)
@@ -195,6 +204,41 @@ if (typeof window.z == 'object')
                             event.preventDefault();
                             event.stopPropagation();
                         }
+                },
+
+            //Валидация смен
+            validate_smen: function ()
+                {
+                    var _self = this;
+                    var data = {};
+                    _self.z.el.z_anketa_table.find('input[type="checkbox"]').each(
+                        function ()
+                            {
+                                if ($(this).is(':checked'))
+                                    {
+                                        var groups = $(this).attr('data-pgroup').split(',');
+                                        for(var key in groups)
+                                            {
+                                                if (typeof data[groups[key]] == 'undefined')
+                                                    data[groups[key]]=0;
+                                                data[groups[key]]++;
+                                            }
+                                    }
+                            }
+                    ).each(
+                        function ()
+                            {
+                                var groups = $(this).attr('data-pgroup').split(',');
+                                var is_error = false;
+                                for(var key in groups)
+                                    if (data[groups[key]]>1)
+                                        {
+                                            is_error = true;
+                                            break;
+                                        }
+                                $(this).toggleClass('is-invalid', is_error==true);
+                            }
+                    );
                 },
 
             //Валидация ФИО
