@@ -8,7 +8,7 @@ class ProfileController extends Controller
 
     public function __construct($id, $module = null)
     {
-       // if (!Yii::app()->user->checkAccess(User::ROLE_USER) && Yii::app()->user->role != User::ROLE_USER) {
+        // if (!Yii::app()->user->checkAccess(User::ROLE_USER) && Yii::app()->user->role != User::ROLE_USER) {
         if (Yii::app()->user->getIsGuest()) {
             $this->redirect(Yii::app()->createUrl('/site'));
         }
@@ -44,7 +44,7 @@ class ProfileController extends Controller
             throw new CHttpException(401, 'Страница не найдена');
         }
         if ($q['booking_id'])
-            $title.= ' №'.$q['booking_id'];
+            $title .= ' №' . $q['booking_id'];
 
         $questionnairePost = Yii::app()->request->getPost('Questionnaire', array());
         if ($questionnairePost) {
@@ -55,14 +55,14 @@ class ProfileController extends Controller
                 $this->refresh();
             }
         }
-        $this->render('bid', array('title' => $title, 'model' => $q,'shifts' => SiteService::getShifts()));
+        $this->render('bid', array('title' => $title, 'model' => $q, 'shifts' => SiteService::getShifts()));
     }
 
     public function actionPrint($id = 0)
     {
         $cs = Yii::app()->getClientScript();
         $cs->registerCssFile(Yii::app()->createUrl('/statics/css/z.page.anketa_print.css'));
-        $cs->registerCssFile(Yii::app()->createUrl('/statics/css/z.page.anketa_print.css?print'),  'print');
+        $cs->registerCssFile(Yii::app()->createUrl('/statics/css/z.page.anketa_print.css?print'), 'print');
         $cs->registerScriptFile(Yii::app()->createUrl('/statics/js/z.page.anketa_print.js'), CClientScript::POS_END);
 
 
@@ -73,11 +73,19 @@ class ProfileController extends Controller
             throw new CHttpException(401, 'Страница не найдена');
         }
         if ($q['booking_id'])
-            $title.= ' №'.$q['booking_id'];
+            $title .= ' №' . $q['booking_id'];
 
         $this->layout = "print";
 
-        $this->render('bidprint', array('title' => $title, 'model' => $q,'shifts' => SiteService::getShifts()));
+        $this->render('bidprint', array('title' => $title, 'model' => $q, 'shifts' => SiteService::getShifts()));
+    }
+
+    public function actionFreePrint()
+    {
+        $this->layout = "print";
+        $text = Yii::app()->request->getParam('str', '');
+
+        $this->render('print', array('text' => $text));
     }
 
 
