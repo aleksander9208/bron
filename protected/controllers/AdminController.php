@@ -28,8 +28,13 @@ class AdminController extends Controller
         $questionnaire = new Questionnaire();
         $questionnaire->type = $questionnaire->status = $questionnaire->paid = $questionnaire->is_main = null;
         $questionnairePost = Yii::app()->request->getParam('Questionnaire', array());
+
+        $admFilter = Yii::app()->session->get('admin_filter',array());
         if ($questionnairePost) {
             $questionnaire->attributes = $questionnairePost;
+            Yii::app()->session->add('admin_filter', $questionnairePost);
+        } elseif($admFilter) {
+            $questionnaire->attributes = $admFilter;
         }
 
         $this->render('index', array('title' => $title, 'model' => $questionnaire));
@@ -81,8 +86,12 @@ class AdminController extends Controller
         $questionnaire = new Questionnaire();
         $questionnaire->type = $questionnaire->status = $questionnaire->paid = null;
         $questionnairePost = Yii::app()->request->getParam('Questionnaire', array());
+        $statFilter = Yii::app()->session->get('stat_filter',array());
         if ($questionnairePost) {
             $questionnaire->attributes = $questionnairePost;
+            Yii::app()->session->add('stat_filter', $questionnairePost);
+        } else {
+            $questionnaire->attributes = $statFilter;
         }
         $questionnaire->status = Questionnaire::STATUS_OK;
 
