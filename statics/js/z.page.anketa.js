@@ -6,7 +6,7 @@ if (typeof window.z == 'object')
             //Название модуля
             name:'z_page_anketa',
             //Версия библиотеки
-            version: '190211',
+            version: '190212',
             //Указатель на глобалный объект
             z: window.z,
             //Хранилище данных
@@ -152,7 +152,7 @@ if (typeof window.z == 'object')
                     if (_self.z.el.z_anketa_type_1.is(':checked'))
                         _self.change_type(_self.z.el.z_anketa_type_1);
 
-                    $.noConflict();
+
                     $(_self.z.el.z_anketa_tel_ur_contact).mask('(999) 999-99-99');
                     $(_self.z.el.z_anketa_tel_parent).mask('(999) 999-99-99');
 

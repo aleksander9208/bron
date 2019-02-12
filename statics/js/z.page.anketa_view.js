@@ -6,7 +6,7 @@ if (typeof window.z == 'object')
             //Название модуля
             name:'z_page_anketa_view',
             //Версия библиотеки
-            version: '190211',
+            version: '190212',
             //Указатель на глобалный объект
             z: window.z,
             //Хранилище данных
@@ -125,7 +125,6 @@ if (typeof window.z == 'object')
                             }
                     );
 
-                    $.noConflict();
                     if (typeof _self.z.el.z_anketa_tel_ur_contact == 'object')
                         $(_self.z.el.z_anketa_tel_ur_contact).mask('(999) 999-99-99');
                     if (typeof _self.z.el.z_anketa_tel_parent == 'object')
