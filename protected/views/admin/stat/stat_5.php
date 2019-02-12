@@ -11,34 +11,35 @@ if (!$statData['questionnaire']) { ?>
             <div class="card-body p-0">
                 <?php foreach ($vvvv as $campId => $vvv) { ?>
                     <?php foreach ($vvv as $shiftId => $vv) { ?>
+                        <div class="text-right">
+                            <button class="btn btn-info btn-sm my-1 z_btn_print" role="button" data-target="#z_anketa_table_<?php echo md5($name_ur); ?>_<?php echo $campId; ?>_<?php echo $shiftId; ?>">Печать таблицы</button>
+                        </div>
+                        <label for="z_anketa_table_<?php echo md5($name_ur); ?>_<?php echo $campId; ?>_<?php echo $shiftId; ?>">Сводная таблица по лагерю <b><?php echo Questionnaire::getCAMPName($campId); ?></b> и их смене
+                            <b><?php echo Questionnaire::getShiftName($shiftId); ?></b></label>
+                    <table id="z_anketa_table_<?php echo md5($name_ur); ?>_<?php echo $campId; ?>_<?php echo $shiftId; ?>" class="table table-bordered table-striped table-hover table-sm">
+                        <thead class="thead-dark">
+                        <tr>
+                            <th scope="col" class="text-center">Лагерь</th>
+                            <th scope="col" class="text-center">Смена</th>
+                            <th scope="col" class="text-center">Период</th>
+                            <th scope="col" class="text-center">Тип</th>
+                            <th scope="col" class="text-center">Дата подачи</th>
+                            <th scope="col" class="text-center">ФИО представителя</th>
+                            <th scope="col" class="text-center">ФИО Родителя</th>
+                            <th scope="col" class="text-center">ФИО ребенка</th>
+                            <th scope="col" class="text-center">Телефон представителя</th>
+                            <th scope="col" class="text-center">Телефон родителя</th>
+                            <th scope="col" class="text-center">E-mail представителя</th>
+                            <th scope="col" class="text-center">E-mail родителя</th>
+                            <th scope="col" class="text-center">Номер брони</th>
+                            <th scope="col" class="text-center">Выкуплена</th>
+                            <th scope="col" class="text-center">Комментарий</th>
+                            <th scope="col" class="text-center">Создано администратором</th>
+                        </tr>
+                        </thead>
+                        <tbody>
                         <?php foreach ($vv as $v) { ?>
-                            <div class="text-right">
-                                <button class="btn btn-info btn-sm my-1 z_btn_print" role="button" data-target="#z_anketa_table_<?php echo $v['id']; ?>_<?php echo $campId; ?>_<?php echo $shiftId; ?>">Печать таблицы</button>
-                            </div>
-                            <label for="z_anketa_table_<?php echo $v['id']; ?>_<?php echo $campId; ?>_<?php echo $shiftId; ?>">Сводная таблица по лагерю <b><?php echo Questionnaire::getCAMPName($campId); ?></b> и их смене
-                                <b><?php echo Questionnaire::getShiftName($shiftId); ?></b></label>
-                            <table id="z_anketa_table_<?php echo $v['id']; ?>_<?php echo $campId; ?>_<?php echo $shiftId; ?>" class="table table-bordered table-striped table-hover table-sm">
-                                <thead class="thead-dark">
-                                    <tr>
-                                        <th scope="col" class="text-center">Лагерь</th>
-                                        <th scope="col" class="text-center">Смена</th>
-                                        <th scope="col" class="text-center">Период</th>
-                                        <th scope="col" class="text-center">Тип</th>
-                                        <th scope="col" class="text-center">Дата подачи</th>
-                                        <th scope="col" class="text-center">ФИО представителя</th>
-                                        <th scope="col" class="text-center">ФИО Родителя</th>
-                                        <th scope="col" class="text-center">ФИО ребенка</th>
-                                        <th scope="col" class="text-center">Телефон представителя</th>
-                                        <th scope="col" class="text-center">Телефон родителя</th>
-                                        <th scope="col" class="text-center">E-mail представителя</th>
-                                        <th scope="col" class="text-center">E-mail родителя</th>
-                                        <th scope="col" class="text-center">Номер брони</th>
-                                        <th scope="col" class="text-center">Выкуплена</th>
-                                        <th scope="col" class="text-center">Комментарий</th>
-                                        <th scope="col" class="text-center">Создано администратором</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
+
                                     <tr class="<?php echo($v['create_admin'] ? 'table-info' : ''); ?>">
                                         <th scope="row"
                                             class="align-middle"><?php echo Questionnaire::getCAMPName($v['camp_id']); ?></th>
@@ -60,9 +61,9 @@ if (!$statData['questionnaire']) { ?>
                                         <td class="text-center" data-comment-id="<?php echo $v['id'];?>"><?php echo CHtml::encode($v['comment']); ?></td>
                                         <td class="text-center"><?php echo($v['create_admin'] ? 'Да' : 'Нет'); ?></td>
                                     </tr>
-                                </tbody>
-                            </table>
                         <?php } ?>
+                        </tbody>
+                    </table>
                     <?php } ?>
                 <?php } ?>
             </div>
