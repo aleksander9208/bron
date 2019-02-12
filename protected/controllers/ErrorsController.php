@@ -6,8 +6,6 @@ class ErrorsController extends CController {
 
     public function __construct($id, $module = null) {
         mb_internal_encoding("UTF-8");
-        $cs = Yii::app()->getClientScript();
-        $cs->registerCoreScript('jquery');
 
         return parent::__construct($id, $module = null);
     }

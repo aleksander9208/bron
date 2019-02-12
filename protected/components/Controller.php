@@ -25,6 +25,8 @@ class Controller extends CController
     public function beforeAction($action) {
         //echo Yii::app()->controller->id.' => '.$action->id;
 
+        $cs = Yii::app()->getClientScript();
+        $cs->registerCoreScript('jquery');
 
         if (Yii::app()->controller->id!=='ajax') {
             Yii::app()->getClientScript()->registerScript('inline', "if (typeof fb == 'object') {fb.debug = ".(YII_DEBUG?"true":"false")."; fb.path = '".Yii::app()->createUrl('/')."'; fb.role = '".(Yii::app()->user->getIsGuest()?'guest':'user')."'; fb.user_id = ".(Yii::app()->user->getIsGuest()?0:Yii::app()->user->id)."; }", CClientScript::POS_END);
