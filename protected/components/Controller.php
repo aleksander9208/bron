@@ -24,17 +24,18 @@ class Controller extends CController
 
     public function beforeAction($action) {
         //echo Yii::app()->controller->id.' => '.$action->id;
-
-        $cs = Yii::app()->getClientScript();
-        $cs->registerCoreScript('jquery');
-        $cs->registerScriptFile(Yii::app()->createUrl('/statics/js/jquery/jquery.mask.js'));
-        $cs->registerScriptFile(Yii::app()->createUrl('/statics/js/z.core.js'));
-        $cs->registerScriptFile(Yii::app()->createUrl('/statics/js/z.tasks.js'));
-        $cs->registerScriptFile(Yii::app()->createUrl('/statics/js/z.module.ajax.js'));
-        $cs->registerScriptFile(Yii::app()->createUrl('/statics/js/z.boot.js'));
-        $cs->registerScriptFile(Yii::app()->createUrl('/statics/js/bootstrap/bootstrap.bundle.js'));
         if (Yii::app()->controller->id!=='ajax') {
-            Yii::app()->getClientScript()->registerScript('inline', "if (typeof fb == 'object') {fb.debug = ".(YII_DEBUG?"true":"false")."; fb.path = '".Yii::app()->createUrl('/')."'; fb.role = '".(Yii::app()->user->getIsGuest()?'guest':'user')."'; fb.user_id = ".(Yii::app()->user->getIsGuest()?0:Yii::app()->user->id)."; }", CClientScript::POS_END);
+
+            $cs = Yii::app()->getClientScript();
+            $cs->registerCoreScript('jquery');
+            $cs->registerScriptFile(Yii::app()->createUrl('/statics/js/jquery/jquery.mask.js'));
+            $cs->registerScriptFile(Yii::app()->createUrl('/statics/js/z.core.js'));
+            $cs->registerScriptFile(Yii::app()->createUrl('/statics/js/z.tasks.js'));
+            $cs->registerScriptFile(Yii::app()->createUrl('/statics/js/z.module.ajax.js'));
+            $cs->registerScriptFile(Yii::app()->createUrl('/statics/js/z.boot.js'));
+            $cs->registerScriptFile(Yii::app()->createUrl('/statics/js/bootstrap/bootstrap.bundle.js'));
+
+            Yii::app()->getClientScript()->registerScript('inline', "if (typeof window.z == 'object') {window.z.debug = ".(YII_DEBUG?"true":"false")."; window.z.path = '".Yii::app()->createUrl('/')."'; window.z.role = '".(Yii::app()->user->getIsGuest()?'guest':'user')."'; window.z.user_id = ".(Yii::app()->user->getIsGuest()?0:Yii::app()->user->id)."; }", CClientScript::POS_END);
         }
 
         return parent::beforeAction($action);
