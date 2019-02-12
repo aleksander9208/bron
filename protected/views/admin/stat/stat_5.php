@@ -6,7 +6,7 @@ if (!$statData['questionnaire']) { ?>
 <div class="accordion" id="accordion_ur">
     <?php foreach ($statData['questionnaire'] as $name_ur => $vvvv) { ?>
     <div class="card">
-        <div class="card-header btn btn-link text-left" id="ur_header_<?php echo md5($name_ur); ?>"  data-toggle="collapse" data-target="#ur_<?php echo md5($name_ur); ?>" aria-expanded="false" aria-controls="ur_<?php echo md5($name_ur); ?>">Лагерь <b><?php echo CHtml::encode($name_ur); ?></b></div>
+        <div class="card-header btn btn-link text-left" id="ur_header_<?php echo md5($name_ur); ?>"  data-toggle="collapse" data-target="#ur_<?php echo md5($name_ur); ?>" aria-expanded="false" aria-controls="ur_<?php echo md5($name_ur); ?>">ЮЛ <b><?php echo CHtml::encode($name_ur); ?></b></div>
         <div id="ur_<?php echo md5($name_ur); ?>" class="collapse" aria-labelledby="ur_header_<?php echo md5($name_ur); ?>" data-parent="#accordion_ur">
             <div class="card-body p-0">
                 <?php foreach ($vvvv as $campId => $vvv) { ?>

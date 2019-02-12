@@ -381,7 +381,7 @@ class SiteService
                 $dloArr[] = Questionnaire::getDLOName($d);
             }
             if ($dloArr) {
-                return '('.implode(';', $dloArr).')';
+                return '('.implode('; ', $dloArr).')';
             }
 
         }

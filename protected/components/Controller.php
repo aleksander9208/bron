@@ -35,7 +35,7 @@ class Controller extends CController
             $cs->registerScriptFile(Yii::app()->createUrl('/statics/js/z.boot.js'));
             $cs->registerScriptFile(Yii::app()->createUrl('/statics/js/bootstrap/bootstrap.bundle.js'));
 
-            Yii::app()->getClientScript()->registerScript('inline', "if (typeof window.z == 'object') {window.z.debug = ".(YII_DEBUG?"true":"false")."; window.z.path = '".Yii::app()->createUrl('/')."'; window.z.role = '".(Yii::app()->user->getIsGuest()?'guest':'user')."'; window.z.user_id = ".(Yii::app()->user->getIsGuest()?0:Yii::app()->user->id)."; }", CClientScript::POS_END);
+            Yii::app()->getClientScript()->registerScript('inline', "if (typeof window.z == 'object') {window.z.debug = ".(YII_DEBUG?"true":"false")."; window.z.path = '".(Yii::app()->createUrl('/')==''?'/':Yii::app()->createUrl('/'))."'; window.z.role = '".(Yii::app()->user->getIsGuest()?'guest':'user')."'; window.z.user_id = ".(Yii::app()->user->getIsGuest()?0:Yii::app()->user->id)."; }", CClientScript::POS_END);
         }
 
         return parent::beforeAction($action);
