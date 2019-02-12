@@ -881,10 +881,14 @@ class Questionnaire extends CActiveRecord
             ->queryRow();
         if ($result) {
             $this->type = $result['type'];
-            $this->residence = $result['residence'];
+            if ($result['type'] == self::TYPE_FIZ) {
+                $this->residence = $result['residence'];
+                $this->email_parent = $result['email_parent'];
+                $this->tel_parent = $result['tel_parent'];
+            } else {
+                $this->fio_parent = null;
+            }
             $this->place_of_work = $result['place_of_work'];
-            $this->email_parent = $result['email_parent'];
-            $this->tel_parent = $result['tel_parent'];
             $this->name_ur = $result['name_ur'];
             $this->tel_ur_contact = $result['tel_ur_contact'];
             $this->email_ur_contact = $result['email_ur_contact'];
