@@ -54,14 +54,11 @@ class AdminController extends Controller
             $q->attributes = $questionnairePost;
             if ($q->save()) {
                 if ($id) {
-
                     $str = 'Запись успешно отредактирована';
                     if ($q->status == Questionnaire::STATUS_RETURNED) {
                         $str = 'Отправлено на доработку';
                     }
-
-
-                    Yii::app()->user->setFlash('bid', 'Запись успешно отредактирована');
+                    Yii::app()->user->setFlash('bid', $str);
                     $this->refresh();
                 } else {
                     Yii::app()->user->setFlash('bid', 'Запись успешно добавлена');
