@@ -382,7 +382,7 @@ class Questionnaire extends CActiveRecord
         if ($this->isNewRecord) {
             $q = Questionnaire::model()->findByAttributes(array('fio_child' => $this->$attribute, 'shift_id' => $this->shift_id));
             if ($q && ($q->status != self::STATUS_CANCELED)) {
-                $this->addError($attribute, 'Указанный ребенок был ранее указан в другой заявке');
+                $this->addError($attribute, 'Заявка уже была принята ранее');
                 return false;
             }
         }
@@ -737,7 +737,7 @@ class Questionnaire extends CActiveRecord
             self::DLO_3 => '23.06-02.07',
             self::DLO_4 => '05.07-14.07',
             self::DLO_5 => '16.07-25.07',
-            self::DLO_6 => '28.08-06.08',
+            self::DLO_6 => '28.07-06.08',
             self::DLO_7 => '08.08-17.08',
             self::DLO_8 => '19.08-28.08',
         );

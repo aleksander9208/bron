@@ -87,6 +87,7 @@ if (typeof window.z == 'object')
                     ).on(
                         'keypress.'+_self.name,
                         [
+                            '#z_anketa_fio_ur_contact',
                             '#z_anketa_fio_child',
                             '#z_anketa_fio_parent'
                         ].join(),
@@ -114,7 +115,7 @@ if (typeof window.z == 'object')
                     ).on(
                         'blur.'+_self.name,
                         [
-                            '#z_anketa_name_ur',
+                            '#z_anketa_fio_ur_contact',
                             '#z_anketa_fio_child',
                             '#z_anketa_fio_parent'
                         ].join(),

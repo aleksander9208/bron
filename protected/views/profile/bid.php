@@ -14,7 +14,15 @@
 
                 <div class="form-group row">
                     <label class="control-label font-weight-bold col-sm-4" for="Questionnaire_created">Дата подачи заявки</label>
-                    <div class="col-sm-8"><?php echo $model->created; ?></div>
+                    <div class="col-sm-8"><?php
+                        $dc = explode(' ', $model->created);
+                        if (count($dc)==2)
+                            {
+                                $dc[0] = explode('-', $dc[0]);
+                                $dc[0] = implode('-', array_reverse($dc[0]));
+                            }
+                        echo implode(' ', array_reverse($dc));
+                    ?></div>
                 </div>
 
                 <div class="form-group row <?php echo($model->getError('type') ? 'error' : ''); ?>">
@@ -210,15 +218,20 @@
                 <div class="form-group row">
                     <label class="control-label font-weight-bold col-sm-4" for="z_anketa_shift_id"><?php echo $model->getAttributeLabel('shift_id'); ?></label>
                     <div class="col-sm-8" id="z_anketa_shift_id">
-                        <?php echo Questionnaire::getShiftName($model->shift_id); ?>
+                        <?php
+                            //echo Questionnaire::getShiftName($model->shift_id);
+                            foreach ($shifts[$model->shift_id]['dlo'] as $d) echo Questionnaire::getDLOName($d).'; ';
+                        ?>
                     </div>
                 </div>
+                <?php if (false) { ?>
                 <div class="form-group row">
                     <label class="control-label font-weight-bold col-sm-4" for="z_anketa_dlo"><?php echo $model->getAttributeLabel('dlo_id'); ?></label>
                     <div class="col-sm-8" id="z_anketa_dlo">
                         <?php foreach ($shifts[$model->shift_id]['dlo'] as $d) { echo Questionnaire::getDLOName($d).'; '; } ?>
                     </div>
                 </div>
+                <?php } ?>
 
                 <div class="form-group row">
                     <label class="control-label font-weight-bold col-sm-4" for="z_anketa_camp_id"><?php echo $model->getAttributeLabel('camp_id'); ?></label>
@@ -235,7 +248,7 @@
                         <button class="btn btn-success" name="Questionnaire[status]" value="<?php echo Questionnaire::STATUS_CANCELED; ?>" type="submit">Отменить заявку</button>
                     <?php } ?>
                     <?php if (($model->status == Questionnaire::STATUS_RETURNED) || (($model->status == Questionnaire::STATUS_OK) && $model->getErrors())) { ?>
-                        <button class="btn btn-primary" name="Questionnaire[status]" value="<?php echo Questionnaire::STATUS_IN_MODER; ?>" type="submit"><?php echo ($model->id?'Внести изменеия':'Подать заявление на регистрацию'); ?></button>
+                        <button class="btn btn-primary" name="Questionnaire[status]" value="<?php echo Questionnaire::STATUS_IN_MODER; ?>" type="submit"><?php echo ($model->id?'Внести изменеия':'Подать заявку на регистрацию'); ?></button>
                     <?php } ?>
                 </div>
             </form>

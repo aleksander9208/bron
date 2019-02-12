@@ -32,13 +32,7 @@ if (typeof window.z == 'object')
                         '#z_anketa_types input:radio',
                         function ()
                             {
-                                var type_val = $(this).filter(':checked').val();
-                                _self.z.el.z_page_anketa.toggleClass('z_anketa_block_'+_self.constant.USER_ANKETA_TYPE_UR, type_val==1);
-
-                                if (type_val==0)
-                                    _self.z.el.z_anketa_form.find('.z_anketa_block_'+_self.constant.USER_ANKETA_TYPE_UR+' input').attr('disabled','disabled');
-                                        else
-                                    _self.z.el.z_anketa_form.find('.z_anketa_block_'+_self.constant.USER_ANKETA_TYPE_UR+' input').removeAttr('disabled');
+                                _self.change_type(this);
                             }
                     ).on(
                         'change.'+_self.name,
@@ -118,6 +112,7 @@ if (typeof window.z == 'object')
                     ).on(
                         'keypress.'+_self.name,
                         [
+                            '#z_anketa_fio_ur_contact',
                             '#z_anketa_fio_child',
                             '#z_anketa_fio_parent'
                         ].join(),
@@ -144,7 +139,7 @@ if (typeof window.z == 'object')
                     ).on(
                         'blur.'+_self.name,
                         [
-                            '#z_anketa_name_ur',
+                            '#z_anketa_fio_ur_contact',
                             '#z_anketa_fio_child',
                             '#z_anketa_fio_parent'
                         ].join(),
@@ -154,11 +149,28 @@ if (typeof window.z == 'object')
                             }
                     );
 
+                    if (_self.z.el.z_anketa_type_1.is(':checked'))
+                        _self.change_type(_self.z.el.z_anketa_type_1);
+
                     $.noConflict();
                     $(_self.z.el.z_anketa_tel_ur_contact).mask('(999) 999-99-99');
                     $(_self.z.el.z_anketa_tel_parent).mask('(999) 999-99-99');
 
                     _self.z.tasks.call(task_name, result_out);
+                },
+
+            //Обработчик смены типазаявителя
+            change_type: function(el_checkbox)
+                {
+                    var _self = this;
+
+                    var type_val = $(el_checkbox).filter(':checked').val();
+                    _self.z.el.z_page_anketa.toggleClass('z_anketa_block_'+_self.constant.USER_ANKETA_TYPE_UR, type_val==1).toggleClass('z_anketa_block_'+_self.constant.USER_ANKETA_TYPE_FIZ, type_val==0);
+
+                    if (type_val==0)
+                        _self.z.el.z_anketa_form.find('.z_anketa_block_'+_self.constant.USER_ANKETA_TYPE_UR+' input').attr('disabled','disabled');
+                            else
+                        _self.z.el.z_anketa_form.find('.z_anketa_block_'+_self.constant.USER_ANKETA_TYPE_UR+' input').removeAttr('disabled');
                 },
 
             //Вывод ошибок

@@ -61,7 +61,7 @@ class SiteService
                 'id' => Questionnaire::SHIFT_KIROVEC_1,
                 'camp' => Questionnaire::CAMP_KIROVEC,
                 'seats' => 192,
-                'min_age' => 1,
+                'min_age' => 7,
                 'max_age' => 17,
                 'dlo' => array(
                     Questionnaire::DLO_1
