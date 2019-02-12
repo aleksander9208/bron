@@ -57,6 +57,8 @@ class AdminController extends Controller
                     $str = 'Запись успешно отредактирована';
                     if ($q->status == Questionnaire::STATUS_RETURNED) {
                         $str = 'Отправлено на доработку';
+                    }elseif($q->status == Questionnaire::STATUS_OK) {
+                        $str ='Заявка зарегистрирована';
                     }
                     Yii::app()->user->setFlash('bid', $str);
                     $this->refresh();
