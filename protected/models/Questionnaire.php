@@ -880,6 +880,7 @@ class Questionnaire extends CActiveRecord
             ->order('id DESC')
             ->queryRow();
         if ($result) {
+            $this->type = $result['type'];
             $this->residence = $result['residence'];
             $this->place_of_work = $result['place_of_work'];
             $this->email_parent = $result['email_parent'];
