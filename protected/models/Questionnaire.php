@@ -192,13 +192,15 @@ class Questionnaire extends CActiveRecord
             if (isset($this->changedAttr['status']) && ($this->changedAttr['status'] != $this->status) && ($this->status == self::STATUS_OK)) {
                 if (is_null($this->booking_id)) {
                     $shifts = SiteService::getShifts();
-                    if (Questionnaire::model()->countByAttributes(array('shift_id'=>$this->shift_id,'status'=>self::STATUS_OK)) <  $shifts[$this->shift_id]['seats']) {
+                    if (Questionnaire::model()->countByAttributes(array('shift_id' => $this->shift_id, 'status' => self::STATUS_OK)) < $shifts[$this->shift_id]['seats']) {
+                        $n = 1;
                         do {
-                            $this->booking_id = $this->getPref($this->shift_id).rand(1,10000);
-                            if (!Questionnaire::model()->countByAttributes(array('booking_id' =>  $this->booking_id))) {
+                            $this->booking_id = $this->getPref($this->shift_id) . $n;
+                            if (!Questionnaire::model()->countByAttributes(array('booking_id' => $this->booking_id))) {
                                 break;
                             }
-                        } while (0);
+                            $n++;
+                        } while (true);
                     }
                 }
                 $this->name_ur_check = 0;
@@ -357,18 +359,10 @@ class Questionnaire extends CActiveRecord
     {
         if ($this->isNewRecord && $this->$attribute) {
             $year = date("Y");
-            /* $years = array();
-             for ($i = ($year - 18); $i <= $year; $i++) {
-                 $years[] = $i;
-             }
-             if (!in_array(date("Y", strtotime($this->$attribute)), $years)) {
-                 $this->addError($attribute, 'Нельзя подать заявку на взрослого человека');
-                 return false;
-             }*/
             $shifts = SiteService::getShifts();
             $age = ($year - date("Y", strtotime($this->$attribute)));
             if (($shifts[$this->shift_id]['min_age'] > $age) || ($shifts[$this->shift_id]['max_age'] < $age)) {
-                $this->addError($attribute, 'Возраст ребенка не подходит для выбранной смены');
+                $this->addError('shift_id', 'Возраст ребенка не подходит для выбранной смены');
                 return false;
             }
 
