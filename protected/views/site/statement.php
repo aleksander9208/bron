@@ -26,7 +26,7 @@
                             'changeMonth' => true,
                             'changeYear' => true,
                             //'appendText' => 'yyyy-mm-dd',
-                            'yearRange' => '-18:+0',
+                            'yearRange' => '-18:+1',
                         ),
                         'htmlOptions' => array(
                             'class' => 'form-control',
