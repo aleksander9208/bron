@@ -6,7 +6,7 @@ if (typeof window.z == 'object')
             //Название модуля
             name:'z_page_anketa',
             //Версия библиотеки
-            version: '190212',
+            version: '190213',
             //Указатель на глобалный объект
             z: window.z,
             //Хранилище данных
@@ -401,7 +401,7 @@ if (typeof window.z == 'object')
                                             val_date_parts_0[0]<=31 &&
                                             val_date_parts_0[1]>=1 &&
                                             val_date_parts_0[1]<=12 &&
-                                            val_date_parts_0[2]>=2019 &&
+                                            val_date_parts_0[2]>=2000 &&
                                         val_date_parts_1.length==3 &&
                                             val_date_parts_1[0]>=0 &&
                                             val_date_parts_1[0]<=23 &&
