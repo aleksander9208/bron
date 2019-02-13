@@ -220,7 +220,7 @@
                     <div class="col-sm-8" id="z_anketa_shift_id">
                         <?php
                             //echo Questionnaire::getShiftName($model->shift_id);
-                            foreach ($shifts[$model->shift_id]['dlo'] as $d) echo Questionnaire::getDLOName($d).'; ';
+                            SiteService::templateDLOFullRangeByData($shifts[$model->shift_id]['dlo']);
                         ?>
                     </div>
                 </div>
@@ -228,7 +228,7 @@
                 <div class="form-group row">
                     <label class="control-label font-weight-bold col-sm-4" for="z_anketa_dlo"><?php echo $model->getAttributeLabel('dlo_id'); ?></label>
                     <div class="col-sm-8" id="z_anketa_dlo">
-                        <?php foreach ($shifts[$model->shift_id]['dlo'] as $d) { echo Questionnaire::getDLOName($d).'; '; } ?>
+                        <?php echo SiteService::templateDLOFullRangeByData($shifts[$model->shift_id]['dlo']); ?>
                     </div>
                 </div>
                 <?php } ?>

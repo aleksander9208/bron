@@ -56,9 +56,7 @@ if (!$statData['questionnaire']) { ?>
                                 <th scope="row"
                                     class="align-middle"><?php echo Questionnaire::getCAMPName($v['camp_id']); ?></th>
                                 <td class="text-center"><?php echo Questionnaire::getShiftName($v['shift_id']); ?></td>
-                                <td class="text-center"> <?php foreach ($shifts[$v['shift_id']]['dlo'] as $d) {
-                                        echo Questionnaire::getDLOName($d) . '; ';
-                                    } ?></td>
+                                <td class="text-center"><?php echo SiteService::templateDLOFullRangeByData($shifts[$v['shift_id']]['dlo']); ?></td>
                                 <td class="text-center"><?php echo Questionnaire::getTypeName($v['type']); ?></td>
                                 <td class="text-center"><?php echo $v['created']; ?></td>
                                 <td class="text-center"><?php echo CHtml::encode($v['fio_ur_contact']); ?></td>

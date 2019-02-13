@@ -71,7 +71,7 @@
         </div>
         <div class="row">
             <label><?php echo $model->getAttributeLabel('dlo_id'); ?></label>
-            <div><?php foreach ($shifts[$model->shift_id]['dlo'] as $d) { echo Questionnaire::getDLOName($d).'; '; } ?></div>
+            <div><?php echo SiteService::templateDLOFullRangeByData($shifts[$model->shift_id]['dlo']); ?></div>
         </div>
         <div class="row">
             <label><?php echo $model->getAttributeLabel('camp_id'); ?></label>

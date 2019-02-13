@@ -356,36 +356,48 @@ class SiteService
         return $out;
     }
 
-    public static function templateChecker($shiftName, $shiftId, $seatsFrom, $seatsTo,$ageFrom,$ageTo, $shiftsPost, $period_group = '')
+    public static function templateChecker($shiftName, $shiftId, $seatsFrom, $seatsTo, $ageFrom, $ageTo, $shiftsPost, $period_group = '')
     {
         $checked = ((in_array($shiftId, $shiftsPost)) ? true : false);
         return '' .
-            '<div class="custom-control custom-switch">' .
-            CHtml::checkBox('Shifts[]', $checked, array('class' => 'custom-control-input', 'id' => 'z_anketa_' . $shiftId, 'value' => $shiftId, 'data-pgroup'=>$period_group)) .
-            CHtml::label($shiftName, 'z_anketa_' . $shiftId, array('class' => 'custom-control-label')) .
-            self::templateSeatsCount($seatsFrom, $seatsTo) .
-            //'<div class="z_anketa_age">(от ' .$ageFrom . ' до ' .$ageTo . ' лет)</div>'.
-            '</div>';
+        '<div class="custom-control custom-switch">' .
+        CHtml::checkBox('Shifts[]', $checked, array('class' => 'custom-control-input', 'id' => 'z_anketa_' . $shiftId, 'value' => $shiftId, 'data-pgroup' => $period_group)) .
+        CHtml::label($shiftName, 'z_anketa_' . $shiftId, array('class' => 'custom-control-label')) .
+        self::templateSeatsCount($seatsFrom, $seatsTo) .
+        //'<div class="z_anketa_age">(от ' .$ageFrom . ' до ' .$ageTo . ' лет)</div>'.
+        '</div>';
     }
 
-    public static function templateSeatsCount($seatsFrom, $seatsTo) {
-        return '<div class="z_anketa_counts">' . ($seatsFrom > $seatsTo ? $seatsTo : $seatsFrom) . ' из ' . $seatsTo . ($seatsFrom > $seatsTo ? '. В резерве: ' . abs($seatsTo - $seatsFrom) : '') . '</div>' ;
+    public static function templateSeatsCount($seatsFrom, $seatsTo)
+    {
+        return '<div class="z_anketa_counts">' . ($seatsFrom > $seatsTo ? $seatsTo : $seatsFrom) . ' из ' . $seatsTo . ($seatsFrom > $seatsTo ? '. В резерве: ' . abs($seatsTo - $seatsFrom) : '') . '</div>';
     }
 
     public static function templateDloRange($shiftId)
     {
         $shifts = self::getShifts();
-        $dloArr = array();
         if (isset($shifts[$shiftId])) {
-            foreach ($shifts[$shiftId]['dlo'] as $d) {
-                $dloArr[] = Questionnaire::getDLOName($d);
-            }
-            if ($dloArr) {
-                return '('.implode('; ', $dloArr).')';
-            }
-
+            return self::templateDLOFullRangeByData($shifts[$shiftId]['dlo']);
         }
         return '';
+    }
+
+    public static function templateDLOFullRangeByData($arrDlo)
+    {
+        $out = array();
+        if (count($arrDlo) > 1) {
+            foreach ($arrDlo as $k => $d) {
+                $data = Questionnaire::getDLOName($d) . '; ';
+                list($from, $to) = explode('-', $data);
+                $out[] = (!$k ? $from : $to);
+            }
+        } else {
+            foreach ($arrDlo as $d) {
+                $out[] = Questionnaire::getDLOName($d);
+            }
+        }
+
+        return implode('-', $out);
     }
 
 }

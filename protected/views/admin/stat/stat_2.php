@@ -45,7 +45,7 @@
                             <tr class="<?php echo(($v['type'] == Questionnaire::TYPE_UR) ? 'table-info' : ''); ?>">
                                 <th scope="row" class="align-middle"><?php echo Questionnaire::getCAMPName($campId); ?></th>
                                 <td class="text-center"><?php echo Questionnaire::getShiftName($shiftId); ?></td>
-                                <td class="text-center"> <?php foreach ($shifts[$shiftId]['dlo'] as $d) {echo Questionnaire::getDLOName($d) . '; '; } ?></td>
+                                <td class="text-center"> <?php echo SiteService::templateDLOFullRangeByData($shifts[$shiftId]['dlo']); ?></td>
                                 <td class="text-center"><?php echo Questionnaire::getTypeName($v['type']); ?></td>
                                 <td class="text-center"><?php echo $v['created']; ?></td>
                                 <td class="text-center"><?php echo CHtml::encode($v['fio_ur_contact']); ?></td>
@@ -67,7 +67,7 @@
                             <tr class="<?php echo(($v['type'] == Questionnaire::TYPE_UR) ? 'table-info' : ''); ?>">
                                 <th scope="row" class="align-middle"><?php echo Questionnaire::getCAMPName($campId); ?></th>
                                 <td class="text-center"><?php echo Questionnaire::getShiftName($shiftId); ?></td>
-                                <td class="text-center"> <?php foreach ($shifts[$shiftId]['dlo'] as $d) {echo Questionnaire::getDLOName($d) . '; '; } ?></td>
+                                <td class="text-center"> <?php echo SiteService::templateDLOFullRangeByData($shifts[$shiftId]['dlo']); ?></td>
                                 <td class="text-center"><?php echo Questionnaire::getTypeName($v['type']); ?></td>
                                 <td class="text-center"><?php echo $v['created']; ?></td>
                                 <td class="text-center"><?php echo CHtml::encode($v['fio_ur_contact']); ?></td>
