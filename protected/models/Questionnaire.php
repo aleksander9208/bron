@@ -839,12 +839,16 @@ class Questionnaire extends CActiveRecord
         if (is_null($this->fromDate)) {
             $this->fromDate = '01-01-2019';//date('Y-m-d', '2016-01-01');
         }
+
         if (is_null($this->toDate)) {
-            $this->toDate = date('m-d-Y');
+            $this->toDate = date('d-m-Y');
         }
+
+        $rev_data_start = implode('-', array_reverse(explode('-', $this->fromDate)));
+        $rev_data_end = implode('-', array_reverse(explode('-', $this->toDate)));
         $criteria->addCondition(array('t.created >=:start', 't.created<=:end'));
-        $criteria->params['start'] = date('Y-m-d 00:00:00', strtotime($this->fromDate));
-        $criteria->params['end'] = date('Y-m-d 23:59:59', strtotime($this->toDate));
+        $criteria->params['start'] = date('Y-m-d 00:00:00', strtotime($rev_data_start));
+        $criteria->params['end'] = date('Y-m-d 23:59:59', strtotime($rev_data_end));
 
         $criteria->compare('t.fio_child', $this->fio_child, true);
         $criteria->compare('t.fio_ur_contact', $this->fio_ur_contact, true);
