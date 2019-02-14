@@ -6,7 +6,7 @@ if (typeof window.z == 'object')
             //Название модуля
             name:'z_page_admin_statistics',
             //Версия библиотеки
-            version: '190209',
+            version: '190214',
             //Указатель на глобалный объект
             z: window.z,
             //Хранилище данных
@@ -31,7 +31,9 @@ if (typeof window.z == 'object')
                             }
                     );
 
+
                     $('table.table').find('.filters input, .filters select').addClass('form-control form-control-sm');
+                    $('table.table').tablesorter();
                     _self.z.tasks.call(task_name, result_out);
                 }
         };

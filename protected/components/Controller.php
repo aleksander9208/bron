@@ -28,6 +28,7 @@ class Controller extends CController
 
             $cs = Yii::app()->getClientScript();
             $cs->registerCoreScript('jquery');
+            $cs->registerScriptFile(Yii::app()->createUrl('/statics/js/jquery/jquery.tablesorter.js'));
             $cs->registerScriptFile(Yii::app()->createUrl('/statics/js/jquery/jquery.mask.js'));
             $cs->registerScriptFile(Yii::app()->createUrl('/statics/js/z.core.js'));
             $cs->registerScriptFile(Yii::app()->createUrl('/statics/js/z.tasks.js'));

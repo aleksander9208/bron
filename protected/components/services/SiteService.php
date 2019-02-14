@@ -370,7 +370,11 @@ class SiteService
 
     public static function templateSeatsCount($seatsFrom, $seatsTo)
     {
-        return '<div class="z_anketa_counts">' . ($seatsFrom > $seatsTo ? $seatsTo : $seatsFrom) . ' из ' . $seatsTo . ($seatsFrom > $seatsTo ? '. В резерве: ' . abs($seatsTo - $seatsFrom) : '') . '</div>';
+        if ($seatsFrom<$seatsTo)
+            return '<div class="z_anketa_counts">'.$seatsFrom.' из '. $seatsTo.'</div>';
+                else
+            return '<div class="z_anketa_counts">Резерв</div>';
+        //return '<div class="z_anketa_counts">' . ($seatsFrom > $seatsTo ? $seatsTo : $seatsFrom) . ' из ' . $seatsTo . ($seatsFrom > $seatsTo ? '. В резерве: ' . abs($seatsTo - $seatsFrom) : '') . '</div>';
     }
 
     public static function templateDloRange($shiftId)
