@@ -163,6 +163,12 @@
             <!--CHILD DATA END-->
 
             <hr />
+            <div class="form-group">
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="z_anketa_opd">
+                    <label class="custom-control-label" for="z_anketa_opd">Согласен на обработку персональных данных</label>
+                </div>
+            </div>
 
             <label for="z_anketa_table">Сводная таблица лагерей и смен</label>
             <table id="z_anketa_table" class="table table-bordered table-striped table-hover table-sm">

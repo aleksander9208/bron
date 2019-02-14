@@ -158,7 +158,7 @@
                             $this->widget('zii.widgets.jui.CJuiDatePicker', array(
                                 'name' => 'birthday_child',
                                 'attribute' => 'birthday_child',
-                                'value' => 'date("d-m-Y", strtotime($data->birthday_child))',
+                                'value' => 'date("d-m-Y", strtotime($model->birthday_child))',
                                 'model' => $model,
                                 'language' => 'ru',
                                 'options' => array(
@@ -176,7 +176,8 @@
                                     'id'    => 'z_anketa_birthday_child',
                                     'required'  =>'required',
                                     'data-mask' =>'01234567890-',
-                                    'maxlength'=>10
+                                    'maxlength'=>10,
+                                    'value' => date("d-m-Y", strtotime($model->birthday_child)),
                                 ),
                             ));
                             echo '<div class="invalid-feedback">Заполните поле корректно</div>';
