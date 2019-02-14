@@ -27,6 +27,7 @@ class ProfileController extends Controller
         $questionnaire = new Questionnaire();
         $questionnaire->type = $questionnaire->status = $questionnaire->paid = $questionnaire->booking_id  = $questionnaire->status = $questionnaire->is_main = null;
         $questionnaire->user_id = Yii::app()->user->id;
+        $questionnaire->create_admin = null;
 
 
         $this->render('bidList', array('title' => $title, 'model' => $questionnaire));

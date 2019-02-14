@@ -26,7 +26,7 @@ class AdminController extends Controller
 
         $this->pageTitle = $title;
         $questionnaire = new Questionnaire();
-        $questionnaire->type = $questionnaire->status = $questionnaire->paid = $questionnaire->is_main = null;
+        $questionnaire->type = $questionnaire->status = $questionnaire->paid = $questionnaire->is_main = $questionnaire->create_admin = null;
         $questionnairePost = Yii::app()->request->getParam('Questionnaire', array());
 
         $admFilter = Yii::app()->session->get('admin_filter',array());
@@ -83,7 +83,7 @@ class AdminController extends Controller
         $cs->registerScriptFile(Yii::app()->createUrl('/statics/js/z.page.admin_statistics.js'), CClientScript::POS_END);
 
         $questionnaire = new Questionnaire();
-        $questionnaire->type = $questionnaire->status = $questionnaire->paid = null;
+        $questionnaire->type = $questionnaire->status = $questionnaire->paid = $questionnaire->create_admin = null;
         $questionnairePost = Yii::app()->request->getParam('Questionnaire', array());
         $statFilter = Yii::app()->session->get('stat_filter',array());
         if ($questionnairePost) {

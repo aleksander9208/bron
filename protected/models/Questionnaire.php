@@ -921,9 +921,9 @@ class Questionnaire extends CActiveRecord
             $this->tel_ur_contact = $result['tel_ur_contact'];
             $this->email_ur_contact = $result['email_ur_contact'];
 
-            if (Yii::app()->user->role==User::ROLE_ADMIN) {
-                $this->fio_parent =  $this->residence = null;
-                $this->email_parent = $this->tel_parent = $this->place_of_work=  null;
+            if (Yii::app()->user->role == User::ROLE_ADMIN) {
+                $this->fio_parent = $this->residence = null;
+                $this->email_parent = $this->tel_parent = $this->place_of_work = null;
             }
         }
     }
