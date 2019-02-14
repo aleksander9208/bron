@@ -6,7 +6,7 @@ if (typeof window.z == 'object')
             //Название модуля
             name:'z_page_anketa',
             //Версия библиотеки
-            version: '190213',
+            version: '190214',
             //Указатель на глобалный объект
             z: window.z,
             //Хранилище данных
@@ -393,8 +393,8 @@ if (typeof window.z == 'object')
                             var is_valid = (val_date_parts_big.length==2);
                             if (is_valid==true)
                                 {
-                                    var val_date_parts_0 = val_date_parts_big[0].split('-');
-                                    var val_date_parts_1 = val_date_parts_big[1].split(':');
+                                    var val_date_parts_0 = val_date_parts_big[1].split('-');
+                                    var val_date_parts_1 = val_date_parts_big[0].split(':');
                                     var is_valid = (
                                         val_date_parts_0.length==3 &&
                                             val_date_parts_0[0]>=1 &&
