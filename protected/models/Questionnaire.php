@@ -457,8 +457,8 @@ class Questionnaire extends CActiveRecord
                 return false;
             }
 
-            if ($change && Questionnaire::model()->countByAttributes(array($attribute => $this->$attribute, 'status' => self::STATUS_OK), 'id!=:id', array('id' => $this->id))) {
-                $this->addError($attribute, 'Такой номер брони уже был задан ранее');
+            if ($change && $this->$attribute && Questionnaire::model()->countByAttributes(array($attribute => $this->$attribute, 'status' => self::STATUS_OK), 'id!=:id', array('id' => $this->id))) {
+                $this->addError($attribute, 'Такой номер брони уже был задан ранее'.var_export($this->$attribute,true));
 
                 return false;
             }
