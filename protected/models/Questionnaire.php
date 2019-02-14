@@ -451,7 +451,7 @@ class Questionnaire extends CActiveRecord
 
         if (!$this->isNewRecord) {
             $change = (isset($this->changedAttr[$attribute]) && ($this->changedAttr[$attribute] != $this->$attribute));
-            if ($change && (Yii::app()->user->role != User::ROLE_ADMIN) && ($this->$attribute != self::STATUS_CANCELED)) {
+            if ($change && (Yii::app()->user->role != User::ROLE_ADMIN) && ($this->status != self::STATUS_CANCELED)) {
                 $this->addError($attribute, 'Нет прав на изменения номера брони');
 
                 return false;
