@@ -158,6 +158,7 @@
                             $this->widget('zii.widgets.jui.CJuiDatePicker', array(
                                 'name' => 'birthday_child',
                                 'attribute' => 'birthday_child',
+                                'value' => 'date("h:i:s d-m-Y", strtotime($data->birthday_child))',
                                 'model' => $model,
                                 'language' => 'ru',
                                 'options' => array(

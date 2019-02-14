@@ -843,6 +843,10 @@ class Questionnaire extends CActiveRecord
         if (is_null($this->toDate)) {
             $this->toDate = date('d-m-Y');
         }
+        if (is_numeric($this->create_admin)) {
+            $criteria->compare('t.create_admin', $this->create_admin);
+        }
+
 
         $rev_data_start = implode('-', array_reverse(explode('-', $this->fromDate)));
         $rev_data_end = implode('-', array_reverse(explode('-', $this->toDate)));
