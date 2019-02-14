@@ -239,13 +239,13 @@ class Questionnaire extends CActiveRecord
                 $this->created = date('Y-m-d H:i:s');
             }
 
-            if (isset($this->changedAttr['status']) && ($this->changedAttr['status'] != $this->status) && ($this->status == self::STATUS_CANCELED)) {
+            if (!$this->isNewRecord && isset($this->changedAttr['status']) && ($this->changedAttr['status'] != $this->status) && ($this->status == self::STATUS_CANCELED)) {
                 if ($this->booking_id) {
                     $this->booking_id = null;
                     $result = Yii::app()->db->createCommand()
                         ->select('id')
                         ->from('{{questionnaire}}')
-                        ->where('shift_id=:shift AND (booking_id IS NOT NULL) AND ((status=:status AND is_main=0) OR (is_main=1)) ', array('status' => Questionnaire::STATUS_OK, 'shift' => (int)$this->shift_id))
+                        ->where('shift_id=:shift AND (booking_id IS NOT NULL) AND ((status=:status AND is_main=0) OR (is_main=1)) AND id!=:id', array('status' => Questionnaire::STATUS_OK, 'shift' => (int)$this->shift_id,'id'=>$this->id))
                         ->order('is_main DESC, created ASC')
                         ->queryRow();
                     if ($result) {
