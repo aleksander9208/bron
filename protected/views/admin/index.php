@@ -161,7 +161,7 @@
                     'header' => 'Номер брони',
                     'name' => 'booking_id',
                     'type' => 'raw',
-                    'value' => '"<div data-banketa-id=\"".$data->id."\"></div>".$data->booking_id',
+                    'value' => '"<div data-banketa-id=\"".$data->id."\"></div>".($data->booking_id?$data->booking_id:(($data->status==Questionnaire::STATUS_OK)?"Резерв":""))',
                     'htmlOptions' => array('class'=>'text-center'),
                     'headerHtmlOptions' => array('class' => 'text-center','scope'=>'col'),
                     'filter' => CHtml::activeTextField($model, 'booking_id', array('class' => 'form-control')),
