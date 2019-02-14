@@ -20,7 +20,7 @@
                         'options' => array(
                             'locale' => 'ru',
                             'defaultTimeZone' => 'Europe/Moscow',
-                            'dateFormat' => 'hh:ii:ss dd-mm-yy',
+                            'dateFormat' => date('H:i:s').' dd-mm-yy',
                             'defaultDate' => date("H:i:s d-m-Y"), //$model->birthday_child,
                             'altFormat' => '00:00:00 dd-mm-yy',
                             'changeMonth' => true,
