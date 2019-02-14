@@ -27,8 +27,8 @@ if (!$statData['questionnaire']) { ?>
                            class="table table-bordered table-striped table-hover table-sm">
                         <thead class="thead-dark">
                         <tr>
-                            <th scope="row" class="align-middle">#</th>
-                            <td scope="col" class="text-center">Лагерь</td>
+                            <th scope="col" class="text-center">№</th>
+                            <th scope="col" class="text-center">Лагерь</th>
                             <th scope="col" class="text-center">Смена</th>
                             <th scope="col" class="text-center">Период</th>
                             <th scope="col" class="text-center">Тип</th>
@@ -49,7 +49,7 @@ if (!$statData['questionnaire']) { ?>
                         <tbody>
                         <?php if (!$k) { ?>
                             <tr>
-                                <td class="text-center" colspan="16">Данные отсутствуют</td>
+                                <td class="text-center" colspan="17">Данные отсутствуют</td>
                             </tr>
                         <?php } ?>
                         <?php foreach ($k as $kk=> $v) { ?>

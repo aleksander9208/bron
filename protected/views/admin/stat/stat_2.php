@@ -14,6 +14,7 @@
                 <table id="z_anketa_table_<?php echo $campId; ?>" class="table table-bordered table-striped table-hover table-sm mb-0">
                     <thead class="thead-dark">
                         <tr>
+                            <th scope="col" class="text-center">№</th>
                             <th scope="col" class="text-center">Лагерь</th>
                             <th scope="col" class="text-center">Смена</th>
                             <th scope="col" class="text-center">Период</th>
@@ -36,7 +37,7 @@
 
                     <?php if (!$statData['questionnaire_main'][$campId] && !$statData['questionnaire'][$campId]) { ?>
                         <tr>
-                            <td class="text-center" colspan="16">Данные отсутствуют</td>
+                            <td class="text-center" colspan="17">Данные отсутствуют</td>
                         </tr>
                     <?php } ?>
 

@@ -19,7 +19,7 @@ if (!$statData['questionnaire']) { ?>
                     <table id="z_anketa_table_<?php echo md5($name_ur); ?>_<?php echo $campId; ?>_<?php echo $shiftId; ?>" class="table table-bordered table-striped table-hover table-sm">
                         <thead class="thead-dark">
                         <tr>
-                            <th scope="row" class="align-middle">#</th>
+                            <th scope="col" class="text-center">№</th>
                             <th scope="col" class="text-center">Лагерь</th>
                             <th scope="col" class="text-center">Смена</th>
                             <th scope="col" class="text-center">Период</th>

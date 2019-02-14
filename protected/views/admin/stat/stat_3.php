@@ -21,6 +21,7 @@
                                                     <table id="z_anketa_table_<?php echo $campId; ?>_<?php echo $shiftId; ?>" class="table table-bordered table-striped table-hover table-sm">
                                                         <thead class="thead-dark">
                                                             <tr>
+                                                                <th scope="col" class="text-center">№</th>
                                                                 <th scope="col" class="text-center">Лагерь</th>
                                                                 <th scope="col" class="text-center">Смена</th>
                                                                 <th scope="col" class="text-center">Период</th>
@@ -43,7 +44,7 @@
 
                                                         <?php if ((!isset($statData['questionnaire_main'][$campId][$shiftId]) || !$statData['questionnaire_main'][$campId][$shiftId]) && (!isset($statData['questionnaire'][$campId][$shiftId]) || !$statData['questionnaire'][$campId][$shiftId])) { ?>
                                                             <tr>
-                                                                <td class="text-center" colspan="16">Данные отсутствуют</td>
+                                                                <td class="text-center" colspan="17">Данные отсутствуют</td>
                                                             </tr>
                                                         <?php } ?>
 
@@ -76,7 +77,7 @@
                                                             foreach ($statData['questionnaire'][$campId][$shiftId] as $v) {  ?>
                                                                 <tr class="<?php echo(($v['type'] == Questionnaire::TYPE_UR) ? 'table-info' : ''); ?>">
                                                                     <th scope="row" class="align-middle"><?php echo (int)($k+1); ?></th>
-                                                                    <tdclass="align-middle"><?php echo Questionnaire::getCAMPName($campId); ?></td>
+                                                                    <td class="align-middle"><?php echo Questionnaire::getCAMPName($campId); ?></td>
                                                                     <td class="text-center"><?php echo Questionnaire::getShiftName($shiftId); ?></td>
                                                                     <td class="text-center"> <?php echo SiteService::templateDLOFullRangeByData($shifts[$shiftId]['dlo']); ?></td>
                                                                     <td class="text-center"><?php echo Questionnaire::getTypeName($v['type']); ?></td>
