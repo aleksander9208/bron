@@ -27,7 +27,8 @@ if (!$statData['questionnaire']) { ?>
                            class="table table-bordered table-striped table-hover table-sm">
                         <thead class="thead-dark">
                         <tr>
-                            <th scope="col" class="text-center">Лагерь</th>
+                            <th scope="row" class="align-middle">#</th>
+                            <td scope="col" class="text-center">Лагерь</td>
                             <th scope="col" class="text-center">Смена</th>
                             <th scope="col" class="text-center">Период</th>
                             <th scope="col" class="text-center">Тип</th>
@@ -51,10 +52,10 @@ if (!$statData['questionnaire']) { ?>
                                 <td class="text-center" colspan="16">Данные отсутствуют</td>
                             </tr>
                         <?php } ?>
-                        <?php foreach ($k as $v) { ?>
+                        <?php foreach ($k as $kk=> $v) { ?>
                             <tr class="<?php echo($v['create_admin'] ? 'table-info' : ''); ?>">
-                                <th scope="row"
-                                    class="align-middle"><?php echo Questionnaire::getCAMPName($v['camp_id']); ?></th>
+                                <th scope="row" class="align-middle"><?php echo (int)($kk+1); ?></th>
+                                <td class="align-middle"><?php echo Questionnaire::getCAMPName($v['camp_id']); ?></td>
                                 <td class="text-center"><?php echo Questionnaire::getShiftName($v['shift_id']); ?></td>
                                 <td class="text-center"><?php echo SiteService::templateDLOFullRangeByData($shifts[$v['shift_id']]['dlo']); ?></td>
                                 <td class="text-center"><?php echo Questionnaire::getTypeName($v['type']); ?></td>

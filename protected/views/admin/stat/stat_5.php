@@ -19,6 +19,7 @@ if (!$statData['questionnaire']) { ?>
                     <table id="z_anketa_table_<?php echo md5($name_ur); ?>_<?php echo $campId; ?>_<?php echo $shiftId; ?>" class="table table-bordered table-striped table-hover table-sm">
                         <thead class="thead-dark">
                         <tr>
+                            <th scope="row" class="align-middle">#</th>
                             <th scope="col" class="text-center">Лагерь</th>
                             <th scope="col" class="text-center">Смена</th>
                             <th scope="col" class="text-center">Период</th>
@@ -38,11 +39,10 @@ if (!$statData['questionnaire']) { ?>
                         </tr>
                         </thead>
                         <tbody>
-                        <?php foreach ($vv as $v) { ?>
-
+                        <?php foreach ($vv as $k=> $v) { ?>
                                     <tr class="<?php echo($v['create_admin'] ? 'table-info' : ''); ?>">
-                                        <th scope="row"
-                                            class="align-middle"><?php echo Questionnaire::getCAMPName($v['camp_id']); ?></th>
+                                        <th scope="row" class="align-middle"><?php echo (int)($k+1); ?></th>
+                                        <th class="align-middle"><?php echo Questionnaire::getCAMPName($v['camp_id']); ?></th>
                                         <td class="text-center"><?php echo Questionnaire::getShiftName($v['shift_id']); ?></td>
                                         <td class="text-center"><?php echo SiteService::templateDLOFullRangeByData($shifts[$v['shift_id']]['dlo']); ?></td>
                                         <td class="text-center"><?php echo Questionnaire::getTypeName($v['type']); ?></td>

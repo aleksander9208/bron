@@ -51,7 +51,8 @@
                                                         if (isset($statData['questionnaire_main'][$campId][$shiftId])) {
                                                             foreach ($statData['questionnaire_main'][$campId][$shiftId] as $v) { ?>
                                                                 <tr class="<?php echo(($v['type'] == Questionnaire::TYPE_UR) ? 'table-info' : ''); ?>">
-                                                                    <th scope="row" class="align-middle"><?php echo Questionnaire::getCAMPName($campId); ?></th>
+                                                                    <th scope="row" class="align-middle">#</th>
+                                                                    <td scope="row" class="align-middle"><?php echo Questionnaire::getCAMPName($campId); ?></td>
                                                                     <td class="text-center"><?php echo Questionnaire::getShiftName($shiftId); ?></td>
                                                                     <td class="text-center"> <?php echo SiteService::templateDLOFullRangeByData($shifts[$shiftId]['dlo']); ?></td>
                                                                     <td class="text-center"><?php echo Questionnaire::getTypeName($v['type']); ?></td>
@@ -74,7 +75,8 @@
                                                         if (isset($statData['questionnaire'][$campId][$shiftId])) {
                                                             foreach ($statData['questionnaire'][$campId][$shiftId] as $v) {  ?>
                                                                 <tr class="<?php echo(($v['type'] == Questionnaire::TYPE_UR) ? 'table-info' : ''); ?>">
-                                                                    <th scope="row" class="align-middle"><?php echo Questionnaire::getCAMPName($campId); ?></th>
+                                                                    <th scope="row" class="align-middle"><?php echo (int)($k+1); ?></th>
+                                                                    <tdclass="align-middle"><?php echo Questionnaire::getCAMPName($campId); ?></td>
                                                                     <td class="text-center"><?php echo Questionnaire::getShiftName($shiftId); ?></td>
                                                                     <td class="text-center"> <?php echo SiteService::templateDLOFullRangeByData($shifts[$shiftId]['dlo']); ?></td>
                                                                     <td class="text-center"><?php echo Questionnaire::getTypeName($v['type']); ?></td>

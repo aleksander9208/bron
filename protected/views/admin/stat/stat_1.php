@@ -36,17 +36,16 @@ $this->widget('MyGridView', array(
         )
     ),
     'columns' => array(
-            /*
+
         array(
             'header' => '№',
             'name' => 'id',
             'type' => 'raw',
-            'value' => '$data->id',
-            'filter' => CHtml::activeTextField($model, 'id', array('class' => 'form-control')),
+            'value' => '($row + ($this->grid->dataProvider->pagination->currentPage * $this->grid->dataProvider->pagination->pageSize) + 1)',
+            'filter' => false,
             'htmlOptions' => array('class' => 'font-weight-bold text-center', 'scope' => 'row'),
             'headerHtmlOptions' => array('class' => 'text-center', 'scope' => 'col'),
         ),
-            */
         array(
             'header' => 'Лагерь',
             'name' => 'camp_id',
