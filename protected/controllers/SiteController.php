@@ -30,7 +30,7 @@ class SiteController extends Controller
         $cs->registerCssFile(Yii::app()->createUrl('/statics/css/z.page.anketa.css'));
         $cs->registerScriptFile(Yii::app()->createUrl('/statics/js/z.page.anketa.js'), CClientScript::POS_END);
 
-        $title = 'Подача заявления';
+        $title = 'Подача заявки';
         $this->pageTitle = $title;
         $model = new Questionnaire();
 

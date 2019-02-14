@@ -403,7 +403,7 @@ class Questionnaire extends CActiveRecord
                     if ($shiftId != $this->$attribute) {
                         $cq = Questionnaire::model()->countByAttributes(array('fio_child' => $this->fio_child, 'shift_id' => $shiftId), 'status!=:stat', array('stat' => Questionnaire::STATUS_CANCELED));
                         if ($cq) {
-                            $this->addError($attribute, 'Выбранные смены не могут пересекаться по временным периодам');
+                            $this->addError($attribute, 'Заявка уже принята ранее');
 
                             return false;
                         }
