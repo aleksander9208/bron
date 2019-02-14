@@ -11,7 +11,7 @@
             <?php if ($user->checkAccess(User::ROLE_ADMIN)) { ?>
                 <div class="form-group">
                     <?php echo CHtml::activeLabel($model, 'created', array('for'=>'z_anketa_created')); ?>
-                    <?php echo $model->created;
+                    <?php
                     $this->widget('zii.widgets.jui.CJuiDatePicker', array(
                         'name' => 'created',
                         'attribute' => 'created',
@@ -20,9 +20,9 @@
                         'options' => array(
                             'locale' => 'ru',
                             'defaultTimeZone' => 'Europe/Moscow',
-                            'dateFormat' => 'dd-mm-yy 00:00:00',
-                            'defaultDate' => date("d-m-Y 00:00:00"), //$model->birthday_child,
-                            'altFormat' => 'dd-mm-yy 00:00:00',
+                            'dateFormat' => 'hh:ii:ss dd-mm-yy',
+                            'defaultDate' => date("H:i:s d-m-Y"), //$model->birthday_child,
+                            'altFormat' => '00:00:00 dd-mm-yy',
                             'changeMonth' => true,
                             'changeYear' => true,
                             //'appendText' => 'yyyy-mm-dd',
