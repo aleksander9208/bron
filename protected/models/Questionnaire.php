@@ -248,17 +248,17 @@ class Questionnaire extends CActiveRecord
                         ->where('shift_id=:shift AND (booking_id IS NOT NULL) AND ((status=:status AND is_main=0) OR (is_main=1)) AND id!=:id', array('status' => Questionnaire::STATUS_OK, 'shift' => (int)$this->shift_id,'id'=>$this->id))
                         ->order('is_main DESC, created ASC')
                         ->queryRow();
+
                     if ($result) {
                         $n = 1;
                         do {
-                            $this->booking_id = $this->getPref($this->shift_id) . $n;
-                            if (!Questionnaire::model()->countByAttributes(array('booking_id' => $this->booking_id))) {
+                            $booking_id = $this->getPref($this->shift_id) . $n;
+                            if (!Questionnaire::model()->countByAttributes(array('booking_id' => $booking_id))) {
                                 break;
                             }
                             $n++;
                         } while (true);
-
-                        Yii::app()->db->createCommand()->update('{{questionnaire}}', array('booking_id' => $this->booking_id), 'id=:id', array(':id' => $result['id']));
+                        Yii::app()->db->createCommand()->update('{{questionnaire}}', array('booking_id' => $booking_id), 'id=:id', array(':id' => $result['id']));
                     }
                 }
             }
