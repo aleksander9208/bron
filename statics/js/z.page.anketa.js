@@ -42,6 +42,13 @@ if (typeof window.z == 'object')
                                 _self.validate_smen();
                             }
                     ).on(
+                        'change.'+_self.name,
+                        '#z_anketa_opd',
+                        function ()
+                            {
+                                _self.validate_opd($(this));
+                            }
+                    ).on(
                         [
                             'change.'+_self.name,
                             'focusout.'+_self.name
@@ -209,7 +216,6 @@ if (typeof window.z == 'object')
                             _self.z.el.z_anketa_email_ur_contact.removeClass('is-valid is-invalid');
                         }
 
-
                     //Физ
                     _self.validate_fio(_self.z.el.z_anketa_fio_parent);
                     _self.validate_required(_self.z.el.z_anketa_residence);
@@ -220,6 +226,8 @@ if (typeof window.z == 'object')
                     _self.validate_date(_self.z.el.z_anketa_birthday_child);
                     _self.validate_required(_self.z.el.z_anketa_place_of_study);
                     _self.validate_phone(_self.z.el.z_anketa_tel_parent);
+
+                    _self.validate_opd(_self.z.el.z_anketa_opd);
 
                     _self.validate_smen();
 
@@ -233,6 +241,16 @@ if (typeof window.z == 'object')
                             event.preventDefault();
                             event.stopPropagation();
                         }
+                },
+
+            //Валидация ОПД
+            validate_opd: function (el_opd)
+                {
+                    var _self = this;
+                    var is_valid = el_opd.is(':checked');
+
+                    el_opd.toggleClass('is-valid', is_valid==true).toggleClass('is-invalid', is_valid==false);
+                    return is_valid;
                 },
 
             //Валидация смен
