@@ -25,7 +25,7 @@ class ProfileController extends Controller
         $title = 'Мои заявки';
         $this->pageTitle = $title;
         $questionnaire = new Questionnaire();
-        $questionnaire->type = $questionnaire->status = $questionnaire->paid = null;
+        $questionnaire->type = $questionnaire->status = $questionnaire->paid = $questionnaire->booking_id  = $questionnaire->status = null;
         $questionnaire->user_id = Yii::app()->user->id;
 
 
