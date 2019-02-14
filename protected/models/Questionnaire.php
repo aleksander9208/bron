@@ -859,10 +859,11 @@ class Questionnaire extends CActiveRecord
         $criteria->compare('t.fio_parent', $this->fio_parent, true);
         $criteria->compare('t.tel_parent', $this->tel_parent, true);
         $criteria->compare('t.booking_id', $this->booking_id, true);
+        /*
          if (is_numeric($this->is_main)) {
              $criteria->compare('t.is_main', $this->is_main);
          }
-
+*/
         return new CActiveDataProvider('Questionnaire', array(
             'criteria' => $criteria,
             'pagination' => array(

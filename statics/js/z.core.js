@@ -7,7 +7,7 @@ window.z =
         //Название модуля
         name:'z_core',
         //Версия библиотеки
-        version: '190211',
+        version: '190214',
         //Поддиректория проекта
         path: '/',
         //Активность системы
@@ -221,7 +221,7 @@ window.z =
                                 {
                                     var val_anketa_id = $(this).attr('data-booking-id')|0;
                                     var val = $(this).html();
-                                    var el_text_area = $('<input class="form-control" type="text" data-mask="0123456789" />');
+                                    var el_text_area = $('<input class="form-control" type="text" data-mask="0123456789абвгдеёжзийклмнопрстуфхцчшщъыьэюя" />');
                                     el_text_area.attr('data-baid', val_anketa_id).val(val);
                                     $(this).html(el_text_area);
                                     el_text_area.focus();
@@ -232,7 +232,7 @@ window.z =
                     'input[data-baid]',
                     function ()
                         {
-                            var val = $(this).val()|0;
+                            var val = $(this).val();
                             var val_anketa_id = $(this).attr('data-baid')|0;
                             $( '<div class="z-snipper d-flex justify-content-center align-items-center"><div class="spinner-border" role="status"><span class="sr-only">Обмен данными...</span></div></div>' ).insertBefore(this);
 
