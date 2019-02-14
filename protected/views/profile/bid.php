@@ -220,7 +220,7 @@
                     <div class="col-sm-8" id="z_anketa_shift_id">
                         <?php
                             //echo Questionnaire::getShiftName($model->shift_id);
-                            SiteService::templateDLOFullRangeByData($shifts[$model->shift_id]['dlo']);
+                            echo SiteService::templateDLOFullRangeByData($shifts[$model->shift_id]['dlo']);
                         ?>
                     </div>
                 </div>

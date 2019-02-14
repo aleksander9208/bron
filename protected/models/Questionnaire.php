@@ -324,7 +324,7 @@ class Questionnaire extends CActiveRecord
 
         if ($this->$attribute) {
             if ($this->isNewRecord || (!$this->isNewRecord && $this->status != self::STATUS_OK)) {
-                $this->addError($attribute, 'Нельзя ставить в резерв не одобренные заявления');
+                $this->addError($attribute, 'Нельзя ставить в резерв не одобренные заявки');
                 return false;
             }
             $change = (isset($this->changedAttr[$attribute]) && ($this->changedAttr[$attribute] != $this->$attribute));
