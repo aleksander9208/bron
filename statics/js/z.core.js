@@ -223,7 +223,7 @@ window.z =
                                     var val = $(this).html();
                                     var el_text_area = $('<input class="form-control" type="text" data-mask="0123456789абвгдеёжзийклмнопрстуфхцчшщъыьэюя" />');
                                     el_text_area.attr('data-baid', val_anketa_id).val(val);
-                                    $(this).html(el_text_area);
+                                    $(this).data('old_value', val).html(el_text_area);
                                     el_text_area.focus();
                                 }
                         }
@@ -254,6 +254,8 @@ window.z =
                                                 {
                                                     _self.log(_self.name, 'init_listners', result.errors.join('<br/>'), false);
                                                     $('.z-snipper').remove();
+                                                    var el_booking = $('[data-booking-id="'+val_anketa_id+'"]');
+                                                    el_booking.html( el_booking.data('old_value') );
                                                 }
                                                     else
                                                 $('[data-booking-id="'+result.data.questionnaire_id+'"]').html(result.data.booking_id);
