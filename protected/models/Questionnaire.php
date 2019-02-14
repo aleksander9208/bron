@@ -232,6 +232,31 @@ class Questionnaire extends CActiveRecord
                 $this->place_of_study_check = 0;
                 $this->created = date('Y-m-d H:i:s');
             }
+
+            if (isset($this->changedAttr['status']) && ($this->changedAttr['status'] != $this->status) && ($this->status == self::STATUS_CANCELED)) {
+               if ($this->booking_id) {
+                   $this->booking_id = null;
+                   $result = Yii::app()->db->createCommand()
+                       ->select('id')
+                       ->from('{{questionnaire}}')
+                       ->where('shift_id=:shift AND (booking_id IS NOT NULL) AND ((status=:status AND is_main=0) OR (is_main=1)) ', array('status' => Questionnaire::STATUS_OK, 'shift' => (int)$this->shift_id))
+                       ->order('is_main DESC, created ASC')
+                       ->queryRow();
+                   if ($result) {
+                       $n = 1;
+                       do {
+                           $this->booking_id = $this->getPref($this->shift_id) . $n;
+                           if (!Questionnaire::model()->countByAttributes(array('booking_id' => $this->booking_id))) {
+                               break;
+                           }
+                           $n++;
+                       } while (true);
+
+                       Yii::app()->db->createCommand()->update('{{questionnaire}}', array('booking_id' => $this->booking_id), 'id=:id', array(':id' => $result['id']));
+                   }
+               }
+            }
+
         } else { //простое редактирование пользователем
 
         }
