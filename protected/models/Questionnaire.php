@@ -192,7 +192,13 @@ class Questionnaire extends CActiveRecord
             if (isset($this->changedAttr['status']) && ($this->changedAttr['status'] != $this->status) && ($this->status == self::STATUS_OK)) {
                 if (is_null($this->booking_id)) {
                     $shifts = SiteService::getShifts();
-                    if (Questionnaire::model()->countByAttributes(array('shift_id' => $this->shift_id, 'status' => self::STATUS_OK)) < $shifts[$this->shift_id]['seats']) {
+
+                    $reserve = Yii::app()->db->createCommand()
+                        ->select('srez_1,srez_2,srez_3,srez_4,srez_5,srez_6,srez_7,srez_8,srez_9,srez_10,srez_11,srez_12,srez_13,srez_14,srez_15,srez_16,srez_17,srez_18,srez_19,srez_20,srez_21,srez_22,srez_23,srez_24,srez_25,srez_26,srez_27')
+                        ->from('{{questionnaire_rezerv}}')
+                        ->where('id=1')
+                        ->queryRow();
+                    if ((Questionnaire::model()->countByAttributes(array('shift_id' => $this->shift_id, 'status' => self::STATUS_OK)) + (int)$reserve['srez_'.$this->shift_id]) < $shifts[$this->shift_id]['seats']) {
                         $n = 1;
                         do {
                             $this->booking_id = $this->getPref($this->shift_id) . $n;
