@@ -245,7 +245,7 @@ class Questionnaire extends CActiveRecord
                     $result = Yii::app()->db->createCommand()
                         ->select('id')
                         ->from('{{questionnaire}}')
-                        ->where('shift_id=:shift AND (booking_id IS NOT NULL) AND ((status=:status AND is_main=0) OR (is_main=1)) AND id!=:id', array('status' => Questionnaire::STATUS_OK, 'shift' => (int)$this->shift_id,'id'=>$this->id))
+                        ->where('shift_id=:shift AND (booking_id IS NULL) AND ((status=:status AND is_main=0) OR (is_main=1)) AND id!=:id', array('status' => Questionnaire::STATUS_OK, 'shift' => (int)$this->shift_id,'id'=>$this->id))
                         ->order('is_main DESC, created ASC')
                         ->queryRow();
 
