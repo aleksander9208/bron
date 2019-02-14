@@ -68,17 +68,17 @@ $this->widget('MyGridView', array(
         array(
             'header' => 'Дата подачи',
             'name' => 'created',
-            'value' => '$data->created',
+            'value' => 'date("H:i:s d-m-Y",strtotime($data->created))',
             'filter' => $this->widget('zii.widgets.jui.CJuiDatePicker', array(
                     'model' => $model,
                     'attribute' => 'fromDate',
-                    'options' => array('firstDay' => 6, 'dateFormat' => 'yy-mm-dd', 'language' => 'ru'), //, 'changeMonth' => true, 'changeYear' => true, 'yearRange' => '2013:2099'
+                    'options' => array('firstDay' => 6, 'dateFormat' => 'dd-mm-yy', 'language' => 'ru'), //, 'changeMonth' => true, 'changeYear' => true, 'yearRange' => '2013:2099'
                     'language' => 'ru',
                     'htmlOptions' => array('placeHolder' => 'С:', 'id' => 'from_date', 'readonly' => 'readonly', "class" => "input-medium"),
                 ), true) . ' ' . $this->widget('zii.widgets.jui.CJuiDatePicker', array(
                     'model' => $model,
                     'attribute' => 'toDate',
-                    'options' => array('firstDay' => 6, 'dateFormat' => 'yy-mm-dd', 'language' => 'ru'), //, 'changeMonth' => true, 'changeYear' => true, 'yearRange' => '2013:2099'
+                    'options' => array('firstDay' => 6, 'dateFormat' => 'dd-mm-yy', 'language' => 'ru'), //, 'changeMonth' => true, 'changeYear' => true, 'yearRange' => '2013:2099'
                     'language' => 'ru',
                     'htmlOptions' => array('placeHolder' => 'По:', 'id' => 'to_date', 'readonly' => 'readonly', "class" => "input-medium"),
                 ), true),

@@ -163,9 +163,9 @@
                                 'options' => array(
                                     'locale' => 'ru',
                                     'defaultTimeZone' => 'Europe/Moscow',
-                                    'dateFormat' => 'yy-mm-dd',
+                                    'dateFormat' => 'dd-mm-yy',
                                     //    'defaultDate' => $model->birthday_child,
-                                    'altFormat' => 'yy-mm-dd',
+                                    'altFormat' => 'dd-mm-yy',
                                     'changeMonth' => true,
                                     'changeYear' => true,
                                     'yearRange' => '-18:+0',
@@ -180,7 +180,7 @@
                             ));
                             echo '<div class="invalid-feedback">Заполните поле корректно</div>';
                         } else {
-                            echo CHtml::encode($model->birthday_child);
+                            echo CHtml::encode(CHtml::encode(date("H:i:s d-m-Y",strtotime($model->birthday_child))));
                         } ?>
                     </div>
                 </div>

@@ -71,7 +71,7 @@
                 array(
                     'header' => 'Дата подачи',
                     'name' => 'created',
-                    'value' => 'date("d-m-Y h:i:s", strtotime($data->created))',
+                    'value' => 'date("h:i:s d-m-Y", strtotime($data->created))',
                     'htmlOptions' => array('class'=>'text-center', 'scope' => 'row'),
                     'filter' => $this->widget('zii.widgets.jui.CJuiDatePicker', array(
                             'model' => $model,

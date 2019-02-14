@@ -59,7 +59,7 @@
         </div>
         <div class="row">
             <label><?php echo $model->getAttributeLabel('birthday_child'); ?></label>
-            <div><?php echo CHtml::encode($model->birthday_child);?></div>
+            <div><?php echo CHtml::encode(CHtml::encode(date("H:i:s d-m-Y",strtotime($model->birthday_child))));?></div>
         </div>
         <div class="row">
             <label><?php echo $model->getAttributeLabel('place_of_study'); ?></label>
