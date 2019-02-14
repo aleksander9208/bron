@@ -149,7 +149,7 @@
                     'filter' => array('НЕТ','ДА'),
                 ),
                 array(
-                    'header' => 'Забронирована',
+                    'header' => 'Резервирован',
                     'name' => 'is_main',
                     'type' => 'raw',
                     'value' => 'CHtml::checkBox("is_main",$data->is_main,array("data-zbid"=>$data->id))',
