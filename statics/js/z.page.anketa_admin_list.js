@@ -6,7 +6,7 @@ if (typeof window.z == 'object')
             //Название модуля
             name:'z_page_anketa_admin_list',
             //Версия библиотеки
-            version: '190210',
+            version: '190214',
             //Указатель на глобалный объект
             z: window.z,
             //Хранилище данных
@@ -57,6 +57,10 @@ if (typeof window.z == 'object')
                         function ()
                             {
                                 $( '<div class="z-snipper d-flex justify-content-center align-items-center"><div class="spinner-border" role="status"><span class="sr-only">Обмен данными...</span></div></div>' ).insertBefore(this);
+                                var before_val = {
+                                    el: $(this),
+                                    checked: !$(this).is(':checked')
+                                };
                                 _self.z.modules.ajax.get(
                                     'setmain',
                                     {
@@ -72,9 +76,17 @@ if (typeof window.z == 'object')
                                         function (result)
                                             {
                                                 if (result.errors.length>0)
-                                                    _self.z.log(_self.name, 'init_listners', result.errors.join('<br/>'), false);
+                                                    {
+                                                        _self.z.log(_self.name, 'init_listners', result.errors.join('<br/>'), false);
+                                                        before_val.el.prop('checked', before_val.checked);
+                                                    }
+
                                                         else
-                                                    $('input[type="checkbox"][data-zbid="'+result.data.questionnaire_id+'"]').prop('checked', result.data.is_main==1);
+                                                    {
+                                                        $('input[type="checkbox"][data-zbid="'+result.data.questionnaire_id+'"]').prop('checked', result.data.is_main==1);
+                                                        $('td[data-booking-id="'+result.data.questionnaire_id+'"]').html(result.data.booking_id==null?'':result.data.booking_id);
+                                                    }
+
                                                 $('.z-snipper').remove();
                                             }
                                     )
