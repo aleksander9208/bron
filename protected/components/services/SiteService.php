@@ -11,7 +11,7 @@ class SiteService
         $result = Yii::app()->db->createCommand()
             ->select('SUM(IF(user_id=' . (int)$userID . ',1,0)) as incamp, COUNT(id) as cnt')
             ->from('{{questionnaire}}')
-            ->where('(booking_id IS NOT NULL) AND ((status=:status AND is_main=0) OR (is_main=1)) AND shift_id=:shift ', array('status' => Questionnaire::STATUS_OK, 'shift' => (int)$shift))
+            ->where('((status=:status AND is_main=0) OR (is_main=1)) AND shift_id=:shift ', array('status' => Questionnaire::STATUS_OK, 'shift' => (int)$shift))
             ->order('is_main DESC, created ASC')
             ->limit($seats)
             ->queryRow();

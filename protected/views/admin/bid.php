@@ -123,6 +123,20 @@
                             <td class="text-center"><?php echo ($model->is_main?'Да':'Нет'); ?></td>
                             <?php echo ($model->status==Questionnaire::STATUS_IN_MODER?'<td class="text-center">&nbsp;</td>':''); ?>
                         </tr>
+                        <tr>
+                            <th scope="row"><?php echo $model->getAttributeLabel('booking_id'); ?></th>
+                            <td class="text-center"><?php
+
+                                echo CHtml::encode($model->booking_id);
+
+
+                                if (!$model->booking_id && SiteService::checkTurn($model->user_id,$model->shift_id)) {
+                                    echo 'Резерв';
+                                }
+
+                                ?></td>
+                            <?php echo ($model->status==Questionnaire::STATUS_IN_MODER?'<td class="text-center">&nbsp;</td>':''); ?>
+                        </tr>
                     </tbody>
                 </table>
                 <div class="text-right">
