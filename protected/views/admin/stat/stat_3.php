@@ -74,7 +74,7 @@
                                                         }
 
                                                         if (isset($statData['questionnaire'][$campId][$shiftId])) {
-                                                            foreach ($statData['questionnaire'][$campId][$shiftId] as $v) {  ?>
+                                                            foreach ($statData['questionnaire'][$campId][$shiftId] as $k=> $v) {  ?>
                                                                 <tr class="<?php echo(($v['type'] == Questionnaire::TYPE_UR) ? 'table-info' : ''); ?>">
                                                                     <th scope="row" class="align-middle"><?php echo (int)($k+1); ?></th>
                                                                     <td class="align-middle"><?php echo Questionnaire::getCAMPName($campId); ?></td>
