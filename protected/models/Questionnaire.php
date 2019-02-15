@@ -271,17 +271,19 @@ class Questionnaire extends CActiveRecord
                     ->where('id=1')
                     ->queryRow();
                 if ($this->is_main) {
-                    $cq = Questionnaire::model()->countByAttributes(array('shift_id' => $this->shift_id, 'status' => self::STATUS_OK, 'is_main' => 1), 'booking_id IS NULL');
-                    if ($cq < $reserve['srez_' . $this->shift_id]) {
-                        $n = 1;
-                        do {
-                            $booking_id = $this->getPref($this->shift_id) . $n;
-                            if (!Questionnaire::model()->countByAttributes(array('booking_id' => $booking_id))) {
-                                break;
-                            }
-                            $n++;
-                        } while (true);
-                        $this->booking_id = $booking_id;
+                    if (!$this->booking_id) {
+                        $cq = Questionnaire::model()->countByAttributes(array('shift_id' => $this->shift_id, 'status' => self::STATUS_OK, 'is_main' => 1), 'booking_id IS NULL');
+                        if ($cq < $reserve['srez_' . $this->shift_id]) {
+                            $n = 1;
+                            do {
+                                $booking_id = $this->getPref($this->shift_id) . $n;
+                                if (!Questionnaire::model()->countByAttributes(array('booking_id' => $booking_id))) {
+                                    break;
+                                }
+                                $n++;
+                            } while (true);
+                            $this->booking_id = $booking_id;
+                        }
                     }
                 } else {
                     $shifts = SiteService::getShifts();
