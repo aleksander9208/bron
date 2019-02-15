@@ -182,7 +182,7 @@
                             ));
                             echo '<div class="invalid-feedback">Заполните поле корректно</div>';
                         } else {
-                            echo CHtml::encode(CHtml::encode(date("H:i:s d-m-Y",strtotime($model->birthday_child))));
+                            echo CHtml::encode(CHtml::encode(date("d-m-Y",strtotime($model->birthday_child))));
                         } ?>
                     </div>
                 </div>

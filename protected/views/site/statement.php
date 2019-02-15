@@ -189,7 +189,7 @@
                 <tbody>
                     <tr>
                         <th scope="row" class="align-middle"><?php echo Questionnaire::getCAMPName(Questionnaire::CAMP_KIROVEC); ?></th>
-                        <td class="text-center">от <?php echo $shifts[Questionnaire::SHIFT_KIROVEC_1]['min_age']; ?> до <?php echo $shifts[Questionnaire::SHIFT_KIROVEC_1]['max_age'];?> лет</td>
+                        <td class="text-center">от <?php echo $shifts[Questionnaire::SHIFT_KIROVEC_1]['min_age']+1; ?> до <?php echo $shifts[Questionnaire::SHIFT_KIROVEC_1]['max_age'];?> лет</td>
                         <td class="text-center" data-dlo="<?php echo Questionnaire::DLO_1; ?>" data-shift="<?php echo Questionnaire::SHIFT_KIROVEC_1; ?>">
                             <?php echo SiteService::templateChecker('Смена 1',Questionnaire::SHIFT_KIROVEC_1, $seats[Questionnaire::SHIFT_KIROVEC_1]['seats'], $shifts[Questionnaire::SHIFT_KIROVEC_1]['seats'], $shifts[Questionnaire::SHIFT_KIROVEC_1]['min_age'],$shifts[Questionnaire::SHIFT_KIROVEC_1]['max_age'], $postShifts, '1'); ?>
                         </td>
@@ -208,7 +208,7 @@
                     </tr>
                     <tr>
                         <th scope="row" class="align-middle"><?php echo Questionnaire::getCAMPName(Questionnaire::CAMP_BLUESCREEN); ?></th>
-                        <td class="text-center">от <?php echo $shifts[Questionnaire::SHIFT_BLUESCREEN_1]['min_age']; ?> до 10 лет</td>
+                        <td class="text-center">от <?php echo $shifts[Questionnaire::SHIFT_BLUESCREEN_1]['min_age']+1; ?> до 10 лет</td>
                         <td class="text-center" data-dlo="<?php echo Questionnaire::DLO_1; ?>" data-shift="<?php echo Questionnaire::SHIFT_BLUESCREEN_1; ?>">
                             <?php echo SiteService::templateChecker('Смена 1',Questionnaire::SHIFT_BLUESCREEN_1, $seats[Questionnaire::SHIFT_BLUESCREEN_1]['seats'], $shifts[Questionnaire::SHIFT_BLUESCREEN_1]['seats'], $shifts[Questionnaire::SHIFT_BLUESCREEN_1]['min_age'],$shifts[Questionnaire::SHIFT_BLUESCREEN_1]['max_age'], $postShifts, '1'); ?>
                         </td>
@@ -225,7 +225,7 @@
                     </tr>
                     <tr>
                         <th scope="row" class="align-middle"><?php echo Questionnaire::getCAMPName(Questionnaire::CAMP_EAST_4); ?></th>
-                        <td class="text-center">от <?php echo $shifts[Questionnaire::SHIFT_EAST_1]['min_age']; ?> до <?php echo $shifts[Questionnaire::SHIFT_EAST_1]['max_age'];?> лет</td>
+                        <td class="text-center">от <?php echo $shifts[Questionnaire::SHIFT_EAST_1]['min_age']+1; ?> до <?php echo $shifts[Questionnaire::SHIFT_EAST_1]['max_age'];?> лет</td>
                         <td>&nbsp;</td>
                         <td class="text-center" data-dlo="<?php echo Questionnaire::DLO_2; ?>" data-shift="<?php echo Questionnaire::SHIFT_EAST_1; ?>" colspan="2">
                             <?php echo SiteService::templateChecker('Смена 1',Questionnaire::SHIFT_EAST_1, $seats[Questionnaire::SHIFT_EAST_1]['seats'], $shifts[Questionnaire::SHIFT_EAST_1]['seats'], $shifts[Questionnaire::SHIFT_EAST_1]['min_age'],$shifts[Questionnaire::SHIFT_EAST_1]['max_age'], $postShifts, '2,3'); ?>
@@ -276,7 +276,7 @@
                     </tr>
                     <tr>
                         <th scope="row" class="align-middle"><?php echo Questionnaire::getCAMPName(Questionnaire::CAMP_LIGHTHOUSE); ?></th>
-                        <td class="text-center">от <?php echo $shifts[Questionnaire::SHIFT_LIGHTHOUSE_1]['min_age']; ?> до <?php echo $shifts[Questionnaire::SHIFT_LIGHTHOUSE_1]['max_age'];?> лет</td>
+                        <td class="text-center">от <?php echo $shifts[Questionnaire::SHIFT_LIGHTHOUSE_1]['min_age']+1; ?> до <?php echo $shifts[Questionnaire::SHIFT_LIGHTHOUSE_1]['max_age'];?> лет</td>
                         <td>&nbsp;</td>
                         <td class="text-center" data-dlo="<?php echo Questionnaire::DLO_2; ?>" data-shift="<?php echo Questionnaire::SHIFT_LIGHTHOUSE_1; ?>" colspan="2">
                             <?php echo SiteService::templateChecker('Смена 1',Questionnaire::SHIFT_LIGHTHOUSE_1, $seats[Questionnaire::SHIFT_LIGHTHOUSE_1]['seats'], $shifts[Questionnaire::SHIFT_LIGHTHOUSE_1]['seats'], $shifts[Questionnaire::SHIFT_LIGHTHOUSE_1]['min_age'],$shifts[Questionnaire::SHIFT_LIGHTHOUSE_1]['max_age'], $postShifts, '2,3'); ?>
@@ -291,7 +291,7 @@
                     </tr>
                     <tr>
                         <th scope="row" class="align-middle"><?php echo Questionnaire::getCAMPName(Questionnaire::CAMP_FLYGHT); ?></th>
-                        <td class="text-center">от <?php echo $shifts[Questionnaire::SHIFT_FLYGHT_1]['min_age']; ?> до <?php echo $shifts[Questionnaire::SHIFT_FLYGHT_1]['max_age'];?> лет</td>
+                        <td class="text-center">от <?php echo $shifts[Questionnaire::SHIFT_FLYGHT_1]['min_age']+1; ?> до <?php echo $shifts[Questionnaire::SHIFT_FLYGHT_1]['max_age'];?> лет</td>
                         <td>&nbsp;</td>
                         <td class="text-center" data-dlo="<?php echo Questionnaire::DLO_2; ?>" data-shift="<?php echo Questionnaire::SHIFT_FLYGHT_1; ?>">
                             <?php echo SiteService::templateChecker('Смена 1',Questionnaire::SHIFT_FLYGHT_1, $seats[Questionnaire::SHIFT_FLYGHT_1]['seats'], $shifts[Questionnaire::SHIFT_FLYGHT_1]['seats'], $shifts[Questionnaire::SHIFT_FLYGHT_1]['min_age'],$shifts[Questionnaire::SHIFT_FLYGHT_1]['max_age'], $postShifts, '2'); ?>

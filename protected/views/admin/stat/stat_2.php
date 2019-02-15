@@ -72,7 +72,7 @@
                                 <td class="text-center"><?php echo Questionnaire::getShiftName($shiftId); ?></td>
                                 <td class="text-center"> <?php echo SiteService::templateDLOFullRangeByData($shifts[$shiftId]['dlo']); ?></td>
                                 <td class="text-center"><?php echo Questionnaire::getTypeName($v['type']); ?></td>
-                                <td class="text-center"><?php echo $v['created']; ?></td>
+                                <td class="text-center"><?php echo date("H:i:s d-m-Y",strtotime($v['created'])); ?></td>
                                 <td class="text-center"><?php echo CHtml::encode($v['fio_ur_contact']); ?></td>
                                 <td class="text-center"><?php echo CHtml::encode($v['fio_parent']); ?></td>
                                 <td class="text-center"><?php echo CHtml::encode($v['fio_child']); ?></td>

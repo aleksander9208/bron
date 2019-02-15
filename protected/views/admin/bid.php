@@ -90,7 +90,7 @@
                         </tr>
                         <tr class="<?php echo($model->getError('birthday_child') ? 'table-danger' : ''); ?>">
                             <th scope="row"><?php echo $model->getAttributeLabel('birthday_child'); ?></th>
-                            <td class="text-center"><?php echo CHtml::encode(date("H:i:s d-m-Y",strtotime($model->birthday_child))); ?></td>
+                            <td class="text-center"><?php echo CHtml::encode(date("d-m-Y",strtotime($model->birthday_child))); ?></td>
                             <?php echo ($model->status==Questionnaire::STATUS_IN_MODER?'<td class="text-center">'.CHtml::activeCheckBox($model, 'birthday_child_check').'</td>':''); ?>
                         </tr>
                         <tr class="<?php echo($model->getError('place_of_study') ? 'table-danger' : ''); ?>">
