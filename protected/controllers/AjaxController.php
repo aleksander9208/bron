@@ -61,8 +61,21 @@ class AjaxController extends Controller
             $questionnaireId = Yii::app()->request->getParam('questionnaire_id', 0);
             $main = Yii::app()->request->getParam('is_main', 0);
             if (Yii::app()->request->isPostRequest) {
-                Yii::app()->db->createCommand()->update('{{questionnaire}}', array('is_main' => (int)$main), 'id=:id', array('id' => (int)$questionnaireId));
-                $this->out['data'] = array('questionnaire_id' => (int)$questionnaireId, 'is_main' => (int)$main);
+
+                $q = Questionnaire::model()->findByPk($questionnaireId);
+                if (!$q) {
+                    $this->out['errors'] = array('Заказ не найден');
+                    Yii::$app->end();
+                }
+                $q->is_main = (int)$main;
+                $q->scenario = 'up_main';
+                if (!$q->save()) {
+                    $this->out['errors'] = $q->error_arr;
+                } else {
+                    $this->out['data'] = array('questionnaire_id' => (int)$questionnaireId, 'is_main' => (int)$main, 'booking_id' => $q->booking_id);
+                }
+
+               // Yii::app()->db->createCommand()->update('{{questionnaire}}', array('is_main' => (int)$main), 'id=:id', array('id' => (int)$questionnaireId));
             } else {
                 $this->out['errors'] = array('Парамерты не заданы');
             }

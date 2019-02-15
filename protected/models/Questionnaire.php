@@ -245,7 +245,7 @@ class Questionnaire extends CActiveRecord
                     $result = Yii::app()->db->createCommand()
                         ->select('id')
                         ->from('{{questionnaire}}')
-                        ->where('shift_id=:shift AND (booking_id IS NULL) AND ((status=:status AND is_main=0) OR (is_main=1)) AND id!=:id', array('status' => Questionnaire::STATUS_OK, 'shift' => (int)$this->shift_id,'id'=>$this->id))
+                        ->where('shift_id=:shift AND (booking_id IS NULL) AND ((status=:status AND is_main=0) OR (is_main=1)) AND id!=:id', array('status' => Questionnaire::STATUS_OK, 'shift' => (int)$this->shift_id, 'id' => $this->id))
                         ->order('is_main DESC, created ASC')
                         ->queryRow();
 
@@ -263,6 +263,34 @@ class Questionnaire extends CActiveRecord
                 }
             }
 
+        } elseif ($this->scenario == 'up_main') {
+            if (!$this->isNewRecord && ($this->status == self::STATUS_OK) && isset($this->changedAttr['is_main']) && ($this->changedAttr['is_main'] != $this->is_main)) { //если привилегировывают резервную заявку ставим при возможности ее в очеред
+                $reserve = Yii::app()->db->createCommand()
+                    ->select('srez_1,srez_2,srez_3,srez_4,srez_5,srez_6,srez_7,srez_8,srez_9,srez_10,srez_11,srez_12,srez_13,srez_14,srez_15,srez_16,srez_17,srez_18,srez_19,srez_20,srez_21,srez_22,srez_23,srez_24,srez_25,srez_26,srez_27')
+                    ->from('{{questionnaire_rezerv}}')
+                    ->where('id=1')
+                    ->queryRow();
+                if ($this->is_main) {
+                    $cq = Questionnaire::model()->countByAttributes(array('shift_id' => $this->shift_id, 'status' => self::STATUS_OK, 'is_main' => 1), 'booking_id IS NULL');
+                    if ($cq < $reserve['srez_' . $this->shift_id]) {
+                        $n = 1;
+                        do {
+                            $booking_id = $this->getPref($this->shift_id) . $n;
+                            if (!Questionnaire::model()->countByAttributes(array('booking_id' => $booking_id))) {
+                                break;
+                            }
+                            $n++;
+                        } while (true);
+                        $this->booking_id = $booking_id;
+                    }
+                } else {
+                    $shifts = SiteService::getShifts();
+                    $cq = Questionnaire::model()->countByAttributes(array('shift_id' => $this->shift_id, 'status' => self::STATUS_OK, 'is_main' => 0), 'booking_id IS NULL');
+                    if ($cq >= ($shifts[$this->shift_id]['seats']-$reserve['srez_' . $this->shift_id]) ) {
+                        $this->booking_id = null;
+                    }
+                }
+            }
         } else { //простое редактирование пользователем
 
         }
@@ -376,7 +404,7 @@ class Questionnaire extends CActiveRecord
             }
 
 
-            $qr = Questionnaire::model()->countByAttributes(array('status' => self::STATUS_OK, 'shift_id' => $this->Shift_id, 'is_main' => 1));
+            $qr = Questionnaire::model()->countByAttributes(array('status' => self::STATUS_OK, 'shift_id' => $this->shift_id, 'is_main' => 1));
             if ($reserve['srez_' . $this->shift_id] <= $qr) {
                 $this->addError($attribute, 'Лимит резерва для данной смены исчерпан');
                 return false;
@@ -458,7 +486,7 @@ class Questionnaire extends CActiveRecord
             }
 
             if ($change && $this->$attribute && Questionnaire::model()->countByAttributes(array($attribute => $this->$attribute, 'status' => self::STATUS_OK), 'id!=:id', array('id' => $this->id))) {
-                $this->addError($attribute, 'Такой номер брони уже был задан ранее'.var_export($this->$attribute,true));
+                $this->addError($attribute, 'Такой номер брони уже был задан ранее' . var_export($this->$attribute, true));
 
                 return false;
             }
