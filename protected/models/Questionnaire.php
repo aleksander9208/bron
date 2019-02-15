@@ -388,7 +388,7 @@ class Questionnaire extends CActiveRecord
 
     public function validateBirthday($attribute)
     {
-        if ($this->isNewRecord && $this->$attribute) {
+        if ($this->isNewRecord && $this->$attribute && $this->shift_id) {
             $year = date("Y");
             $shifts = SiteService::getShifts();
             $age = ($year - date("Y", strtotime($this->$attribute)));
