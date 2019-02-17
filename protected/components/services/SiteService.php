@@ -60,7 +60,7 @@ class SiteService
             Questionnaire::SHIFT_KIROVEC_1 => array(
                 'id' => Questionnaire::SHIFT_KIROVEC_1,
                 'camp' => Questionnaire::CAMP_KIROVEC,
-                'seats' => 5,
+                'seats' => 192,
                 'min_age' => 6,
                 'max_age' => 17,
                 'dlo' => array(
@@ -113,7 +113,7 @@ class SiteService
             Questionnaire::SHIFT_BLUESCREEN_1 => array(
                 'id' => Questionnaire::SHIFT_BLUESCREEN_1,
                 'camp' => Questionnaire::CAMP_BLUESCREEN,
-                'seats' => 5,
+                'seats' => 112,
                 'min_age' => 6,
                 'max_age' => 11,
                 'dlo' => array(
