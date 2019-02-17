@@ -35,7 +35,9 @@ class SiteController extends Controller
         $model = new Questionnaire();
 
         if (!Yii::app()->user->getIsGuest()) {
-            $model->fio_ur_contact= $model->fio_parent = Yii::app()->user->login;
+            if (Yii::app()->user->role==User::ROLE_USER) {
+                $model->fio_ur_contact= $model->fio_parent = Yii::app()->user->login;
+            }
             $model->putData(Yii::app()->user->id);
         }
         if (Yii::app()->user->checkAccess(User::ROLE_ADMIN)) {

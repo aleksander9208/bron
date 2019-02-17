@@ -82,11 +82,11 @@ class Questionnaire extends CActiveRecord
             array('fio_child', 'validateChild'),
             array('created,fio_child,birthday_child,place_of_study,status,type, fio_parent,residence,place_of_work,tel_parent,email_parent,shift_id', 'required'),
             array('shift_id', 'validateShift'),
-            // array('fio_parent,residence,place_of_work,tel_parent,email_parent', 'required', 'on' => 'fl'),
-            array('name_ur,fio_ur_contact,tel_ur_contact,email_ur_contact', 'required', 'on' => 'ur'),
             array('booking_id', 'required', 'on' => 'booking'),
             array('booking_id', 'validateBooking'),
             array('is_main', 'validateIsMain'),
+            // array('fio_parent,residence,place_of_work,tel_parent,email_parent', 'required', 'on' => 'fl'),
+            array('name_ur,fio_ur_contact,tel_ur_contact,email_ur_contact', 'required', 'on' => 'ur'),
             array('user_id', 'validateUser'),
             array('birthday_child', 'validateBirthday'),
             array('name_ur,fio_ur_contact,email_ur_contact,fio_parent,email_parent,fio_child,place_of_study', 'length', 'max' => 255),
@@ -193,15 +193,11 @@ class Questionnaire extends CActiveRecord
                 if (is_null($this->booking_id)) {
                     $shifts = SiteService::getShifts();
 
-                    $reserve = Yii::app()->db->createCommand()
-                        ->select('srez_1,srez_2,srez_3,srez_4,srez_5,srez_6,srez_7,srez_8,srez_9,srez_10,srez_11,srez_12,srez_13,srez_14,srez_15,srez_16,srez_17,srez_18,srez_19,srez_20,srez_21,srez_22,srez_23,srez_24,srez_25,srez_26,srez_27')
-                        ->from('{{questionnaire_rezerv}}')
-                        ->where('id=1')
-                        ->queryRow();
+                    $reserve = Reserve::getReserveData();
                     if ((Questionnaire::model()->countByAttributes(array('shift_id' => $this->shift_id, 'status' => self::STATUS_OK)) + (int)$reserve['srez_' . $this->shift_id]) < $shifts[$this->shift_id]['seats']) {
                         $n = 1;
                         do {
-                            $this->booking_id = $this->getPref($this->shift_id) . $n;
+                            $this->booking_id = self::getPref($this->shift_id) . $n;
                             if (!Questionnaire::model()->countByAttributes(array('booking_id' => $this->booking_id))) {
                                 break;
                             }
@@ -239,20 +235,20 @@ class Questionnaire extends CActiveRecord
                 $this->created = date('Y-m-d H:i:s');
             }
 
-            if (!$this->isNewRecord && isset($this->changedAttr['status']) && ($this->changedAttr['status'] != $this->status) && ($this->status == self::STATUS_CANCELED)) {
+            if (!$this->isNewRecord && isset($this->changedAttr['status']) && ($this->changedAttr['status'] != $this->status) && ($this->status == self::STATUS_CANCELED)) { //омена заявки
                 if ($this->booking_id) {
                     $this->booking_id = null;
+                    $queary = ($this->is_main ? 'is_main=1' : '(status=:status AND is_main=0)');
                     $result = Yii::app()->db->createCommand()
                         ->select('id')
                         ->from('{{questionnaire}}')
-                        ->where('shift_id=:shift AND (booking_id IS NULL) AND ((status=:status AND is_main=0) OR (is_main=1)) AND id!=:id', array('status' => Questionnaire::STATUS_OK, 'shift' => (int)$this->shift_id, 'id' => $this->id))
+                        ->where('shift_id=:shift AND (booking_id IS NULL) AND ' . $queary . ' AND id!=:id', array('status' => Questionnaire::STATUS_OK, 'shift' => (int)$this->shift_id, 'id' => $this->id))
                         ->order('is_main DESC, created ASC')
                         ->queryRow();
-
                     if ($result) {
                         $n = 1;
                         do {
-                            $booking_id = $this->getPref($this->shift_id) . $n;
+                            $booking_id = self::getPref($this->shift_id) . $n;
                             if (!Questionnaire::model()->countByAttributes(array('booking_id' => $booking_id))) {
                                 break;
                             }
@@ -263,36 +259,6 @@ class Questionnaire extends CActiveRecord
                 }
             }
 
-        } elseif ($this->scenario == 'up_main') {
-            if (!$this->isNewRecord && ($this->status == self::STATUS_OK) && isset($this->changedAttr['is_main']) && ($this->changedAttr['is_main'] != $this->is_main)) { //если привилегировывают резервную заявку ставим при возможности ее в очеред
-                $reserve = Yii::app()->db->createCommand()
-                    ->select('srez_1,srez_2,srez_3,srez_4,srez_5,srez_6,srez_7,srez_8,srez_9,srez_10,srez_11,srez_12,srez_13,srez_14,srez_15,srez_16,srez_17,srez_18,srez_19,srez_20,srez_21,srez_22,srez_23,srez_24,srez_25,srez_26,srez_27')
-                    ->from('{{questionnaire_rezerv}}')
-                    ->where('id=1')
-                    ->queryRow();
-                if ($this->is_main) {
-                    if (!$this->booking_id) {
-                        $cq = Questionnaire::model()->countByAttributes(array('shift_id' => $this->shift_id, 'status' => self::STATUS_OK, 'is_main' => 1), 'booking_id IS NULL');
-                        if ($cq < $reserve['srez_' . $this->shift_id]) {
-                            $n = 1;
-                            do {
-                                $booking_id = $this->getPref($this->shift_id) . $n;
-                                if (!Questionnaire::model()->countByAttributes(array('booking_id' => $booking_id))) {
-                                    break;
-                                }
-                                $n++;
-                            } while (true);
-                            $this->booking_id = $booking_id;
-                        }
-                    }
-                } else {
-                    $shifts = SiteService::getShifts();
-                    $cq = Questionnaire::model()->countByAttributes(array('shift_id' => $this->shift_id, 'status' => self::STATUS_OK, 'is_main' => 0), 'booking_id IS NULL');
-                    if ($cq >= ($shifts[$this->shift_id]['seats']-$reserve['srez_' . $this->shift_id]) ) {
-                        $this->booking_id = null;
-                    }
-                }
-            }
         } else { //простое редактирование пользователем
 
         }
@@ -324,8 +290,8 @@ class Questionnaire extends CActiveRecord
 
     public function afterSave()
     {
-        if ($this->isNewRecord) {
-
+        if (!$this->isNewRecord && isset($this->changedAttr['fio_parent']) && ($this->changedAttr['fio_parent'] != $this->fio_parent)) {
+            Yii::app()->db->createCommand()->update('{{user}}', array('login' => $this->fio_parent), 'id=:id', array(':id' => $this->user_id));
         }
 
         return parent::afterSave();
@@ -391,14 +357,10 @@ class Questionnaire extends CActiveRecord
             $change = (isset($this->changedAttr[$attribute]) && ($this->changedAttr[$attribute] != $this->$attribute));
             if ($change && !Yii::app()->user->getIsGuest() && Yii::app()->user->role != User::ROLE_ADMIN) {
                 $this->$attribute = $this->changedAttr[$attribute];
-                $this->addError($attribute, 'Только администратор может ');
+                $this->addError($attribute, 'Только администратор может ставить в резерв');
                 return false;
             }
-            $reserve = Yii::app()->db->createCommand()
-                ->select('srez_1,srez_2,srez_3,srez_4,srez_5,srez_6,srez_7,srez_8,srez_9,srez_10,srez_11,srez_12,srez_13,srez_14,srez_15,srez_16,srez_17,srez_18,srez_19,srez_20,srez_21,srez_22,srez_23,srez_24,srez_25,srez_26,srez_27')
-                ->from('{{questionnaire_rezerv}}')
-                ->where('id=1')
-                ->queryRow();
+            $reserve = Reserve::getReserveData();
 
             if ($reserve['srez_' . $this->shift_id] < 1) {
                 $this->addError($attribute, 'Нет резерва для данной смены');
@@ -410,6 +372,34 @@ class Questionnaire extends CActiveRecord
             if ($reserve['srez_' . $this->shift_id] <= $qr) {
                 $this->addError($attribute, 'Лимит резерва для данной смены исчерпан');
                 return false;
+            }
+        }
+
+        if (!$this->isNewRecord && $this->scenario == 'up_main') {
+            if (($this->status == self::STATUS_OK) && isset($this->changedAttr['is_main']) && ($this->changedAttr['is_main'] != $this->is_main)) { //если привилегировывают резервную заявку ставим при возможности ее в очеред
+                $reserve = Reserve::getReserveData();
+                if ($this->is_main) {
+                    if (!$this->booking_id) {
+                        $cq = Questionnaire::model()->countByAttributes(array('shift_id' => $this->shift_id, 'status' => self::STATUS_OK, 'is_main' => 1));
+                        if ($cq < $reserve['srez_' . $this->shift_id]) {
+                            $n = 1;
+                            do {
+                                $booking_id = self::getPref($this->shift_id) . $n;
+                                if (!Questionnaire::model()->countByAttributes(array('booking_id' => $booking_id))) {
+                                    break;
+                                }
+                                $n++;
+                            } while (true);
+                            $this->booking_id = $booking_id;
+                        }
+                    }
+                } else {
+                    $shifts = SiteService::getShifts();
+                    $cq = Questionnaire::model()->countByAttributes(array('shift_id' => $this->shift_id, 'status' => self::STATUS_OK, 'is_main' => 0), 'booking_id IS NOT NULL');
+                    if ($cq >= ($shifts[$this->shift_id]['seats'] - $reserve['srez_' . $this->shift_id])) {
+                        $this->booking_id = null;
+                    }
+                }
             }
         }
 
@@ -488,7 +478,7 @@ class Questionnaire extends CActiveRecord
             }
 
             if ($change && $this->$attribute && Questionnaire::model()->countByAttributes(array($attribute => $this->$attribute, 'status' => self::STATUS_OK), 'id!=:id', array('id' => $this->id))) {
-                $this->addError($attribute, 'Такой номер брони уже был задан ранее' . var_export($this->$attribute, true));
+                $this->addError($attribute, 'Такой номер брони уже был задан ранее');
 
                 return false;
             }
@@ -824,15 +814,12 @@ class Questionnaire extends CActiveRecord
                 ->select('id, shift_id, is_main')
                 ->from('{{questionnaire}}')
                 ->where(array('in', 'shift_id', $ids))
-                ->andWhere('status=:status', array('status' => Questionnaire::STATUS_OK))
+                ->andWhere('status=:status AND booking_id IS NOT NULL', array('status' => Questionnaire::STATUS_OK))
                 ->order('is_main DESC, created ASC')
                 ->queryAll();
-            $reserve = Yii::app()->db->createCommand()
-                ->select('srez_1,srez_2,srez_3,srez_4,srez_5,srez_6,srez_7,srez_8,srez_9,srez_10,srez_11,srez_12,srez_13,srez_14,srez_15,srez_16,srez_17,srez_18,srez_19,srez_20,srez_21,srez_22,srez_23,srez_24,srez_25,srez_26,srez_27')
-                ->from('{{questionnaire_rezerv}}')
-                ->where('id=1')
-                ->queryRow();
+            $reserve = Reserve::getReserveData();
             $shifts = SiteService::getShifts();
+            $cnt = array();
             foreach ($shifts as $sId => $s) {
                 $cnt[$s['id']] = 0;
             }
@@ -964,7 +951,7 @@ class Questionnaire extends CActiveRecord
         }
     }
 
-    protected function getPref($shiftId)
+    public static function getPref($shiftId)
     {
         switch ($shiftId) {
             case self::SHIFT_KIROVEC_1:
@@ -1055,7 +1042,7 @@ class Questionnaire extends CActiveRecord
 
     public function __set($var, $value)
     {
-        if (in_array($var, array('status', 'booking_id', 'is_main')) && !array_key_exists($var, $this->changedAttr)) {
+        if (in_array($var, array('status', 'booking_id', 'is_main', 'user_id', 'fio_parent')) && !array_key_exists($var, $this->changedAttr)) {
             $this->changedAttr[$var] = $this->$var;
         }
 

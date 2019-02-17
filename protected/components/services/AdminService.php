@@ -38,12 +38,15 @@ class AdminService
             $result = Yii::app()->db->createCommand()
                 ->select('*')
                 ->from('{{questionnaire}}')
-                ->where('status=:status AND camp_id=:camp AND is_main=1'.$where, array('status' => Questionnaire::STATUS_OK, 'camp' => $campId))
+                ->where('status=:status AND camp_id=:camp AND is_main=1 AND booking_id IS NOT NULL'.$where, array('status' => Questionnaire::STATUS_OK, 'camp' => $campId))
                 ->order('created ASC')
                 ->limit($campSeats[$campId])
                 ->queryAll();
 
             foreach ($result as $r) {
+                if (!isset($questionnaire_main[$r['camp_id']][$r['shift_id']])) {
+                    $questionnaire_main[$r['camp_id']][$r['shift_id']] = array();
+                }
                 if ($reserve['srez_' . $r['shift_id']] > count($questionnaire_main[$r['camp_id']][$r['shift_id']])) {
                     $questionnaire_main[$r['camp_id']][$r['shift_id']][] = $r;
                     switch ($statId) {
@@ -59,7 +62,7 @@ class AdminService
             $result = Yii::app()->db->createCommand()
                 ->select('*')
                 ->from('{{questionnaire}}')
-                ->where('status=:status AND camp_id=:camp AND is_main=0'.$where, array('status' => Questionnaire::STATUS_OK, 'camp' => $campId))
+                ->where('status=:status AND camp_id=:camp AND is_main=0 AND booking_id IS NOT NULL'.$where, array('status' => Questionnaire::STATUS_OK, 'camp' => $campId))
                 ->order('created ASC')
                 ->limit($campSeats[$campId])
                 ->queryAll();

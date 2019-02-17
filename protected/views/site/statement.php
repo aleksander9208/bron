@@ -6,7 +6,7 @@
                 <?php echo (Yii::app()->user->hasFlash('q_error')?Yii::app()->user->getFlash('q_error'):''); ?>
                 <?php echo (Yii::app()->user->hasFlash('q_done')?'Заявка успешно отправлена':''); ?>
             </div>
-            <?php echo CHtml::form('', 'post', array('class' => 'needs-validation', 'id'=>'z_anketa_form')); ?>
+            <?php echo CHtml::form('', 'post', array('class' => 'needs-validation '.(Yii::app()->user->getFlash('q_done')?'d-none':''), 'id'=>'z_anketa_form')); ?>
 
             <?php if ($user->checkAccess(User::ROLE_ADMIN)) { ?>
                 <div class="form-group">

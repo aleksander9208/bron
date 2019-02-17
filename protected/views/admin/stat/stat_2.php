@@ -42,9 +42,9 @@
                     <?php } ?>
 
                     <?php foreach ($statData['questionnaire_main'][$campId] as $shiftId => $z) {
-                        foreach ($z as $v) { ?>
+                        foreach ($z as $k=> $v) { ?>
                             <tr class="<?php echo(($v['type'] == Questionnaire::TYPE_UR) ? 'table-info' : ''); ?>">
-                                <th scope="row" class="align-middle">#</th>
+                                <th scope="row" class="align-middle"><?php echo (int)($k+1); ?></th>
                                 <td scope="row" class="align-middle"><?php echo Questionnaire::getCAMPName($campId); ?></td>
                                 <td class="text-center"><?php echo Questionnaire::getShiftName($shiftId); ?></td>
                                 <td class="text-center"> <?php echo SiteService::templateDLOFullRangeByData($shifts[$shiftId]['dlo']); ?></td>
@@ -65,9 +65,9 @@
                         <?php }
                     }
                     foreach ($statData['questionnaire'][$campId] as $shiftId => $z) {
-                        foreach ($z as $k=> $v) { ?>
+                        foreach ($z as $kk=> $v) { ?>
                             <tr class="<?php echo(($v['type'] == Questionnaire::TYPE_UR) ? 'table-info' : ''); ?>">
-                                <th scope="row" class="align-middle"><?php echo (int)($k+1); ?></th>
+                                <th scope="row" class="align-middle"><?php echo (int)((isset($k)?($k+2):1)+$kk); ?></th>
                                 <td scope="row" class="align-middle"><?php echo Questionnaire::getCAMPName($campId); ?></td>
                                 <td class="text-center"><?php echo Questionnaire::getShiftName($shiftId); ?></td>
                                 <td class="text-center"> <?php echo SiteService::templateDLOFullRangeByData($shifts[$shiftId]['dlo']); ?></td>
