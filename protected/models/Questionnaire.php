@@ -985,10 +985,10 @@ class Questionnaire extends CActiveRecord
                 return '1В';
                 break;
             case self::SHIFT_EAST_2:
-                return '1В';
+                return '2В';
                 break;
             case self::SHIFT_EAST_3:
-                return '1В';
+                return '3В';
                 break;
             case self::SHIFT_DIAMOND_1:
                 return '1А';
