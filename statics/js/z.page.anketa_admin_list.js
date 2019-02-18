@@ -6,7 +6,7 @@ if (typeof window.z == 'object')
             //Название модуля
             name:'z_page_anketa_admin_list',
             //Версия библиотеки
-            version: '190214',
+            version: '190218',
             //Указатель на глобалный объект
             z: window.z,
             //Хранилище данных
@@ -43,7 +43,8 @@ if (typeof window.z == 'object')
                                         function (result)
                                             {
                                                 if (result.errors.length>0)
-                                                    _self.z.log(_self.name, 'init_listners', result.errors.join('<br/>'), false);
+                                                    _self.error(result.errors.join('<br/>'));
+                                                    //_self.z.log(_self.name, 'init_listners', result.errors.join('<br/>'), false);
                                                         else
                                                     $('input[type="checkbox"][data-zid="'+result.data.questionnaire_id+'"]').prop('checked', result.data.paid==1);
                                                 $('.z-snipper').remove();
@@ -77,7 +78,8 @@ if (typeof window.z == 'object')
                                             {
                                                 if (result.errors.length>0)
                                                     {
-                                                        _self.z.log(_self.name, 'init_listners', result.errors.join('<br/>'), false);
+                                                        //_self.z.log(_self.name, 'init_listners', result.errors.join('<br/>'), false);
+                                                        _self.error(result.errors.join('<br/>'));
                                                         before_val.el.prop('checked', before_val.checked);
                                                     }
 
@@ -96,5 +98,20 @@ if (typeof window.z == 'object')
 
                     _self.z.el.z_anketa_admin_list_table.find('.filters input, .filters select').addClass('form-control form-control-sm');
                     _self.z.tasks.call(task_name, result_out);
+                },
+
+            //Вывод ошибок
+            error: function (text)
+                {
+                    var _self = this;
+                    _self.z.log(_self.name, 'error', text);
+                    _self.z.el.z_page_anketa_admin_list_alert.html(
+                        text+
+                        '<button type="button" class="close" data-dismiss="alert" aria-label="Close">' +
+                            '<span aria-hidden="true">&times;</span>' +
+                        '</button>'
+                    ).toggleClass('d-none', text=='');
+                    if (text!='')
+                        $(document).scrollTop(0);
                 }
         };
