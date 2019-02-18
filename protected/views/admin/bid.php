@@ -146,6 +146,9 @@
                     <?php if (in_array($model->status, array(Questionnaire::STATUS_IN_MODER))) { ?>
                         <button class="btn btn-primary" name="Questionnaire[status]" value="<?php echo Questionnaire::STATUS_RETURNED; ?>" type="submit">Вернуть на доработку</button>
                     <?php } ?>
+                    <?php if (in_array($model->status, array(Questionnaire::STATUS_OK))) { ?>
+                        <button class="btn btn-danger" name="Questionnaire[status]" value="<?php echo Questionnaire::STATUS_CANCELED; ?>" type="submit">Отменить заявку администратором</button>
+                    <?php } ?>
                 </div>
             </form>
         </div>

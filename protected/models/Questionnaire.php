@@ -235,33 +235,37 @@ class Questionnaire extends CActiveRecord
                 $this->created = date('Y-m-d H:i:s');
             }
 
-            if (!$this->isNewRecord && isset($this->changedAttr['status']) && ($this->changedAttr['status'] != $this->status) && ($this->status == self::STATUS_CANCELED)) { //омена заявки
-                if ($this->booking_id) {
-                    $this->booking_id = null;
-                    $queary = ($this->is_main ? 'is_main=1' : '(status=:status AND is_main=0)');
-                    $result = Yii::app()->db->createCommand()
-                        ->select('id')
-                        ->from('{{questionnaire}}')
-                        ->where('shift_id=:shift AND (booking_id IS NULL) AND ' . $queary . ' AND id!=:id', array('status' => Questionnaire::STATUS_OK, 'shift' => (int)$this->shift_id, 'id' => $this->id))
-                        ->order('is_main DESC, created ASC')
-                        ->queryRow();
-                    if ($result) {
-                        $n = 1;
-                        do {
-                            $booking_id = self::getPref($this->shift_id) . $n;
-                            if (!Questionnaire::model()->countByAttributes(array('booking_id' => $booking_id))) {
-                                break;
-                            }
-                            $n++;
-                        } while (true);
-                        Yii::app()->db->createCommand()->update('{{questionnaire}}', array('booking_id' => $booking_id), 'id=:id', array(':id' => $result['id']));
-                    }
-                }
-            }
-
         } else { //простое редактирование пользователем
 
         }
+
+        if (!$this->isNewRecord && in_array($this->scenario, array('user_up', 'mod')) && isset($this->changedAttr['status']) && ($this->changedAttr['status'] != $this->status) && ($this->status == self::STATUS_CANCELED)) { //омена заявки
+            if ($this->booking_id) {
+                if (!Yii::app()->user->getIsGuest() && Yii::app()->user->role == User::ROLE_ADMIN) {
+                    $this->comment .= 'Отмена по иницативе администратора ['.date("H:i:s d-m-Y").']';
+                }
+                $this->booking_id = null;
+                $queary = ($this->is_main ? 'is_main=1' : '(status=:status AND is_main=0)');
+                $result = Yii::app()->db->createCommand()
+                    ->select('id')
+                    ->from('{{questionnaire}}')
+                    ->where('shift_id=:shift AND (booking_id IS NULL) AND ' . $queary . ' AND id!=:id', array('status' => Questionnaire::STATUS_OK, 'shift' => (int)$this->shift_id, 'id' => $this->id))
+                    ->order('is_main DESC, created ASC')
+                    ->queryRow();
+                if ($result) {
+                    $n = 1;
+                    do {
+                        $booking_id = self::getPref($this->shift_id) . $n;
+                        if (!Questionnaire::model()->countByAttributes(array('booking_id' => $booking_id))) {
+                            break;
+                        }
+                        $n++;
+                    } while (true);
+                    Yii::app()->db->createCommand()->update('{{questionnaire}}', array('booking_id' => $booking_id), 'id=:id', array(':id' => $result['id']));
+                }
+            }
+        }
+
 
         return parent::beforeValidate();
     }
@@ -523,7 +527,7 @@ class Questionnaire extends CActiveRecord
             self::STATUS_IN_MODER => 'На модерации',
             self::STATUS_RETURNED => 'На доработке',
             self::STATUS_OK => 'Одобрен',
-            self::STATUS_CANCELED => 'Отменена заявителем',
+            self::STATUS_CANCELED => 'Отменена',
         );
         if (is_numeric($status)) {
             if (array_key_exists($status, $arr)) {
