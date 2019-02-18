@@ -391,7 +391,7 @@ class SiteService
         $out = array();
         if (count($arrDlo) > 1) {
             foreach ($arrDlo as $k => $d) {
-                $data = Questionnaire::getDLOName($d) . '; ';
+                $data = Questionnaire::getDLOName($d) . ' ';
                 list($from, $to) = explode('-', $data);
                 $out[] = (!$k ? $from : $to);
             }
