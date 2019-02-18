@@ -23,7 +23,7 @@
                     <tbody>
                         <tr>
                             <th scope="row">Дата подачи заявки</th>
-                            <td class="text-center"><?php echo $model->created; ?></td>
+                            <td class="text-center"><?php echo date("H:i:s d-m-Y",strtotime($model->created)); ?></td>
                             <?php echo ($model->status==Questionnaire::STATUS_IN_MODER?'<td class="text-center">&nbsp;</td>':''); ?>
                         </tr>
                         <tr class="<?php echo($model->getError('type') ? 'table-danger' : ''); ?>">
