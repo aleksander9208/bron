@@ -106,10 +106,10 @@ if (typeof window.z == 'object')
                     var _self = this;
                     _self.z.log(_self.name, 'error', text);
                     _self.z.el.z_page_anketa_admin_list_alert.html(
-                        text+
+                        text/*+
                         '<button type="button" class="close" data-dismiss="alert" aria-label="Close">' +
                             '<span aria-hidden="true">&times;</span>' +
-                        '</button>'
+                        '</button>'*/
                     ).toggleClass('d-none', text=='');
                     if (text!='')
                         $(document).scrollTop(0);
