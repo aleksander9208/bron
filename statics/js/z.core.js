@@ -7,7 +7,7 @@ window.z =
         //Название модуля
         name:'z_core',
         //Версия библиотеки
-        version: '190214',
+        version: '190218',
         //Поддиректория проекта
         path: '/',
         //Активность системы
@@ -203,7 +203,7 @@ window.z =
                                         {
                                             if (result.errors.length>0)
                                                 {
-                                                    _self.log(_self.name, 'init_listners', result.errors.join('<br/>'), false);
+                                                    _self.error(result.errors.join('<br/>'));
                                                     $('.z-snipper').remove();
                                                 }
                                                     else
@@ -252,7 +252,7 @@ window.z =
                                         {
                                             if (result.errors.length>0)
                                                 {
-                                                    _self.log(_self.name, 'init_listners', result.errors.join('<br/>'), false);
+                                                    _self.error(result.errors.join('<br/>'));
                                                     $('.z-snipper').remove();
                                                     var el_booking = $('[data-booking-id="'+val_anketa_id+'"]');
                                                     el_booking.html( el_booking.data('old_value') );
@@ -312,6 +312,15 @@ window.z =
                         {
                             alert('Error: ' + errorMsg + ' Script: ' + url + ' Line: ' + lineNumber);
                         };
+            },
+
+        //Вывод ошибок
+        error: function (text)
+            {
+                var _self = this;
+                _self.log(_self.name, 'error', text);
+                if (typeof _self.page.error == 'function')
+                    _self.page.error(text);
             },
 
         //Печать контента
