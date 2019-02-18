@@ -484,6 +484,15 @@ class Questionnaire extends CActiveRecord
             }
 
         }
+        if ($this->scenario == 'booking') {
+            $change = (array_key_exists($attribute, $this->changedAttr) && ($this->changedAttr[$attribute] != $this->$attribute));
+            if ($change && $this->status != self::STATUS_OK) {
+                $this->addError($attribute, 'Нельзя назначтать номер брони по неодобренной заявке');
+
+                return false;
+            }
+        }
+
 
         return true;
     }
