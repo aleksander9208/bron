@@ -176,14 +176,14 @@
                     <tr>
                         <th scope="col" class="text-center">Лагерь</th>
                         <th scope="col" class="text-center">Рекомендуемый возраст</th>
-                        <th scope="col" class="text-center"><?php echo Questionnaire::getDLOName(Questionnaire::DLO_1); ?></th>
-                        <th scope="col" class="text-center"><?php echo Questionnaire::getDLOName(Questionnaire::DLO_2); ?></th>
-                        <th scope="col" class="text-center"><?php echo Questionnaire::getDLOName(Questionnaire::DLO_3); ?></th>
-                        <th scope="col" class="text-center"><?php echo Questionnaire::getDLOName(Questionnaire::DLO_4); ?></th>
-                        <th scope="col" class="text-center"><?php echo Questionnaire::getDLOName(Questionnaire::DLO_5); ?></th>
-                        <th scope="col" class="text-center"><?php echo Questionnaire::getDLOName(Questionnaire::DLO_6); ?></th>
-                        <th scope="col" class="text-center"><?php echo Questionnaire::getDLOName(Questionnaire::DLO_7); ?></th>
-                        <th scope="col" class="text-center"><?php echo Questionnaire::getDLOName(Questionnaire::DLO_8); ?></th>
+                        <th scope="col" class="text-center" width="10%"><?php echo Questionnaire::getDLOName(Questionnaire::DLO_1); ?></th>
+                        <th scope="col" class="text-center" width="10%"><?php echo Questionnaire::getDLOName(Questionnaire::DLO_2); ?></th>
+                        <th scope="col" class="text-center" width="10%"><?php echo Questionnaire::getDLOName(Questionnaire::DLO_3); ?></th>
+                        <th scope="col" class="text-center" width="10%"><?php echo Questionnaire::getDLOName(Questionnaire::DLO_4); ?></th>
+                        <th scope="col" class="text-center" width="10%"><?php echo Questionnaire::getDLOName(Questionnaire::DLO_5); ?></th>
+                        <th scope="col" class="text-center" width="10%"><?php echo Questionnaire::getDLOName(Questionnaire::DLO_6); ?></th>
+                        <th scope="col" class="text-center" width="10%"><?php echo Questionnaire::getDLOName(Questionnaire::DLO_7); ?></th>
+                        <th scope="col" class="text-center" width="10%"><?php echo Questionnaire::getDLOName(Questionnaire::DLO_8); ?></th>
                     </tr>
                 </thead>
                 <tbody>
