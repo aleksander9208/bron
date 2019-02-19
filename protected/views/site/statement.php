@@ -166,7 +166,7 @@
             <div class="form-group">
                 <div class="custom-control custom-checkbox">
                     <input type="checkbox" class="custom-control-input" id="z_anketa_opd">
-                    <label class="custom-control-label" for="z_anketa_opd">Согласен на обработку персональных данных</label>
+                    <label class="custom-control-label" for="z_anketa_opd">Согласен на&nbsp;обработку персональных данных в&nbsp;соответствии с&nbsp;Федеральным законом &laquo;О&nbsp;персональных данных&raquo; от&nbsp;27.07.2006&nbsp;г. &#8470;&nbsp;152-ФЗ</label>
                 </div>
             </div>
 
