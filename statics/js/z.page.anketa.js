@@ -391,7 +391,7 @@ if (typeof window.z == 'object')
                                     var date_now = new Date();
                                     var date_val = new Date(val_date);
                                     var data_dif = date_now.getFullYear()-date_val.getFullYear();
-                                    is_valid = (data_dif<=17 && data_dif>=7);
+                                    is_valid = (data_dif<=17 && data_dif>=6);
                                 }
                         }
                     el_date.toggleClass('is-valid', is_valid==true).toggleClass('is-invalid', is_valid==false);
