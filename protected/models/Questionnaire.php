@@ -413,14 +413,20 @@ class Questionnaire extends CActiveRecord
     public function validateBirthday($attribute)
     {
         if ($this->isNewRecord && $this->$attribute && $this->shift_id) {
+            $dopMonth = 2; //накинули на проходной возраст 2 месяца по просьбе ИРЫ 19.02.2019
             $year = date("Y");
+            $month = date("m");
             $shifts = SiteService::getShifts();
-            $age = ($year - date("Y", strtotime($this->$attribute)));
-            if (($shifts[$this->shift_id]['min_age'] > $age) || ($shifts[$this->shift_id]['max_age'] < $age)) {
+            $t = strtotime($this->$attribute);
+            $yearChild = date("Y", $t);
+            $monthChild = date("m", $t);
+            $age = ($year - $yearChild);
+            $cmonth = (($age * 12) - $monthChild  + $month);
+            //if (($shifts[$this->shift_id]['min_age'] > $age) || ($shifts[$this->shift_id]['max_age'] < $age)) {
+            if ((($shifts[$this->shift_id]['min_age'] * 12) > $cmonth) || ((($shifts[$this->shift_id]['max_age'] * 12) + $dopMonth) < $cmonth)) {
                 $this->addError('shift_id', 'Возраст ребенка не подходит для выбранной смены');
                 return false;
             }
-
         }
 
         return true;
