@@ -413,7 +413,7 @@ class Questionnaire extends CActiveRecord
     public function validateBirthday($attribute)
     {
         if ($this->isNewRecord && $this->$attribute && $this->shift_id) {
-            $dopMonth = 2; //накинули на проходной возраст 2 месяца по просьбе ИРЫ 19.02.2019
+            $dopMonth = 9; //накинули на проходной возраст 2 месяца по просьбе ИРЫ 19.02.2019
             $year = date("Y");
             $month = date("m");
             $shifts = SiteService::getShifts();
