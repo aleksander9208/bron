@@ -28,13 +28,13 @@ class Controller extends CController
 
             $cs = Yii::app()->getClientScript();
             $cs->registerCoreScript('jquery');
-            $cs->registerScriptFile(Yii::app()->createUrl('/statics/js/jquery/jquery.tablesorter.js'));
-            $cs->registerScriptFile(Yii::app()->createUrl('/statics/js/jquery/jquery.mask.js'));
-            $cs->registerScriptFile(Yii::app()->createUrl('/statics/js/z.core.js'));
-            $cs->registerScriptFile(Yii::app()->createUrl('/statics/js/z.tasks.js'));
-            $cs->registerScriptFile(Yii::app()->createUrl('/statics/js/z.module.ajax.js'));
-            $cs->registerScriptFile(Yii::app()->createUrl('/statics/js/z.boot.js'));
-            $cs->registerScriptFile(Yii::app()->createUrl('/statics/js/bootstrap/bootstrap.bundle.js'));
+            $cs->registerScriptFile(Yii::app()->createUrl('/statics/js/jquery/jquery.tablesorter.js?v='.RELEASE_VERSION));
+            $cs->registerScriptFile(Yii::app()->createUrl('/statics/js/jquery/jquery.mask.js?v='.RELEASE_VERSION));
+            $cs->registerScriptFile(Yii::app()->createUrl('/statics/js/z.core.js?v='.RELEASE_VERSION));
+            $cs->registerScriptFile(Yii::app()->createUrl('/statics/js/z.tasks.js?v='.RELEASE_VERSION));
+            $cs->registerScriptFile(Yii::app()->createUrl('/statics/js/z.module.ajax.js?v='.RELEASE_VERSION));
+            $cs->registerScriptFile(Yii::app()->createUrl('/statics/js/z.boot.js?v='.RELEASE_VERSION));
+            $cs->registerScriptFile(Yii::app()->createUrl('/statics/js/bootstrap/bootstrap.bundle.js?v='.RELEASE_VERSION));
 
             Yii::app()->getClientScript()->registerScript('inline', "if (typeof window.z == 'object') {window.z.debug = ".(YII_DEBUG?"true":"false")."; window.z.path = '".(Yii::app()->createUrl('/')==''?'/':Yii::app()->createUrl('/'))."'; window.z.role = '".(Yii::app()->user->getIsGuest()?'guest':'user')."'; window.z.user_id = ".(Yii::app()->user->getIsGuest()?0:Yii::app()->user->id)."; }", CClientScript::POS_END);
         }
