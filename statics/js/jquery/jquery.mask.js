@@ -424,7 +424,12 @@ $.fn.extend({
 				.on("blur.mask", blurEvent)
 				.on("keydown.mask", keydownEvent)
 				.on("keypress.mask", keypressEvent)
-				.on("input.mask paste.mask", function() {
+				.on("textInput.mask", function (e)
+					{
+						e.which = e.keyCode = e.originalEvent.data.charCodeAt(0);
+                        keypressEvent(e);
+					}
+            	).on("input.mask paste.mask", function() {
                     if (input.prop("readonly")){
                         return;
                     }
