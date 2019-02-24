@@ -190,7 +190,7 @@ class SiteService
                 'id' => Questionnaire::SHIFT_DIAMOND_1,
                 'camp' => Questionnaire::CAMP_DIAMOND,
                 'seats' => 168,
-                'min_age' => 11,
+                'min_age' => 10,
                 'max_age' => 17,
                 'dlo' => array(
                     Questionnaire::DLO_2,
@@ -201,7 +201,7 @@ class SiteService
                 'id' => Questionnaire::SHIFT_DIAMOND_2,
                 'camp' => Questionnaire::CAMP_DIAMOND,
                 'seats' => 168,
-                'min_age' => 11,
+                'min_age' => 1,
                 'max_age' => 17,
                 'dlo' => array(
                     Questionnaire::DLO_4,
@@ -212,7 +212,7 @@ class SiteService
                 'id' => Questionnaire::SHIFT_DIAMOND_3,
                 'camp' => Questionnaire::CAMP_DIAMOND,
                 'seats' => 168,
-                'min_age' => 11,
+                'min_age' => 10,
                 'max_age' => 17,
                 'dlo' => array(
                     Questionnaire::DLO_5,
@@ -222,7 +222,7 @@ class SiteService
                 'id' => Questionnaire::SHIFT_DIAMOND_4,
                 'camp' => Questionnaire::CAMP_DIAMOND,
                 'seats' => 168,
-                'min_age' => 11,
+                'min_age' => 10,
                 'max_age' => 17,
                 'dlo' => array(
                     Questionnaire::DLO_6,
@@ -233,7 +233,7 @@ class SiteService
                 'id' => Questionnaire::SHIFT_BONFIRE_1,
                 'camp' => Questionnaire::CAMP_BONFIRE,
                 'seats' => 192,
-                'min_age' => 11,
+                'min_age' => 10,
                 'max_age' => 17,
                 'dlo' => array(
                     Questionnaire::DLO_2,
