@@ -95,7 +95,7 @@ class Questionnaire extends CActiveRecord
             array('type', 'in', 'range' => array(self::TYPE_FIZ, self::TYPE_UR)),
             array('status', 'validateStatus'),
             array('paid,create_admin,name_ur_check,fio_ur_contact_check,tel_ur_contact_check,email_ur_contact_check,fio_parent_check,residence_check,place_of_work_check,tel_parent_check,email_parent_check,fio_child_check,birthday_child_check,place_of_study_check', 'in', 'range' => array(0, 1)),
-            array('is_main,shift_name,camp_id, fromDate,toDate, type, fio_parent,residence,place_of_work,tel_parent,email_parent,fio_child,birthday_child,place_of_study,name_ur,fio_ur_contact,tel_ur_contact,email_ur_contact', 'safe'),
+            array('is_main,shift_name,camp_id, fromDate,toDate, type, fio_parent,residence,place_of_work,tel_parent,email_parent,fio_child,birthday_child,place_of_study,name_ur,fio_ur_contact,tel_ur_contact,email_ur_contact,comment', 'safe'),
             array('booking_id,paid,comment,name_ur_check,fio_ur_contact_check,tel_ur_contact_check,email_ur_contact_check,fio_parent_check,residence_check,place_of_work_check,tel_parent_check,email_parent_check,fio_child_check,birthday_child_check,place_of_study_check,status,paid,create_admin', 'safe', 'on' => 'mod'),
         );
     }
@@ -926,6 +926,7 @@ class Questionnaire extends CActiveRecord
         $criteria->compare('t.fio_parent', $this->fio_parent, true);
         $criteria->compare('t.tel_parent', $this->tel_parent, true);
         $criteria->compare('t.booking_id', $this->booking_id, true);
+        $criteria->compare('t.comment', $this->comment, true);
 
         if (is_numeric($this->is_main)) {
             $criteria->compare('t.is_main', $this->is_main);
