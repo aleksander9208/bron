@@ -368,12 +368,12 @@ class SiteService
         '</div>';
     }
 
-    public static function templateSeatsCount($seatsFrom, $seatsTo)
+    public static function templateSeatsCount($seatsFrom, $seatsTo, $fillReserv = null)
     {
         if ($seatsFrom<$seatsTo)
-            return '<div class="z_anketa_counts">'.$seatsFrom.' из '. $seatsTo.'</div>';
+            return '<div class="z_anketa_counts">'.$seatsFrom.' из '. $seatsTo.(!is_null($fillReserv)?' [p:'.$fillReserv.']':'').'</div>';
                 else
-            return '<div class="z_anketa_counts">Резерв</div>';
+            return '<div class="z_anketa_counts">Резерв'.(!is_null($fillReserv)?' [p:'.$fillReserv.']':'').'</div>';
         //return '<div class="z_anketa_counts">' . ($seatsFrom > $seatsTo ? $seatsTo : $seatsFrom) . ' из ' . $seatsTo . ($seatsFrom > $seatsTo ? '. В резерве: ' . abs($seatsTo - $seatsFrom) : '') . '</div>';
     }
 

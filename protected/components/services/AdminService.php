@@ -17,14 +17,14 @@ class AdminService
         $questionnaire_main = array();
         $campSeats = array();
         $shiftsData = SiteService::getShifts();
-            switch ($statId) {
-                case 4:
-                case 5:
-                    $where = ' AND type='.Questionnaire::TYPE_UR;
-                    break;
-                default:
-                    $where = '';
-            }
+        switch ($statId) {
+            case 4:
+            case 5:
+                $where = ' AND type=' . Questionnaire::TYPE_UR;
+                break;
+            default:
+                $where = '';
+        }
 
         foreach (Questionnaire::getCAMPName() as $campId => $campName) {
             $camp_reserve[$campId] = 0;
@@ -38,7 +38,7 @@ class AdminService
             $result = Yii::app()->db->createCommand()
                 ->select('*')
                 ->from('{{questionnaire}}')
-                ->where('status=:status AND camp_id=:camp AND is_main=1 AND booking_id IS NOT NULL'.$where, array('status' => Questionnaire::STATUS_OK, 'camp' => $campId))
+                ->where('status=:status AND camp_id=:camp AND is_main=1 AND booking_id IS NOT NULL' . $where, array('status' => Questionnaire::STATUS_OK, 'camp' => $campId))
                 ->order('created ASC')
                 ->limit($campSeats[$campId])
                 ->queryAll();
@@ -51,10 +51,10 @@ class AdminService
                     $questionnaire_main[$r['camp_id']][$r['shift_id']][] = $r;
                     switch ($statId) {
                         case 4:
-                            $ids[$r['name_ur']][] =  $r;
+                            $ids[$r['name_ur']][] = $r;
                             break;
                         case 5:
-                            $ids[$r['name_ur']][$r['camp_id']][$r['shift_id']][] =  $r;
+                            $ids[$r['name_ur']][$r['camp_id']][$r['shift_id']][] = $r;
                             break;
                     }
                 }
@@ -62,7 +62,7 @@ class AdminService
             $result = Yii::app()->db->createCommand()
                 ->select('*')
                 ->from('{{questionnaire}}')
-                ->where('status=:status AND camp_id=:camp AND is_main=0 AND booking_id IS NOT NULL'.$where, array('status' => Questionnaire::STATUS_OK, 'camp' => $campId))
+                ->where('status=:status AND camp_id=:camp AND is_main=0 AND booking_id IS NOT NULL' . $where, array('status' => Questionnaire::STATUS_OK, 'camp' => $campId))
                 ->order('created ASC')
                 ->limit($campSeats[$campId])
                 ->queryAll();
@@ -74,15 +74,14 @@ class AdminService
                     $questionnaire[$r['camp_id']][$r['shift_id']][] = $r;
                     switch ($statId) {
                         case 4:
-                            $ids[$r['name_ur']][] =  $r;
+                            $ids[$r['name_ur']][] = $r;
                             break;
                         case 5:
-                            $ids[$r['name_ur']][$r['camp_id']][$r['shift_id']][] =  $r;
+                            $ids[$r['name_ur']][$r['camp_id']][$r['shift_id']][] = $r;
                             break;
                     }
                 }
             }
-
 
 
         }
@@ -98,5 +97,27 @@ class AdminService
         return array('questionnaire_main' => $questionnaire_main, 'questionnaire' => $questionnaire, 'reserve' => $reserve, 'camp_reserve' => $camp_reserve);
     }
 
+    public static function getFillReserv()
+    {
+        $out = array();
+        $result = Yii::app()->db->createCommand()
+            ->select('shift_id,count(id) as cnt')
+            ->from('{{questionnaire}}')
+            ->where('status=:status AND is_main=1 AND booking_id IS NOT NULL', array('status' => Questionnaire::STATUS_OK))
+            ->order('created ASC')
+            ->group('shift_id')
+            ->queryAll();
 
+        $shifts = SiteService::getShifts();
+        foreach ($shifts as $s) {
+            $out[$s['id']] = 0;
+        }
+        foreach ($result as $r) {
+            if (isset($out[$r['shift_id']])) {
+                $out[$r['shift_id']] = $r['cnt'];
+            }
+        }
+
+        return $out;
+    }
 }

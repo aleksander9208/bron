@@ -140,7 +140,8 @@ class AdminController extends Controller
             }
         }
 
-        $this->render('reserve', array('title' => $title, 'model' => $r, 'shifts' => SiteService::getShifts(),'seats' => SiteService::seatsShifts()));
+        $fillReserv = AdminService::getFillReserv();
+        $this->render('reserve', array('title' => $title, 'model' => $r, 'shifts' => SiteService::getShifts(),'seats' => SiteService::seatsShifts(), 'rfill' => $fillReserv));
     }
 
 
