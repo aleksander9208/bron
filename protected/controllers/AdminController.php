@@ -36,6 +36,12 @@ class AdminController extends Controller
         } elseif($admFilter) {
             $questionnaire->attributes = $admFilter;
         }
+        $admFilterSort = Yii::app()->session->get('admin_filter_sort',array());
+        if (isset($_GET['sort']) && $_GET['sort']) {
+            Yii::app()->session->add('admin_filter_sort', $_GET['sort']);
+        } elseif($admFilter) {
+            $_GET['sort'] = $admFilterSort;
+        }
 
         $this->render('index', array('title' => $title, 'model' => $questionnaire));
     }
