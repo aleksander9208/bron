@@ -38,7 +38,7 @@ class SiteService
         $result = Yii::app()->db->createCommand()
             ->select('COUNT(id) as cnt,shift_id ')
             ->from('{{questionnaire}}')
-            ->where('status=:status ', array('status' => Questionnaire::STATUS_OK))
+            ->where('status=:status AND is_main=0', array('status' => Questionnaire::STATUS_OK))
             ->group('shift_id')
             ->order('is_main DESC, created ASC')
             ->queryAll();
