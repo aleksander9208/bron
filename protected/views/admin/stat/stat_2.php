@@ -40,11 +40,11 @@
                             <td class="text-center" colspan="17">Данные отсутствуют</td>
                         </tr>
                     <?php } ?>
-
+                    <?php $num = 1; ?>
                     <?php foreach ($statData['questionnaire_main'][$campId] as $shiftId => $z) {
                         foreach ($z as $k=> $v) { ?>
                             <tr class="<?php echo(($v['type'] == Questionnaire::TYPE_UR) ? 'table-info' : ''); ?>">
-                                <th scope="row" class="align-middle"><?php echo (int)($k+1); ?></th>
+                                <th scope="row" class="align-middle"><?php echo (int)($num); ?></th>
                                 <td scope="row" class="align-middle"><?php echo Questionnaire::getCAMPName($campId); ?></td>
                                 <td class="text-center"><?php echo Questionnaire::getShiftName($shiftId); ?></td>
                                 <td class="text-center"> <?php echo SiteService::templateDLOFullRangeByData($shifts[$shiftId]['dlo']); ?></td>
@@ -62,12 +62,12 @@
                                 <td class="text-center" data-comment-id="<?php echo $v['id'];?>"><?php echo CHtml::encode($v['comment']); ?></td>
                                 <td class="text-center"><?php echo ($v['create_admin']?'Да':'Нет'); ?></td>
                             </tr>
-                        <?php }
+                        <?php $num++; }
                     }
                     foreach ($statData['questionnaire'][$campId] as $shiftId => $z) {
                         foreach ($z as $kk=> $v) { ?>
                             <tr class="<?php echo(($v['type'] == Questionnaire::TYPE_UR) ? 'table-info' : ''); ?>">
-                                <th scope="row" class="align-middle"><?php echo (int)((isset($k)?($k+2):1)+$kk); ?></th>
+                                <th scope="row" class="align-middle"><?php echo (int)($num); ?></th>
                                 <td scope="row" class="align-middle"><?php echo Questionnaire::getCAMPName($campId); ?></td>
                                 <td class="text-center"><?php echo Questionnaire::getShiftName($shiftId); ?></td>
                                 <td class="text-center"> <?php echo SiteService::templateDLOFullRangeByData($shifts[$shiftId]['dlo']); ?></td>
@@ -85,7 +85,7 @@
                                 <td class="text-center" data-comment-id="<?php echo $v['id'];?>"><?php echo CHtml::encode($v['comment']); ?></td>
                                 <td class="text-center"><?php echo ($v['create_admin']?'Да':'Нет'); ?></td>
                             </tr>
-                        <?php } ?>
+                        <?php $num++; } ?>
                     <?php } ?>
 
                     </tbody>
