@@ -501,6 +501,26 @@ class Questionnaire extends CActiveRecord
 
                 return false;
             }
+
+            if ($change && mb_strtolower($this->$attribute) == 'резерв') {
+                $this->addError($attribute, 'Запрещено назначтать идентификатор "Резерв"');
+
+                return false;
+            }
+            if (!$this->getError($attribute)) {
+                $shifts = SiteService::getShifts();
+                $reserve = Yii::app()->db->createCommand()
+                    ->select('srez_1,srez_2,srez_3,srez_4,srez_5,srez_6,srez_7,srez_8,srez_9,srez_10,srez_11,srez_12,srez_13,srez_14,srez_15,srez_16,srez_17,srez_18,srez_19,srez_20,srez_21,srez_22,srez_23,srez_24,srez_25,srez_26,srez_27')
+                    ->from('{{questionnaire_rezerv}}')
+                    ->where('id=1')
+                    ->queryRow();
+                $cqnormal = Questionnaire::model()->countByAttributes(array('shift_id' => $this->shift_id, 'status' => Questionnaire::STATUS_OK, 'is_main' => 0), 'booking_id IS NOT NULL');
+                if ($shifts[$this->shift_id]['seats'] <= ($reserve['srez_' . $this->shift_id] + $cqnormal)) {
+                    $this->addError($attribute, 'Нельзя выставить номер бронирования, т.к. нет доступных свободных мест (всего выделено:' . $shifts[$this->shift_id]['seats'] . ', в резерве:' . $reserve['srez_' . $this->shift_id] . ', принятые:' . $cqnormal . ')');
+                    return false;
+                }
+            }
+
         }
 
 

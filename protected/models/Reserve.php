@@ -114,7 +114,7 @@ class Reserve extends CActiveRecord
         }
         $cqnormal = Questionnaire::model()->countByAttributes(array('shift_id' => $shiftId, 'status' => Questionnaire::STATUS_OK, 'is_main' => 0), 'booking_id IS NOT NULL');
         if ($this->$attribute > ($shifts[$shiftId]['seats'] - $cqnormal)) {
-            $this->addError($attribute, 'Нельзя выставить размер резерва больше доступных свободных мест' . ($shifts[$shiftId]['seats'] - $cqnormal));
+            $this->addError($attribute, 'Нельзя выставить размер резерва больше доступных свободных мест');
             return false;
         }
 

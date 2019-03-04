@@ -5,3 +5,6 @@
 {
     font-size: 0.8em;
 }
+#z_page_admin_reserve input.error {
+    border-color: #FF0000;
+}
