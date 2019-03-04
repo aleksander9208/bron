@@ -167,11 +167,11 @@
                     ),
                     array(
                         'header' => 'Резерв',
-                        'name' => '',
-                        'value' => '(($data->status==Questionnaire::STATUS_OK)?(empty($data->booking_id)?"ДА":"НЕТ"):"")',
+                        'name' => 'is_reserve',
+                        'value' => '((is_numeric($data->is_reserve))?(empty($data->is_reserve)?"ДА":"НЕТ"):"")',
                         'htmlOptions' => array('class'=>'text-center'),
                         'headerHtmlOptions' => array('class' => 'text-center','scope'=>'col'),
-                        'filter' => false,
+                        'filter' => array('НЕТ','ДА'),
                     ),
                     array(
                         'header' => 'Комментарий',

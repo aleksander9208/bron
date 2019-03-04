@@ -62,6 +62,8 @@ class Questionnaire extends CActiveRecord
     public $camp_id = 0;
     public $shift_name;
 
+    public $is_reserve; //вспомогательное поле
+
 
     private $changedAttr = array();
 
@@ -95,7 +97,7 @@ class Questionnaire extends CActiveRecord
             array('type', 'in', 'range' => array(self::TYPE_FIZ, self::TYPE_UR)),
             array('status', 'validateStatus'),
             array('paid,create_admin,name_ur_check,fio_ur_contact_check,tel_ur_contact_check,email_ur_contact_check,fio_parent_check,residence_check,place_of_work_check,tel_parent_check,email_parent_check,fio_child_check,birthday_child_check,place_of_study_check', 'in', 'range' => array(0, 1)),
-            array('is_main,shift_name,camp_id, fromDate,toDate, type, fio_parent,residence,place_of_work,tel_parent,email_parent,fio_child,birthday_child,place_of_study,name_ur,fio_ur_contact,tel_ur_contact,email_ur_contact,comment', 'safe'),
+            array('is_main,shift_name,camp_id, fromDate,toDate, type, fio_parent,residence,place_of_work,tel_parent,email_parent,fio_child,birthday_child,place_of_study,name_ur,fio_ur_contact,tel_ur_contact,email_ur_contact,comment,is_reserve', 'safe'),
             array('booking_id,paid,comment,name_ur_check,fio_ur_contact_check,tel_ur_contact_check,email_ur_contact_check,fio_parent_check,residence_check,place_of_work_check,tel_parent_check,email_parent_check,fio_child_check,birthday_child_check,place_of_study_check,status,paid,create_admin', 'safe', 'on' => 'mod'),
         );
     }
@@ -154,7 +156,8 @@ class Questionnaire extends CActiveRecord
             'camp_id',
             'booking_id',
             'shift_name',
-            'is_main'
+            'is_main',
+            'is_reserve'
         );
     }
 
@@ -301,12 +304,14 @@ class Questionnaire extends CActiveRecord
         return parent::afterSave();
     }
 
-    /*public function afterFind()
+    public function afterFind()
     {
-        $this->camp_id = self::getCAMPByShift($this->shift_id);
+        if ($this->status == self::STATUS_OK)  {
+            $this->is_reserve = ($this->booking_id?1:0);
+        }
 
         return parent::afterFind();
-    }*/
+    }
 
     public function validateUser($attribute)
     {
@@ -950,6 +955,15 @@ class Questionnaire extends CActiveRecord
 
         if (is_numeric($this->is_main)) {
             $criteria->compare('t.is_main', $this->is_main);
+        }
+
+        if (is_numeric($this->is_reserve)) {
+            $criteria->compare('t.status', self::STATUS_OK);
+            if ($this->is_reserve) {
+                $criteria->addCondition(array('t.booking_id IS NULL'));
+            } else {
+                $criteria->addCondition(array('t.booking_id IS NOT NULL'));
+            }
         }
 
         return new CActiveDataProvider('Questionnaire', array(
