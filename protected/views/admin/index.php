@@ -5,6 +5,7 @@
             <div id="z_page_anketa_admin_list_alert" class="alert alert-danger d-none" role="alert"></div>
 
             <div class="text-right">
+                <button class="btn btn-success btn-sm my-1" role="button" id="z_page_anketa_admin_list_btn_update">Обновить список резерва</button>
                 <button class="btn btn-info btn-sm my-1 z_btn_print" role="button" data-target="#z_anketa_admin_list_table">Печать таблицы</button>
             </div>
 

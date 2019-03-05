@@ -6,7 +6,7 @@ if (typeof window.z == 'object')
             //Название модуля
             name:'z_page_anketa_admin_list',
             //Версия библиотеки
-            version: '190218',
+            version: '190305',
             //Указатель на глобалный объект
             z: window.z,
             //Хранилище данных
@@ -94,10 +94,44 @@ if (typeof window.z == 'object')
                                     )
                                 );
                             }
+                    ).on(
+                        'click.'+_self.name,
+                        '#z_page_anketa_admin_list_btn_update',
+                        function ()
+                            {
+                                if ($(this).hasClass('disabled')==false)
+                                    _self.update_nb();
+                            }
                     );
 
                     _self.z.el.z_anketa_admin_list_table.find('.filters input, .filters select').addClass('form-control form-control-sm');
                     _self.z.tasks.call(task_name, result_out);
+                },
+
+            //Обновленение номеров брони
+            update_nb: function ()
+                {
+                    var _self = this;
+                    _self.z.el.z_page_anketa_admin_list_btn_update.addClass('disabled');
+                    _self.z.modules.ajax.get(
+                        'recalculate',
+                        {
+                            url: _self.z.path+'ajax/recalculate',
+                            data: {}
+                        },
+                        _self.z.tasks.add(
+                            'Обновление омеров брони',
+                            '',
+                            function (result)
+                                {
+                                    if (result.errors.length>0)
+                                        _self.error(result.errors.join('<br/>'));
+                                            else
+                                        window.location.reload(true);
+                                    _self.z.el.z_page_anketa_admin_list_btn_update.removeClass('disabled');
+                                }
+                        )
+                    );
                 },
 
             //Вывод ошибок
