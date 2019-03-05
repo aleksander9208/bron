@@ -252,7 +252,7 @@ class Questionnaire extends CActiveRecord
                 $result = Yii::app()->db->createCommand()
                     ->select('id')
                     ->from('{{questionnaire}}')
-                    ->where('shift_id=:shift AND (booking_id IS NULL) AND ' . $queary . ' AND id!=:id', array('status' => Questionnaire::STATUS_OK, 'shift' => (int)$this->shift_id, 'id' => $this->id))
+                    ->where('status=:status AND shift_id=:shift AND (booking_id IS NULL) AND ' . $queary . ' AND id!=:id', array('status' => Questionnaire::STATUS_OK, 'shift' => (int)$this->shift_id, 'id' => $this->id))
                     ->order('is_main DESC, created ASC')
                     ->queryRow();
                 if ($result) {
@@ -359,7 +359,7 @@ class Questionnaire extends CActiveRecord
     {
 
         if ($this->$attribute) {
-            if ($this->isNewRecord || (!$this->isNewRecord && $this->status != self::STATUS_OK)) {
+            if ($this->isNewRecord || (!$this->isNewRecord && ($this->status != self::STATUS_OK) && $this->status!=self::STATUS_CANCELED)) {
                 $this->addError($attribute, 'Нельзя ставить в резерв не одобренные заявки');
                 return false;
             }
