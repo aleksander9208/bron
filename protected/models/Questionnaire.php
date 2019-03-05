@@ -195,9 +195,8 @@ class Questionnaire extends CActiveRecord
             if (isset($this->changedAttr['status']) && ($this->changedAttr['status'] != $this->status) && ($this->status == self::STATUS_OK)) {
                 if (is_null($this->booking_id)) {
                     $shifts = SiteService::getShifts();
-
                     $reserve = Reserve::getReserveData();
-                    if ((Questionnaire::model()->countByAttributes(array('shift_id' => $this->shift_id, 'status' => self::STATUS_OK)) + (int)$reserve['srez_' . $this->shift_id]) < $shifts[$this->shift_id]['seats']) {
+                    if ((Questionnaire::model()->countByAttributes(array('shift_id' => $this->shift_id, 'status' => self::STATUS_OK, 'is_main' => 0), 'booking_id IS NOT NULL') + (int)$reserve['srez_' . $this->shift_id]) < $shifts[$this->shift_id]['seats']) {
                         $n = 1;
                         do {
                             $this->booking_id = self::getPref($this->shift_id) . $n;
