@@ -126,6 +126,16 @@ class AjaxController extends Controller
         }
     }
 
+    public function actionRecalculate()
+    {
+        if (Yii::app()->user->checkAccess(User::ROLE_ADMIN)) {
+            $adminService = new AdminService();
+            $adminService->recalculateQuest();
+        } else {
+            throw new CHttpException(401, 'Страница не найдена');
+        }
+    }
+
     public function actionGetCampsList()
     {
         $shiftId = Yii::app()->request->getParam('shift', false);

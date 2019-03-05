@@ -128,4 +128,40 @@ class AdminService
 
         return $out;
     }
+
+    public function recalculateQuest() {
+        $shifts = SiteService::getShifts();
+        $reserve = Yii::app()->db->createCommand()
+            ->select('srez_1,srez_2,srez_3,srez_4,srez_5,srez_6,srez_7,srez_8,srez_9,srez_10,srez_11,srez_12,srez_13,srez_14,srez_15,srez_16,srez_17,srez_18,srez_19,srez_20,srez_21,srez_22,srez_23,srez_24,srez_25,srez_26,srez_27')
+            ->from('{{questionnaire_rezerv}}')
+            ->where('id=1')
+            ->queryRow();
+
+        foreach ($shifts as $shiftId => $s) {
+            $cqnormal = Questionnaire::model()->countByAttributes(array('shift_id' => $shiftId, 'status' => Questionnaire::STATUS_OK, 'is_main' => 0), 'booking_id IS NOT NULL');
+            $cnt = ($shifts[$shiftId]['seats'] - $reserve['srez_' . $shiftId] - $cqnormal);
+
+            for ($i = 1; $i <= $cnt; $i++) {
+                $result = Yii::app()->db->createCommand()
+                    ->select('id')
+                    ->from('{{questionnaire}}')
+                    ->where('shift_id=:shift AND status=:st AND is_main=0 AND booking_id IS NULL', array('shift' => $shiftId, 'st' => Questionnaire::STATUS_OK))
+                    ->order('created ASC')
+                    ->queryRow();
+                if ($result) {
+                    $n = 1;
+                    do {
+                        $booking_id = Questionnaire::getPref($shiftId) . $n;
+                        if (!Questionnaire::model()->countByAttributes(array('booking_id' => $booking_id))) {
+                            break;
+                        }
+                        $n++;
+                    } while (true);
+                    Yii::app()->db->createCommand()->update('{{questionnaire}}', array('booking_id' => $booking_id), 'id=:id', array(':id' => $result['id']));
+                }
+            }
+        }
+
+
+    }
 }

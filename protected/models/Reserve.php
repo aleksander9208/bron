@@ -126,7 +126,7 @@ class Reserve extends CActiveRecord
                 $result = Yii::app()->db->createCommand()
                     ->select('id')
                     ->from('{{questionnaire}}')
-                    ->where('shift_id=:shift AND status=:st AND booking_id IS NULL', array('shift' => $shiftId, 'st' => Questionnaire::STATUS_OK))
+                    ->where('shift_id=:shift AND status=:st AND is_main=0 AND booking_id IS NULL', array('shift' => $shiftId, 'st' => Questionnaire::STATUS_OK))
                     ->order('is_main DESC, created ASC')
                     ->queryRow();
                 if ($result) {
