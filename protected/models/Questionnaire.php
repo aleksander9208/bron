@@ -167,6 +167,9 @@ class Questionnaire extends CActiveRecord
             $this->status = self::STATUS_IN_MODER;
             $this->is_main = 0;
             $this->booking_id = null;
+            if (!is_null($this->fio_child)) {
+                $this->fio_child = trim(preg_replace("/\s{2,}/"," ",$this->fio_child));
+            }
             if (is_null($this->created)) {
                 $this->created = date('Y-m-d H:i:s');
             }
