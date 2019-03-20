@@ -6,7 +6,7 @@ if (typeof window.z == 'object')
             //Название модуля
             name:'z_page_anketa',
             //Версия библиотеки
-            version: '190214',
+            version: '190320',
             //Указатель на глобалный объект
             z: window.z,
             //Хранилище данных
@@ -292,12 +292,16 @@ if (typeof window.z == 'object')
             validate_fio: function (el_fio)
                 {
                     var _self = this;
-                    var val_fio = el_fio.val().toLowerCase();
+                    var val_fio = $.trim(el_fio.val().toLowerCase());
                     var is_valid = _self.validate_required(el_fio);
                     if (is_valid==true)
                         {
                             var part_val = val_fio.split(' ');
-                            is_valid = (part_val.length>=3);
+                            var part_no_epty = 0;
+                            for(var key in part_val)
+                                if ($.trim(part_val[key])!='')
+                                    part_no_epty++;
+                            is_valid = (part_no_epty>=3);
                         }
                     if (is_valid==true)
                         {
