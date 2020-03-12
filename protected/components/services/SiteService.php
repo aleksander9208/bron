@@ -75,7 +75,6 @@ class SiteService
                 'max_age' => 17,
                 'dlo' => array(
                     Questionnaire::DLO_2,
-                    Questionnaire::DLO_3,
                 )
             ),
             Questionnaire::SHIFT_KIROVEC_3 => array(
@@ -85,8 +84,7 @@ class SiteService
                 'min_age' => 6,
                 'max_age' => 17,
                 'dlo' => array(
-                    Questionnaire::DLO_4,
-                    Questionnaire::DLO_5,
+                    Questionnaire::DLO_6,
                 )
             ),
             Questionnaire::SHIFT_KIROVEC_4 => array(
@@ -96,18 +94,7 @@ class SiteService
                 'min_age' => 6,
                 'max_age' => 17,
                 'dlo' => array(
-                    Questionnaire::DLO_6,
-                    Questionnaire::DLO_7,
-                )
-            ),
-            Questionnaire::SHIFT_KIROVEC_5 => array(
-                'id' => Questionnaire::SHIFT_KIROVEC_5,
-                'camp' => Questionnaire::CAMP_KIROVEC,
-                'seats' => 192,
-                'min_age' => 6,
-                'max_age' => 17,
-                'dlo' => array(
-                    Questionnaire::DLO_8
+                    Questionnaire::DLO_8,
                 )
             ),
             Questionnaire::SHIFT_BLUESCREEN_1 => array(
@@ -127,7 +114,6 @@ class SiteService
                 'min_age' => 6,
                 'max_age' => 11,
                 'dlo' => array(
-                    Questionnaire::DLO_2,
                     Questionnaire::DLO_3,
                 )
             ),
@@ -138,8 +124,7 @@ class SiteService
                 'min_age' => 6,
                 'max_age' => 11,
                 'dlo' => array(
-                    Questionnaire::DLO_4,
-                    Questionnaire::DLO_5,
+                    Questionnaire::DLO_6,
                 )
             ),
             Questionnaire::SHIFT_BLUESCREEN_4 => array(
@@ -149,8 +134,7 @@ class SiteService
                 'min_age' => 6,
                 'max_age' => 11,
                 'dlo' => array(
-                    Questionnaire::DLO_6,
-                    Questionnaire::DLO_7,
+                    Questionnaire::DLO_8,
                 )
             ),
             Questionnaire::SHIFT_EAST_1 => array(
@@ -160,7 +144,6 @@ class SiteService
                 'min_age' => 6,
                 'max_age' => 17,
                 'dlo' => array(
-                    Questionnaire::DLO_2,
                     Questionnaire::DLO_3,
                 )
             ),
@@ -171,8 +154,7 @@ class SiteService
                 'min_age' => 6,
                 'max_age' => 17,
                 'dlo' => array(
-                    Questionnaire::DLO_4,
-                    Questionnaire::DLO_5,
+                    Questionnaire::DLO_6,
                 )
             ),
             Questionnaire::SHIFT_EAST_3 => array(
@@ -182,8 +164,7 @@ class SiteService
                 'min_age' => 6,
                 'max_age' => 17,
                 'dlo' => array(
-                    Questionnaire::DLO_6,
-                    Questionnaire::DLO_7,
+                    Questionnaire::DLO_8,
                 )
             ),
             Questionnaire::SHIFT_DIAMOND_1 => array(
@@ -193,7 +174,6 @@ class SiteService
                 'min_age' => 10,
                 'max_age' => 17,
                 'dlo' => array(
-                    Questionnaire::DLO_2,
                     Questionnaire::DLO_3,
                 )
             ),
@@ -204,7 +184,7 @@ class SiteService
                 'min_age' => 1,
                 'max_age' => 17,
                 'dlo' => array(
-                    Questionnaire::DLO_4,
+                    Questionnaire::DLO_5,
 
                 )
             ),
@@ -215,7 +195,7 @@ class SiteService
                 'min_age' => 10,
                 'max_age' => 17,
                 'dlo' => array(
-                    Questionnaire::DLO_5,
+                    Questionnaire::DLO_7,
                 )
             ),
             Questionnaire::SHIFT_DIAMOND_4 => array(
@@ -225,8 +205,7 @@ class SiteService
                 'min_age' => 10,
                 'max_age' => 17,
                 'dlo' => array(
-                    Questionnaire::DLO_6,
-                    Questionnaire::DLO_7,
+                    Questionnaire::DLO_8,
                 )
             ),
             Questionnaire::SHIFT_BONFIRE_1 => array(
@@ -237,7 +216,6 @@ class SiteService
                 'max_age' => 17,
                 'dlo' => array(
                     Questionnaire::DLO_2,
-                    Questionnaire::DLO_3,
                 )
             ),
             Questionnaire::SHIFT_BONFIRE_2 => array(
@@ -267,8 +245,17 @@ class SiteService
                 'min_age' => 6,
                 'max_age' => 17,
                 'dlo' => array(
-                    Questionnaire::DLO_6,
                     Questionnaire::DLO_7,
+                )
+            ),
+            Questionnaire::SHIFT_BONFIRE_5 => array(
+                'id' => Questionnaire::SHIFT_BONFIRE_5,
+                'camp' => Questionnaire::CAMP_BONFIRE,
+                'seats' => 192,
+                'min_age' => 6,
+                'max_age' => 17,
+                'dlo' => array(
+                    Questionnaire::DLO_8
                 )
             ),
             Questionnaire::SHIFT_LIGHTHOUSE_1 => array(
@@ -278,7 +265,6 @@ class SiteService
                 'min_age' => 6,
                 'max_age' => 17,
                 'dlo' => array(
-                    Questionnaire::DLO_2,
                     Questionnaire::DLO_3,
                 )
             ),
@@ -289,8 +275,7 @@ class SiteService
                 'min_age' => 6,
                 'max_age' => 17,
                 'dlo' => array(
-                    Questionnaire::DLO_4,
-                    Questionnaire::DLO_5,
+                    Questionnaire::DLO_6,
                 )
             ),
             Questionnaire::SHIFT_LIGHTHOUSE_3 => array(
@@ -300,7 +285,7 @@ class SiteService
                 'min_age' => 6,
                 'max_age' => 17,
                 'dlo' => array(
-                    Questionnaire::DLO_6
+                    Questionnaire::DLO_8
                 )
             ),
             Questionnaire::SHIFT_FLYGHT_1 => array(
@@ -320,7 +305,7 @@ class SiteService
                 'min_age' => 6,
                 'max_age' => 17,
                 'dlo' => array(
-                    Questionnaire::DLO_3
+                    Questionnaire::DLO_4
                 )
             ),
             Questionnaire::SHIFT_FLYGHT_3 => array(
@@ -330,7 +315,7 @@ class SiteService
                 'min_age' => 6,
                 'max_age' => 17,
                 'dlo' => array(
-                    Questionnaire::DLO_4,
+                    Questionnaire::DLO_6,
                 )
             ),
             Questionnaire::SHIFT_FLYGHT_4 => array(
@@ -340,7 +325,7 @@ class SiteService
                 'min_age' => 6,
                 'max_age' => 17,
                 'dlo' => array(
-                    Questionnaire::DLO_5
+                    Questionnaire::DLO_8
                 )
             ),
         );
@@ -402,6 +387,44 @@ class SiteService
         }
 
         return implode('-', $out);
+    }
+
+    public static function turnUp($shift, $reserve, $isMain = 0, $woId = 0)
+    {
+        // кол-во подтвержденных заявок по смене и НЕ ЗАРЕЗЕРВИРОВАННЫХ и ЗАБРОНИРОВАННЫХ
+        $cqnormal = Questionnaire::model()->countByAttributes(array('shift_id' => $shift['id'], 'status' => Questionnaire::STATUS_OK, 'is_main' => 0), 'booking_id IS NOT NULL');
+        //кол-во мест доступных для бронирования
+        $cnt = ($shift['seats'] - $reserve - $cqnormal);
+        for ($i = 1; $i <= $cnt; $i++) {
+            // НЕ ЗАРЕЗЕРВИРОВАННАЯ заявка по смене и без ЗАБРОНИ
+            $q = Yii::app()->db->createCommand()
+                ->select('id')
+                ->from('{{questionnaire}}')
+                ->where('shift_id=:shift AND booking_id IS NULL', array('shift' => $shift['id']));
+            if ($isMain) {
+                $q->andWhere('is_main=1');
+            } else {
+                $q->andWhere('status=:st AND is_main=0', array('st' => Questionnaire::STATUS_OK));
+            }
+            if ($woId) {
+                $q->andWhere('id!=:id', array(':id' => $woId));
+            }
+            $result = $q->order('is_main DESC, created ASC')
+                ->queryRow();
+            if ($result) {
+                $n = 1;
+                do {
+                    // перебираем до первого свободного номера брани
+                    $booking_id = Questionnaire::getPref($shift['id']) . $n;
+                    if (!Questionnaire::model()->countByAttributes(array('booking_id' => $booking_id))) {
+                        break;
+                    }
+                    $n++;
+                } while (true);
+                //назначаем первый найденный номер брони
+                Yii::app()->db->createCommand()->update('{{questionnaire}}', array('booking_id' => $booking_id), 'id=:id', array(':id' => $result['id']));
+            }
+        }
     }
 
 }

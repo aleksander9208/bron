@@ -36,22 +36,22 @@ class Reserve extends CActiveRecord
             'srez_2' => 'Резерв смены 2',
             'srez_3' => 'Резерв смены 3',
             'srez_4' => 'Резерв смены 4',
-            'srez_5' => 'Резерв смены 5',
-            'srez_6' => 'Резерв смены 1',
-            'srez_7' => 'Резерв смены 2',
-            'srez_8' => 'Резерв смены 3',
-            'srez_9' => 'Резерв смены 4',
-            'srez_10' => 'Резерв смены 1',
-            'srez_11' => 'Резерв смены 2',
-            'srez_12' => 'Резерв смены 3',
-            'srez_13' => 'Резерв смены 1',
-            'srez_14' => 'Резерв смены 2',
-            'srez_15' => 'Резерв смены 3',
-            'srez_16' => 'Резерв смены 4',
-            'srez_17' => 'Резерв смены 1',
-            'srez_18' => 'Резерв смены 2',
-            'srez_19' => 'Резерв смены 3',
-            'srez_20' => 'Резерв смены 4',
+            'srez_5' => 'Резерв смены 1',
+            'srez_6' => 'Резерв смены 2',
+            'srez_7' => 'Резерв смены 3',
+            'srez_8' => 'Резерв смены 4',
+            'srez_9' => 'Резерв смены 1',
+            'srez_10' => 'Резерв смены 2',
+            'srez_11' => 'Резерв смены 3',
+            'srez_12' => 'Резерв смены 1',
+            'srez_13' => 'Резерв смены 2',
+            'srez_14' => 'Резерв смены 3',
+            'srez_15' => 'Резерв смены 4',
+            'srez_16' => 'Резерв смены 1',
+            'srez_17' => 'Резерв смены 2',
+            'srez_18' => 'Резерв смены 3',
+            'srez_19' => 'Резерв смены 4',
+            'srez_20' => 'Резерв смены 5',
             'srez_21' => 'Резерв смены 1',
             'srez_22' => 'Резерв смены 2',
             'srez_23' => 'Резерв смены 3',
@@ -119,28 +119,7 @@ class Reserve extends CActiveRecord
         }
 
         if (!$this->getError($attribute) && isset($this->changedAttr[$attribute]) && ($this->changedAttr[$attribute] != $this->$attribute) && ($this->$attribute < $this->changedAttr[$attribute])) {
-            $cqnormal = Questionnaire::model()->countByAttributes(array('shift_id' => $shiftId, 'status' => Questionnaire::STATUS_OK, 'is_main' => 0), 'booking_id IS NOT NULL');
-            $cnt = ($shifts[$shiftId]['seats'] - $this->$attribute - $cqnormal);
-
-            for ($i = 1; $i <= $cnt; $i++) {
-                $result = Yii::app()->db->createCommand()
-                    ->select('id')
-                    ->from('{{questionnaire}}')
-                    ->where('shift_id=:shift AND status=:st AND is_main=0 AND booking_id IS NULL', array('shift' => $shiftId, 'st' => Questionnaire::STATUS_OK))
-                    ->order('is_main DESC, created ASC')
-                    ->queryRow();
-                if ($result) {
-                    $n = 1;
-                    do {
-                        $booking_id = Questionnaire::getPref($shiftId) . $n;
-                        if (!Questionnaire::model()->countByAttributes(array('booking_id' => $booking_id))) {
-                            break;
-                        }
-                        $n++;
-                    } while (true);
-                    Yii::app()->db->createCommand()->update('{{questionnaire}}', array('booking_id' => $booking_id), 'id=:id', array(':id' => $result['id']));
-                }
-            }
+            SiteService::turnUp($shifts[$shiftId], $this->$attribute);
         }
 
         return true;

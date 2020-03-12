@@ -23,22 +23,22 @@ class Questionnaire extends CActiveRecord
     const SHIFT_KIROVEC_2 = 2;
     const SHIFT_KIROVEC_3 = 3;
     const SHIFT_KIROVEC_4 = 4;
-    const SHIFT_KIROVEC_5 = 5;
-    const SHIFT_BLUESCREEN_1 = 6;
-    const SHIFT_BLUESCREEN_2 = 7;
-    const SHIFT_BLUESCREEN_3 = 8;
-    const SHIFT_BLUESCREEN_4 = 9;
-    const SHIFT_EAST_1 = 10;
-    const SHIFT_EAST_2 = 11;
-    const SHIFT_EAST_3 = 12;
-    const SHIFT_DIAMOND_1 = 13;
-    const SHIFT_DIAMOND_2 = 14;
-    const SHIFT_DIAMOND_3 = 15;
-    const SHIFT_DIAMOND_4 = 16;
-    const SHIFT_BONFIRE_1 = 17;
-    const SHIFT_BONFIRE_2 = 18;
-    const SHIFT_BONFIRE_3 = 19;
-    const SHIFT_BONFIRE_4 = 20;
+    const SHIFT_BLUESCREEN_1 = 5;
+    const SHIFT_BLUESCREEN_2 = 6;
+    const SHIFT_BLUESCREEN_3 = 7;
+    const SHIFT_BLUESCREEN_4 = 8;
+    const SHIFT_EAST_1 = 9;
+    const SHIFT_EAST_2 = 10;
+    const SHIFT_EAST_3 = 11;
+    const SHIFT_DIAMOND_1 = 12;
+    const SHIFT_DIAMOND_2 = 13;
+    const SHIFT_DIAMOND_3 = 14;
+    const SHIFT_DIAMOND_4 = 15;
+    const SHIFT_BONFIRE_1 = 16;
+    const SHIFT_BONFIRE_2 = 17;
+    const SHIFT_BONFIRE_3 = 18;
+    const SHIFT_BONFIRE_4 = 19;
+    const SHIFT_BONFIRE_5 = 20;
     const SHIFT_LIGHTHOUSE_1 = 21;
     const SHIFT_LIGHTHOUSE_2 = 22;
     const SHIFT_LIGHTHOUSE_3 = 23;
@@ -163,12 +163,13 @@ class Questionnaire extends CActiveRecord
 
     public function beforeValidate()
     {
+        $shifts = SiteService::getShifts();
         if ($this->isNewRecord) {
             $this->status = self::STATUS_IN_MODER;
             $this->is_main = 0;
             $this->booking_id = null;
             if (!is_null($this->fio_child)) {
-                $this->fio_child = trim(preg_replace("/\s{2,}/"," ",$this->fio_child));
+                $this->fio_child = trim(preg_replace("/\s{2,}/", " ", $this->fio_child));
             }
             if (is_null($this->created)) {
                 $this->created = date('Y-m-d H:i:s');
@@ -189,7 +190,6 @@ class Questionnaire extends CActiveRecord
             }
 
             if ($this->shift_id) {
-                $shifts = SiteService::getShifts();
                 $this->dlo_id = (int)(isset($shifts[$this->shift_id]['dlo'][0]) ? $shifts[$this->shift_id]['dlo'][0] : 0);
                 $this->camp_id = self::getCAMPByShift($this->shift_id);
             }
@@ -197,7 +197,6 @@ class Questionnaire extends CActiveRecord
         } elseif ($this->scenario == 'mod') {
             if (isset($this->changedAttr['status']) && ($this->changedAttr['status'] != $this->status) && ($this->status == self::STATUS_OK)) {
                 if (is_null($this->booking_id)) {
-                    $shifts = SiteService::getShifts();
                     $reserve = Reserve::getReserveData();
                     if ((Questionnaire::model()->countByAttributes(array('shift_id' => $this->shift_id, 'status' => self::STATUS_OK, 'is_main' => 0), 'booking_id IS NOT NULL') + (int)$reserve['srez_' . $this->shift_id]) < $shifts[$this->shift_id]['seats']) {
                         $n = 1;
@@ -247,7 +246,7 @@ class Questionnaire extends CActiveRecord
         if (!$this->isNewRecord && in_array($this->scenario, array('user_up', 'mod')) && isset($this->changedAttr['status']) && ($this->changedAttr['status'] != $this->status) && ($this->status == self::STATUS_CANCELED)) { //омена заявки
             if ($this->booking_id) {
                 if (!Yii::app()->user->getIsGuest() && Yii::app()->user->role == User::ROLE_ADMIN) {
-                    $this->comment .= 'Отмена по иницативе администратора ['.date("H:i:s d-m-Y").']';
+                    $this->comment .= 'Отмена по иницативе администратора [' . date("H:i:s d-m-Y") . ']';
                 }
                 $this->booking_id = null;
                 $queary = ($this->is_main ? 'is_main=1' : '(status=:status AND is_main=0)');
@@ -308,8 +307,8 @@ class Questionnaire extends CActiveRecord
 
     public function afterFind()
     {
-        if ($this->status == self::STATUS_OK)  {
-            $this->is_reserve = ($this->booking_id?1:0);
+        if ($this->status == self::STATUS_OK) {
+            $this->is_reserve = ($this->booking_id ? 1 : 0);
         }
 
         return parent::afterFind();
@@ -361,7 +360,7 @@ class Questionnaire extends CActiveRecord
     {
 
         if ($this->$attribute) {
-            if ($this->isNewRecord || (!$this->isNewRecord && ($this->status != self::STATUS_OK) && $this->status!=self::STATUS_CANCELED)) {
+            if ($this->isNewRecord || (!$this->isNewRecord && ($this->status != self::STATUS_OK) && $this->status != self::STATUS_CANCELED)) {
                 $this->addError($attribute, 'Нельзя ставить в резерв не одобренные заявки');
                 return false;
             }
@@ -420,7 +419,7 @@ class Questionnaire extends CActiveRecord
     public function validateBirthday($attribute)
     {
         if ($this->isNewRecord && $this->$attribute && $this->shift_id) {
-            $dopMonth = 9; //накинули на проходной возраст 2 месяца по просьбе ИРЫ 19.02.2019
+            $dopMonth = 0;// 9; //накинули на проходной возраст 2 месяца по просьбе ИРЫ 19.02.2019
             $year = date("Y");
             $month = date("m");
             $shifts = SiteService::getShifts();
@@ -428,7 +427,7 @@ class Questionnaire extends CActiveRecord
             $yearChild = date("Y", $t);
             $monthChild = date("m", $t);
             $age = ($year - $yearChild);
-            $cmonth = (($age * 12) - $monthChild  + $month);
+            $cmonth = (($age * 12) - $monthChild + $month);
             //if (($shifts[$this->shift_id]['min_age'] > $age) || ($shifts[$this->shift_id]['max_age'] < $age)) {
             if ((($shifts[$this->shift_id]['min_age'] * 12) > $cmonth) || ((($shifts[$this->shift_id]['max_age'] * 12) + $dopMonth) < $cmonth)) {
                 $this->addError('shift_id', 'Возраст ребенка не подходит для выбранной смены');
@@ -613,7 +612,6 @@ class Questionnaire extends CActiveRecord
             case self::SHIFT_KIROVEC_2:
             case self::SHIFT_KIROVEC_3:
             case self::SHIFT_KIROVEC_4:
-            case self::SHIFT_KIROVEC_5:
                 return self::CAMP_KIROVEC;
                 break;
             case self::SHIFT_BLUESCREEN_1:
@@ -637,6 +635,7 @@ class Questionnaire extends CActiveRecord
             case self::SHIFT_BONFIRE_2:
             case self::SHIFT_BONFIRE_3:
             case self::SHIFT_BONFIRE_4:
+            case self::SHIFT_BONFIRE_5:
                 return self::CAMP_BONFIRE;
                 break;
             case self::SHIFT_LIGHTHOUSE_1:
@@ -659,49 +658,25 @@ class Questionnaire extends CActiveRecord
     {
         switch ($campId) {
             case self::CAMP_KIROVEC:
-                return array();
+                return array(self::SHIFT_KIROVEC_1, self::SHIFT_KIROVEC_2, self::SHIFT_KIROVEC_3, self::SHIFT_KIROVEC_4);
                 break;
-
-            case self::SHIFT_KIROVEC_1:
-            case self::SHIFT_KIROVEC_2:
-            case self::SHIFT_KIROVEC_3:
-            case self::SHIFT_KIROVEC_4:
-            case self::SHIFT_KIROVEC_5:
-                return self::CAMP_KIROVEC;
+            case self::CAMP_BLUESCREEN:
+                return array(self::SHIFT_BLUESCREEN_1, self::SHIFT_BLUESCREEN_2, self::SHIFT_BLUESCREEN_3, self::SHIFT_BLUESCREEN_4);
                 break;
-            case self::SHIFT_BLUESCREEN_1:
-            case self::SHIFT_BLUESCREEN_2:
-            case self::SHIFT_BLUESCREEN_3:
-            case self::SHIFT_BLUESCREEN_4:
-                return self::CAMP_BLUESCREEN;
+            case self::CAMP_EAST_4:
+                return array(self::SHIFT_EAST_1, self::SHIFT_EAST_2, self::SHIFT_EAST_3);
                 break;
-            case self::SHIFT_EAST_1:
-            case self::SHIFT_EAST_2:
-            case self::SHIFT_EAST_3:
-                return self::CAMP_EAST_4;
+            case self::CAMP_DIAMOND:
+                return array(self::SHIFT_DIAMOND_1, self::SHIFT_DIAMOND_2, self::SHIFT_DIAMOND_3, self::SHIFT_DIAMOND_4);
                 break;
-            case self::SHIFT_DIAMOND_1:
-            case self::SHIFT_DIAMOND_2:
-            case self::SHIFT_DIAMOND_3:
-            case self::SHIFT_DIAMOND_4:
-                return self::CAMP_DIAMOND;
+            case self::CAMP_BONFIRE:
+                return array(self::SHIFT_BONFIRE_1, self::SHIFT_BONFIRE_2, self::SHIFT_BONFIRE_3, self::SHIFT_BONFIRE_4, self::SHIFT_BONFIRE_5);
                 break;
-            case self::SHIFT_BONFIRE_1:
-            case self::SHIFT_BONFIRE_2:
-            case self::SHIFT_BONFIRE_3:
-            case self::SHIFT_BONFIRE_4:
-                return self::CAMP_BONFIRE;
+            case self::CAMP_LIGHTHOUSE:
+                return array(self::SHIFT_LIGHTHOUSE_1, self::SHIFT_LIGHTHOUSE_2, self::SHIFT_LIGHTHOUSE_3);
                 break;
-            case self::SHIFT_LIGHTHOUSE_1:
-            case self::SHIFT_LIGHTHOUSE_2:
-            case self::SHIFT_LIGHTHOUSE_3:
-                return self::CAMP_LIGHTHOUSE;
-                break;
-            case self::SHIFT_FLYGHT_1:
-            case self::SHIFT_FLYGHT_2:
-            case self::SHIFT_FLYGHT_3:
-            case self::SHIFT_FLYGHT_4:
-                return self::CAMP_FLYGHT;
+            case self::CAMP_FLYGHT:
+                return array(self::SHIFT_FLYGHT_1, self::SHIFT_FLYGHT_2, self::SHIFT_FLYGHT_3, self::SHIFT_FLYGHT_4);
                 break;
             default:
                 return 0;
@@ -745,7 +720,7 @@ class Questionnaire extends CActiveRecord
             case self::SHIFT_FLYGHT_4:
                 return 'Смена 4';
                 break;
-            case self::SHIFT_KIROVEC_5:
+            case self::SHIFT_BONFIRE_5:
                 return 'Смена 5';
                 break;
             default:
@@ -825,12 +800,12 @@ class Questionnaire extends CActiveRecord
         $arr = array(
             self::DLO_1 => '01.06-10.06',
             self::DLO_2 => '12.06-21.06',
-            self::DLO_3 => '23.06-02.07',
-            self::DLO_4 => '05.07-14.07',
-            self::DLO_5 => '16.07-25.07',
-            self::DLO_6 => '28.07-06.08',
-            self::DLO_7 => '08.08-17.08',
-            self::DLO_8 => '19.08-28.08',
+            self::DLO_3 => '12.06-02.07',
+            self::DLO_4 => '23.06-02.07',
+            self::DLO_5 => '05.07-14.07',
+            self::DLO_6 => '05.07-25.07',
+            self::DLO_7 => '16.07-25.07',
+            self::DLO_8 => '28.07-17.08',
         );
         if (is_numeric($dloId)) {
             if (array_key_exists($dloId, $arr)) {
@@ -921,7 +896,7 @@ class Questionnaire extends CActiveRecord
                     $criteria->addInCondition('t.shift_id', array(self::SHIFT_KIROVEC_4, self::SHIFT_BLUESCREEN_4, self::SHIFT_DIAMOND_4, self::SHIFT_BONFIRE_4, self::SHIFT_FLYGHT_4));
                     break;
                 case 5:
-                    $criteria->addInCondition('t.shift_id', array(self::SHIFT_KIROVEC_5));
+                    $criteria->addInCondition('t.shift_id', array(self::SHIFT_BONFIRE_5));
                     break;
             }
         }
@@ -1022,8 +997,6 @@ class Questionnaire extends CActiveRecord
             case self::SHIFT_KIROVEC_4:
                 return '4К';
                 break;
-            case self::SHIFT_KIROVEC_5:
-                return '5К';
                 break;
             case self::SHIFT_BLUESCREEN_1:
                 return '1Г';
@@ -1069,6 +1042,9 @@ class Questionnaire extends CActiveRecord
                 break;
             case self::SHIFT_BONFIRE_4:
                 return '4КС';
+                break;
+            case self::SHIFT_BONFIRE_5:
+                return '5КС';
                 break;
             case self::SHIFT_LIGHTHOUSE_1:
                 return '1М';
