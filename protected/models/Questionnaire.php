@@ -273,6 +273,29 @@ class Questionnaire extends CActiveRecord
                     Yii::app()->db->createCommand()->update('{{questionnaire}}', array('booking_id' => $booking_id), 'id=:id', array(':id' => $result['id']));
                 } else {
                     Yii::log("НЕ НАЙДЕНА ЗАЯВКА НА ПОЛУЧЕНИЕ БРОНИ (SHIFT_ID:".(int)$this->shift_id.")", 'profile', 'turn');
+
+                    if ($this->is_main) {
+                        Yii::log(" ЗАЯВКА НА ПОЛУЧЕНИЕ БРОНИ СРЕДИ ОБЫЧНЫХ ЗАЯВОК (SHIFT_ID:".(int)$this->shift_id.")", 'profile', 'turn');
+                        $result = Yii::app()->db->createCommand()
+                            ->select('id')
+                            ->from('{{questionnaire}}')
+                            ->where('status=:status AND shift_id=:shift AND (booking_id IS NULL) AND (status=:status AND is_main=0) AND id!=:id', array('status' => Questionnaire::STATUS_OK, 'shift' => (int)$this->shift_id, 'id' => $this->id))
+                            ->order('is_main DESC, created ASC')
+                            ->queryRow();
+                        if ($result) {
+                            Yii::log("НАЙДЕНА ЗАЯВКА (ID:".$result['id'].") НА ПОЛУЧЕНИЕ БРОНИ (SHIFT_ID:".(int)$this->shift_id.")", 'profile', 'turn');
+                            $n = 1;
+                            do {
+                                $booking_id = self::getPref($this->shift_id) . $n;
+                                if (!Questionnaire::model()->countByAttributes(array('booking_id' => $booking_id))) {
+                                    break;
+                                }
+                                $n++;
+                            } while (true);
+                            Yii::log("БРОНЬ (".$booking_id.") НАЗНАЧЕНА ЗАЯВКЕ (ID:".$result['id'].") НА ПОЛУЧЕНИЕ БРОНИ (SHIFT_ID:".(int)$this->shift_id.")", 'profile', 'turn');
+                            Yii::app()->db->createCommand()->update('{{questionnaire}}', array('booking_id' => $booking_id), 'id=:id', array(':id' => $result['id']));
+                        }
+                    }
                 }
             }
         }
