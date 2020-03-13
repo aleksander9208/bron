@@ -801,17 +801,17 @@ class Questionnaire extends CActiveRecord
         return array_unique($out);
     }
 
-    public static function getDLOName($dloId = false)
+    public static function getDLOName($dloId = false, $numer = false)
     {
         $arr = array(
-            self::DLO_1 => '01.06-10.06',
-            self::DLO_2 => '12.06-21.06',
-            self::DLO_3 => '12.06-02.07',
-            self::DLO_4 => '23.06-02.07',
-            self::DLO_5 => '05.07-14.07',
-            self::DLO_6 => '05.07-25.07',
-            self::DLO_7 => '16.07-25.07',
-            self::DLO_8 => '28.07-17.08',
+            self::DLO_1 => ($numer===false?'01.06-10.06':'1 смена'),
+            self::DLO_2 => ($numer===false?'12.06-21.06':'2 смена'),
+            self::DLO_3 => ($numer===false?'12.06-02.07':'3 смена'),
+            self::DLO_4 => ($numer===false?'23.06-02.07':'4 смена'),
+            self::DLO_5 => ($numer===false?'05.07-14.07':'5 смена'),
+            self::DLO_6 => ($numer===false?'05.07-25.07':'6 смена'),
+            self::DLO_7 => ($numer===false?'16.07-25.07':'7 смена'),
+            self::DLO_8 => ($numer===false?'28.07-17.08':'8 смена')
         );
         if (is_numeric($dloId)) {
             if (array_key_exists($dloId, $arr)) {

@@ -348,7 +348,7 @@ class SiteService
         '<div class="custom-control custom-switch">' .
         CHtml::checkBox('Shifts[]', $checked, array('class' => 'custom-control-input', 'id' => 'z_anketa_' . $shiftId, 'value' => $shiftId, 'data-pgroup' => $period_group)) .
         CHtml::label($shiftName, 'z_anketa_' . $shiftId, array('class' => 'custom-control-label')) .
-        self::templateSeatsCount($seatsFrom, $seatsTo) .
+        //self::templateSeatsCount($seatsFrom, $seatsTo) .
         //'<div class="z_anketa_age">(от ' .$ageFrom . ' до ' .$ageTo . ' лет)</div>'.
         '</div>';
     }

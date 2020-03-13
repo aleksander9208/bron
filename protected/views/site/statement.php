@@ -171,7 +171,7 @@
             </div>
 
             <label for="z_anketa_table">Сводная таблица лагерей и смен</label>
-            <table id="z_anketa_table" class="table table-bordered table-striped table-hover table-sm">
+            <!--table id="z_anketa_table" class="table table-bordered table-striped table-hover table-sm">
                 <thead class="thead-dark">
                     <tr>
                         <th scope="col" class="text-center">Лагерь</th>
@@ -337,6 +337,54 @@
                     </tr>
 
                 </tbody>
+            </table-->
+
+            <table id="z_anketa_table" class="table table-bordered table-striped table-hover table-sm">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col" class="text-center">Лагерь</th>
+                        <th scope="col" class="text-center">Рекомендуемый возраст</th>
+                        <th scope="col" class="text-center" width="14%"><?php echo Questionnaire::getDLOName(Questionnaire::DLO_1, true); ?></th>
+                        <th scope="col" class="text-center" width="14%"><?php echo Questionnaire::getDLOName(Questionnaire::DLO_2, true); ?></th>
+                        <th scope="col" class="text-center" width="14%"><?php echo Questionnaire::getDLOName(Questionnaire::DLO_3, true); ?></th>
+                        <th scope="col" class="text-center" width="14%"><?php echo Questionnaire::getDLOName(Questionnaire::DLO_4, true); ?></th>
+                        <th scope="col" class="text-center" width="14%"><?php echo Questionnaire::getDLOName(Questionnaire::DLO_5, true); ?></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row" class="align-middle text-center">
+                            <?php echo Questionnaire::getCAMPName(Questionnaire::CAMP_KIROVEC); ?><br/>
+                            <small>ул. Дубовая, 56</small>
+                        </th>
+                        <td class="text-center">от <?php echo $shifts[Questionnaire::SHIFT_KIROVEC_1]['min_age']; ?> до <?php echo $shifts[Questionnaire::SHIFT_KIROVEC_1]['max_age'];?> лет</td>
+                        <td class="text-center" data-dlo="<?php echo Questionnaire::DLO_1; ?>" data-shift="<?php echo Questionnaire::SHIFT_KIROVEC_1; ?>">
+                            <div>10 дней</div>
+                            <strong>01.06-10.06</strong>
+                            <br/>
+                            <?php echo SiteService::templateChecker('',Questionnaire::SHIFT_KIROVEC_1, $seats[Questionnaire::SHIFT_KIROVEC_1]['seats'], $shifts[Questionnaire::SHIFT_KIROVEC_1]['seats'], $shifts[Questionnaire::SHIFT_KIROVEC_1]['min_age'],$shifts[Questionnaire::SHIFT_KIROVEC_1]['max_age'], $postShifts, '1'); ?>
+                        </td>
+                        <td class="text-center" data-dlo="<?php echo Questionnaire::DLO_2; ?>" data-shift="<?php echo Questionnaire::SHIFT_KIROVEC_2; ?>">
+                            <div>21 дней</div>
+                            <strong>12.06-02.07</strong>
+                            <br/>
+                            <?php echo SiteService::templateChecker('',Questionnaire::SHIFT_KIROVEC_2, $seats[Questionnaire::SHIFT_KIROVEC_2]['seats'], $shifts[Questionnaire::SHIFT_KIROVEC_2]['seats'], $shifts[Questionnaire::SHIFT_KIROVEC_2]['min_age'],$shifts[Questionnaire::SHIFT_KIROVEC_2]['max_age'], $postShifts, '2'); ?>
+                        </td>
+                        <td class="text-center" data-dlo="<?php echo Questionnaire::DLO_3; ?>" data-shift="<?php echo Questionnaire::SHIFT_KIROVEC_3; ?>">
+                            <div>21 дней</div>
+                            <strong>05.07-25.07</strong>
+                            <br/>
+                            <?php echo SiteService::templateChecker('',Questionnaire::SHIFT_KIROVEC_3, $seats[Questionnaire::SHIFT_KIROVEC_3]['seats'], $shifts[Questionnaire::SHIFT_KIROVEC_3]['seats'], $shifts[Questionnaire::SHIFT_KIROVEC_3]['min_age'],$shifts[Questionnaire::SHIFT_KIROVEC_3]['max_age'], $postShifts, '3'); ?>
+                        </td>
+                        <td class="text-center" data-dlo="<?php echo Questionnaire::DLO_4; ?>" data-shift="<?php echo Questionnaire::SHIFT_KIROVEC_4; ?>">
+                            <div>21 дней</div>
+                            <strong>28.07-17.08</strong>
+                            <br/>
+                            <?php echo SiteService::templateChecker('',Questionnaire::SHIFT_KIROVEC_4, $seats[Questionnaire::SHIFT_KIROVEC_4]['seats'], $shifts[Questionnaire::SHIFT_KIROVEC_4]['seats'], $shifts[Questionnaire::SHIFT_KIROVEC_4]['min_age'],$shifts[Questionnaire::SHIFT_KIROVEC_4]['max_age'], $postShifts, '4'); ?>
+                        </td>
+                        <td>
+                        </td>
+                    </tr>
             </table>
 
             <div class="form-group text-right">
