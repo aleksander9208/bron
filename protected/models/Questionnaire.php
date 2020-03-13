@@ -198,7 +198,12 @@ class Questionnaire extends CActiveRecord
             if (isset($this->changedAttr['status']) && ($this->changedAttr['status'] != $this->status) && ($this->status == self::STATUS_OK)) {
                 if (is_null($this->booking_id)) {
                     $reserve = Reserve::getReserveData();
-                    if ((Questionnaire::model()->countByAttributes(array('shift_id' => $this->shift_id, 'status' => self::STATUS_OK, 'is_main' => 0), 'booking_id IS NOT NULL') + (int)$reserve['srez_' . $this->shift_id]) < $shifts[$this->shift_id]['seats']) {
+                    $cntMainFALSE = (!$this->is_main && ((Questionnaire::model()->countByAttributes(array('shift_id' => $this->shift_id, 'status' => self::STATUS_OK, 'is_main' => 0), 'booking_id IS NOT NULL') + (int)$reserve['srez_' . $this->shift_id]) < $shifts[$this->shift_id]['seats']));
+                    $cntMainTRUE = ($this->is_main && (Questionnaire::model()->countByAttributes(array('shift_id' => $this->shift_id, 'status' => self::STATUS_OK, 'is_main' => 1), 'id!=:id AND booking_id IS NOT NULL', array('id' => $this->id)) < ( int)$reserve['srez_' . $this->shift_id]));
+                    //если есть свобожные места для брони то добавляем бронь
+                    //ИЛИ
+                    //если есть свободные места среди зарезервированных и наша заявка отмечена как зарезервированная (is_main_1)
+                    if ($cntMainFALSE || $cntMainTRUE) {
                         $n = 1;
                         do {
                             $this->booking_id = self::getPref($this->shift_id) . $n;
@@ -207,6 +212,7 @@ class Questionnaire extends CActiveRecord
                             }
                             $n++;
                         } while (true);
+                        Yii::log("ЗАЯВКА (ID:".$this->id.") ОДОБРЯЕТСЯ с ПРИСВОЕНИЕМ БРОНИ:".$this->booking_id.' (shift:'.$this->shift_id.' is_main:'.$this->is_main.')', 'profile', 'turn');
                     }
                 }
                 $this->name_ur_check = 0;
