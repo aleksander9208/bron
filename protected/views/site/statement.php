@@ -195,16 +195,16 @@
                         </td>
                         <td> </td>
                         <td class="text-center" data-dlo="<?php echo Questionnaire::DLO_2; ?>" data-shift="<?php echo Questionnaire::SHIFT_KIROVEC_2; ?>">
-                            <?php echo SiteService::templateChecker('Смена 2',Questionnaire::SHIFT_KIROVEC_2, $seats[Questionnaire::SHIFT_KIROVEC_2]['seats'], $shifts[Questionnaire::SHIFT_KIROVEC_2]['seats'], $shifts[Questionnaire::SHIFT_KIROVEC_2]['min_age'],$shifts[Questionnaire::SHIFT_KIROVEC_2]['max_age'], $postShifts, '2,3'); ?>
+                            <?php echo SiteService::templateChecker('Смена 2',Questionnaire::SHIFT_KIROVEC_2, $seats[Questionnaire::SHIFT_KIROVEC_2]['seats'], $shifts[Questionnaire::SHIFT_KIROVEC_2]['seats'], $shifts[Questionnaire::SHIFT_KIROVEC_2]['min_age'],$shifts[Questionnaire::SHIFT_KIROVEC_2]['max_age'], $postShifts, '2'); ?>
                         </td>
                         <td> </td>
                         <td> </td>
                         <td class="text-center" data-dlo="<?php echo Questionnaire::DLO_6; ?>" data-shift="<?php echo Questionnaire::SHIFT_KIROVEC_3; ?>">
-                            <?php echo SiteService::templateChecker('Смена 3',Questionnaire::SHIFT_KIROVEC_3, $seats[Questionnaire::SHIFT_KIROVEC_3]['seats'], $shifts[Questionnaire::SHIFT_KIROVEC_3]['seats'], $shifts[Questionnaire::SHIFT_KIROVEC_3]['min_age'],$shifts[Questionnaire::SHIFT_KIROVEC_3]['max_age'], $postShifts, '4,5'); ?>
+                            <?php echo SiteService::templateChecker('Смена 3',Questionnaire::SHIFT_KIROVEC_3, $seats[Questionnaire::SHIFT_KIROVEC_3]['seats'], $shifts[Questionnaire::SHIFT_KIROVEC_3]['seats'], $shifts[Questionnaire::SHIFT_KIROVEC_3]['min_age'],$shifts[Questionnaire::SHIFT_KIROVEC_3]['max_age'], $postShifts, '6'); ?>
                         </td>
                         <td> </td>
                         <td class="text-center" data-dlo="<?php echo Questionnaire::DLO_8; ?>" data-shift="<?php echo Questionnaire::SHIFT_KIROVEC_4; ?>">
-                            <?php echo SiteService::templateChecker('Смена 4',Questionnaire::SHIFT_KIROVEC_4, $seats[Questionnaire::SHIFT_KIROVEC_4]['seats'], $shifts[Questionnaire::SHIFT_KIROVEC_4]['seats'], $shifts[Questionnaire::SHIFT_KIROVEC_4]['min_age'],$shifts[Questionnaire::SHIFT_KIROVEC_4]['max_age'], $postShifts, '6,7'); ?>
+                            <?php echo SiteService::templateChecker('Смена 4',Questionnaire::SHIFT_KIROVEC_4, $seats[Questionnaire::SHIFT_KIROVEC_4]['seats'], $shifts[Questionnaire::SHIFT_KIROVEC_4]['seats'], $shifts[Questionnaire::SHIFT_KIROVEC_4]['min_age'],$shifts[Questionnaire::SHIFT_KIROVEC_4]['max_age'], $postShifts, '8'); ?>
                         </td>
                     </tr>
                     <tr>
@@ -216,16 +216,16 @@
                         <td> </td>
                         <td class="text-center" data-dlo="<?php echo Questionnaire::DLO_3; ?>" data-shift="<?php echo Questionnaire::SHIFT_BLUESCREEN_2; ?>" >
                             <div class="z_anketa_counts">Организованная группа</div>
-                            <?php echo SiteService::templateChecker('Смена 2',Questionnaire::SHIFT_BLUESCREEN_2, $seats[Questionnaire::SHIFT_BLUESCREEN_2]['seats'], $shifts[Questionnaire::SHIFT_BLUESCREEN_2]['seats'], $shifts[Questionnaire::SHIFT_BLUESCREEN_2]['min_age'],$shifts[Questionnaire::SHIFT_BLUESCREEN_2]['max_age'], $postShifts, '2,3'); ?>
+                            <?php echo SiteService::templateChecker('Смена 2',Questionnaire::SHIFT_BLUESCREEN_2, $seats[Questionnaire::SHIFT_BLUESCREEN_2]['seats'], $shifts[Questionnaire::SHIFT_BLUESCREEN_2]['seats'], $shifts[Questionnaire::SHIFT_BLUESCREEN_2]['min_age'],$shifts[Questionnaire::SHIFT_BLUESCREEN_2]['max_age'], $postShifts, '3'); ?>
                         </td>
                         <td> </td>
                         <td> </td>
                         <td class="text-center" data-dlo="<?php echo Questionnaire::DLO_6; ?>" data-shift="<?php echo Questionnaire::SHIFT_BLUESCREEN_3; ?>">
-                            <?php echo SiteService::templateChecker('Смена 3',Questionnaire::SHIFT_BLUESCREEN_3, $seats[Questionnaire::SHIFT_BLUESCREEN_3]['seats'], $shifts[Questionnaire::SHIFT_BLUESCREEN_3]['seats'], $shifts[Questionnaire::SHIFT_BLUESCREEN_3]['min_age'],$shifts[Questionnaire::SHIFT_BLUESCREEN_3]['max_age'], $postShifts, '4,5'); ?>
+                            <?php echo SiteService::templateChecker('Смена 3',Questionnaire::SHIFT_BLUESCREEN_3, $seats[Questionnaire::SHIFT_BLUESCREEN_3]['seats'], $shifts[Questionnaire::SHIFT_BLUESCREEN_3]['seats'], $shifts[Questionnaire::SHIFT_BLUESCREEN_3]['min_age'],$shifts[Questionnaire::SHIFT_BLUESCREEN_3]['max_age'], $postShifts, '6'); ?>
                         </td>
                         <td> </td>
                         <td class="text-center" data-dlo="<?php echo Questionnaire::DLO_8; ?>" data-shift="<?php echo Questionnaire::SHIFT_BLUESCREEN_4; ?>">
-                            <?php echo SiteService::templateChecker('Смена 4',Questionnaire::SHIFT_BLUESCREEN_4, $seats[Questionnaire::SHIFT_BLUESCREEN_4]['seats'], $shifts[Questionnaire::SHIFT_BLUESCREEN_4]['seats'], $shifts[Questionnaire::SHIFT_BLUESCREEN_4]['min_age'],$shifts[Questionnaire::SHIFT_BLUESCREEN_4]['max_age'], $postShifts, '6,7'); ?>
+                            <?php echo SiteService::templateChecker('Смена 4',Questionnaire::SHIFT_BLUESCREEN_4, $seats[Questionnaire::SHIFT_BLUESCREEN_4]['seats'], $shifts[Questionnaire::SHIFT_BLUESCREEN_4]['seats'], $shifts[Questionnaire::SHIFT_BLUESCREEN_4]['min_age'],$shifts[Questionnaire::SHIFT_BLUESCREEN_4]['max_age'], $postShifts, '8'); ?>
                         </td>
                     </tr>
                     <tr>
@@ -234,16 +234,16 @@
                         <td>&nbsp;</td>
                         <td>&nbsp;</td>
                         <td class="text-center" data-dlo="<?php echo Questionnaire::DLO_3; ?>" data-shift="<?php echo Questionnaire::SHIFT_EAST_1; ?>">
-                            <?php echo SiteService::templateChecker('Смена 1',Questionnaire::SHIFT_EAST_1, $seats[Questionnaire::SHIFT_EAST_1]['seats'], $shifts[Questionnaire::SHIFT_EAST_1]['seats'], $shifts[Questionnaire::SHIFT_EAST_1]['min_age'],$shifts[Questionnaire::SHIFT_EAST_1]['max_age'], $postShifts, '2,3'); ?>
+                            <?php echo SiteService::templateChecker('Смена 1',Questionnaire::SHIFT_EAST_1, $seats[Questionnaire::SHIFT_EAST_1]['seats'], $shifts[Questionnaire::SHIFT_EAST_1]['seats'], $shifts[Questionnaire::SHIFT_EAST_1]['min_age'],$shifts[Questionnaire::SHIFT_EAST_1]['max_age'], $postShifts, '3'); ?>
                         </td>
                         <td>&nbsp;</td>
                         <td>&nbsp;</td>
                         <td class="text-center" data-dlo="<?php echo Questionnaire::DLO_6; ?>" data-shift="<?php echo Questionnaire::SHIFT_EAST_2; ?>">
-                            <?php echo SiteService::templateChecker('Смена 2',Questionnaire::SHIFT_EAST_2, $seats[Questionnaire::SHIFT_EAST_2]['seats'], $shifts[Questionnaire::SHIFT_EAST_2]['seats'], $shifts[Questionnaire::SHIFT_EAST_2]['min_age'],$shifts[Questionnaire::SHIFT_EAST_2]['max_age'], $postShifts, '4,5'); ?>
+                            <?php echo SiteService::templateChecker('Смена 2',Questionnaire::SHIFT_EAST_2, $seats[Questionnaire::SHIFT_EAST_2]['seats'], $shifts[Questionnaire::SHIFT_EAST_2]['seats'], $shifts[Questionnaire::SHIFT_EAST_2]['min_age'],$shifts[Questionnaire::SHIFT_EAST_2]['max_age'], $postShifts, '6'); ?>
                         </td>
                         <td>&nbsp;</td>
                         <td class="text-center" data-dlo="<?php echo Questionnaire::DLO_8; ?>" data-shift="<?php echo Questionnaire::SHIFT_EAST_3; ?>">
-                            <?php echo SiteService::templateChecker('Смена 3',Questionnaire::SHIFT_EAST_3, $seats[Questionnaire::SHIFT_EAST_3]['seats'], $shifts[Questionnaire::SHIFT_EAST_3]['seats'], $shifts[Questionnaire::SHIFT_EAST_3]['min_age'],$shifts[Questionnaire::SHIFT_EAST_3]['max_age'], $postShifts, '6,7'); ?>
+                            <?php echo SiteService::templateChecker('Смена 3',Questionnaire::SHIFT_EAST_3, $seats[Questionnaire::SHIFT_EAST_3]['seats'], $shifts[Questionnaire::SHIFT_EAST_3]['seats'], $shifts[Questionnaire::SHIFT_EAST_3]['min_age'],$shifts[Questionnaire::SHIFT_EAST_3]['max_age'], $postShifts, '8'); ?>
                         </td>
                     </tr>
                     <tr>
@@ -252,18 +252,18 @@
                         <td>&nbsp;</td>
                         <td>&nbsp;</td>
                         <td class="text-center" data-dlo="<?php echo Questionnaire::DLO_3; ?>" data-shift="<?php echo Questionnaire::SHIFT_DIAMOND_1; ?>">
-                            <?php echo SiteService::templateChecker('Смена 1',Questionnaire::SHIFT_DIAMOND_1, $seats[Questionnaire::SHIFT_DIAMOND_1]['seats'], $shifts[Questionnaire::SHIFT_DIAMOND_1]['seats'], $shifts[Questionnaire::SHIFT_DIAMOND_1]['min_age'],$shifts[Questionnaire::SHIFT_DIAMOND_1]['max_age'], $postShifts, '2,3'); ?>
+                            <?php echo SiteService::templateChecker('Смена 1',Questionnaire::SHIFT_DIAMOND_1, $seats[Questionnaire::SHIFT_DIAMOND_1]['seats'], $shifts[Questionnaire::SHIFT_DIAMOND_1]['seats'], $shifts[Questionnaire::SHIFT_DIAMOND_1]['min_age'],$shifts[Questionnaire::SHIFT_DIAMOND_1]['max_age'], $postShifts, '3'); ?>
                         </td>
                         <td>&nbsp;</td>
                         <td class="text-center" data-dlo="<?php echo Questionnaire::DLO_5; ?>" data-shift="<?php echo Questionnaire::SHIFT_DIAMOND_2; ?>" >
-                            <?php echo SiteService::templateChecker('Смена 2',Questionnaire::SHIFT_DIAMOND_2, $seats[Questionnaire::SHIFT_DIAMOND_2]['seats'], $shifts[Questionnaire::SHIFT_DIAMOND_2]['seats'], $shifts[Questionnaire::SHIFT_DIAMOND_2]['min_age'],$shifts[Questionnaire::SHIFT_DIAMOND_2]['max_age'], $postShifts, '4'); ?>
+                            <?php echo SiteService::templateChecker('Смена 2',Questionnaire::SHIFT_DIAMOND_2, $seats[Questionnaire::SHIFT_DIAMOND_2]['seats'], $shifts[Questionnaire::SHIFT_DIAMOND_2]['seats'], $shifts[Questionnaire::SHIFT_DIAMOND_2]['min_age'],$shifts[Questionnaire::SHIFT_DIAMOND_2]['max_age'], $postShifts, '5'); ?>
                         </td>
                         <td>&nbsp;</td>
                         <td class="text-center" data-dlo="<?php echo Questionnaire::DLO_7; ?>" data-shift="<?php echo Questionnaire::SHIFT_DIAMOND_3; ?>">
-                            <?php echo SiteService::templateChecker('Смена 3',Questionnaire::SHIFT_DIAMOND_3, $seats[Questionnaire::SHIFT_DIAMOND_3]['seats'], $shifts[Questionnaire::SHIFT_DIAMOND_3]['seats'], $shifts[Questionnaire::SHIFT_DIAMOND_3]['min_age'],$shifts[Questionnaire::SHIFT_DIAMOND_3]['max_age'], $postShifts, '5'); ?>
+                            <?php echo SiteService::templateChecker('Смена 3',Questionnaire::SHIFT_DIAMOND_3, $seats[Questionnaire::SHIFT_DIAMOND_3]['seats'], $shifts[Questionnaire::SHIFT_DIAMOND_3]['seats'], $shifts[Questionnaire::SHIFT_DIAMOND_3]['min_age'],$shifts[Questionnaire::SHIFT_DIAMOND_3]['max_age'], $postShifts, '7'); ?>
                         </td>
                         <td class="text-center" data-dlo="<?php echo Questionnaire::DLO_8; ?>" data-shift="<?php echo Questionnaire::SHIFT_DIAMOND_4; ?>">
-                            <?php echo SiteService::templateChecker('Смена 4',Questionnaire::SHIFT_DIAMOND_4, $seats[Questionnaire::SHIFT_DIAMOND_4]['seats'], $shifts[Questionnaire::SHIFT_DIAMOND_4]['seats'], $shifts[Questionnaire::SHIFT_DIAMOND_4]['min_age'],$shifts[Questionnaire::SHIFT_DIAMOND_4]['max_age'], $postShifts, '6,7'); ?>
+                            <?php echo SiteService::templateChecker('Смена 4',Questionnaire::SHIFT_DIAMOND_4, $seats[Questionnaire::SHIFT_DIAMOND_4]['seats'], $shifts[Questionnaire::SHIFT_DIAMOND_4]['seats'], $shifts[Questionnaire::SHIFT_DIAMOND_4]['min_age'],$shifts[Questionnaire::SHIFT_DIAMOND_4]['max_age'], $postShifts, '8'); ?>
                         </td>
                     </tr>
                     <tr>
@@ -271,7 +271,7 @@
                         <td class="text-center">от <?php echo $shifts[Questionnaire::SHIFT_BONFIRE_1]['min_age']+1; ?> до <?php echo $shifts[Questionnaire::SHIFT_BONFIRE_1]['max_age'];?> лет</td>
                         <td>&nbsp;</td>
                         <td class="text-center" data-dlo="<?php echo Questionnaire::DLO_2; ?>" data-shift="<?php echo Questionnaire::SHIFT_BONFIRE_1; ?>">
-                            <?php echo SiteService::templateChecker('Смена 1',Questionnaire::SHIFT_BONFIRE_1, $seats[Questionnaire::SHIFT_BONFIRE_1]['seats'], $shifts[Questionnaire::SHIFT_BONFIRE_1]['seats'], $shifts[Questionnaire::SHIFT_BONFIRE_1]['min_age'],$shifts[Questionnaire::SHIFT_BONFIRE_1]['max_age'], $postShifts, '2,3'); ?>
+                            <?php echo SiteService::templateChecker('Смена 1',Questionnaire::SHIFT_BONFIRE_1, $seats[Questionnaire::SHIFT_BONFIRE_1]['seats'], $shifts[Questionnaire::SHIFT_BONFIRE_1]['seats'], $shifts[Questionnaire::SHIFT_BONFIRE_1]['min_age'],$shifts[Questionnaire::SHIFT_BONFIRE_1]['max_age'], $postShifts, '2'); ?>
                         </td>
                         <td>&nbsp;</td>
                         <td class="text-center" data-dlo="<?php echo Questionnaire::DLO_4; ?>" data-shift="<?php echo Questionnaire::SHIFT_BONFIRE_2; ?>" >
@@ -285,11 +285,11 @@
                         <td>&nbsp;</td>
                         <td class="text-center" data-dlo="<?php echo Questionnaire::DLO_7; ?>" data-shift="<?php echo Questionnaire::SHIFT_BONFIRE_4; ?>">
                             <div class="z_anketa_counts">Организованная группа</div>
-                            <?php echo SiteService::templateChecker('Смена 4',Questionnaire::SHIFT_BONFIRE_4, $seats[Questionnaire::SHIFT_BONFIRE_4]['seats'], $shifts[Questionnaire::SHIFT_BONFIRE_4]['seats'], $shifts[Questionnaire::SHIFT_BONFIRE_4]['min_age'],$shifts[Questionnaire::SHIFT_BONFIRE_4]['max_age'], $postShifts, '6,7'); ?>
+                            <?php echo SiteService::templateChecker('Смена 4',Questionnaire::SHIFT_BONFIRE_4, $seats[Questionnaire::SHIFT_BONFIRE_4]['seats'], $shifts[Questionnaire::SHIFT_BONFIRE_4]['seats'], $shifts[Questionnaire::SHIFT_BONFIRE_4]['min_age'],$shifts[Questionnaire::SHIFT_BONFIRE_4]['max_age'], $postShifts, '7'); ?>
                         </td>
                         <td class="text-center" data-dlo="<?php echo Questionnaire::DLO_8; ?>" data-shift="<?php echo Questionnaire::SHIFT_BONFIRE_5; ?>">
                             <div class="z_anketa_counts">Организованная группа</div>
-                            <?php echo SiteService::templateChecker('Смена 4',Questionnaire::SHIFT_BONFIRE_5, $seats[Questionnaire::SHIFT_BONFIRE_5]['seats'], $shifts[Questionnaire::SHIFT_BONFIRE_5]['seats'], $shifts[Questionnaire::SHIFT_BONFIRE_5]['min_age'],$shifts[Questionnaire::SHIFT_BONFIRE_5]['max_age'], $postShifts, '6,7'); ?>
+                            <?php echo SiteService::templateChecker('Смена 4',Questionnaire::SHIFT_BONFIRE_5, $seats[Questionnaire::SHIFT_BONFIRE_5]['seats'], $shifts[Questionnaire::SHIFT_BONFIRE_5]['seats'], $shifts[Questionnaire::SHIFT_BONFIRE_5]['min_age'],$shifts[Questionnaire::SHIFT_BONFIRE_5]['max_age'], $postShifts, '8'); ?>
                         </td>
                     </tr>
                     <tr>
@@ -299,17 +299,17 @@
                         <td>&nbsp;</td>
                         <td class="text-center" data-dlo="<?php echo Questionnaire::DLO_3; ?>" data-shift="<?php echo Questionnaire::SHIFT_LIGHTHOUSE_1; ?>">
                             <div class="z_anketa_counts">Организованная группа</div>
-                            <?php echo SiteService::templateChecker('Смена 1',Questionnaire::SHIFT_LIGHTHOUSE_1, $seats[Questionnaire::SHIFT_LIGHTHOUSE_1]['seats'], $shifts[Questionnaire::SHIFT_LIGHTHOUSE_1]['seats'], $shifts[Questionnaire::SHIFT_LIGHTHOUSE_1]['min_age'],$shifts[Questionnaire::SHIFT_LIGHTHOUSE_1]['max_age'], $postShifts, '2,3'); ?>
+                            <?php echo SiteService::templateChecker('Смена 1',Questionnaire::SHIFT_LIGHTHOUSE_1, $seats[Questionnaire::SHIFT_LIGHTHOUSE_1]['seats'], $shifts[Questionnaire::SHIFT_LIGHTHOUSE_1]['seats'], $shifts[Questionnaire::SHIFT_LIGHTHOUSE_1]['min_age'],$shifts[Questionnaire::SHIFT_LIGHTHOUSE_1]['max_age'], $postShifts, '3'); ?>
                         </td>
                         <td>&nbsp;</td>
                         <td>&nbsp;</td>
                         <td class="text-center" data-dlo="<?php echo Questionnaire::DLO_6; ?>" data-shift="<?php echo Questionnaire::SHIFT_LIGHTHOUSE_2; ?>">
-                            <?php echo SiteService::templateChecker('Смена 2',Questionnaire::SHIFT_LIGHTHOUSE_2, $seats[Questionnaire::SHIFT_LIGHTHOUSE_2]['seats'], $shifts[Questionnaire::SHIFT_LIGHTHOUSE_2]['seats'], $shifts[Questionnaire::SHIFT_LIGHTHOUSE_2]['min_age'],$shifts[Questionnaire::SHIFT_LIGHTHOUSE_2]['max_age'], $postShifts, '4,5'); ?>
+                            <?php echo SiteService::templateChecker('Смена 2',Questionnaire::SHIFT_LIGHTHOUSE_2, $seats[Questionnaire::SHIFT_LIGHTHOUSE_2]['seats'], $shifts[Questionnaire::SHIFT_LIGHTHOUSE_2]['seats'], $shifts[Questionnaire::SHIFT_LIGHTHOUSE_2]['min_age'],$shifts[Questionnaire::SHIFT_LIGHTHOUSE_2]['max_age'], $postShifts, '6'); ?>
                         </td>
                         <td>&nbsp;</td>
                         <td class="text-center" data-dlo="<?php echo Questionnaire::DLO_8; ?>" data-shift="<?php echo Questionnaire::SHIFT_LIGHTHOUSE_3; ?>">
                             <div class="z_anketa_counts">Организованная группа</div>
-                            <?php echo SiteService::templateChecker('Смена 3',Questionnaire::SHIFT_LIGHTHOUSE_3, $seats[Questionnaire::SHIFT_LIGHTHOUSE_3]['seats'], $shifts[Questionnaire::SHIFT_LIGHTHOUSE_3]['seats'], $shifts[Questionnaire::SHIFT_LIGHTHOUSE_3]['min_age'],$shifts[Questionnaire::SHIFT_LIGHTHOUSE_3]['max_age'], $postShifts, '6'); ?>
+                            <?php echo SiteService::templateChecker('Смена 3',Questionnaire::SHIFT_LIGHTHOUSE_3, $seats[Questionnaire::SHIFT_LIGHTHOUSE_3]['seats'], $shifts[Questionnaire::SHIFT_LIGHTHOUSE_3]['seats'], $shifts[Questionnaire::SHIFT_LIGHTHOUSE_3]['min_age'],$shifts[Questionnaire::SHIFT_LIGHTHOUSE_3]['max_age'], $postShifts, '8'); ?>
                         </td>
                     </tr>
                     <tr>
@@ -323,16 +323,16 @@
                         <td>&nbsp;</td>
                         <td class="text-center" data-dlo="<?php echo Questionnaire::DLO_4; ?>" data-shift="<?php echo Questionnaire::SHIFT_FLYGHT_2; ?>">
                             <div class="z_anketa_counts">Организованная группа</div>
-                            <?php echo SiteService::templateChecker('Смена 2',Questionnaire::SHIFT_FLYGHT_2, $seats[Questionnaire::SHIFT_FLYGHT_2]['seats'], $shifts[Questionnaire::SHIFT_FLYGHT_2]['seats'], $shifts[Questionnaire::SHIFT_FLYGHT_2]['min_age'],$shifts[Questionnaire::SHIFT_FLYGHT_2]['max_age'], $postShifts, '3'); ?>
+                            <?php echo SiteService::templateChecker('Смена 2',Questionnaire::SHIFT_FLYGHT_2, $seats[Questionnaire::SHIFT_FLYGHT_2]['seats'], $shifts[Questionnaire::SHIFT_FLYGHT_2]['seats'], $shifts[Questionnaire::SHIFT_FLYGHT_2]['min_age'],$shifts[Questionnaire::SHIFT_FLYGHT_2]['max_age'], $postShifts, '4'); ?>
                         </td>
                         <td>&nbsp;</td>
                         <td class="text-center" data-dlo="<?php echo Questionnaire::DLO_6; ?>" data-shift="<?php echo Questionnaire::SHIFT_FLYGHT_3; ?>">
-                            <?php echo SiteService::templateChecker('Смена 3',Questionnaire::SHIFT_FLYGHT_3, $seats[Questionnaire::SHIFT_FLYGHT_3]['seats'], $shifts[Questionnaire::SHIFT_FLYGHT_3]['seats'], $shifts[Questionnaire::SHIFT_FLYGHT_3]['min_age'],$shifts[Questionnaire::SHIFT_FLYGHT_3]['max_age'], $postShifts, '4'); ?>
+                            <?php echo SiteService::templateChecker('Смена 3',Questionnaire::SHIFT_FLYGHT_3, $seats[Questionnaire::SHIFT_FLYGHT_3]['seats'], $shifts[Questionnaire::SHIFT_FLYGHT_3]['seats'], $shifts[Questionnaire::SHIFT_FLYGHT_3]['min_age'],$shifts[Questionnaire::SHIFT_FLYGHT_3]['max_age'], $postShifts, '6'); ?>
                         </td>
                         <td>&nbsp;</td>
                         <td class="text-center" data-dlo="<?php echo Questionnaire::DLO_8; ?>" data-shift="<?php echo Questionnaire::SHIFT_FLYGHT_4; ?>">
                             <div class="z_anketa_counts">Организованная группа</div>
-                            <?php echo SiteService::templateChecker('Смена 4',Questionnaire::SHIFT_FLYGHT_4, $seats[Questionnaire::SHIFT_FLYGHT_4]['seats'], $shifts[Questionnaire::SHIFT_FLYGHT_4]['seats'], $shifts[Questionnaire::SHIFT_FLYGHT_4]['min_age'],$shifts[Questionnaire::SHIFT_FLYGHT_4]['max_age'], $postShifts, '5'); ?>
+                            <?php echo SiteService::templateChecker('Смена 4',Questionnaire::SHIFT_FLYGHT_4, $seats[Questionnaire::SHIFT_FLYGHT_4]['seats'], $shifts[Questionnaire::SHIFT_FLYGHT_4]['seats'], $shifts[Questionnaire::SHIFT_FLYGHT_4]['min_age'],$shifts[Questionnaire::SHIFT_FLYGHT_4]['max_age'], $postShifts, '8'); ?>
                         </td>
                     </tr>
 
