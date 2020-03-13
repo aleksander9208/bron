@@ -119,6 +119,7 @@ class Reserve extends CActiveRecord
         }
 
         if (!$this->getError($attribute) && isset($this->changedAttr[$attribute]) && ($this->changedAttr[$attribute] != $this->$attribute) && ($this->$attribute < $this->changedAttr[$attribute])) {
+            Yii::log('ПЕРЕСЧЕТ БРОНИРОВАНИЯ ПРИ ИЗМЕНЕНИИ РАЗМЕРА РЕЗЕРВА', 'profile', 'turn');
             SiteService::turnUp($shifts[$shiftId], $this->$attribute);
         }
 

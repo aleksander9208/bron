@@ -393,8 +393,12 @@ class SiteService
     {
         // кол-во подтвержденных заявок по смене и НЕ ЗАРЕЗЕРВИРОВАННЫХ и ЗАБРОНИРОВАННЫХ
         $cqnormal = Questionnaire::model()->countByAttributes(array('shift_id' => $shift['id'], 'status' => Questionnaire::STATUS_OK, 'is_main' => 0), 'booking_id IS NOT NULL');
+
+        Yii::log('кол-во подтвержденных заявок по смене и НЕ ЗАРЕЗЕРВИРОВАННЫХ и ЗАБРОНИРОВАННЫХ:' . $cqnormal.' КОЛ-ВО ЗАРЕЗЕРВИРОВАННЫХ:'.$reserve.' SHIFT_ID:'.$shift['id'].' is_main=0 status=2', 'profile', 'turn');
+
         //кол-во мест доступных для бронирования
         $cnt = ($shift['seats'] - $reserve - $cqnormal);
+        Yii::log('кол-во мест доступных для бронирования:' . $cnt, 'profile', 'turn');
         for ($i = 1; $i <= $cnt; $i++) {
             // НЕ ЗАРЕЗЕРВИРОВАННАЯ заявка по смене и без ЗАБРОНИ
             $q = Yii::app()->db->createCommand()
@@ -422,6 +426,7 @@ class SiteService
                     $n++;
                 } while (true);
                 //назначаем первый найденный номер брони
+                Yii::log('назначаем первый найденный номер брони BOOKING_ID:' . $booking_id.' questionnaire_ID:'.$result['id'], 'profile', 'turn');
                 Yii::app()->db->createCommand()->update('{{questionnaire}}', array('booking_id' => $booking_id), 'id=:id', array(':id' => $result['id']));
             }
         }

@@ -84,6 +84,12 @@ return array(
                     'categories' => 'debug',
                     'logFile' => 'debug.log',
                 ),
+                array(
+                    'class' => 'CFileLogRoute',
+                    'levels' => 'profile',
+                    'categories' => 'trun',
+                    'logFile' => 'trun.log',
+                ),
             ),
         ),
 

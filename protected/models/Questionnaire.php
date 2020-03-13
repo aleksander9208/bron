@@ -244,9 +244,12 @@ class Questionnaire extends CActiveRecord
         }
 
         if (!$this->isNewRecord && in_array($this->scenario, array('user_up', 'mod')) && isset($this->changedAttr['status']) && ($this->changedAttr['status'] != $this->status) && ($this->status == self::STATUS_CANCELED)) { //омена заявки
+            Yii::log('ОТМЕНА ЗАЯВКИ: status=4', 'profile', 'turn');
             if ($this->booking_id) {
+                Yii::log('ОТМЕНА ЗАЯВКИ: ЕСТЬ БРОНЬ', 'profile', 'turn');
                 if (!Yii::app()->user->getIsGuest() && Yii::app()->user->role == User::ROLE_ADMIN) {
                     $this->comment .= 'Отмена по иницативе администратора [' . date("H:i:s d-m-Y") . ']';
+                    Yii::log($this->comment .' USER_ID:'.Yii::app()->user->id, 'profile', 'turn');
                 }
                 $this->booking_id = null;
                 $queary = ($this->is_main ? 'is_main=1' : '(status=:status AND is_main=0)');
@@ -257,6 +260,7 @@ class Questionnaire extends CActiveRecord
                     ->order('is_main DESC, created ASC')
                     ->queryRow();
                 if ($result) {
+                    Yii::log("НАЙДЕНА ЗАЯВКА (ID:".$result['id'].") НА ПОЛУЧЕНИЕ БРОНИ (SHIFT_ID:".(int)$this->shift_id.")", 'profile', 'turn');
                     $n = 1;
                     do {
                         $booking_id = self::getPref($this->shift_id) . $n;
@@ -265,11 +269,13 @@ class Questionnaire extends CActiveRecord
                         }
                         $n++;
                     } while (true);
+                    Yii::log("БРОНЬ (".$booking_id.") НАЗНАЧЕНА ЗАЯВКЕ (ID:".$result['id'].") НА ПОЛУЧЕНИЕ БРОНИ (SHIFT_ID:".(int)$this->shift_id.")", 'profile', 'turn');
                     Yii::app()->db->createCommand()->update('{{questionnaire}}', array('booking_id' => $booking_id), 'id=:id', array(':id' => $result['id']));
+                } else {
+                    Yii::log("НЕ НАЙДЕНА ЗАЯВКА НА ПОЛУЧЕНИЕ БРОНИ (SHIFT_ID:".(int)$this->shift_id.")", 'profile', 'turn');
                 }
             }
         }
-
 
         return parent::beforeValidate();
     }
