@@ -74,7 +74,7 @@ class SiteService
                 'min_age' => 6,
                 'max_age' => 17,
                 'dlo' => array(
-                    Questionnaire::DLO_2,
+                    Questionnaire::DLO_3,
                 )
             ),
             Questionnaire::SHIFT_KIROVEC_3 => array(
