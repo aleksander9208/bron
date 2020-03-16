@@ -454,17 +454,16 @@ class Questionnaire extends CActiveRecord
     public function validateBirthday($attribute)
     {
         if ($this->isNewRecord && $this->$attribute && $this->shift_id) {
-            $dopMonth = 0;// 9; //накинули на проходной возраст 2 месяца по просьбе ИРЫ 19.02.2019
             $year = date("Y");
-            $month = date("m");
             $shifts = SiteService::getShifts();
+            $monthMin = sprintf("%02d", Questionnaire::getDLOMonthStart($shifts[$this->shift_id]['dlo'][0]));
+            $monthMax = sprintf("%02d", Questionnaire::getDLOMonthStart($shifts[$this->shift_id]['dlo'][0],true));
             $t = strtotime($this->$attribute);
             $yearChild = date("Y", $t);
             $monthChild = date("m", $t);
             $age = ($year - $yearChild);
-            $cmonth = (($age * 12) - $monthChild + $month);
-            //if (($shifts[$this->shift_id]['min_age'] > $age) || ($shifts[$this->shift_id]['max_age'] < $age)) {
-            if ((($shifts[$this->shift_id]['min_age'] * 12) > $cmonth) || ((($shifts[$this->shift_id]['max_age'] * 12) + $dopMonth) < $cmonth)) {
+            $cmonth = (($age * 12) + $monthChild);
+            if (((($shifts[$this->shift_id]['min_age'] * 12) + $monthMin) > $cmonth) || ((($shifts[$this->shift_id]['max_age'] * 12) + $monthMax) < $cmonth)) {
                 $this->addError('shift_id', 'Возраст ребенка не подходит для выбранной смены');
                 return false;
             }
@@ -841,6 +840,27 @@ class Questionnaire extends CActiveRecord
             self::DLO_6 => ($numer===false?'05.07-25.07':'6 смена'),
             self::DLO_7 => ($numer===false?'16.07-25.07':'7 смена'),
             self::DLO_8 => ($numer===false?'28.07-17.08':'8 смена')
+        );
+        if (is_numeric($dloId)) {
+            if (array_key_exists($dloId, $arr)) {
+                return $arr[$dloId];
+            }
+            return $dloId;
+        }
+        return $arr;
+    }
+
+    public static function getDLOMonthStart($dloId = false,$max = false)
+    {
+        $arr = array(
+            self::DLO_1 => ($max?6:6),
+            self::DLO_2 => ($max?6:6),
+            self::DLO_3 => ($max?7:6),
+            self::DLO_4 => ($max?7:6),
+            self::DLO_5 => ($max?7:7),
+            self::DLO_6 => ($max?7:7),
+            self::DLO_7 => ($max?7:7),
+            self::DLO_8 => ($max?8:7)
         );
         if (is_numeric($dloId)) {
             if (array_key_exists($dloId, $arr)) {
