@@ -453,7 +453,24 @@ class Questionnaire extends CActiveRecord
 
     public function validateBirthday($attribute)
     {
+        $out = true;
         if ($this->isNewRecord && $this->$attribute && $this->shift_id) {
+            $out = false;
+            $birthday_child = strtotime($this->$attribute);
+            $shifts = SiteService::getShifts();
+            $period_str = explode('-', Questionnaire::getDLOName($shifts[$this->shift_id]['dlo'][0]));
+            if (count($period_str)==2)
+                {
+                    $period_time_min = strtotime($period_str[0].'.'.(date('Y') - $shifts[$this->shift_id]['max_age']) );
+                    $period_time_max = strtotime($period_str[1].'.'.(date('Y') - $shifts[$this->shift_id]['min_age']) );
+                    $out = (
+                        $birthday_child>=$period_time_min &&
+                        $birthday_child<=$period_time_max
+                    );
+                }
+            if ($out == false)
+                $this->addError('shift_id', 'Возраст ребенка не подходит для выбранной смены');
+            /*
             $year = date("Y");
             $shifts = SiteService::getShifts();
             $monthMin = sprintf("%02d", Questionnaire::getDLOMonthStart($shifts[$this->shift_id]['dlo'][0]));
@@ -466,10 +483,10 @@ class Questionnaire extends CActiveRecord
             if (((($shifts[$this->shift_id]['min_age'] * 12) + $monthMin) > $cmonth) || ((($shifts[$this->shift_id]['max_age'] * 12) + $monthMax) < $cmonth)) {
                 $this->addError('shift_id', 'Возраст ребенка не подходит для выбранной смены');
                 return false;
-            }
+            }*/
         }
 
-        return true;
+        return $out;
     }
 
     public function validateChild($attribute)
