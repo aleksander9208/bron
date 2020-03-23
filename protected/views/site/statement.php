@@ -549,7 +549,7 @@
                             <div>10 дней</div>
                             <strong><?php echo Questionnaire::getDLOName(Questionnaire::DLO_2); ?></strong>
                             <br/>
-                            <strong>Организованные группы</strong>
+                            <?php echo SiteService::templateChecker('',Questionnaire::SHIFT_FLYGHT_1, $seats[Questionnaire::SHIFT_FLYGHT_1]['seats'], $shifts[Questionnaire::SHIFT_FLYGHT_1]['seats'], $shifts[Questionnaire::SHIFT_FLYGHT_1]['min_age'],$shifts[Questionnaire::SHIFT_FLYGHT_1]['max_age'], $postShifts, '2'); ?>
                         </td>
                         <td class="text-center" data-dlo="<?php echo Questionnaire::DLO_4; ?>" data-shift="<?php echo Questionnaire::SHIFT_FLYGHT_2; ?>">
                             <div>10 дней</div>
