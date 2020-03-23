@@ -461,10 +461,10 @@ class Questionnaire extends CActiveRecord
             $period_str = explode('-', Questionnaire::getDLOName($shifts[$this->shift_id]['dlo'][0]));
             if (count($period_str)==2)
                 {
-                    $period_time_min = strtotime($period_str[0].'.'.(date('Y') - $shifts[$this->shift_id]['max_age']) );
+                    $period_time_min = strtotime($period_str[0].'.'.(date('Y') - $shifts[$this->shift_id]['max_age'] - 1) );
                     $period_time_max = strtotime($period_str[1].'.'.(date('Y') - $shifts[$this->shift_id]['min_age']) );
                     $out = (
-                        $birthday_child>=$period_time_min &&
+                        $birthday_child>$period_time_min &&
                         $birthday_child<=$period_time_max
                     );
                 }
