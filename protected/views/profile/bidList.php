@@ -85,7 +85,7 @@
                         'headerHtmlOptions' => array('class' => 'text-center', 'scope' => 'col'),
                     ),*/
                     array(
-                        'header' => 'Информация',
+                        'header' => 'Статус',
                         'name' => 'status',
                         'type' => 'raw',
                         'value' => '(($data->status==' . Questionnaire::STATUS_OK . ')?($data->booking_id?"Вам присвоен номер ".$data->booking_id." брони на путевку":"Ваша заявка находится в листе ожидания") :"") ',
@@ -94,7 +94,7 @@
                         'headerHtmlOptions' => array('class' => 'text-center', 'scope' => 'col'),
                     ),
                     array(
-                        'header' => 'Статус',
+                        'header' => 'Информация',
                         'name' => 'status',
                         'type' => 'raw',
                         'value' => 'CHtml::link(Questionnaire::getStatusName($data->status),"/profile/bid/".$data->id, array("class"=>"btn btn-success btn-sm") )',

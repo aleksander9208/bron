@@ -148,6 +148,12 @@ class AjaxController extends Controller
         }
     }
 
+    public function actionCampsTimeLeft() {
+        $time = Yii::app()->request->getParam('time', false);
+        $adminService = new AdminService();
+        $this->out['data'] = $adminService->campsTimeLeft($time);
+    }
+
     public function actionGetShiftList()
     {
         $shiftId = Yii::app()->request->getParam('shift', false);

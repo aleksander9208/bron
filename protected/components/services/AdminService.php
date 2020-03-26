@@ -143,4 +143,22 @@ class AdminService
             SiteService::turnUp($s, $reserve['srez_' . $s['id']]);
         }
     }
+
+    public function campsTimeLeft($time)
+    {
+        $t = strtotime($time);
+        if ((int)date("Hi") == (int)date("Hi", $t)) {
+            $result = Yii::app()->db->createCommand()
+                ->select('id')
+                ->from('{{user}}')
+                ->where('role=:role', array('role' =>  User::ROLE_ADMIN))
+                ->queryAll();
+
+           User::model()->updateAll(array('role' => User::ROLE_USER) , 'role=:role', array(':role' => User::ROLE_ADMIN));
+
+            return $result;
+        }
+
+        return [];
+    }
 }
