@@ -14,7 +14,7 @@
                 'id' => 'z_anketa_admin_list_table',
                 'dataProvider' => $model->getBidList('/admin/index'),
                 'ajaxUpdate' =>  'z_anketa_admin_list_table', //false
-                'afterAjaxUpdate' => "function()  { $('#z_anketa_admin_list_table').find('.filters input, .filters select').addClass('form-control form-control-sm'); window.z.comment_edit(); jQuery.datepicker.regional['ru'].dateFormat='dd-mm-yy'; jQuery('#from_date').datepicker(jQuery.datepicker.regional['ru'],{'dateFormat':'dd-mm-yy','changeMonth':true, 'changeYear':true,'yearRange':'2000:2019'}); jQuery('#to_date').datepicker(jQuery.datepicker.regional['ru'],{'dateFormat':'dd-mm-yy','changeMonth':true, 'changeYear':true,'yearRange':'2000:2019'});  }",
+                'afterAjaxUpdate' => "function()  { $('#z_anketa_admin_list_table').find('.filters input, .filters select').addClass('form-control form-control-sm'); window.z.comment_edit(); jQuery.datepicker.regional['ru'].dateFormat='dd-mm-yy'; jQuery('#from_date').datepicker(jQuery.datepicker.regional['ru'],{'dateFormat':'dd-mm-yy','changeMonth':true, 'changeYear':true,'yearRange':'2000:2021'}); jQuery('#to_date').datepicker(jQuery.datepicker.regional['ru'],{'dateFormat':'dd-mm-yy','changeMonth':true, 'changeYear':true,'yearRange':'2000:2021'});  }",
                 'summaryText' => '',
                 'filter' => $model,
                 'enableHistory' => false,

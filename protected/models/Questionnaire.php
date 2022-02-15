@@ -27,9 +27,11 @@ class Questionnaire extends CActiveRecord
     const SHIFT_BLUESCREEN_2 = 6;
     const SHIFT_BLUESCREEN_3 = 7;
     const SHIFT_BLUESCREEN_4 = 8;
+    const SHIFT_BLUESCREEN_5 = 20;
     const SHIFT_EAST_1 = 9;
     const SHIFT_EAST_2 = 10;
     const SHIFT_EAST_3 = 11;
+    const SHIFT_EAST_4 = 28;
     const SHIFT_DIAMOND_1 = 12;
     const SHIFT_DIAMOND_2 = 13;
     const SHIFT_DIAMOND_3 = 14;
@@ -38,10 +40,11 @@ class Questionnaire extends CActiveRecord
     const SHIFT_BONFIRE_2 = 17;
     const SHIFT_BONFIRE_3 = 18;
     const SHIFT_BONFIRE_4 = 19;
-    const SHIFT_BONFIRE_5 = 20;
+    //const SHIFT_BONFIRE_5 = 20;
     const SHIFT_LIGHTHOUSE_1 = 21;
     const SHIFT_LIGHTHOUSE_2 = 22;
     const SHIFT_LIGHTHOUSE_3 = 23;
+    const SHIFT_LIGHTHOUSE_4 = 29;
     const SHIFT_FLYGHT_1 = 24;
     const SHIFT_FLYGHT_2 = 25;
     const SHIFT_FLYGHT_3 = 26;
@@ -567,7 +570,7 @@ class Questionnaire extends CActiveRecord
             if (!$this->getError($attribute)) {
                 $shifts = SiteService::getShifts();
                 $reserve = Yii::app()->db->createCommand()
-                    ->select('srez_1,srez_2,srez_3,srez_4,srez_5,srez_6,srez_7,srez_8,srez_9,srez_10,srez_11,srez_12,srez_13,srez_14,srez_15,srez_16,srez_17,srez_18,srez_19,srez_20,srez_21,srez_22,srez_23,srez_24,srez_25,srez_26,srez_27')
+                    ->select('srez_1,srez_2,srez_3,srez_4,srez_5,srez_6,srez_7,srez_8,srez_9,srez_10,srez_11,srez_12,srez_13,srez_14,srez_15,srez_16,srez_17,srez_18,srez_19,srez_20,srez_21,srez_22,srez_23,srez_24,srez_25,srez_26,srez_27,srez_28,srez_29')
                     ->from('{{questionnaire_rezerv}}')
                     ->where('id=1')
                     ->queryRow();
@@ -669,11 +672,13 @@ class Questionnaire extends CActiveRecord
             case self::SHIFT_BLUESCREEN_2:
             case self::SHIFT_BLUESCREEN_3:
             case self::SHIFT_BLUESCREEN_4:
+            case self::SHIFT_BLUESCREEN_5:
                 return self::CAMP_BLUESCREEN;
                 break;
             case self::SHIFT_EAST_1:
             case self::SHIFT_EAST_2:
             case self::SHIFT_EAST_3:
+            case self::SHIFT_EAST_4:
                 return self::CAMP_EAST_4;
                 break;
             case self::SHIFT_DIAMOND_1:
@@ -686,12 +691,12 @@ class Questionnaire extends CActiveRecord
             case self::SHIFT_BONFIRE_2:
             case self::SHIFT_BONFIRE_3:
             case self::SHIFT_BONFIRE_4:
-            case self::SHIFT_BONFIRE_5:
                 return self::CAMP_BONFIRE;
                 break;
             case self::SHIFT_LIGHTHOUSE_1:
             case self::SHIFT_LIGHTHOUSE_2:
             case self::SHIFT_LIGHTHOUSE_3:
+            case self::SHIFT_LIGHTHOUSE_4:
                 return self::CAMP_LIGHTHOUSE;
                 break;
             case self::SHIFT_FLYGHT_1:
@@ -712,19 +717,19 @@ class Questionnaire extends CActiveRecord
                 return array(self::SHIFT_KIROVEC_1, self::SHIFT_KIROVEC_2, self::SHIFT_KIROVEC_3, self::SHIFT_KIROVEC_4);
                 break;
             case self::CAMP_BLUESCREEN:
-                return array(self::SHIFT_BLUESCREEN_1, self::SHIFT_BLUESCREEN_2, self::SHIFT_BLUESCREEN_3, self::SHIFT_BLUESCREEN_4);
+                return array(self::SHIFT_BLUESCREEN_1, self::SHIFT_BLUESCREEN_2, self::SHIFT_BLUESCREEN_3, self::SHIFT_BLUESCREEN_4, self::SHIFT_BLUESCREEN_5);
                 break;
             case self::CAMP_EAST_4:
-                return array(self::SHIFT_EAST_1, self::SHIFT_EAST_2, self::SHIFT_EAST_3);
+                return array(self::SHIFT_EAST_1, self::SHIFT_EAST_2, self::SHIFT_EAST_3, self::SHIFT_EAST_4);
                 break;
             case self::CAMP_DIAMOND:
                 return array(self::SHIFT_DIAMOND_1, self::SHIFT_DIAMOND_2, self::SHIFT_DIAMOND_3, self::SHIFT_DIAMOND_4);
                 break;
             case self::CAMP_BONFIRE:
-                return array(self::SHIFT_BONFIRE_1, self::SHIFT_BONFIRE_2, self::SHIFT_BONFIRE_3, self::SHIFT_BONFIRE_4, self::SHIFT_BONFIRE_5);
+                return array(self::SHIFT_BONFIRE_1, self::SHIFT_BONFIRE_2, self::SHIFT_BONFIRE_3, self::SHIFT_BONFIRE_4);
                 break;
             case self::CAMP_LIGHTHOUSE:
-                return array(self::SHIFT_LIGHTHOUSE_1, self::SHIFT_LIGHTHOUSE_2, self::SHIFT_LIGHTHOUSE_3);
+                return array(self::SHIFT_LIGHTHOUSE_1, self::SHIFT_LIGHTHOUSE_2, self::SHIFT_LIGHTHOUSE_3, self::SHIFT_LIGHTHOUSE_4);
                 break;
             case self::CAMP_FLYGHT:
                 return array(self::SHIFT_FLYGHT_1, self::SHIFT_FLYGHT_2, self::SHIFT_FLYGHT_3, self::SHIFT_FLYGHT_4);
@@ -769,9 +774,11 @@ class Questionnaire extends CActiveRecord
             case self::SHIFT_DIAMOND_4:
             case self::SHIFT_BONFIRE_4:
             case self::SHIFT_FLYGHT_4:
+            case self::SHIFT_LIGHTHOUSE_4:
+            case self::SHIFT_EAST_4:
                 return 'Смена 4';
                 break;
-            case self::SHIFT_BONFIRE_5:
+            case self::SHIFT_BLUESCREEN_5:
                 return 'Смена 5';
                 break;
             default:
@@ -849,14 +856,14 @@ class Questionnaire extends CActiveRecord
     public static function getDLOName($dloId = false, $numer = false)
     {
         $arr = array(
-            self::DLO_1 => ($numer===false?'01.06-10.06':'1 смена'),
-            self::DLO_2 => ($numer===false?'12.06-21.06':'2 смена'),
-            self::DLO_3 => ($numer===false?'12.06-02.07':'3 смена'),
-            self::DLO_4 => ($numer===false?'23.06-02.07':'4 смена'),
-            self::DLO_5 => ($numer===false?'05.07-14.07':'5 смена'),
-            self::DLO_6 => ($numer===false?'05.07-25.07':'6 смена'),
-            self::DLO_7 => ($numer===false?'16.07-25.07':'7 смена'),
-            self::DLO_8 => ($numer===false?'28.07-17.08':'8 смена')
+            self::DLO_1 => ($numer===false?'12.06-25.06':'1 смена'),
+            self::DLO_2 => ($numer===false?'28.06-11.07':'2 смена'),
+            self::DLO_3 => ($numer===false?'28.06-18.07':'3 смена'),
+            self::DLO_4 => ($numer===false?'14.07-27.07':'4 смена'),
+            self::DLO_5 => ($numer===false?'21.07-03.08':'5 смена'),
+            self::DLO_6 => ($numer===false?'30.07-12.08':'6 смена'),
+            self::DLO_7 => ($numer===false?'06.08-19.08':'7 смена'),
+            self::DLO_8 => ($numer===false?'15.08-28.08':'8 смена')
         );
         if (is_numeric($dloId)) {
             if (array_key_exists($dloId, $arr)) {
@@ -871,13 +878,13 @@ class Questionnaire extends CActiveRecord
     {
         $arr = array(
             self::DLO_1 => ($max?6:6),
-            self::DLO_2 => ($max?6:6),
+            self::DLO_2 => ($max?7:6),
             self::DLO_3 => ($max?7:6),
-            self::DLO_4 => ($max?7:6),
-            self::DLO_5 => ($max?7:7),
-            self::DLO_6 => ($max?7:7),
-            self::DLO_7 => ($max?7:7),
-            self::DLO_8 => ($max?8:7)
+            self::DLO_4 => ($max?7:7),
+            self::DLO_5 => ($max?8:7),
+            self::DLO_6 => ($max?8:7),
+            self::DLO_7 => ($max?8:8),
+            self::DLO_8 => ($max?8:8)
         );
         if (is_numeric($dloId)) {
             if (array_key_exists($dloId, $arr)) {
@@ -965,10 +972,10 @@ class Questionnaire extends CActiveRecord
                     $criteria->addInCondition('t.shift_id', array(self::SHIFT_KIROVEC_3, self::SHIFT_BLUESCREEN_3, self::SHIFT_EAST_3, self::SHIFT_DIAMOND_3, self::SHIFT_BONFIRE_3, self::SHIFT_LIGHTHOUSE_3, self::SHIFT_FLYGHT_3));
                     break;
                 case 4:
-                    $criteria->addInCondition('t.shift_id', array(self::SHIFT_KIROVEC_4, self::SHIFT_BLUESCREEN_4, self::SHIFT_DIAMOND_4, self::SHIFT_BONFIRE_4, self::SHIFT_FLYGHT_4));
+                    $criteria->addInCondition('t.shift_id', array(self::SHIFT_KIROVEC_4, self::SHIFT_BLUESCREEN_4, self::SHIFT_EAST_4, self::SHIFT_DIAMOND_4, self::SHIFT_BONFIRE_4, self::SHIFT_LIGHTHOUSE_4, self::SHIFT_FLYGHT_4));
                     break;
                 case 5:
-                    $criteria->addInCondition('t.shift_id', array(self::SHIFT_BONFIRE_5));
+                    $criteria->addInCondition('t.shift_id', array(self::SHIFT_BLUESCREEN_5));
                     break;
             }
         }
@@ -978,7 +985,7 @@ class Questionnaire extends CActiveRecord
         }
 
         if (is_null($this->fromDate)) {
-            $this->fromDate = '01-01-2019';//date('Y-m-d', '2016-01-01');
+            $this->fromDate = '01-01-2021';//date('Y-m-d', '2016-01-01');
         }
 
         if (is_null($this->toDate)) {
@@ -1082,6 +1089,9 @@ class Questionnaire extends CActiveRecord
             case self::SHIFT_BLUESCREEN_4:
                 return '4Г';
                 break;
+            case self::SHIFT_BLUESCREEN_5:
+                return '5Г';
+                break;
             case self::SHIFT_EAST_1:
                 return '1В';
                 break;
@@ -1090,6 +1100,9 @@ class Questionnaire extends CActiveRecord
                 break;
             case self::SHIFT_EAST_3:
                 return '3В';
+                break;
+            case self::SHIFT_EAST_4:
+                return '4В';
                 break;
             case self::SHIFT_DIAMOND_1:
                 return '1А';
@@ -1115,9 +1128,6 @@ class Questionnaire extends CActiveRecord
             case self::SHIFT_BONFIRE_4:
                 return '4КС';
                 break;
-            case self::SHIFT_BONFIRE_5:
-                return '5КС';
-                break;
             case self::SHIFT_LIGHTHOUSE_1:
                 return '1М';
                 break;
@@ -1126,6 +1136,9 @@ class Questionnaire extends CActiveRecord
                 break;
             case self::SHIFT_LIGHTHOUSE_3:
                 return '3М';
+                break;
+            case self::SHIFT_LIGHTHOUSE_4:
+                return '4М';
                 break;
             case self::SHIFT_FLYGHT_1:
                 return '1П';

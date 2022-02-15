@@ -7,7 +7,7 @@ class AdminService
     public static function getStatCamp($statId)
     {
         $reserve = Yii::app()->db->createCommand()
-            ->select('srez_1,srez_2,srez_3,srez_4,srez_5,srez_6,srez_7,srez_8,srez_9,srez_10,srez_11,srez_12,srez_13,srez_14,srez_15,srez_16,srez_17,srez_18,srez_19,srez_20,srez_21,srez_22,srez_23,srez_24,srez_25,srez_26,srez_27')
+            ->select('srez_1,srez_2,srez_3,srez_4,srez_5,srez_6,srez_7,srez_8,srez_9,srez_10,srez_11,srez_12,srez_13,srez_14,srez_15,srez_16,srez_17,srez_18,srez_19,srez_20,srez_21,srez_22,srez_23,srez_24,srez_25,srez_26,srez_27,srez_28,srez_29')
             ->from('{{questionnaire_rezerv}}')
             ->where('id=1')
             ->queryRow();
@@ -134,7 +134,7 @@ class AdminService
         Yii::log('ПЕРЕСЧЕТ БРОНИРОВАНИЯ С УЧЕТОМ РЕЗЕРВА', 'profile', 'turn');
         $shifts = SiteService::getShifts();
         $reserve = Yii::app()->db->createCommand()
-            ->select('srez_1,srez_2,srez_3,srez_4,srez_5,srez_6,srez_7,srez_8,srez_9,srez_10,srez_11,srez_12,srez_13,srez_14,srez_15,srez_16,srez_17,srez_18,srez_19,srez_20,srez_21,srez_22,srez_23,srez_24,srez_25,srez_26,srez_27')
+            ->select('srez_1,srez_2,srez_3,srez_4,srez_5,srez_6,srez_7,srez_8,srez_9,srez_10,srez_11,srez_12,srez_13,srez_14,srez_15,srez_16,srez_17,srez_18,srez_19,srez_20,srez_21,srez_22,srez_23,srez_24,srez_25,srez_26,srez_27,srez_28,srez_29')
             ->from('{{questionnaire_rezerv}}')
             ->where('id=1')
             ->queryRow();

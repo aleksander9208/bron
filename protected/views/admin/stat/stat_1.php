@@ -7,7 +7,7 @@ $this->widget('MyGridView', array(
     'dataProvider' => $model->getBidList('/admin/stat', true),
     'ajaxUpdate' => 'z_admin_statistics_table_1',// false,
     'ajaxUrl' => Yii::app()->createUrl('/admin/stat'),
-    'afterAjaxUpdate' => "function()  { $('#z_admin_statistics_table_1').find('.filters input, .filters select').addClass('form-control form-control-sm'); window.z.comment_edit(); jQuery.datepicker.regional['ru'].dateFormat='yy-mm-dd'; jQuery('#from_date').datepicker(jQuery.datepicker.regional['ru'],{'dateFormat':'yy-mm-dd','changeMonth':true, 'changeYear':true,'yearRange':'2000:2019'}); jQuery('#to_date').datepicker(jQuery.datepicker.regional['ru'],{'dateFormat':'yy-mm-dd','changeMonth':true, 'changeYear':true,'yearRange':'2000:2019'}); window.z.comment_edit();  }",
+    'afterAjaxUpdate' => "function()  { $('#z_admin_statistics_table_1').find('.filters input, .filters select').addClass('form-control form-control-sm'); window.z.comment_edit(); jQuery.datepicker.regional['ru'].dateFormat='yy-mm-dd'; jQuery('#from_date').datepicker(jQuery.datepicker.regional['ru'],{'dateFormat':'yy-mm-dd','changeMonth':true, 'changeYear':true,'yearRange':'2000:2021'}); jQuery('#to_date').datepicker(jQuery.datepicker.regional['ru'],{'dateFormat':'yy-mm-dd','changeMonth':true, 'changeYear':true,'yearRange':'2000:2021'}); window.z.comment_edit();  }",
     'summaryText' => '',
     'filter' => $model,
     'enableHistory' => false,

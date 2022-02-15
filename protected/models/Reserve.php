@@ -21,10 +21,10 @@ class Reserve extends CActiveRecord
     {
         return array(
             array('id', 'unique'),
-            array('srez_1,srez_2,srez_3,srez_4,srez_5,srez_6,srez_7,srez_8,srez_9,srez_10,srez_11,srez_12,srez_13,srez_14,srez_15,srez_16,srez_17,srez_18,srez_19,srez_20,srez_21,srez_22,srez_23,srez_24,srez_25,srez_26,srez_27', 'required'),
-            array('srez_1,srez_2,srez_3,srez_4,srez_5,srez_6,srez_7,srez_8,srez_9,srez_10,srez_11,srez_12,srez_13,srez_14,srez_15,srez_16,srez_17,srez_18,srez_19,srez_20,srez_21,srez_22,srez_23,srez_24,srez_25,srez_26,srez_27', 'numerical', 'integerOnly' => true),
-            array('srez_1,srez_2,srez_3,srez_4,srez_5,srez_6,srez_7,srez_8,srez_9,srez_10,srez_11,srez_12,srez_13,srez_14,srez_15,srez_16,srez_17,srez_18,srez_19,srez_20,srez_21,srez_22,srez_23,srez_24,srez_25,srez_26,srez_27', 'safe'),
-            array('srez_1,srez_2,srez_3,srez_4,srez_5,srez_6,srez_7,srez_8,srez_9,srez_10,srez_11,srez_12,srez_13,srez_14,srez_15,srez_16,srez_17,srez_18,srez_19,srez_20,srez_21,srez_22,srez_23,srez_24,srez_25,srez_26,srez_27', 'validateReserv')
+            array('srez_1,srez_2,srez_3,srez_4,srez_5,srez_6,srez_7,srez_8,srez_9,srez_10,srez_11,srez_12,srez_13,srez_14,srez_15,srez_16,srez_17,srez_18,srez_19,srez_20,srez_21,srez_22,srez_23,srez_24,srez_25,srez_26,srez_27,srez_28,srez_29', 'required'),
+            array('srez_1,srez_2,srez_3,srez_4,srez_5,srez_6,srez_7,srez_8,srez_9,srez_10,srez_11,srez_12,srez_13,srez_14,srez_15,srez_16,srez_17,srez_18,srez_19,srez_20,srez_21,srez_22,srez_23,srez_24,srez_25,srez_26,srez_27,srez_28,srez_29', 'numerical', 'integerOnly' => true),
+            array('srez_1,srez_2,srez_3,srez_4,srez_5,srez_6,srez_7,srez_8,srez_9,srez_10,srez_11,srez_12,srez_13,srez_14,srez_15,srez_16,srez_17,srez_18,srez_19,srez_20,srez_21,srez_22,srez_23,srez_24,srez_25,srez_26,srez_27,srez_28,srez_29', 'safe'),
+            array('srez_1,srez_2,srez_3,srez_4,srez_5,srez_6,srez_7,srez_8,srez_9,srez_10,srez_11,srez_12,srez_13,srez_14,srez_15,srez_16,srez_17,srez_18,srez_19,srez_20,srez_21,srez_22,srez_23,srez_24,srez_25,srez_26,srez_27,srez_28,srez_29', 'validateReserv')
 
         );
     }
@@ -40,9 +40,11 @@ class Reserve extends CActiveRecord
             'srez_6' => 'Резерв смены 2',
             'srez_7' => 'Резерв смены 3',
             'srez_8' => 'Резерв смены 4',
+            'srez_20' => 'Резерв смены 5',
             'srez_9' => 'Резерв смены 1',
             'srez_10' => 'Резерв смены 2',
             'srez_11' => 'Резерв смены 3',
+            'srez_28' => 'Резерв смены 4',
             'srez_12' => 'Резерв смены 1',
             'srez_13' => 'Резерв смены 2',
             'srez_14' => 'Резерв смены 3',
@@ -51,14 +53,14 @@ class Reserve extends CActiveRecord
             'srez_17' => 'Резерв смены 2',
             'srez_18' => 'Резерв смены 3',
             'srez_19' => 'Резерв смены 4',
-            'srez_20' => 'Резерв смены 5',
             'srez_21' => 'Резерв смены 1',
             'srez_22' => 'Резерв смены 2',
             'srez_23' => 'Резерв смены 3',
+            'srez_29' => 'Резерв смены 4',
             'srez_24' => 'Резерв смены 1',
             'srez_25' => 'Резерв смены 2',
             'srez_26' => 'Резерв смены 3',
-            'srez_27' => 'Резерв смены 4',
+            'srez_27' => 'Резерв смены 4'
         );
     }
 
@@ -91,7 +93,9 @@ class Reserve extends CActiveRecord
             'srez_24',
             'srez_25',
             'srez_26',
-            'srez_27'
+            'srez_27',
+            'srez_28',
+            'srez_29'
         );
     }
 
@@ -103,6 +107,7 @@ class Reserve extends CActiveRecord
             $this->addError($attribute, 'Указана несуществующая смена');
             return false;
         }
+        
         if ($this->$attribute > $shifts[$shiftId]['seats']) {
             $this->addError($attribute, 'Нельзя резервироть мест больше чем доступно изначально');
             return false;
@@ -153,7 +158,7 @@ class Reserve extends CActiveRecord
     public static function getReserveData()
     {
         return Yii::app()->db->createCommand()
-            ->select('srez_1,srez_2,srez_3,srez_4,srez_5,srez_6,srez_7,srez_8,srez_9,srez_10,srez_11,srez_12,srez_13,srez_14,srez_15,srez_16,srez_17,srez_18,srez_19,srez_20,srez_21,srez_22,srez_23,srez_24,srez_25,srez_26,srez_27')
+            ->select('srez_1,srez_2,srez_3,srez_4,srez_5,srez_6,srez_7,srez_8,srez_9,srez_10,srez_11,srez_12,srez_13,srez_14,srez_15,srez_16,srez_17,srez_18,srez_19,srez_20,srez_21,srez_22,srez_23,srez_24,srez_25,srez_26,srez_27,srez_28,srez_29')
             ->from('{{questionnaire_rezerv}}')
             ->where('id=1')
             ->queryRow();
