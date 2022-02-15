@@ -1,0 +1,11 @@
+#z_page_anketa_admin_list
+{
+}
+#z_page_anketa_admin_list table.table
+{
+    font-size: 0.8rem;
+}
+#z_page_anketa_admin_list .sort-link
+{
+    color: #FFFFFF;
+}

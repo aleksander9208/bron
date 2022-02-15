@@ -1,0 +1,147 @@
+html
+{
+    font-size: 16px;
+}
+body {
+    min-width: 1000px;
+    min-height: 100%;
+    background: url('../images/pattern-content.gif') repeat-y center bottom;
+    color: #363535;
+    overflow-x: hidden;
+}
+
+#inner-wrapper {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+
+#menu {
+    background: url('../images/inner-top-menu-bg.png') center top no-repeat;
+    height: 94px;
+    position: relative;
+}
+#menu .menu-placeholder {
+    width: 1000px;
+    margin: 0 auto;
+    position: relative;
+}
+#menu #logo {
+    display: block;
+    position: absolute;
+    width: 129px;
+    height: 79px;
+    background: url('../images/inner-logo.png') no-repeat;
+    left: 50%;
+    margin-left: -64px;
+    top: 10px;
+}
+#menu .inner-menu {
+    position: absolute;
+    top: 34px;
+}
+#menu #menu-left {
+    left: 0;
+}
+#menu #menu-right {
+    right: 0;
+}
+#menu .inner-menu ul {
+    list-style: none;
+    display: table;
+    margin: 0 auto;
+}
+#menu .inner-menu li {
+    display: inline-block;
+    margin: 0 30px;
+    white-space: nowrap;
+}
+#menu-left ul li:first-child {
+    margin-left: 0;
+}
+#menu-right ul li:last-child {
+    margin-right: 0;
+}
+#menu-wrapper .inner-menu a {
+    color: #fff;
+    font-size: 20px;
+    line-height: 22px;
+    text-decoration: none;
+}
+
+#bottom-wrapper {
+    height: 320px;
+    margin-top: -320px;
+    background: url('../images/bottom-bg.png') center 6px no-repeat;
+    overflow: hidden;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+}
+#bottom-wrapper2 {
+    height: 282px;
+    margin-top: 38px;
+    background-color: #ababab;
+}
+#bottom {
+    width: 1000px;
+    margin: 0 auto;
+    position: relative;
+}
+#bottom-logo {
+    position: absolute;
+    width: 131px;
+    height: 82px;
+    display: block;
+    left: 50%;
+    margin-left: -65px;
+    top: -38px;
+    background: url('../images/logo-bottom.png') no-repeat;
+}
+#bottom-menu {
+    padding-top: 80px;
+}
+#bottom-menu ul.h_menu {
+    position: relative;
+    display: table;
+    margin: 0 auto;
+}
+#bottom-menu ul.h_menu li {
+    display: inline-block;
+    margin: 0 30px;
+}
+#bottom-menu ul.h_menu li a {
+    color: #ffffff;
+    font-size: 18px;
+    line-height: 20px;
+    text-decoration: none;
+}
+#bottom-menu ul.h_menu li a:hover {
+    text-decoration: underline;
+}
+
+
+
+
+
+#page {
+    min-width: 1000px;
+    position: relative;
+    width: 100%;
+    margin-top: 0;
+    z-index: 500;
+    min-height: 100%;
+}
+
+#page div.content-wrapper {
+    background: none;
+    padding-bottom: 330px;
+}
+#page div.content {
+    max-width: 1000px;
+    margin: 30px auto 0;
+    overflow: hidden;
+    color: #515051;
+}

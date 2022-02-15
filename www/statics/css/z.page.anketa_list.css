@@ -1,0 +1,11 @@
+#z_page_anketa_list
+{
+}
+#z_page_anketa_list .filters
+{
+    display: none;
+}
+#z_page_anketa_list .sort-link
+{
+    color: #FFFFFF;
+}

@@ -1,0 +1,7 @@
+#z_page_auth
+{
+}
+#z_page_auth #z_auth_user_fio
+{
+    text-transform: capitalize;
+}
