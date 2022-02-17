@@ -1,9 +1,5 @@
 # Created by .ignore support plugin (hsz.mobi)
 ### Yii template
-public_html/assets/*
-public_html/!assets/.gitignore
-public_html/protected/runtime/*
-public_html/!protected/runtime/.gitignore
 public_html/protected/data/*.db
 
 # User-specific stuff:
