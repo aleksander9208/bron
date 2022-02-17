@@ -22,4 +22,6 @@ public_html/protected/data/*.db
 .idea/uiDesigner.xml
 .idea/*
 
-public_html/protected/config/config-constant.php
+public_html/protected/config/config-constants.php
+infrastructure
+.env
