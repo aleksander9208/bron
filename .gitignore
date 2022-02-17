@@ -1,11 +1,6 @@
 # Created by .ignore support plugin (hsz.mobi)
 ### Yii template
-assets/*
-!assets/.gitignore
-protected/runtime/*
-!protected/runtime/.gitignore
-protected/data/*.db
-themes/classic/views/
+public_html/protected/data/*.db
 
 # User-specific stuff:
 .idea/workspace.xml
@@ -23,7 +18,6 @@ themes/classic/views/
 .idea/uiDesigner.xml
 .idea/*
 
-protected/config/config-constant.php
-# Created by .ignore support plugin (hsz.mobi)
-/protected/config/config-constants.php
-/nbproject
+public_html/protected/config/config-constants.php
+infrastructure
+.env
