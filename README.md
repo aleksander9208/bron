@@ -6,7 +6,7 @@
 git clone git@github.com:aleksander9208/bron.git
 cd bron
 make env
-make run
+make up
 ```
 
 Опционально, если автоматически не отработал скрипт,
