@@ -18,6 +18,10 @@
             <li class="nav-item">
                 <a class="nav-link" href="<?php echo Yii::app()->createUrl('/site/addstatement'); ?>">Подать заявку</a>
             </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="<?php echo Yii::app()->createUrl('/admin/camp'); ?>">Редактировать лагеря</a>
+            </li>
         </ul>
         <span class="navbar-text mr-2"><?php echo Yii::app()->user->login; ?></span>
         <a id="fb_auth_signout" class="btn btn-outline-info" href="<?php echo Yii::app()->createUrl('/auth/logout'); ?>">Выход</a>

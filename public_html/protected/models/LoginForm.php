@@ -9,6 +9,7 @@ class LoginForm extends CFormModel
 {
     public $username;
     public $password;
+    public $code;
 
     public $errors_str;
     public $errors_arr = array();
@@ -18,7 +19,7 @@ class LoginForm extends CFormModel
     public function rules()
     {
         return array(
-            array('username, password', 'required'),
+            array('username, password, code', 'required'),
             array('password', 'authenticate'),
         );
     }
@@ -28,7 +29,7 @@ class LoginForm extends CFormModel
         return array(
             'username' => 'ФИО',
             'password' => 'Телефон',
-
+            'code'     => 'Кодовое слово',
         );
     }
 
