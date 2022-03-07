@@ -23,7 +23,7 @@ class User extends CActiveRecord
     {
         return array(
             array('id,login', 'unique'),
-            array('login,password,created', 'required'),
+            array('login,password,created,code', 'required',),
             array('login', 'length', 'min' => 1, 'max' => 42),
             array('role', 'in', 'range' => array(self::ROLE_ADMIN, self::ROLE_USER, self::ROLE_BANNED)),
             array('login', 'length', 'min' => 1, 'max' => 42),
@@ -36,6 +36,7 @@ class User extends CActiveRecord
             'login' => 'ФИО',
             'password' => 'Телефон',
             'created' => 'Дата создания',
+            'code' => 'Кодовое слов',
             'role' => 'Роль',
         );
     }

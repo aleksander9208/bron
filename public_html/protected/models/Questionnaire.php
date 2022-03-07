@@ -10,13 +10,13 @@ class Questionnaire extends CActiveRecord
     const TYPE_FIZ = 0;
     const TYPE_UR = 1;
 
-    const CAMP_KIROVEC = 0; //кировец
-    const CAMP_BLUESCREEN = 1; // голубой экран
-    const CAMP_EAST_4 = 2;// восток 4
-    const CAMP_DIAMOND = 3; //алмаз
-    const CAMP_BONFIRE = 4; // костер
-    const CAMP_LIGHTHOUSE = 5; //маяк
-    const CAMP_FLYGHT = 6; //полет
+    const CAMP_KIROVEC = 1; //кировец
+    const CAMP_BLUESCREEN = 2; // голубой экран
+    const CAMP_EAST_4 = 3;// восток 4
+    const CAMP_DIAMOND = 4; //алмаз
+    const CAMP_BONFIRE = 5; // костер
+    const CAMP_LIGHTHOUSE = 6; //маяк
+    const CAMP_FLYGHT = 7; //полет
 
 
     const SHIFT_KIROVEC_1 = 1;
@@ -113,9 +113,9 @@ class Questionnaire extends CActiveRecord
             'user_id' => 'Пользователь',
             'created' => 'Дата подачи',
             'name_ur' => 'Название юридического лица',
-            'fio_ur_contact' => 'Ф.И.О. контактного лица',
-            'tel_ur_contact' => 'Телефон контактного лица',
-            'email_ur_contact' => 'E-mail контактного лица',
+            'fio_ur_contact' => 'Ф.И.О представителя',
+            'tel_ur_contact' => 'Телефон представителя',
+            'email_ur_contact' => 'E-mail представителя',
 
             'fio_parent' => 'Ф.И.О. родителя',
             'residence' => 'Место жительства по регистрации',
@@ -463,14 +463,14 @@ class Questionnaire extends CActiveRecord
             $shifts = SiteService::getShifts();
             $period_str = explode('-', Questionnaire::getDLOName($shifts[$this->shift_id]['dlo'][0]));
             if (count($period_str)==2)
-                {
-                    $period_time_min = strtotime($period_str[0].'.'.(date('Y') - $shifts[$this->shift_id]['max_age'] - 1) );
-                    $period_time_max = strtotime($period_str[1].'.'.(date('Y') - $shifts[$this->shift_id]['min_age']) );
-                    $out = (
-                        $birthday_child>$period_time_min &&
-                        $birthday_child<=$period_time_max
-                    );
-                }
+            {
+                $period_time_min = strtotime($period_str[0].'.'.(date('Y') - $shifts[$this->shift_id]['max_age'] - 1) );
+                $period_time_max = strtotime($period_str[1].'.'.(date('Y') - $shifts[$this->shift_id]['min_age']) );
+                $out = (
+                    $birthday_child>$period_time_min &&
+                    $birthday_child<=$period_time_max
+                );
+            }
             if ($out == false)
                 $this->addError('shift_id', 'Возраст ребенка не подходит для выбранной смены');
             /*
@@ -641,18 +641,15 @@ class Questionnaire extends CActiveRecord
 
     public static function getCAMPName($campID = false)
     {
-
-        $result = Yii::app()->db->createCommand('select * from sb_camp')
-            ->queryAll();
-
-        foreach($result as $camp) {
-            $arr[] = [
-                'NAME' => $camp['name'],
-                'AGE' => $camp['age'],
-                'ADDRESS' => $camp['address'],
-            ];
-        }
-
+        $arr = array(
+            self::CAMP_KIROVEC => '«Кировец»',
+            self::CAMP_BLUESCREEN => '«Голубой экран»',
+            self::CAMP_EAST_4 => '«Восток-4»',
+            self::CAMP_DIAMOND => '«Алмаз»',
+            self::CAMP_BONFIRE => '«Костер»',
+            self::CAMP_LIGHTHOUSE => '«Маяк»',
+            self::CAMP_FLYGHT => '«Полет»',
+        );
         if (is_numeric($campID)) {
             if (array_key_exists($campID, $arr)) {
                 return $arr[$campID];
@@ -858,7 +855,6 @@ class Questionnaire extends CActiveRecord
 
     public static function getDLOName($dloId = false, $numer = false)
     {
-
         $arr = array(
             self::DLO_1 => ($numer===false?'12.06-25.06':'1 смена'),
             self::DLO_2 => ($numer===false?'28.06-11.07':'2 смена'),
@@ -1168,66 +1164,6 @@ class Questionnaire extends CActiveRecord
         }
 
         parent::__set($var, $value);
-    }
-
-    //TODO новы методы, надо будет остальное все переписать от статики
-    public static function getCamp()
-    {
-
-        $result = Yii::app()->db->createCommand('select * from sb_camp')
-            ->queryAll();
-
-        foreach($result as $camp) {
-            $arr[] = [
-                'NAME' => $camp['name'],
-                'AGE' => $camp['age'],
-                'ADDRESS' => $camp['address'],
-            ];
-        }
-
-        return $arr;
-    }
-
-    public static function getNameChange($name = '')
-    {
-
-        $where = '';
-
-        if (isset($name)) {
-            $where .= "where name_camp like '%$name%' ";
-        }
-
-        $result = Yii::app()->db->createCommand(
-            "select * from sb_change ". $where ." "
-        )
-            ->queryAll();
-
-        foreach($result as $change) {
-            $arr[] = [
-                'NAME' => $change['name_change'],
-                'DATE' => $change['change_date'],
-                'DAY' => $change['count_day'],
-                'CAMP' => $change['name_camp'],
-            ];
-        }
-
-        $array = self::array_unique_key($arr, 'NAME');
-
-        return $array;
-    }
-
-    public static function array_unique_key($array, $key) {
-        $tmp = $key_array = array();
-        $i = 0;
-
-        foreach($array as $val) {
-            if (!in_array($val[$key], $key_array)) {
-                $key_array[$i] = $val[$key];
-                $tmp[$i] = $val;
-            }
-            $i++;
-        }
-        return $tmp;
     }
 
 }

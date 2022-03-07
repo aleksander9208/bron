@@ -1,6 +1,7 @@
 # Created by .ignore support plugin (hsz.mobi)
 ### Yii template
 public_html/protected/data/*.db
+public_html/protected/runtime/*.log
 
 # User-specific stuff:
 .idea/workspace.xml

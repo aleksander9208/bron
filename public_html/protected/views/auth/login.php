@@ -23,6 +23,11 @@
                             <div class="invalid-feedback">Укажите телефон подавшего заявку (Например: (905) 123-45-67)</div>
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label for="z_auth_user_fio" class="col-form-label">Кодовое слово:</label>
+                        <?php echo CHtml::activeTextField($model, 'code', array('placeholder' => 'Кодовое слово', 'class' => 'form-control', 'required'=>'required', 'id'=>'z_auth_user_code', 'data-mask'=>' абвгдеёжзийклмнопрстуфхцчшщъыьэюя-')); ?>
+                        <div class="invalid-feedback">Укажите кодовое слово для входа</div>
+                    </div>
                     <div class="form-group mb-0">
                         <button id="z_auth_sign" type="submit" class="btn btn-block btn-primary">Вход</button>
                     </div>
