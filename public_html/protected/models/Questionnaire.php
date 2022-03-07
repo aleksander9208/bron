@@ -639,6 +639,12 @@ class Questionnaire extends CActiveRecord
         return $arr;
     }
 
+    //Количество смен
+    public function getCountChange()
+    {
+
+    }
+
     public static function getCAMPName($campID = false)
     {
         $arr = array(

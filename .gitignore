@@ -2,6 +2,7 @@
 ### Yii template
 public_html/protected/data/*.db
 public_html/protected/runtime/*.log
+public_html/assets/
 
 # User-specific stuff:
 .idea/workspace.xml
