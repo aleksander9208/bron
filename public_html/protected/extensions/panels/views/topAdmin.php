@@ -7,7 +7,6 @@
         <ul class="navbar-nav mr-auto">
             <li class="nav-item <?php echo(in_array($action, array('index','bid')) ? 'active' : ''); ?>">
                 <a class="nav-link" href="<?php echo Yii::app()->createUrl('/admin'); ?>">Модерация <span class="badge badge-info"><?php echo ( $cmoder?$cmoder:''); ?></span></a>
-
             </li>
             <li class="nav-item <?php echo(in_array($action, array('reserve')) ? 'active' : ''); ?>">
                 <a class="nav-link" href="<?php echo Yii::app()->createUrl('/admin/reserve'); ?>">Резервирование</a>
@@ -21,6 +20,10 @@
 
             <li class="nav-item">
                 <a class="nav-link" href="<?php echo Yii::app()->createUrl('/admin/camp'); ?>">Редактировать лагеря</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="<?php echo Yii::app()->createUrl('/admin/list'); ?>">Список пользователей</a>
             </li>
         </ul>
         <span class="navbar-text mr-2"><?php echo Yii::app()->user->login; ?></span>

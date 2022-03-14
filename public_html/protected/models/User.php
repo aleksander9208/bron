@@ -89,5 +89,14 @@ class User extends CActiveRecord
         return $arr;
     }
 
+    public function getListUser()
+    {
+
+        return Yii::app()->db->createCommand()
+            ->select('*')
+            ->from('sb_user')
+            ->queryAll();
+
+    }
 
 }

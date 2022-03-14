@@ -156,4 +156,17 @@ class AdminController extends Controller
         $this->render('camp', array('title' => $title, 'model' => $r, 'shifts' => SiteService::getShifts(),'seats' => SiteService::seatsShifts()));
 
     }
+
+    public function actionList()
+    {
+        $title = 'Список пользователей';
+        $this->pageTitle = $title;
+
+        $cs = Yii::app()->getClientScript();
+        $cs->registerCssFile(Yii::app()->createUrl('/statics/css/z.page.admin_reserve.css'));
+        $cs->registerScriptFile(Yii::app()->createUrl('/statics/js/z.page.admin_reserve.js'), CClientScript::POS_END);
+
+        $this->render('list', array('title' => $title, 'model' => $r, 'shifts' => SiteService::getShifts(),'seats' => SiteService::seatsShifts()));
+
+    }
 }
