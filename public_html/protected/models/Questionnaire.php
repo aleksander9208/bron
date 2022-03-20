@@ -85,7 +85,7 @@ class Questionnaire extends CActiveRecord
         return array(
             array('id', 'unique'),
             array('fio_child', 'validateChild'),
-            array('created,fio_child,birthday_child,place_of_study,status,type, fio_parent,residence,place_of_work,tel_parent,email_parent,shift_id', 'required'),
+            array('created,fio_child,birthday_child,place_of_study,status,type, fio_parent,residence,tel_parent,shift_id', 'required'),
             array('shift_id', 'validateShift'),
             array('booking_id', 'required', 'on' => 'booking'),
             array('booking_id', 'validateBooking'),
@@ -100,7 +100,7 @@ class Questionnaire extends CActiveRecord
             array('type', 'in', 'range' => array(self::TYPE_FIZ, self::TYPE_UR)),
             array('status', 'validateStatus'),
             array('paid,create_admin,name_ur_check,fio_ur_contact_check,tel_ur_contact_check,email_ur_contact_check,fio_parent_check,residence_check,place_of_work_check,tel_parent_check,email_parent_check,fio_child_check,birthday_child_check,place_of_study_check', 'in', 'range' => array(0, 1)),
-            array('is_main,shift_name,camp_id, fromDate,toDate, type, fio_parent,residence,place_of_work,tel_parent,email_parent,fio_child,birthday_child,place_of_study,name_ur,fio_ur_contact,tel_ur_contact,email_ur_contact,comment,is_reserve', 'safe'),
+            array('is_main,shift_name,camp_id, fromDate,toDate, type, fio_parent,residence,place_of_work,tel_parent,email_parent,fio_child,birthday_child,place_of_study,name_ur,fio_ur_contact,code,tel_ur_contact,email_ur_contact,comment,is_reserve', 'safe'),
             array('booking_id,paid,comment,name_ur_check,fio_ur_contact_check,tel_ur_contact_check,email_ur_contact_check,fio_parent_check,residence_check,place_of_work_check,tel_parent_check,email_parent_check,fio_child_check,birthday_child_check,place_of_study_check,status,paid,create_admin', 'safe', 'on' => 'mod'),
         );
     }
@@ -117,13 +117,14 @@ class Questionnaire extends CActiveRecord
             'tel_ur_contact' => 'Телефон представителя',
             'email_ur_contact' => 'E-mail представителя',
 
-            'fio_parent' => 'Ф.И.О. родителя',
-            'residence' => 'Место жительства по регистрации',
+            'fio_parent' => 'Ф.И.О. родителя или контактного лица',
+            'code' => 'Кодовое слово',
+            'residence' => 'Город проживания ребенка',
             'place_of_work' => 'Место работы',
             'tel_parent' => 'Телефон родителя/опекуна',
             'email_parent' => 'E-mail родителя/опекуна',
 
-            'fio_child' => 'Ф.И.О. ребенка',
+            'fio_child' => 'Имя ребенка',
             'birthday_child' => 'Дата рождения ребенка',
             'place_of_study' => 'Место учебы ребенка',
 
@@ -142,6 +143,7 @@ class Questionnaire extends CActiveRecord
     {
         return array(
             'fio_parent',
+            'code',
             'residence',
             'place_of_work',
             'tel_parent',
@@ -220,6 +222,7 @@ class Questionnaire extends CActiveRecord
                 }
                 $this->name_ur_check = 0;
                 $this->fio_ur_contact_check = 0;
+                $this->code_check = 0;
                 $this->tel_ur_contact_check = 0;
                 $this->email_ur_contact_check = 0;
                 $this->fio_parent_check = 0;
@@ -235,6 +238,7 @@ class Questionnaire extends CActiveRecord
             if (isset($this->changedAttr['status']) && ($this->changedAttr['status'] != $this->status) && ($this->status == self::STATUS_IN_MODER)) {
                 $this->name_ur_check = 0;
                 $this->fio_ur_contact_check = 0;
+                $this->code_check = 0;
                 $this->tel_ur_contact_check = 0;
                 $this->email_ur_contact_check = 0;
                 $this->fio_parent_check = 0;
@@ -337,7 +341,7 @@ class Questionnaire extends CActiveRecord
     public function afterSave()
     {
         if (!$this->isNewRecord && isset($this->changedAttr['fio_parent']) && ($this->changedAttr['fio_parent'] != $this->fio_parent)) {
-            Yii::app()->db->createCommand()->update('{{user}}', array('login' => $this->fio_parent), 'id=:id', array(':id' => $this->user_id));
+            Yii::app()->db->createCommand()->update('{{user}}', array('login' => $this->fio_parent, 'code' => $this->code), 'id=:id', array(':id' => $this->user_id));
         }
 
         return parent::afterSave();
@@ -647,15 +651,18 @@ class Questionnaire extends CActiveRecord
 
     public static function getCAMPName($campID = false)
     {
-        $arr = array(
-            self::CAMP_KIROVEC => '«Кировец»',
-            self::CAMP_BLUESCREEN => '«Голубой экран»',
-            self::CAMP_EAST_4 => '«Восток-4»',
-            self::CAMP_DIAMOND => '«Алмаз»',
-            self::CAMP_BONFIRE => '«Костер»',
-            self::CAMP_LIGHTHOUSE => '«Маяк»',
-            self::CAMP_FLYGHT => '«Полет»',
-        );
+
+        $result = Yii::app()->db->createCommand()
+            ->select('*')
+            ->from('sb_camp')
+            ->queryAll();
+
+        $arr = array();
+
+        foreach ($result as $camp) {
+            $arr[$camp['id']] = $camp['camp'];
+        }
+
         if (is_numeric($campID)) {
             if (array_key_exists($campID, $arr)) {
                 return $arr[$campID];
@@ -1001,7 +1008,6 @@ class Questionnaire extends CActiveRecord
             $criteria->compare('t.create_admin', $this->create_admin);
         }
 
-
         $rev_data_start = implode('-', array_reverse(explode('-', $this->fromDate)));
         $rev_data_end = implode('-', array_reverse(explode('-', $this->toDate)));
         $criteria->addCondition(array('t.created >=:start', 't.created<=:end'));
@@ -1011,6 +1017,7 @@ class Questionnaire extends CActiveRecord
         $criteria->compare('t.fio_child', $this->fio_child, true);
         $criteria->compare('t.fio_ur_contact', $this->fio_ur_contact, true);
         $criteria->compare('t.fio_parent', $this->fio_parent, true);
+        $criteria->compare('t.code', $this-code, true);
         $criteria->compare('t.tel_parent', $this->tel_parent, true);
         $criteria->compare('t.booking_id', $this->booking_id, true);
         $criteria->compare('t.comment', $this->comment, true);
@@ -1056,6 +1063,7 @@ class Questionnaire extends CActiveRecord
                 $this->fio_parent = null;
             }
             $this->place_of_work = $result['place_of_work'];
+            $this->code = $result['code'];
             $this->name_ur = $result['name_ur'];
             $this->tel_ur_contact = $result['tel_ur_contact'];
             $this->email_ur_contact = $result['email_ur_contact'];

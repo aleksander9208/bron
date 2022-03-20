@@ -18,9 +18,17 @@ class WebUser extends CWebUser {
         return 'guest';
     }
 
+    function getCode() {
+        if($user = $this->getModel()){
+            // в таблице User есть поле code
+            return $user->code;
+        }
+        return 'guest';
+    }
+
     private function getModel(){
         if (!$this->isGuest && $this->_model === null){
-            $this->_model = User::model()->findByPk($this->id, array('select' => 'role,login'));
+            $this->_model = User::model()->findByPk($this->id, array('select' => 'role,login,code'));
         }
         return $this->_model;
     }

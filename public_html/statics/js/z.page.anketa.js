@@ -57,11 +57,12 @@ if (typeof window.z == 'object')
                             '#z_anketa_created',
 
                             '#z_anketa_fio_parent',
+                            '#z_anketa_code',
                             '#z_anketa_fio_ur_contact',
                             '#z_anketa_fio_child',
 
                             '#z_anketa_residence',
-                            '#z_anketa_place_of_work',
+                            //'#z_anketa_place_of_work',
                             '#z_anketa_name_ur',
                             '#z_anketa_birthday_child',
                             '#z_anketa_place_of_study',
@@ -69,7 +70,7 @@ if (typeof window.z == 'object')
                             '#z_anketa_tel_ur_contact',
                             '#z_anketa_tel_parent',
 
-                            '#z_anketa_email_parent',
+                            //'#z_anketa_email_parent',
                             '#z_anketa_email_ur_contact'
 
                         ].join(),
@@ -79,14 +80,15 @@ if (typeof window.z == 'object')
                                     {
                                         case 'z_anketa_fio_parent':
                                         case 'z_anketa_fio_ur_contact':
-                                        case 'z_anketa_fio_child':
                                             _self.validate_fio($(this));
                                         break;
 
                                         case 'z_anketa_residence':
-                                        case 'z_anketa_place_of_work':
+                                        //case 'z_anketa_place_of_work':
+                                        case 'z_anketa_code':
                                         case 'z_anketa_name_ur':
                                         case 'z_anketa_place_of_study':
+                                        case 'z_anketa_fio_child':
                                             _self.validate_required($(this));
                                         break;
 
@@ -102,7 +104,7 @@ if (typeof window.z == 'object')
                                             _self.validate_phone($(this));
                                         break;
 
-                                        case 'z_anketa_email_parent':
+                                        //case 'z_anketa_email_parent':
                                         case 'z_anketa_email_ur_contact':
                                             _self.validate_email($(this));
                                         break;
@@ -121,7 +123,8 @@ if (typeof window.z == 'object')
                         [
                             '#z_anketa_fio_ur_contact',
                             '#z_anketa_fio_child',
-                            '#z_anketa_fio_parent'
+                            '#z_anketa_fio_parent',
+                            '#z_anketa_code'
                         ].join(),
                         function (event)
                             {
@@ -148,7 +151,8 @@ if (typeof window.z == 'object')
                         [
                             '#z_anketa_fio_ur_contact',
                             '#z_anketa_fio_child',
-                            '#z_anketa_fio_parent'
+                            '#z_anketa_fio_parent',
+                            '#z_anketa_code'
                         ].join(),
                         function (event)
                             {
@@ -218,13 +222,14 @@ if (typeof window.z == 'object')
 
                     //Физ
                     _self.validate_fio(_self.z.el.z_anketa_fio_parent);
+                    _self.validate_required(_self.z.el.z_anketa_code);
                     _self.validate_required(_self.z.el.z_anketa_residence);
-                    _self.validate_required(_self.z.el.z_anketa_place_of_work);
-                    _self.validate_email(_self.z.el.z_anketa_email_parent);
+                    //_self.validate_required(_self.z.el.z_anketa_place_of_work);
+                    //_self.validate_email(_self.z.el.z_anketa_email_parent);
 
-                    _self.validate_fio(_self.z.el.z_anketa_fio_child);
+                    _self.validate_required(_self.z.el.z_anketa_fio_child);
                     _self.validate_date(_self.z.el.z_anketa_birthday_child);
-                    _self.validate_required(_self.z.el.z_anketa_place_of_study);
+                    //_self.validate_required(_self.z.el.z_anketa_place_of_study);
                     _self.validate_phone(_self.z.el.z_anketa_tel_parent);
 
                     _self.validate_opd(_self.z.el.z_anketa_opd);

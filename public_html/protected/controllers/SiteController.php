@@ -7,9 +7,6 @@ class SiteController extends Controller
 
     public function __construct($id, $module = null)
     {
-
-
-
         return parent::__construct($id, $module = null);
     }
 
@@ -36,7 +33,7 @@ class SiteController extends Controller
 
         if (!Yii::app()->user->getIsGuest()) {
             if (Yii::app()->user->role==User::ROLE_USER) {
-                $model->fio_ur_contact= $model->fio_parent = Yii::app()->user->login;
+                $model->fio_ur_contact = $model->fio_parent = Yii::app()->user->login;
             }
             $model->putData(Yii::app()->user->id);
         }
@@ -51,7 +48,7 @@ class SiteController extends Controller
             foreach ($postShifts as $k => $ps) {
                     $model = new Questionnaire();
                     if (!Yii::app()->user->getIsGuest()) {
-                        $model->fio_ur_contact= $model->fio_parent = Yii::app()->user->login;
+                        $model->fio_ur_contact = $model->fio_parent = Yii::app()->user->login;
                     }
                     $model->attributes = $postQuestionnaire;
                     $model->shift_id = (int)$ps;
@@ -62,7 +59,7 @@ class SiteController extends Controller
             if (!$postShifts) {
                 $model = new Questionnaire();
                 if (!Yii::app()->user->getIsGuest()) {
-                    $model->fio_ur_contact= $model->fio_parent = Yii::app()->user->login;
+                    $model->fio_ur_contact = $model->fio_parent = Yii::app()->user->login;
                 }
                 $model->attributes = $postQuestionnaire;
                 if (!$model->save()) {
@@ -76,9 +73,9 @@ class SiteController extends Controller
                 $transaction->commit();
                 Yii::app()->user->setFlash('q_done', 'Заявка подана');
                 if (!Yii::app()->user->getIsGuest()) {
-                    $model->fio_ur_contact= $model->fio_parent = Yii::app()->user->login;
+                    $model->fio_ur_contact = $model->fio_parent = Yii::app()->user->login;
                 }
-                $identity = new UserIdentity('','');
+                $identity = new UserIdentity('','','');
                 $identity->authenticateById($model->user_id);
                 if (Yii::app()->user->getIsGuest() && !(boolean)Yii::app()->user->login($identity, AUTH_DURATION)) {
                     $this->refresh();

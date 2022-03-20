@@ -132,6 +132,14 @@
                         'filter' => CHtml::activeTextField($model, 'fio_parent', array('class' => 'form-control')),
                     ),
                     array(
+                        'header' => 'Кодовое слово',
+                        'name' => 'code',
+                        'value' => '$data->code',
+                        'htmlOptions' => array('class'=>'text-center'),
+                        'headerHtmlOptions' => array('class' => 'text-center','scope'=>'col'),
+                        'filter' => CHtml::activeTextField($model, 'code', array('class' => 'form-control')),
+                    ),
+                    array(
                         'header' => 'Телефон родителя',
                         'name' => 'tel_parent',
                         'value' => '$data->tel_parent',

@@ -119,6 +119,14 @@ $this->widget('MyGridView', array(
             'headerHtmlOptions' => array('class' => 'text-center', 'scope' => 'col'),
         ),
         array(
+            'header' => 'Кодовое слово',
+            'name' => 'code',
+            'value' => '$data->code',
+            'filter' => CHtml::activeTextField($model, 'code', array('class' => 'form-control')),
+            'htmlOptions' => array('class' => 'text-center'),
+            'headerHtmlOptions' => array('class' => 'text-center', 'scope' => 'col'),
+        ),
+        array(
             'header' => 'Телефон родителя',
             'name' => 'tel_parent',
             'value' => '$data->tel_parent',
