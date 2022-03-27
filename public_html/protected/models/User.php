@@ -23,10 +23,12 @@ class User extends CActiveRecord
     {
         return array(
             array('id,login', 'unique'),
-            array('login,password,created,code', 'required',),
+            array('login,password,code,created', 'required',),
             array('login', 'length', 'min' => 1, 'max' => 42),
+            array('code', 'length', 'min' => 1, 'max' => 42),
             array('role', 'in', 'range' => array(self::ROLE_ADMIN, self::ROLE_USER, self::ROLE_BANNED)),
             array('login', 'length', 'min' => 1, 'max' => 42),
+            array('code', 'length', 'min' => 1, 'max' => 42),
         );
     }
 
@@ -36,7 +38,7 @@ class User extends CActiveRecord
             'login' => 'ФИО',
             'password' => 'Телефон',
             'created' => 'Дата создания',
-            'code' => 'Кодовое слов',
+            'code' => 'Кодовое слово',
             'role' => 'Роль',
         );
     }
@@ -45,6 +47,7 @@ class User extends CActiveRecord
     {
         return array(
             'login',
+            'code',
         );
     }
 
@@ -89,5 +92,14 @@ class User extends CActiveRecord
         return $arr;
     }
 
+    public function getListUser()
+    {
+
+        return Yii::app()->db->createCommand()
+            ->select('*')
+            ->from('sb_user')
+            ->queryAll();
+
+    }
 
 }

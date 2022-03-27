@@ -56,13 +56,14 @@ class SiteService
 
     public static function getShifts($campId = false)
     {
+
         $out = array(
             Questionnaire::SHIFT_KIROVEC_1 => array(
                 'id' => Questionnaire::SHIFT_KIROVEC_1,
                 'camp' => Questionnaire::CAMP_KIROVEC,
-                'seats' => 144,
-                'min_age' => 6,
-                'max_age' => 17,
+                'seats' => self::infoCamp(Questionnaire::CAMP_KIROVEC, 'seats'),
+                'min_age' => self::infoCamp(Questionnaire::CAMP_KIROVEC, 'min_age'),
+                'max_age' => self::infoCamp(Questionnaire::CAMP_KIROVEC, 'max_age'),
                 'dlo' => array(
                     Questionnaire::DLO_1
                 )
@@ -70,9 +71,9 @@ class SiteService
             Questionnaire::SHIFT_KIROVEC_2 => array(
                 'id' => Questionnaire::SHIFT_KIROVEC_2,
                 'camp' => Questionnaire::CAMP_KIROVEC,
-                'seats' => 144,
-                'min_age' => 6,
-                'max_age' => 17,
+                'seats' => self::infoCamp(Questionnaire::CAMP_KIROVEC, 'seats'),
+                'min_age' => self::infoCamp(Questionnaire::CAMP_KIROVEC, 'min_age'),
+                'max_age' => self::infoCamp(Questionnaire::CAMP_KIROVEC, 'max_age'),
                 'dlo' => array(
                     Questionnaire::DLO_3,
                 )
@@ -80,9 +81,9 @@ class SiteService
             Questionnaire::SHIFT_KIROVEC_3 => array(
                 'id' => Questionnaire::SHIFT_KIROVEC_3,
                 'camp' => Questionnaire::CAMP_KIROVEC,
-                'seats' => 144,
-                'min_age' => 6,
-                'max_age' => 17,
+                'seats' => self::infoCamp(Questionnaire::CAMP_KIROVEC, 'seats'),
+                'min_age' => self::infoCamp(Questionnaire::CAMP_KIROVEC, 'min_age'),
+                'max_age' => self::infoCamp(Questionnaire::CAMP_KIROVEC, 'max_age'),
                 'dlo' => array(
                     Questionnaire::DLO_5,
                 )
@@ -90,9 +91,9 @@ class SiteService
             Questionnaire::SHIFT_KIROVEC_4 => array(
                 'id' => Questionnaire::SHIFT_KIROVEC_4,
                 'camp' => Questionnaire::CAMP_KIROVEC,
-                'seats' => 144,
-                'min_age' => 6,
-                'max_age' => 17,
+                'seats' => self::infoCamp(Questionnaire::CAMP_KIROVEC, 'seats'),
+                'min_age' => self::infoCamp(Questionnaire::CAMP_KIROVEC, 'min_age'),
+                'max_age' => self::infoCamp(Questionnaire::CAMP_KIROVEC, 'max_age'),
                 'dlo' => array(
                     Questionnaire::DLO_7,
                 )
@@ -100,9 +101,9 @@ class SiteService
             Questionnaire::SHIFT_BLUESCREEN_1 => array(
                 'id' => Questionnaire::SHIFT_BLUESCREEN_1,
                 'camp' => Questionnaire::CAMP_BLUESCREEN,
-                'seats' => 84,
-                'min_age' => 6,
-                'max_age' => 10,
+                'seats' => self::infoCamp(Questionnaire::CAMP_BLUESCREEN, 'seats'),
+                'min_age' => self::infoCamp(Questionnaire::CAMP_BLUESCREEN, 'min_age'),
+                'max_age' => self::infoCamp(Questionnaire::CAMP_BLUESCREEN, 'max_age'),
                 'dlo' => array(
                     Questionnaire::DLO_1
                 )
@@ -110,9 +111,9 @@ class SiteService
             Questionnaire::SHIFT_BLUESCREEN_2 => array(
                 'id' => Questionnaire::SHIFT_BLUESCREEN_2,
                 'camp' => Questionnaire::CAMP_BLUESCREEN,
-                'seats' => 84,
-                'min_age' => 6,
-                'max_age' => 10,
+                'seats' => self::infoCamp(Questionnaire::CAMP_BLUESCREEN, 'seats'),
+                'min_age' => self::infoCamp(Questionnaire::CAMP_BLUESCREEN, 'min_age'),
+                'max_age' => self::infoCamp(Questionnaire::CAMP_BLUESCREEN, 'max_age'),
                 'dlo' => array(
                     Questionnaire::DLO_2,
                 )
@@ -120,9 +121,9 @@ class SiteService
             Questionnaire::SHIFT_BLUESCREEN_3 => array(
                 'id' => Questionnaire::SHIFT_BLUESCREEN_3,
                 'camp' => Questionnaire::CAMP_BLUESCREEN,
-                'seats' => 84,
-                'min_age' => 6,
-                'max_age' => 10,
+                'seats' => self::infoCamp(Questionnaire::CAMP_BLUESCREEN, 'seats'),
+                'min_age' => self::infoCamp(Questionnaire::CAMP_BLUESCREEN, 'min_age'),
+                'max_age' => self::infoCamp(Questionnaire::CAMP_BLUESCREEN, 'max_age'),
                 'dlo' => array(
                     Questionnaire::DLO_4,
                 )
@@ -130,9 +131,9 @@ class SiteService
             Questionnaire::SHIFT_BLUESCREEN_4 => array(
                 'id' => Questionnaire::SHIFT_BLUESCREEN_4,
                 'camp' => Questionnaire::CAMP_BLUESCREEN,
-                'seats' => 84,
-                'min_age' => 6,
-                'max_age' => 10,
+                'seats' => self::infoCamp(Questionnaire::CAMP_BLUESCREEN, 'seats'),
+                'min_age' => self::infoCamp(Questionnaire::CAMP_BLUESCREEN, 'min_age'),
+                'max_age' => self::infoCamp(Questionnaire::CAMP_BLUESCREEN, 'max_age'),
                 'dlo' => array(
                     Questionnaire::DLO_6,
                 )
@@ -140,9 +141,9 @@ class SiteService
             Questionnaire::SHIFT_BLUESCREEN_5 => array(
                 'id' => Questionnaire::SHIFT_BLUESCREEN_5,
                 'camp' => Questionnaire::CAMP_BLUESCREEN,
-                'seats' => 84,
-                'min_age' => 6,
-                'max_age' => 10,
+                'seats' => self::infoCamp(Questionnaire::CAMP_BLUESCREEN, 'seats'),
+                'min_age' => self::infoCamp(Questionnaire::CAMP_BLUESCREEN, 'min_age'),
+                'max_age' => self::infoCamp(Questionnaire::CAMP_BLUESCREEN, 'max_age'),
                 'dlo' => array(
                     Questionnaire::DLO_8,
                 )
@@ -150,9 +151,9 @@ class SiteService
             Questionnaire::SHIFT_EAST_1 => array(
                 'id' => Questionnaire::SHIFT_EAST_1,
                 'camp' => Questionnaire::CAMP_EAST_4,
-                'seats' => 115,
-                'min_age' => 6,
-                'max_age' => 17,
+                'seats' => self::infoCamp(Questionnaire::CAMP_EAST_4, 'seats'),
+                'min_age' => self::infoCamp(Questionnaire::CAMP_EAST_4, 'min_age'),
+                'max_age' => self::infoCamp(Questionnaire::CAMP_EAST_4, 'max_age'),
                 'dlo' => array(
                     Questionnaire::DLO_1,
                 )
@@ -160,9 +161,9 @@ class SiteService
             Questionnaire::SHIFT_EAST_2 => array(
                 'id' => Questionnaire::SHIFT_EAST_2,
                 'camp' => Questionnaire::CAMP_EAST_4,
-                'seats' => 115,
-                'min_age' => 6,
-                'max_age' => 17,
+                'seats' => self::infoCamp(Questionnaire::CAMP_EAST_4, 'seats'),
+                'min_age' => self::infoCamp(Questionnaire::CAMP_EAST_4, 'min_age'),
+                'max_age' => self::infoCamp(Questionnaire::CAMP_EAST_4, 'max_age'),
                 'dlo' => array(
                     Questionnaire::DLO_3,
                 )
@@ -170,9 +171,9 @@ class SiteService
             Questionnaire::SHIFT_EAST_3 => array(
                 'id' => Questionnaire::SHIFT_EAST_3,
                 'camp' => Questionnaire::CAMP_EAST_4,
-                'seats' => 115,
-                'min_age' => 6,
-                'max_age' => 17,
+                'seats' => self::infoCamp(Questionnaire::CAMP_EAST_4, 'seats'),
+                'min_age' => self::infoCamp(Questionnaire::CAMP_EAST_4, 'min_age'),
+                'max_age' => self::infoCamp(Questionnaire::CAMP_EAST_4, 'max_age'),
                 'dlo' => array(
                     Questionnaire::DLO_5,
                 )
@@ -180,9 +181,9 @@ class SiteService
             Questionnaire::SHIFT_EAST_4 => array(
                 'id' => Questionnaire::SHIFT_EAST_4,
                 'camp' => Questionnaire::CAMP_EAST_4,
-                'seats' => 115,
-                'min_age' => 6,
-                'max_age' => 17,
+                'seats' => self::infoCamp(Questionnaire::CAMP_EAST_4, 'seats'),
+                'min_age' => self::infoCamp(Questionnaire::CAMP_EAST_4, 'min_age'),
+                'max_age' => self::infoCamp(Questionnaire::CAMP_EAST_4, 'max_age'),
                 'dlo' => array(
                     Questionnaire::DLO_7,
                 )
@@ -190,9 +191,9 @@ class SiteService
             Questionnaire::SHIFT_DIAMOND_1 => array(
                 'id' => Questionnaire::SHIFT_DIAMOND_1,
                 'camp' => Questionnaire::CAMP_DIAMOND,
-                'seats' => 123,
-                'min_age' => 11,
-                'max_age' => 17,
+                'seats' => self::infoCamp(Questionnaire::CAMP_DIAMOND, 'seats'),
+                'min_age' => self::infoCamp(Questionnaire::CAMP_DIAMOND, 'min_age'),
+                'max_age' => self::infoCamp(Questionnaire::CAMP_DIAMOND, 'max_age'),
                 'dlo' => array(
                     Questionnaire::DLO_1,
                 )
@@ -200,9 +201,9 @@ class SiteService
             Questionnaire::SHIFT_DIAMOND_2 => array(
                 'id' => Questionnaire::SHIFT_DIAMOND_2,
                 'camp' => Questionnaire::CAMP_DIAMOND,
-                'seats' => 123,
-                'min_age' => 11,
-                'max_age' => 17,
+                'seats' => self::infoCamp(Questionnaire::CAMP_DIAMOND, 'seats'),
+                'min_age' => self::infoCamp(Questionnaire::CAMP_DIAMOND, 'min_age'),
+                'max_age' => self::infoCamp(Questionnaire::CAMP_DIAMOND, 'max_age'),
                 'dlo' => array(
                     Questionnaire::DLO_3,
 
@@ -211,9 +212,9 @@ class SiteService
             Questionnaire::SHIFT_DIAMOND_3 => array(
                 'id' => Questionnaire::SHIFT_DIAMOND_3,
                 'camp' => Questionnaire::CAMP_DIAMOND,
-                'seats' => 123,
-                'min_age' => 11,
-                'max_age' => 17,
+                'seats' => self::infoCamp(Questionnaire::CAMP_DIAMOND, 'seats'),
+                'min_age' => self::infoCamp(Questionnaire::CAMP_DIAMOND, 'min_age'),
+                'max_age' => self::infoCamp(Questionnaire::CAMP_DIAMOND, 'max_age'),
                 'dlo' => array(
                     Questionnaire::DLO_5,
                 )
@@ -221,9 +222,9 @@ class SiteService
             Questionnaire::SHIFT_DIAMOND_4 => array(
                 'id' => Questionnaire::SHIFT_DIAMOND_4,
                 'camp' => Questionnaire::CAMP_DIAMOND,
-                'seats' => 123,
-                'min_age' => 11,
-                'max_age' => 17,
+                'seats' => self::infoCamp(Questionnaire::CAMP_DIAMOND, 'seats'),
+                'min_age' => self::infoCamp(Questionnaire::CAMP_DIAMOND, 'min_age'),
+                'max_age' => self::infoCamp(Questionnaire::CAMP_DIAMOND, 'max_age'),
                 'dlo' => array(
                     Questionnaire::DLO_7,
                 )
@@ -231,9 +232,9 @@ class SiteService
             Questionnaire::SHIFT_BONFIRE_1 => array(
                 'id' => Questionnaire::SHIFT_BONFIRE_1,
                 'camp' => Questionnaire::CAMP_BONFIRE,
-                'seats' => 144,
-                'min_age' => 6,
-                'max_age' => 17,
+                'seats' => self::infoCamp(Questionnaire::CAMP_BONFIRE, 'seats'),
+                'min_age' => self::infoCamp(Questionnaire::CAMP_BONFIRE, 'min_age'),
+                'max_age' => self::infoCamp(Questionnaire::CAMP_BONFIRE, 'max_age'),
                 'dlo' => array(
                     Questionnaire::DLO_1,
                 )
@@ -241,9 +242,9 @@ class SiteService
             Questionnaire::SHIFT_BONFIRE_2 => array(
                 'id' => Questionnaire::SHIFT_BONFIRE_2,
                 'camp' => Questionnaire::CAMP_BONFIRE,
-                'seats' => 144,
-                'min_age' => 6,
-                'max_age' => 17,
+                'seats' => self::infoCamp(Questionnaire::CAMP_BONFIRE, 'seats'),
+                'min_age' => self::infoCamp(Questionnaire::CAMP_BONFIRE, 'min_age'),
+                'max_age' => self::infoCamp(Questionnaire::CAMP_BONFIRE, 'max_age'),
                 'dlo' => array(
                     Questionnaire::DLO_3
                 )
@@ -251,9 +252,9 @@ class SiteService
             Questionnaire::SHIFT_BONFIRE_3 => array(
                 'id' => Questionnaire::SHIFT_BONFIRE_3,
                 'camp' => Questionnaire::CAMP_BONFIRE,
-                'seats' => 144,
-                'min_age' => 6,
-                'max_age' => 17,
+                'seats' => self::infoCamp(Questionnaire::CAMP_BONFIRE, 'seats'),
+                'min_age' => self::infoCamp(Questionnaire::CAMP_BONFIRE, 'min_age'),
+                'max_age' => self::infoCamp(Questionnaire::CAMP_BONFIRE, 'max_age'),
                 'dlo' => array(
                     Questionnaire::DLO_5,
                 )
@@ -261,9 +262,9 @@ class SiteService
             Questionnaire::SHIFT_BONFIRE_4 => array(
                 'id' => Questionnaire::SHIFT_BONFIRE_4,
                 'camp' => Questionnaire::CAMP_BONFIRE,
-                'seats' => 144,
-                'min_age' => 6,
-                'max_age' => 17,
+                'seats' => self::infoCamp(Questionnaire::CAMP_BONFIRE, 'seats'),
+                'min_age' => self::infoCamp(Questionnaire::CAMP_BONFIRE, 'min_age'),
+                'max_age' => self::infoCamp(Questionnaire::CAMP_BONFIRE, 'max_age'),
                 'dlo' => array(
                     Questionnaire::DLO_7,
                 )
@@ -271,9 +272,9 @@ class SiteService
             Questionnaire::SHIFT_LIGHTHOUSE_1 => array(
                 'id' => Questionnaire::SHIFT_LIGHTHOUSE_1,
                 'camp' => Questionnaire::CAMP_LIGHTHOUSE,
-                'seats' => 66,
-                'min_age' => 6,
-                'max_age' => 17,
+                'seats' => self::infoCamp(Questionnaire::CAMP_LIGHTHOUSE, 'seats'),
+                'min_age' => self::infoCamp(Questionnaire::CAMP_LIGHTHOUSE, 'min_age'),
+                'max_age' => self::infoCamp(Questionnaire::CAMP_LIGHTHOUSE, 'max_age'),
                 'dlo' => array(
                     Questionnaire::DLO_1,
                 )
@@ -281,9 +282,9 @@ class SiteService
             Questionnaire::SHIFT_LIGHTHOUSE_2 => array(
                 'id' => Questionnaire::SHIFT_LIGHTHOUSE_2,
                 'camp' => Questionnaire::CAMP_LIGHTHOUSE,
-                'seats' => 66,
-                'min_age' => 6,
-                'max_age' => 17,
+                'seats' => self::infoCamp(Questionnaire::CAMP_LIGHTHOUSE, 'seats'),
+                'min_age' => self::infoCamp(Questionnaire::CAMP_LIGHTHOUSE, 'min_age'),
+                'max_age' => self::infoCamp(Questionnaire::CAMP_LIGHTHOUSE, 'max_age'),
                 'dlo' => array(
                     Questionnaire::DLO_3,
                 )
@@ -291,9 +292,9 @@ class SiteService
             Questionnaire::SHIFT_LIGHTHOUSE_3 => array(
                 'id' => Questionnaire::SHIFT_LIGHTHOUSE_3,
                 'camp' => Questionnaire::CAMP_LIGHTHOUSE,
-                'seats' => 66,
-                'min_age' => 6,
-                'max_age' => 17,
+                'seats' => self::infoCamp(Questionnaire::CAMP_LIGHTHOUSE, 'seats'),
+                'min_age' => self::infoCamp(Questionnaire::CAMP_LIGHTHOUSE, 'min_age'),
+                'max_age' => self::infoCamp(Questionnaire::CAMP_LIGHTHOUSE, 'max_age'),
                 'dlo' => array(
                     Questionnaire::DLO_5
                 )
@@ -301,9 +302,9 @@ class SiteService
             Questionnaire::SHIFT_LIGHTHOUSE_4 => array(
                 'id' => Questionnaire::SHIFT_LIGHTHOUSE_4,
                 'camp' => Questionnaire::CAMP_LIGHTHOUSE,
-                'seats' => 66,
-                'min_age' => 6,
-                'max_age' => 17,
+                'seats' => self::infoCamp(Questionnaire::CAMP_LIGHTHOUSE, 'seats'),
+                'min_age' => self::infoCamp(Questionnaire::CAMP_LIGHTHOUSE, 'min_age'),
+                'max_age' => self::infoCamp(Questionnaire::CAMP_LIGHTHOUSE, 'max_age'),
                 'dlo' => array(
                     Questionnaire::DLO_7
                 )
@@ -311,9 +312,9 @@ class SiteService
             Questionnaire::SHIFT_FLYGHT_1 => array(
                 'id' => Questionnaire::SHIFT_FLYGHT_1,
                 'camp' => Questionnaire::CAMP_FLYGHT,
-                'seats' => 99,
-                'min_age' => 6,
-                'max_age' => 17,
+                'seats' => self::infoCamp(Questionnaire::CAMP_FLYGHT, 'seats'),
+                'min_age' => self::infoCamp(Questionnaire::CAMP_FLYGHT, 'min_age'),
+                'max_age' => self::infoCamp(Questionnaire::CAMP_FLYGHT, 'max_age'),
                 'dlo' => array(
                     Questionnaire::DLO_1
                 )
@@ -321,9 +322,9 @@ class SiteService
             Questionnaire::SHIFT_FLYGHT_2 => array(
                 'id' => Questionnaire::SHIFT_FLYGHT_2,
                 'camp' => Questionnaire::CAMP_FLYGHT,
-                'seats' => 99,
-                'min_age' => 6,
-                'max_age' => 17,
+                'seats' => self::infoCamp(Questionnaire::CAMP_FLYGHT, 'seats'),
+                'min_age' => self::infoCamp(Questionnaire::CAMP_FLYGHT, 'min_age'),
+                'max_age' => self::infoCamp(Questionnaire::CAMP_FLYGHT, 'max_age'),
                 'dlo' => array(
                     Questionnaire::DLO_3
                 )
@@ -331,9 +332,9 @@ class SiteService
             Questionnaire::SHIFT_FLYGHT_3 => array(
                 'id' => Questionnaire::SHIFT_FLYGHT_3,
                 'camp' => Questionnaire::CAMP_FLYGHT,
-                'seats' => 99,
-                'min_age' => 6,
-                'max_age' => 17,
+                'seats' => self::infoCamp(Questionnaire::CAMP_FLYGHT, 'seats'),
+                'min_age' => self::infoCamp(Questionnaire::CAMP_FLYGHT, 'min_age'),
+                'max_age' => self::infoCamp(Questionnaire::CAMP_FLYGHT, 'max_age'),
                 'dlo' => array(
                     Questionnaire::DLO_5,
                 )
@@ -341,9 +342,9 @@ class SiteService
             Questionnaire::SHIFT_FLYGHT_4 => array(
                 'id' => Questionnaire::SHIFT_FLYGHT_4,
                 'camp' => Questionnaire::CAMP_FLYGHT,
-                'seats' => 99,
-                'min_age' => 6,
-                'max_age' => 17,
+                'seats' => self::infoCamp(Questionnaire::CAMP_FLYGHT, 'seats'),
+                'min_age' => self::infoCamp(Questionnaire::CAMP_FLYGHT, 'min_age'),
+                'max_age' => self::infoCamp(Questionnaire::CAMP_FLYGHT, 'max_age'),
                 'dlo' => array(
                     Questionnaire::DLO_7
                 )
@@ -369,7 +370,7 @@ class SiteService
         CHtml::checkBox('Shifts[]', $checked, array('class' => 'custom-control-input', 'id' => 'z_anketa_' . $shiftId, 'value' => $shiftId, 'data-pgroup' => $period_group)) .
         CHtml::label($shiftName, 'z_anketa_' . $shiftId, array('class' => 'custom-control-label')) .
         
-        self::templateSeatsCount($seatsFrom, $seatsTo) .
+        //self::templateSeatsCount($seatsFrom, $seatsTo) .
         //'<div class="z_anketa_age">(от ' .$ageFrom . ' до ' .$ageTo . ' лет)</div>'.
         '</div>';
     }
@@ -378,9 +379,14 @@ class SiteService
     {
         if ($seatsFrom<$seatsTo)
             return '<div class="z_anketa_counts">'.$seatsFrom.' из '. $seatsTo.(!is_null($fillReserv)?' [p:'.$fillReserv.']':'').'</div>';
-                else
+        else
             return '<div class="z_anketa_counts">Резерв'.(!is_null($fillReserv)?' [p:'.$fillReserv.']':'').'</div>';
         //return '<div class="z_anketa_counts">' . ($seatsFrom > $seatsTo ? $seatsTo : $seatsFrom) . ' из ' . $seatsTo . ($seatsFrom > $seatsTo ? '. В резерве: ' . abs($seatsTo - $seatsFrom) : '') . '</div>';
+    }
+
+    public static function templateCount($seatsTo, $fillReserv = null)
+    {
+        return '<div class="z_anketa_counts">'.$seatsTo.(!is_null($fillReserv)?' [p:'.$fillReserv.']':'').'</div>';
     }
 
     public static function templateDloRange($shiftId)
@@ -453,4 +459,25 @@ class SiteService
         }
     }
 
+    public function infoCamp($camp, $info)
+    {
+        $result = Yii::app()->db->createCommand()
+            ->select($info)
+            ->from('sb_camp')
+            ->where("id = $camp")
+            ->queryRow();
+
+        return $result[$info];
+    }
+
+    public function countSeats($id)
+    {
+        $result = Yii::app()->db->createCommand()
+            ->select('shift_id')
+            ->from('sb_questionnaire')
+            ->where("shift_id = $id")
+            ->queryAll();
+
+        return count($result);
+    }
 }

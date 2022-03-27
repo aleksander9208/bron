@@ -24,3 +24,7 @@
 {
     white-space: nowrap;
 }
+
+.fiz_block {
+    display: none;
+}

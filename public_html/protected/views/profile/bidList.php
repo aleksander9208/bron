@@ -88,11 +88,13 @@
                         'header' => 'Статус',
                         'name' => 'status',
                         'type' => 'raw',
-                        'value' => '(($data->status==' . Questionnaire::STATUS_OK . ')?($data->booking_id?"Вам присвоен номер ".$data->booking_id." брони на путевку":"Ваша заявка находится в листе ожидания") :"") ',
+                        'value' => 'CHtml::link(Questionnaire::getStatusName($data->status, $data->booking_id),"/profile/bid/".$data->id, array("class"=>"btn btn-success btn-sm") )',
+                        //'value' => '(($data->status==' . Questionnaire::STATUS_OK . ')?($data->booking_id?"Вам присвоен номер ".$data->booking_id." брони на путевку":"Ваша заявка находится в листе ожидания") :"") ',
                         'filter' => false,
                         'htmlOptions' => array('class' => 'text-left'),
                         'headerHtmlOptions' => array('class' => 'text-center', 'scope' => 'col'),
                     ),
+                    /*
                     array(
                         'header' => 'Информация',
                         'name' => 'status',
@@ -102,7 +104,7 @@
                         'htmlOptions' => array('class' => 'text-center'),
                         'headerHtmlOptions' => array('class' => 'text-center', 'scope' => 'col'),
                     ),
-
+                    */
                 ),
             ));
             ?>

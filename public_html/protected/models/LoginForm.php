@@ -56,7 +56,7 @@ class LoginForm extends CFormModel
     public function authenticate($attribute, $params)
     {
         if (!$this->hasErrors()) {
-            $this->_identity = new UserIdentity($this->username, $this->$attribute);
+            $this->_identity = new UserIdentity($this->username, $this->$attribute, $this->code);
 
             if ($this->_identity->authenticate() && ($this->_identity->errorCode == UserIdentity::ERROR_NONE)) {
                 if ((boolean)Yii::app()->user->login($this->_identity, AUTH_DURATION)) {
