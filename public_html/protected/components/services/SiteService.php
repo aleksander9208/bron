@@ -364,13 +364,16 @@ class SiteService
 
     public static function templateChecker($shiftName, $shiftId, $seatsFrom, $seatsTo, $ageFrom, $ageTo, $shiftsPost, $period_group = '')
     {
+
+        $seatsFrom = $seatsFrom + self::countSeats($shiftId);
+        
         $checked = ((in_array($shiftId, $shiftsPost)) ? true : false);
         return '' .
         '<div class="custom-control custom-switch">' .
         CHtml::checkBox('Shifts[]', $checked, array('class' => 'custom-control-input', 'id' => 'z_anketa_' . $shiftId, 'value' => $shiftId, 'data-pgroup' => $period_group)) .
         CHtml::label($shiftName, 'z_anketa_' . $shiftId, array('class' => 'custom-control-label')) .
-        
-        //self::templateSeatsCount($seatsFrom, $seatsTo) .
+
+        self::templateSeatsCount($seatsFrom, $seatsTo) .
         //'<div class="z_anketa_age">(от ' .$ageFrom . ' до ' .$ageTo . ' лет)</div>'.
         '</div>';
     }
@@ -477,6 +480,8 @@ class SiteService
             ->from('sb_questionnaire')
             ->where("shift_id = $id")
             ->queryAll();
+
+
 
         return count($result);
     }
