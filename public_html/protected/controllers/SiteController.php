@@ -52,6 +52,7 @@ class SiteController extends Controller
                     }
                     $model->attributes = $postQuestionnaire;
                     $model->shift_id = (int)$ps;
+                    $model->code = $postQuestionnaire['code'];
                     if (!$model->save()) {
                         Yii::app()->user->setFlash('q_error',Yii::app()->user->getFlash('q_error') . implode('<br>', $model->error_arr));
                     }
@@ -62,6 +63,7 @@ class SiteController extends Controller
                     $model->fio_ur_contact = $model->fio_parent = Yii::app()->user->login;
                 }
                 $model->attributes = $postQuestionnaire;
+                $model->code = $postQuestionnaire['code'];
                 if (!$model->save()) {
                     //$model->error_arr[] = 'Неуказана смена';
                     Yii::app()->user->setFlash('q_error',Yii::app()->user->getFlash('q_error') . implode('<br>', $model->error_arr));

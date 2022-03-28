@@ -83,12 +83,14 @@ if (typeof window.z == 'object')
                                             _self.validate_fio($(this));
                                         break;
 
-                                        case 'z_anketa_residence':
+                                        //case 'z_anketa_residence':
                                         //case 'z_anketa_place_of_work':
                                         case 'z_anketa_code':
                                         case 'z_anketa_name_ur':
                                         case 'z_anketa_place_of_study':
                                         case 'z_anketa_fio_child':
+                                        case 'z_anketa_tel_ur_contact':
+                                        case 'z_anketa_tel_parent':
                                             _self.validate_required($(this));
                                         break;
 
@@ -99,10 +101,10 @@ if (typeof window.z == 'object')
                                             _self.validate_datetime($(this));
                                         break;
 
-                                        case 'z_anketa_tel_ur_contact':
-                                        case 'z_anketa_tel_parent':
-                                            _self.validate_phone($(this));
-                                        break;
+                                        //case 'z_anketa_tel_ur_contact':
+                                        //case 'z_anketa_tel_parent':
+                                            //_self.validate_phone($(this));
+                                        //break;
 
                                         //case 'z_anketa_email_parent':
                                         case 'z_anketa_email_ur_contact':
@@ -164,8 +166,8 @@ if (typeof window.z == 'object')
                         _self.change_type(_self.z.el.z_anketa_type_1);
 
 
-                    $(_self.z.el.z_anketa_tel_ur_contact).mask('(999) 999-99-99');
-                    $(_self.z.el.z_anketa_tel_parent).mask('(999) 999-99-99');
+                    //$(_self.z.el.z_anketa_tel_ur_contact).mask('(999) 999-99-99');
+                    //$(_self.z.el.z_anketa_tel_parent).mask('(999) 999-99-99');
 
                     _self.z.tasks.call(task_name, result_out);
                 },
@@ -182,6 +184,7 @@ if (typeof window.z == 'object')
                         _self.z.el.z_anketa_form.find('.z_anketa_block_'+_self.constant.USER_ANKETA_TYPE_UR+' input').attr('disabled','disabled');
                             else
                         _self.z.el.z_anketa_form.find('.z_anketa_block_'+_self.constant.USER_ANKETA_TYPE_UR+' input').removeAttr('disabled');
+                        _self.z.el.z_anketa_form.find('.z_anketa_block_2').addClass('fiz_block');
                 },
 
             //Вывод ошибок
@@ -229,7 +232,7 @@ if (typeof window.z == 'object')
 
                     _self.validate_required(_self.z.el.z_anketa_fio_child);
                     _self.validate_date(_self.z.el.z_anketa_birthday_child);
-                    //_self.validate_required(_self.z.el.z_anketa_place_of_study);
+                    _self.validate_required(_self.z.el.z_anketa_place_of_study);
                     _self.validate_phone(_self.z.el.z_anketa_tel_parent);
 
                     _self.validate_opd(_self.z.el.z_anketa_opd);

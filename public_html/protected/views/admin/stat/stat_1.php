@@ -85,7 +85,7 @@ $this->widget('MyGridView', array(
             'headerHtmlOptions' => array('class' => 'text-center', 'scope' => 'col'),
         ),
         array(
-            'header' => 'ФИО ребенка',
+            'header' => 'Имя ребенка',
             'name' => 'fio_child',
             'type' => 'raw',
             'value' => '$data->fio_child',
@@ -143,6 +143,7 @@ $this->widget('MyGridView', array(
             'htmlOptions' => array('class' => 'text-center'),
             'headerHtmlOptions' => array('class' => 'text-center', 'scope' => 'col'),
         ),
+        /*
         array(
             'header' => 'Комментарий',
             'name' => 'paid',
@@ -152,6 +153,7 @@ $this->widget('MyGridView', array(
             'htmlOptions' => array('class' => 'text-center'),
             'headerHtmlOptions' => array('class' => 'text-center', 'scope' => 'col'),
         ),
+        */
         array(
             'header' => 'Номер брони',
             'name' => 'booking_id',
@@ -165,7 +167,7 @@ $this->widget('MyGridView', array(
             'header' => 'Статус',
             'name' => 'status',
             'type' => 'raw',
-            'value' => 'CHtml::link(Questionnaire::getStatusName($data->status),"/admin/bid/".$data->id, array("class"=>"btn btn-success btn-sm"))',
+            'value' => 'CHtml::link(Questionnaire::getStatusName($data->status, $data->booking_id),"/admin/bid/".$data->id, array("class"=>"btn btn-success btn-sm"))',
             'filter' => false,//Questionnaire::getStatusName(),
             'htmlOptions' => array('class' => 'text-center'),
             'headerHtmlOptions' => array('class' => 'text-center', 'scope' => 'col'),

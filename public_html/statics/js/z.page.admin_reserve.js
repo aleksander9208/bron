@@ -55,9 +55,9 @@ if (typeof window.z == 'object')
                     var val_max = (el_input.attr('data-max')|0);
                     if (val_int>val_max)
                         val_int = val_max;
-                    else if (val_int<0)
-                        val_int = 0;
-                    if (val != (val_int).toString())
-                        el_input.val(val_int);
+                    //else if (val_int<0)
+                      //  val_int = 0;
+                    //if (val != (val_int).toString())
+                      //  el_input.val(val_int);
                 }
         };

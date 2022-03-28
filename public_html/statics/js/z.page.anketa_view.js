@@ -34,7 +34,7 @@ if (typeof window.z == 'object')
                             '#z_anketa_fio_child',
 
                             '#z_anketa_residence',
-                            '#z_anketa_place_of_work',
+                            //'#z_anketa_place_of_work',
                             '#z_anketa_name_ur',
                             '#z_anketa_birthday_child',
                             '#z_anketa_place_of_study',
@@ -58,7 +58,7 @@ if (typeof window.z == 'object')
                                         break;
 
                                         case 'z_anketa_residence':
-                                        case 'z_anketa_place_of_work':
+                                        //case 'z_anketa_place_of_work':
                                         case 'z_anketa_name_ur':
                                         case 'z_anketa_place_of_study':
                                             _self.validate_required($(this));
@@ -161,8 +161,8 @@ if (typeof window.z == 'object')
                         _self.validate_fio(_self.z.el.z_anketa_code);
                     if (typeof _self.z.el.z_anketa_residence == 'object')
                         _self.validate_required(_self.z.el.z_anketa_residence);
-                    if (typeof _self.z.el.z_anketa_place_of_work == 'object')
-                        _self.validate_required(_self.z.el.z_anketa_place_of_work);
+                    //if (typeof _self.z.el.z_anketa_place_of_work == 'object')
+                      //  _self.validate_required(_self.z.el.z_anketa_place_of_work);
                     if (typeof _self.z.el.z_anketa_email_parent == 'object')
                         _self.validate_email(_self.z.el.z_anketa_email_parent);
 

@@ -67,12 +67,15 @@
                 <div class="invalid-feedback">Заполните поле корректно</div>
             </div>
             <div class="form-group z_anketa_block_<?php echo Questionnaire::TYPE_UR; ?>">
+                <?php echo CHtml::activeLabel($model, 'code', array('for'=>'z_anketa_code')); ?>
+                <?php echo CHtml::activeTextField($model, 'code', array('class' => 'form-control', 'placeholder' => $model->getAttributeLabel('code'), 'id'=>'z_anketa_code', 'data-mask'=>' абвгдеёжзийклмнопрстуфхцчшщъыьэюя-')); ?>
+                <div class="info-code">Запомните кодовое слово для последующего входа в личный кабинет</div>
+                <div class="invalid-feedback">Заполните поле корректно</div>
+            </div>
+            <div class="form-group z_anketa_block_<?php echo Questionnaire::TYPE_UR; ?>">
                 <?php echo CHtml::activeLabel($model, 'tel_ur_contact', array('for'=>'z_anketa_tel_ur_contact')); ?>
                 <div class="input-group">
-                    <div class="input-group-prepend">
-                        <div class="input-group-text">+7</div>
-                    </div>
-                    <?php echo CHtml::activeTextField($model, 'tel_ur_contact', array((Questionnaire::TYPE_UR==$model->type?'_':'').'disabled'=>'disabled', 'class' => 'form-control', 'placeholder' => $model->getAttributeLabel('tel_ur_contact'), 'required'=>'required', 'id'=>'z_anketa_tel_ur_contact', 'maxlength'=>15, 'data-mask'=>'0123456789')); ?>
+                    <?php echo CHtml::activeTextField($model, 'tel_ur_contact', array((Questionnaire::TYPE_UR==$model->type?'_':'').'disabled'=>'disabled', 'class' => 'form-control', 'placeholder' => $model->getAttributeLabel('tel_ur_contact'), 'required'=>'required', 'id'=>'z_anketa_tel_ur_contact', 'maxlength'=>11, 'data-mask'=>'0123456789')); ?>
                     <div class="invalid-feedback">Заполните поле корректно</div>
                 </div>
             </div>
@@ -84,18 +87,20 @@
 
             <hr class="z_anketa_block_<?php echo Questionnaire::TYPE_UR; ?>"/>
             <!--UR END-->
-
             <!--FIZ START-->
             <div class="form-group">
                 <?php echo CHtml::activeLabel($model, 'fio_parent', array('for'=>'z_anketa_fio_parent')); ?>
                 <?php echo CHtml::activeTextField($model, 'fio_parent', array('class' => 'form-control', 'placeholder' => $model->getAttributeLabel('fio_parent'), 'required'=>'required', 'id'=>'z_anketa_fio_parent', 'data-mask'=>' абвгдеёжзийклмнопрстуфхцчшщъыьэюя-')); ?>
                 <div class="invalid-feedback">Заполните поле корректно</div>
             </div>
-            <div class="form-group">
+
+            <div class="form-group z_anketa_block_2">
                 <?php echo CHtml::activeLabel($model, 'code', array('for'=>'z_anketa_code')); ?>
-                <?php echo CHtml::activeTextField($model, 'code', array('class' => 'form-control', 'placeholder' => $model->getAttributeLabel('code'), 'required'=>'required', 'id'=>'z_anketa_code', 'data-mask'=>' абвгдеёжзийклмнопрстуфхцчшщъыьэюя-')); ?>
+                <?php echo CHtml::activeTextField($model, 'code', array('class' => 'form-control', 'placeholder' => $model->getAttributeLabel('code'), 'id'=>'z_anketa_code', 'data-mask'=>' абвгдеёжзийклмнопрстуфхцчшщъыьэюя-')); ?>
+                <div class="info-code">Запомните кодовое слово для последующего входа в личный кабинет</div>
                 <div class="invalid-feedback">Заполните поле корректно</div>
             </div>
+
             <!--
             <div class="form-group">
                 <?php echo CHtml::activeLabel($model, 'place_of_work', array('for'=>'z_anketa_place_of_work')); ?>
@@ -158,15 +163,12 @@
                 <?php echo CHtml::activeLabel($model, 'place_of_study', array('for'=>'z_anketa_place_of_study')); ?>
                 <?php echo CHtml::activeTextField($model, 'place_of_study', array('class' => 'form-control', 'placeholder' => $model->getAttributeLabel('place_of_study'), 'required'=>'required', 'id'=>'z_anketa_place_of_study')); ?>
                 <div class="invalid-feedback">Заполните поле корректно</div>
-            </div>
+            </div> 
             -->
             <div class="form-group">
                 <?php echo CHtml::activeLabel($model, 'tel_parent', array('for'=>'z_anketa_tel_parent')); ?>
                 <div class="input-group">
-                    <div class="input-group-prepend">
-                        <div class="input-group-text">+7</div>
-                    </div>
-                    <?php echo CHtml::activeTextField($model, 'tel_parent', array('class' => 'form-control', 'placeholder' => $model->getAttributeLabel('tel_parent'), 'required'=>'required', 'id'=>'z_anketa_tel_parent', 'maxlength'=>15, 'data-mask'=>'0123456789')); ?>
+                    <?php echo CHtml::activeTextField($model, 'tel_parent', array('class' => 'form-control', 'placeholder' => $model->getAttributeLabel('tel_parent'), 'required'=>'required', 'id'=>'z_anketa_tel_parent', 'maxlength'=>11, 'data-mask'=>'0123456789')); ?>
                     <div class="invalid-feedback">Заполните поле корректно</div>
                 </div>
             </div>
@@ -425,7 +427,7 @@
                 <tr>
                     <th scope="row" class="align-middle text-center">
                         <?php echo Questionnaire::getCAMPName(Questionnaire::CAMP_EAST_4); ?><br/>
-                        <small>Репное</small>
+                        <small>проезд Пионерский, 1</small>
                     </th>
                     <td class="text-center">от <?php echo $shifts[Questionnaire::SHIFT_EAST_1]['min_age']; ?> до <?php echo $shifts[Questionnaire::SHIFT_EAST_1]['max_age'];?> лет</td>
                     <td class="text-center" data-dlo="<?php echo Questionnaire::DLO_1; ?>" data-shift="<?php echo Questionnaire::SHIFT_EAST_1; ?>">

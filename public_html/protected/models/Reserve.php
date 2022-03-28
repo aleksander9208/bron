@@ -95,7 +95,8 @@ class Reserve extends CActiveRecord
             'srez_26',
             'srez_27',
             'srez_28',
-            'srez_29'
+            'srez_29',
+            'seats'
         );
     }
 
@@ -171,5 +172,26 @@ class Reserve extends CActiveRecord
         }
 
         parent::__set($var, $value);
+    }
+
+    public static function seatsCamp($attributes)
+    {
+
+        foreach($attributes as $key => $value) {
+            if (in_array($key, self::safeAttributes())) {
+                unset($attributes[$key]);
+            }
+        }
+
+        foreach($attributes as $key=>$value) {
+
+            $pieces = explode("_", $key);
+
+            $command = Yii::app()->db->createCommand();
+            $command->update('sb_camp', array(
+                $pieces[0] => $value,
+            ), "id=$pieces[1]");
+        }
+
     }
 }

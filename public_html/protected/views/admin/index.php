@@ -89,7 +89,7 @@
                         'headerHtmlOptions' => array('class' => 'text-center','scope'=>'col')
                     ),
                     array(
-                        'header' => 'ФИО ребенка',
+                        'header' => 'Имя ребенка',
                         'name' => 'fio_child',
                         'type' => 'raw',
                         'value' => '$data->fio_child',
@@ -182,6 +182,7 @@
                         'headerHtmlOptions' => array('class' => 'text-center','scope'=>'col'),
                         'filter' => array('НЕТ','ДА'),
                     ),
+                    /*
                     array(
                         'header' => 'Комментарий',
                         'name' => 'comment',
@@ -191,11 +192,12 @@
                         'headerHtmlOptions' => array('class' => 'text-center','scope'=>'col'),
                         'filter' => CHtml::activeTextField($model, 'comment', array('class' => 'form-control')),
                     ),
+*/
                     array(
                         'header' => 'Статус',
                         'name' => 'status',
                         'type' => 'raw',
-                        'value' => 'CHtml::link(Questionnaire::getStatusName($data->status),"/admin/bid/".$data->id, array("class"=>"btn btn-success btn-sm") )',
+                        'value' => 'CHtml::link(Questionnaire::getStatusName($data->status, $data->booking_id),"/admin/bid/".$data->id, array("class"=>"btn btn-success btn-sm") )',
                         'htmlOptions' => array('class'=>'text-center'),
                         'filter' => Questionnaire::getStatusName(),
                         'headerHtmlOptions' => array('class' => 'text-center','scope'=>'col'),

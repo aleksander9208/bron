@@ -24,3 +24,12 @@
 {
     white-space: nowrap;
 }
+
+.fiz_block {
+    display: none;
+}
+
+.info_list .z_anketa_counts {
+    margin-left: -40px;
+    margin-top: 5px;
+}

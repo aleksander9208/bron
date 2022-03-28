@@ -21,6 +21,7 @@
                         <th scope="col" class="text-center"><?php echo Questionnaire::getDLOName(Questionnaire::DLO_6); ?></th>
                         <th scope="col" class="text-center"><?php echo Questionnaire::getDLOName(Questionnaire::DLO_7); ?></th>
                         <th scope="col" class="text-center"><?php echo Questionnaire::getDLOName(Questionnaire::DLO_8); ?></th>
+                        <th scope="col" class="text-center">Количество мест</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -46,6 +47,19 @@
                             <?php echo SiteService::templateSeatsCount($seats[Questionnaire::SHIFT_KIROVEC_4]['seats'], $shifts[Questionnaire::SHIFT_KIROVEC_4]['seats'], $rfill[Questionnaire::SHIFT_KIROVEC_4]); ?>
                         </td>
                         <td>&nbsp;</td>
+                        <td class="text-center">
+                            <?php echo CHtml::activeTextField(
+                                    $model,
+                                    'seats_'.Questionnaire::CAMP_KIROVEC,
+                                    array(
+                                        'class' => 'form-control text-center',
+                                        'data-mask'=>'0123456789',
+                                        'maxlength'=>3,
+                                        'data-toggle'=>'tooltip',
+                                        'value'=> SiteService::infoCamp(Questionnaire::CAMP_KIROVEC, 'seats')
+                                    )
+                            ); ?>
+                        </td>
                     </tr>
                     <tr>
                         <th scope="row"class="align-middle"><?php echo Questionnaire::getCAMPName(Questionnaire::CAMP_BLUESCREEN); ?></th>
@@ -72,6 +86,19 @@
                             <?php echo CHtml::activeTextField($model, 'srez_20', array('class' => 'form-control text-center', 'data-mask'=>'0123456789', 'maxlength'=>3, 'data-max'=>$shifts[Questionnaire::SHIFT_BLUESCREEN_5]['seats'], 'data-toggle'=>'tooltip', 'title'=>'Значение от 0 из '.$shifts[Questionnaire::SHIFT_BLUESCREEN_5]['seats'])); ?>
                             <?php echo SiteService::templateSeatsCount($seats[Questionnaire::SHIFT_BLUESCREEN_5]['seats'], $shifts[Questionnaire::SHIFT_BLUESCREEN_5]['seats'], $rfill[Questionnaire::SHIFT_BLUESCREEN_5]); ?>
                         </td>
+                        <td>
+                            <?php echo CHtml::activeTextField(
+                                $model,
+                                'seats_'.Questionnaire::CAMP_BLUESCREEN,
+                                array(
+                                    'class' => 'form-control text-center',
+                                    'data-mask'=>'0123456789',
+                                    'maxlength'=>3,
+                                    'data-toggle'=>'tooltip',
+                                    'value'=> SiteService::infoCamp(Questionnaire::CAMP_BLUESCREEN, 'seats')
+                                )
+                            ); ?>
+                        </td>
                     </tr>
                     <tr>
                         <th scope="row" class="align-middle"><?php echo Questionnaire::getCAMPName(Questionnaire::CAMP_EAST_4); ?></th>
@@ -94,6 +121,19 @@
                             <?php echo SiteService::templateSeatsCount($seats[Questionnaire::SHIFT_EAST_4]['seats'], $shifts[Questionnaire::SHIFT_EAST_4]['seats'], $rfill[Questionnaire::SHIFT_EAST_4]); ?>
                         </td>
                         <td>&nbsp;</td>
+                        <td>
+                            <?php echo CHtml::activeTextField(
+                                $model,
+                                'seats_'.Questionnaire::CAMP_EAST_4,
+                                array(
+                                    'class' => 'form-control text-center',
+                                    'data-mask'=>'0123456789',
+                                    'maxlength'=>3,
+                                    'data-toggle'=>'tooltip',
+                                    'value'=> SiteService::infoCamp(Questionnaire::CAMP_EAST_4, 'seats')
+                                )
+                            ); ?>
+                        </td>
                     </tr>
                     <tr>
                         <th scope="row" class="align-middle"><?php echo Questionnaire::getCAMPName(Questionnaire::CAMP_DIAMOND); ?></th>
@@ -117,6 +157,19 @@
                             <?php echo SiteService::templateSeatsCount($seats[Questionnaire::SHIFT_DIAMOND_4]['seats'], $shifts[Questionnaire::SHIFT_DIAMOND_4]['seats'], $rfill[Questionnaire::SHIFT_DIAMOND_4]); ?>
                         </td>
                         <td>&nbsp;</td>
+                        <td>
+                            <?php echo CHtml::activeTextField(
+                                $model,
+                                'seats_'.Questionnaire::CAMP_DIAMOND,
+                                array(
+                                    'class' => 'form-control text-center',
+                                    'data-mask'=>'0123456789',
+                                    'maxlength'=>3,
+                                    'data-toggle'=>'tooltip',
+                                    'value'=> SiteService::infoCamp(Questionnaire::CAMP_DIAMOND, 'seats')
+                                )
+                            ); ?>
+                        </td>
                     </tr>
                     <tr>
                         <th scope="row" class="align-middle"><?php echo Questionnaire::getCAMPName(Questionnaire::CAMP_BONFIRE); ?></th>
@@ -140,6 +193,19 @@
                             <?php echo SiteService::templateSeatsCount($seats[Questionnaire::SHIFT_BONFIRE_4]['seats'], $shifts[Questionnaire::SHIFT_BONFIRE_4]['seats'], $rfill[Questionnaire::SHIFT_BONFIRE_4]); ?>
                         </td>
                         <td>&nbsp;</td>
+                        <td>
+                            <?php echo CHtml::activeTextField(
+                                $model,
+                                'seats_'.Questionnaire::CAMP_BONFIRE,
+                                array(
+                                    'class' => 'form-control text-center',
+                                    'data-mask'=>'0123456789',
+                                    'maxlength'=>3,
+                                    'data-toggle'=>'tooltip',
+                                    'value'=> SiteService::infoCamp(Questionnaire::CAMP_BONFIRE, 'seats')
+                                )
+                            ); ?>
+                        </td>
                     </tr>
                     <tr>
                         <th scope="row" class="align-middle"><?php echo Questionnaire::getCAMPName(Questionnaire::CAMP_LIGHTHOUSE); ?></th>
@@ -163,6 +229,19 @@
                             <?php echo SiteService::templateSeatsCount($seats[Questionnaire::SHIFT_LIGHTHOUSE_4]['seats'], $shifts[Questionnaire::SHIFT_LIGHTHOUSE_4]['seats'], $rfill[Questionnaire::SHIFT_LIGHTHOUSE_4]); ?>
                         </td>
                         <td>&nbsp;</td>
+                        <td>
+                            <?php echo CHtml::activeTextField(
+                                $model,
+                                'seats_'.Questionnaire::CAMP_LIGHTHOUSE,
+                                array(
+                                    'class' => 'form-control text-center',
+                                    'data-mask'=>'0123456789',
+                                    'maxlength'=>3,
+                                    'data-toggle'=>'tooltip',
+                                    'value'=> SiteService::infoCamp(Questionnaire::CAMP_LIGHTHOUSE, 'seats')
+                                )
+                            ); ?>
+                        </td>
                     </tr>
                     <tr>
                         <th scope="row"
@@ -187,6 +266,19 @@
                             <?php echo SiteService::templateSeatsCount($seats[Questionnaire::SHIFT_FLYGHT_4]['seats'], $shifts[Questionnaire::SHIFT_FLYGHT_4]['seats'], $rfill[Questionnaire::SHIFT_FLYGHT_4]); ?>
                         </td>
                         <td>&nbsp;</td>
+                        <td>
+                            <?php echo CHtml::activeTextField(
+                                $model,
+                                'seats_'.Questionnaire::CAMP_FLYGHT,
+                                array(
+                                    'class' => 'form-control text-center',
+                                    'data-mask'=>'0123456789',
+                                    'maxlength'=>3,
+                                    'data-toggle'=>'tooltip',
+                                    'value'=> SiteService::infoCamp(Questionnaire::CAMP_FLYGHT, 'seats')
+                                )
+                            ); ?>
+                        </td>
                     </tr>
                 </tbody>
             </table>
