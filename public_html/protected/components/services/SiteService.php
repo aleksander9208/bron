@@ -366,10 +366,10 @@ class SiteService
     {
 
         $seatsFrom = $seatsFrom + self::countSeats($shiftId);
-        
+
         $checked = ((in_array($shiftId, $shiftsPost)) ? true : false);
         return '' .
-        '<div class="custom-control custom-switch">' .
+        '<div class="custom-control custom-switch info_list">' .
         CHtml::checkBox('Shifts[]', $checked, array('class' => 'custom-control-input', 'id' => 'z_anketa_' . $shiftId, 'value' => $shiftId, 'data-pgroup' => $period_group)) .
         CHtml::label($shiftName, 'z_anketa_' . $shiftId, array('class' => 'custom-control-label')) .
 
@@ -380,10 +380,25 @@ class SiteService
 
     public static function templateSeatsCount($seatsFrom, $seatsTo, $fillReserv = null)
     {
+
+        $proc = ($seatsFrom/$seatsTo) * 100;
+
+        switch (round($proc)) {
+            case ($proc < 50):
+                $info = 'мало заявок';
+                break;
+            case ($proc > 50 && $proc < 120):
+                $info = 'среднее количество';
+                break;
+            case ($proc > 120):
+                $info = 'много заявок';
+                break;
+        }
+
         if ($seatsFrom<$seatsTo)
             return '<div class="z_anketa_counts">'.$seatsFrom.' из '. $seatsTo.(!is_null($fillReserv)?' [p:'.$fillReserv.']':'').'</div>';
         else
-            return '<div class="z_anketa_counts">Резерв'.(!is_null($fillReserv)?' [p:'.$fillReserv.']':'').'</div>';
+            return '<div class="z_anketa_counts">Резерв: '.$info.'</div>';
         //return '<div class="z_anketa_counts">' . ($seatsFrom > $seatsTo ? $seatsTo : $seatsFrom) . ' из ' . $seatsTo . ($seatsFrom > $seatsTo ? '. В резерве: ' . abs($seatsTo - $seatsFrom) : '') . '</div>';
     }
 

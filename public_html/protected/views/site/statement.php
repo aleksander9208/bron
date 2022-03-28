@@ -427,7 +427,7 @@
                 <tr>
                     <th scope="row" class="align-middle text-center">
                         <?php echo Questionnaire::getCAMPName(Questionnaire::CAMP_EAST_4); ?><br/>
-                        <small>Репное</small>
+                        <small>проезд Пионерский, 1</small>
                     </th>
                     <td class="text-center">от <?php echo $shifts[Questionnaire::SHIFT_EAST_1]['min_age']; ?> до <?php echo $shifts[Questionnaire::SHIFT_EAST_1]['max_age'];?> лет</td>
                     <td class="text-center" data-dlo="<?php echo Questionnaire::DLO_1; ?>" data-shift="<?php echo Questionnaire::SHIFT_EAST_1; ?>">

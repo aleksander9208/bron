@@ -4171,3 +4171,118 @@ Stack trace:
 REQUEST_URI=/site/addstatement
 HTTP_REFERER=http://ostrou0v.beget.tech/admin
 ---
+2022/03/28 09:18:39 [error] [exception.CHttpException.404] CHttpException: Невозможно обработать запрос "favicon.ico". in /home/o/ostrou0v/bron/public_html/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/o/ostrou0v/bron/public_html/framework/web/CWebApplication.php(141): CWebApplication->runController('favicon.ico')
+#1 /home/o/ostrou0v/bron/public_html/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#2 /home/o/ostrou0v/bron/public_html/index.php(9): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+HTTP_REFERER=http://ostrou0v.beget.tech/site/addstatement
+---
+2022/03/28 09:18:39 [warning] [system.web.CHttpSession] session_start(): Cannot start session when headers already sent
+in /home/o/ostrou0v/bron/public_html/protected/views/layouts/main.php (55)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/ErrorsController.php (23)
+2022/03/28 09:18:39 [warning] [system.web.CHttpSession] session_start(): Cannot start session when headers already sent
+in /home/o/ostrou0v/bron/public_html/protected/views/layouts/main.php (55)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/ErrorsController.php (23)
+2022/03/28 10:53:55 [error] [exception.CHttpException.404] CHttpException: Невозможно обработать запрос "favicon.ico". in /home/o/ostrou0v/bron/public_html/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/o/ostrou0v/bron/public_html/framework/web/CWebApplication.php(141): CWebApplication->runController('favicon.ico')
+#1 /home/o/ostrou0v/bron/public_html/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#2 /home/o/ostrou0v/bron/public_html/index.php(9): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+HTTP_REFERER=http://ostrou0v.beget.tech/site/addstatement
+---
+2022/03/28 10:53:55 [warning] [system.web.CHttpSession] session_start(): Cannot start session when headers already sent
+in /home/o/ostrou0v/bron/public_html/protected/views/layouts/main.php (55)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/ErrorsController.php (23)
+2022/03/28 10:53:55 [warning] [system.web.CHttpSession] session_start(): Cannot start session when headers already sent
+in /home/o/ostrou0v/bron/public_html/protected/views/layouts/main.php (55)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/ErrorsController.php (23)
+2022/03/28 10:54:34 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_1" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/28 10:54:34 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_2" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/28 10:54:34 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_3" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/28 10:54:34 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_4" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/28 10:54:34 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_5" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/28 10:54:34 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_6" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/28 10:54:34 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_7" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/28 10:55:01 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_1" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/28 10:55:01 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_2" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/28 10:55:01 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_3" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/28 10:55:01 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_4" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/28 10:55:01 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_5" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/28 10:55:01 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_6" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/28 10:55:01 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_7" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/28 11:10:29 [error] [exception.Error] Error: Class 'Camp' not found in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php:160
+Stack trace:
+#0 /home/o/ostrou0v/bron/public_html/framework/web/actions/CInlineAction.php(49): AdminController->actionCamp()
+#1 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#2 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#3 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#4 /home/o/ostrou0v/bron/public_html/framework/web/CWebApplication.php(282): CController->run('camp')
+#5 /home/o/ostrou0v/bron/public_html/framework/web/CWebApplication.php(141): CWebApplication->runController('admin/camp')
+#6 /home/o/ostrou0v/bron/public_html/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#7 /home/o/ostrou0v/bron/public_html/index.php(9): CApplication->run()
+#8 {main}
+REQUEST_URI=/admin/camp
+HTTP_REFERER=http://ostrou0v.beget.tech/admin/reserve
+---
+2022/03/28 11:13:04 [error] [exception.CHttpException.404] CHttpException: Невозможно обработать запрос "favicon.ico". in /home/o/ostrou0v/bron/public_html/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/o/ostrou0v/bron/public_html/framework/web/CWebApplication.php(141): CWebApplication->runController('favicon.ico')
+#1 /home/o/ostrou0v/bron/public_html/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#2 /home/o/ostrou0v/bron/public_html/index.php(9): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+HTTP_REFERER=http://ostrou0v.beget.tech/site
+---
+2022/03/28 11:13:04 [warning] [system.web.CHttpSession] session_start(): Cannot start session when headers already sent
+in /home/o/ostrou0v/bron/public_html/protected/views/layouts/main.php (55)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/ErrorsController.php (23)
+2022/03/28 11:13:04 [warning] [system.web.CHttpSession] session_start(): Cannot start session when headers already sent
+in /home/o/ostrou0v/bron/public_html/protected/views/layouts/main.php (55)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/ErrorsController.php (23)
