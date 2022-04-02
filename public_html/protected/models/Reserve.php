@@ -187,10 +187,17 @@ class Reserve extends CActiveRecord
 
             $pieces = explode("_", $key);
 
-            $command = Yii::app()->db->createCommand();
-            $command->update('sb_camp', array(
-                $pieces[0] => $value,
-            ), "id=$pieces[1]");
+            if($pieces['0'] == 'date') {
+                $command = Yii::app()->db->createCommand();
+                $command->update('sb_smena', array(
+                    $pieces[0] => $value,
+                ), "id=$pieces[1]");
+            } else {
+                $command = Yii::app()->db->createCommand();
+                $command->update('sb_camp', array(
+                    $pieces[0] => $value,
+                ), "id=$pieces[1]");
+            }
         }
 
     }

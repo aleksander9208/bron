@@ -4286,3 +4286,1403 @@ in /home/o/ostrou0v/bron/public_html/protected/controllers/ErrorsController.php 
 2022/03/28 11:13:04 [warning] [system.web.CHttpSession] session_start(): Cannot start session when headers already sent
 in /home/o/ostrou0v/bron/public_html/protected/views/layouts/main.php (55)
 in /home/o/ostrou0v/bron/public_html/protected/controllers/ErrorsController.php (23)
+2022/03/29 09:49:09 [error] [exception.CHttpException.404] CHttpException: Невозможно обработать запрос "favicon.ico". in /home/o/ostrou0v/bron/public_html/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/o/ostrou0v/bron/public_html/framework/web/CWebApplication.php(141): CWebApplication->runController('favicon.ico')
+#1 /home/o/ostrou0v/bron/public_html/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#2 /home/o/ostrou0v/bron/public_html/index.php(9): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+HTTP_REFERER=http://ostrou0v.beget.tech/site
+---
+2022/03/29 09:49:09 [warning] [system.web.CHttpSession] session_start(): Cannot start session when headers already sent
+in /home/o/ostrou0v/bron/public_html/protected/views/layouts/main.php (55)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/ErrorsController.php (23)
+2022/03/29 09:49:09 [warning] [system.web.CHttpSession] session_start(): Cannot start session when headers already sent
+in /home/o/ostrou0v/bron/public_html/protected/views/layouts/main.php (55)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/ErrorsController.php (23)
+2022/03/30 08:54:54 [error] [exception.CHttpException.404] CHttpException: Невозможно обработать запрос "favicon.ico". in /home/o/ostrou0v/bron/public_html/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/o/ostrou0v/bron/public_html/framework/web/CWebApplication.php(141): CWebApplication->runController('favicon.ico')
+#1 /home/o/ostrou0v/bron/public_html/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#2 /home/o/ostrou0v/bron/public_html/index.php(9): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+HTTP_REFERER=http://ostrou0v.beget.tech/site
+---
+2022/03/30 08:54:54 [warning] [system.web.CHttpSession] session_start(): Cannot start session when headers already sent
+in /home/o/ostrou0v/bron/public_html/protected/views/layouts/main.php (55)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/ErrorsController.php (23)
+2022/03/30 08:54:54 [warning] [system.web.CHttpSession] session_start(): Cannot start session when headers already sent
+in /home/o/ostrou0v/bron/public_html/protected/views/layouts/main.php (55)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/ErrorsController.php (23)
+2022/03/31 07:54:27 [error] [exception.CHttpException.404] CHttpException: Невозможно обработать запрос "favicon.ico". in /home/o/ostrou0v/bron/public_html/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/o/ostrou0v/bron/public_html/framework/web/CWebApplication.php(141): CWebApplication->runController('favicon.ico')
+#1 /home/o/ostrou0v/bron/public_html/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#2 /home/o/ostrou0v/bron/public_html/index.php(9): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+HTTP_REFERER=http://ostrou0v.beget.tech/site
+---
+2022/03/31 07:54:27 [warning] [system.web.CHttpSession] session_start(): Cannot start session when headers already sent
+in /home/o/ostrou0v/bron/public_html/protected/views/layouts/main.php (55)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/ErrorsController.php (23)
+2022/03/31 07:54:27 [warning] [system.web.CHttpSession] session_start(): Cannot start session when headers already sent
+in /home/o/ostrou0v/bron/public_html/protected/views/layouts/main.php (55)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/ErrorsController.php (23)
+2022/03/31 09:01:45 [error] [exception.CHttpException.404] CHttpException: Невозможно обработать запрос "favicon.ico". in /home/o/ostrou0v/bron/public_html/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/o/ostrou0v/bron/public_html/framework/web/CWebApplication.php(141): CWebApplication->runController('favicon.ico')
+#1 /home/o/ostrou0v/bron/public_html/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#2 /home/o/ostrou0v/bron/public_html/index.php(9): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+HTTP_REFERER=http://ostrou0v.beget.tech/site
+---
+2022/03/31 09:01:45 [warning] [system.web.CHttpSession] session_start(): Cannot start session when headers already sent
+in /home/o/ostrou0v/bron/public_html/protected/views/layouts/main.php (55)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/ErrorsController.php (23)
+2022/03/31 09:01:45 [warning] [system.web.CHttpSession] session_start(): Cannot start session when headers already sent
+in /home/o/ostrou0v/bron/public_html/protected/views/layouts/main.php (55)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/ErrorsController.php (23)
+2022/03/31 09:11:39 [error] [exception.ParseError] ParseError: syntax error, unexpected end of file, expecting case (T_CASE) or default (T_DEFAULT) or '}' in /home/o/ostrou0v/bron/public_html/protected/models/Questionnaire.php:746
+Stack trace:
+#0 [internal function]: YiiBase::autoload('Questionnaire')
+#1 /home/o/ostrou0v/bron/public_html/protected/components/services/AdminService.php(114): spl_autoload_call('Questionnaire')
+#2 /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php(147): AdminService::getFillReserv()
+#3 /home/o/ostrou0v/bron/public_html/framework/web/actions/CInlineAction.php(49): AdminController->actionReserve()
+#4 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#6 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /home/o/ostrou0v/bron/public_html/framework/web/CWebApplication.php(282): CController->run('reserve')
+#8 /home/o/ostrou0v/bron/public_html/framework/web/CWebApplication.php(141): CWebApplication->runController('admin/reserve')
+#9 /home/o/ostrou0v/bron/public_html/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#10 /home/o/ostrou0v/bron/public_html/index.php(9): CApplication->run()
+#11 {main}
+REQUEST_URI=/admin/reserve
+HTTP_REFERER=http://ostrou0v.beget.tech/admin
+---
+2022/03/31 10:15:41 [warning] [application] Не удалось присвоить небезопасный атрибут "smena_1" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 10:15:41 [warning] [application] Не удалось присвоить небезопасный атрибут "smena_2" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 10:15:41 [warning] [application] Не удалось присвоить небезопасный атрибут "smena_3" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 10:15:41 [warning] [application] Не удалось присвоить небезопасный атрибут "smena_4" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 10:15:41 [warning] [application] Не удалось присвоить небезопасный атрибут "smena_5" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 10:15:41 [warning] [application] Не удалось присвоить небезопасный атрибут "smena_6" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 10:15:41 [warning] [application] Не удалось присвоить небезопасный атрибут "smena_7" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 10:15:41 [warning] [application] Не удалось присвоить небезопасный атрибут "smena_8" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 10:15:41 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_1" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 10:15:41 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_2" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 10:15:41 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_3" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 10:15:41 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_4" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 10:15:41 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_5" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 10:15:41 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_6" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 10:15:41 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_7" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 10:15:41 [error] [system.db.CDbCommand] Не удалось выполнить CDbCommand::execute(): SQLSTATE[42S22]: Column not found: 1054 Unknown column 'smena' in 'field list'. Выполнявшийся SQL-запрос: UPDATE `sb_camp` SET `smena`=:smena WHERE id=1. Bound with :smena='12.06-25.06'.
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (197)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (138)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 10:15:41 [error] [exception.CDbException] CDbException: CDbCommand не удалось исполнить SQL-запрос: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'smena' in 'field list'. The SQL statement executed was: UPDATE `sb_camp` SET `smena`=:smena WHERE id=1. Bound with :smena='12.06-25.06' in /home/o/ostrou0v/bron/public_html/framework/db/CDbCommand.php:358
+Stack trace:
+#0 /home/o/ostrou0v/bron/public_html/framework/db/CDbCommand.php(1313): CDbCommand->execute(Array)
+#1 /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php(197): CDbCommand->update('sb_camp', Array, 'id=1')
+#2 /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php(138): Reserve::seatsCamp(Array)
+#3 /home/o/ostrou0v/bron/public_html/framework/web/actions/CInlineAction.php(49): AdminController->actionReserve()
+#4 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#6 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /home/o/ostrou0v/bron/public_html/framework/web/CWebApplication.php(282): CController->run('reserve')
+#8 /home/o/ostrou0v/bron/public_html/framework/web/CWebApplication.php(141): CWebApplication->runController('admin/reserve')
+#9 /home/o/ostrou0v/bron/public_html/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#10 /home/o/ostrou0v/bron/public_html/index.php(9): CApplication->run()
+#11 {main}
+REQUEST_URI=/admin/reserve
+HTTP_REFERER=http://ostrou0v.beget.tech/admin/reserve
+---
+2022/03/31 10:18:16 [error] [exception.ParseError] ParseError: syntax error, unexpected '}', expecting end of file in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php:204
+Stack trace:
+#0 [internal function]: YiiBase::autoload('Reserve')
+#1 /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php(128): spl_autoload_call('Reserve')
+#2 /home/o/ostrou0v/bron/public_html/framework/web/actions/CInlineAction.php(49): AdminController->actionReserve()
+#3 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#4 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#5 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 /home/o/ostrou0v/bron/public_html/framework/web/CWebApplication.php(282): CController->run('reserve')
+#7 /home/o/ostrou0v/bron/public_html/framework/web/CWebApplication.php(141): CWebApplication->runController('admin/reserve')
+#8 /home/o/ostrou0v/bron/public_html/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#9 /home/o/ostrou0v/bron/public_html/index.php(9): CApplication->run()
+#10 {main}
+REQUEST_URI=/admin/reserve
+HTTP_REFERER=http://ostrou0v.beget.tech/admin/reserve
+---
+2022/03/31 10:18:29 [warning] [application] Не удалось присвоить небезопасный атрибут "smena_1" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 10:18:29 [warning] [application] Не удалось присвоить небезопасный атрибут "smena_2" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 10:18:29 [warning] [application] Не удалось присвоить небезопасный атрибут "smena_3" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 10:18:29 [warning] [application] Не удалось присвоить небезопасный атрибут "smena_4" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 10:18:29 [warning] [application] Не удалось присвоить небезопасный атрибут "smena_5" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 10:18:29 [warning] [application] Не удалось присвоить небезопасный атрибут "smena_6" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 10:18:29 [warning] [application] Не удалось присвоить небезопасный атрибут "smena_7" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 10:18:29 [warning] [application] Не удалось присвоить небезопасный атрибут "smena_8" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 10:18:29 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_1" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 10:18:29 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_2" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 10:18:29 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_3" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 10:18:29 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_4" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 10:18:29 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_5" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 10:18:29 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_6" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 10:18:29 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_7" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 10:18:36 [warning] [application] Не удалось присвоить небезопасный атрибут "date_1" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 10:18:36 [warning] [application] Не удалось присвоить небезопасный атрибут "date_2" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 10:18:36 [warning] [application] Не удалось присвоить небезопасный атрибут "date_3" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 10:18:36 [warning] [application] Не удалось присвоить небезопасный атрибут "date_4" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 10:18:36 [warning] [application] Не удалось присвоить небезопасный атрибут "date_5" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 10:18:36 [warning] [application] Не удалось присвоить небезопасный атрибут "date_6" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 10:18:36 [warning] [application] Не удалось присвоить небезопасный атрибут "date_7" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 10:18:36 [warning] [application] Не удалось присвоить небезопасный атрибут "date_8" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 10:18:36 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_1" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 10:18:36 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_2" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 10:18:36 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_3" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 10:18:36 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_4" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 10:18:36 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_5" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 10:18:36 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_6" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 10:18:36 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_7" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 10:18:37 [error] [system.db.CDbCommand] Не удалось выполнить CDbCommand::execute(): SQLSTATE[42S22]: Column not found: 1054 Unknown column 'date' in 'field list'. Выполнявшийся SQL-запрос: UPDATE `sb_camp` SET `date`=:date WHERE id=1. Bound with :date='12.06-25.06'.
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (199)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (138)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 10:18:37 [error] [exception.CDbException] CDbException: CDbCommand не удалось исполнить SQL-запрос: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'date' in 'field list'. The SQL statement executed was: UPDATE `sb_camp` SET `date`=:date WHERE id=1. Bound with :date='12.06-25.06' in /home/o/ostrou0v/bron/public_html/framework/db/CDbCommand.php:358
+Stack trace:
+#0 /home/o/ostrou0v/bron/public_html/framework/db/CDbCommand.php(1313): CDbCommand->execute(Array)
+#1 /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php(199): CDbCommand->update('sb_camp', Array, 'id=1')
+#2 /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php(138): Reserve::seatsCamp(Array)
+#3 /home/o/ostrou0v/bron/public_html/framework/web/actions/CInlineAction.php(49): AdminController->actionReserve()
+#4 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#6 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /home/o/ostrou0v/bron/public_html/framework/web/CWebApplication.php(282): CController->run('reserve')
+#8 /home/o/ostrou0v/bron/public_html/framework/web/CWebApplication.php(141): CWebApplication->runController('admin/reserve')
+#9 /home/o/ostrou0v/bron/public_html/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#10 /home/o/ostrou0v/bron/public_html/index.php(9): CApplication->run()
+#11 {main}
+REQUEST_URI=/admin/reserve
+HTTP_REFERER=http://ostrou0v.beget.tech/admin/reserve
+---
+2022/03/31 10:18:53 [warning] [application] Не удалось присвоить небезопасный атрибут "date_1" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 10:18:53 [warning] [application] Не удалось присвоить небезопасный атрибут "date_2" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 10:18:53 [warning] [application] Не удалось присвоить небезопасный атрибут "date_3" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 10:18:53 [warning] [application] Не удалось присвоить небезопасный атрибут "date_4" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 10:18:53 [warning] [application] Не удалось присвоить небезопасный атрибут "date_5" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 10:18:53 [warning] [application] Не удалось присвоить небезопасный атрибут "date_6" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 10:18:53 [warning] [application] Не удалось присвоить небезопасный атрибут "date_7" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 10:18:53 [warning] [application] Не удалось присвоить небезопасный атрибут "date_8" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 10:18:53 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_1" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 10:18:53 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_2" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 10:18:53 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_3" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 10:18:53 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_4" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 10:18:53 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_5" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 10:18:53 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_6" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 10:18:53 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_7" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 10:18:57 [warning] [application] Не удалось присвоить небезопасный атрибут "date_1" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 10:18:57 [warning] [application] Не удалось присвоить небезопасный атрибут "date_2" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 10:18:57 [warning] [application] Не удалось присвоить небезопасный атрибут "date_3" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 10:18:57 [warning] [application] Не удалось присвоить небезопасный атрибут "date_4" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 10:18:57 [warning] [application] Не удалось присвоить небезопасный атрибут "date_5" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 10:18:57 [warning] [application] Не удалось присвоить небезопасный атрибут "date_6" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 10:18:57 [warning] [application] Не удалось присвоить небезопасный атрибут "date_7" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 10:18:57 [warning] [application] Не удалось присвоить небезопасный атрибут "date_8" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 10:18:57 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_1" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 10:18:57 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_2" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 10:18:57 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_3" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 10:18:57 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_4" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 10:18:57 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_5" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 10:18:57 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_6" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 10:18:57 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_7" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 12:08:20 [error] [exception.Error] Error: Class 'Camp' not found in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php:160
+Stack trace:
+#0 /home/o/ostrou0v/bron/public_html/framework/web/actions/CInlineAction.php(49): AdminController->actionCamp()
+#1 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#2 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#3 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#4 /home/o/ostrou0v/bron/public_html/framework/web/CWebApplication.php(282): CController->run('camp')
+#5 /home/o/ostrou0v/bron/public_html/framework/web/CWebApplication.php(141): CWebApplication->runController('admin/camp')
+#6 /home/o/ostrou0v/bron/public_html/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#7 /home/o/ostrou0v/bron/public_html/index.php(9): CApplication->run()
+#8 {main}
+REQUEST_URI=/admin/camp
+HTTP_REFERER=http://ostrou0v.beget.tech/admin
+---
+2022/03/31 12:09:25 [warning] [application] Не удалось присвоить небезопасный атрибут "date_1" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 12:09:25 [warning] [application] Не удалось присвоить небезопасный атрибут "date_2" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 12:09:25 [warning] [application] Не удалось присвоить небезопасный атрибут "date_3" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 12:09:25 [warning] [application] Не удалось присвоить небезопасный атрибут "date_4" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 12:09:25 [warning] [application] Не удалось присвоить небезопасный атрибут "date_5" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 12:09:25 [warning] [application] Не удалось присвоить небезопасный атрибут "date_6" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 12:09:25 [warning] [application] Не удалось присвоить небезопасный атрибут "date_7" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 12:09:25 [warning] [application] Не удалось присвоить небезопасный атрибут "date_8" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 12:09:25 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_1" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 12:09:25 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_2" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 12:09:25 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_3" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 12:09:25 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_4" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 12:09:25 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_5" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 12:09:25 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_6" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 12:09:25 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_7" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 12:09:27 [warning] [application] Не удалось присвоить небезопасный атрибут "date_1" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 12:09:27 [warning] [application] Не удалось присвоить небезопасный атрибут "date_2" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 12:09:27 [warning] [application] Не удалось присвоить небезопасный атрибут "date_3" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 12:09:27 [warning] [application] Не удалось присвоить небезопасный атрибут "date_4" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 12:09:27 [warning] [application] Не удалось присвоить небезопасный атрибут "date_5" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 12:09:27 [warning] [application] Не удалось присвоить небезопасный атрибут "date_6" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 12:09:27 [warning] [application] Не удалось присвоить небезопасный атрибут "date_7" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 12:09:27 [warning] [application] Не удалось присвоить небезопасный атрибут "date_8" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 12:09:27 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_1" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 12:09:27 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_2" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 12:09:27 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_3" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 12:09:27 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_4" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 12:09:27 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_5" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 12:09:27 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_6" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 12:09:27 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_7" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/03/31 12:34:46 [error] [exception.Error] Error: Class 'Camp' not found in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php:160
+Stack trace:
+#0 /home/o/ostrou0v/bron/public_html/framework/web/actions/CInlineAction.php(49): AdminController->actionCamp()
+#1 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#2 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#3 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#4 /home/o/ostrou0v/bron/public_html/framework/web/CWebApplication.php(282): CController->run('camp')
+#5 /home/o/ostrou0v/bron/public_html/framework/web/CWebApplication.php(141): CWebApplication->runController('admin/camp')
+#6 /home/o/ostrou0v/bron/public_html/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#7 /home/o/ostrou0v/bron/public_html/index.php(9): CApplication->run()
+#8 {main}
+REQUEST_URI=/admin/camp
+HTTP_REFERER=http://ostrou0v.beget.tech/admin/reserve
+---
+2022/04/01 14:58:23 [error] [exception.CHttpException.404] CHttpException: Невозможно обработать запрос "favicon.ico". in /home/o/ostrou0v/bron/public_html/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/o/ostrou0v/bron/public_html/framework/web/CWebApplication.php(141): CWebApplication->runController('favicon.ico')
+#1 /home/o/ostrou0v/bron/public_html/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#2 /home/o/ostrou0v/bron/public_html/index.php(9): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+HTTP_REFERER=http://ostrou0v.beget.tech/
+---
+2022/04/01 14:58:23 [warning] [system.web.CHttpSession] session_start(): Cannot start session when headers already sent
+in /home/o/ostrou0v/bron/public_html/protected/views/layouts/main.php (55)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/ErrorsController.php (23)
+2022/04/01 14:58:23 [warning] [system.web.CHttpSession] session_start(): Cannot start session when headers already sent
+in /home/o/ostrou0v/bron/public_html/protected/views/layouts/main.php (55)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/ErrorsController.php (23)
+2022/04/01 14:58:40 [error] [exception.ParseError] ParseError: syntax error, unexpected ';', expecting ')' in /home/o/ostrou0v/bron/public_html/protected/views/admin/reserve.php:113
+Stack trace:
+#0 /home/o/ostrou0v/bron/public_html/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/o/ostrou0...', Array, true)
+#1 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(872): CBaseController->renderFile('/home/o/ostrou0...', Array, true)
+#2 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(785): CController->renderPartial('reserve', Array, true)
+#3 /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php(148): CController->render('reserve', Array)
+#4 /home/o/ostrou0v/bron/public_html/framework/web/actions/CInlineAction.php(49): AdminController->actionReserve()
+#5 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#7 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /home/o/ostrou0v/bron/public_html/framework/web/CWebApplication.php(282): CController->run('reserve')
+#9 /home/o/ostrou0v/bron/public_html/framework/web/CWebApplication.php(141): CWebApplication->runController('admin/reserve')
+#10 /home/o/ostrou0v/bron/public_html/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#11 /home/o/ostrou0v/bron/public_html/index.php(9): CApplication->run()
+#12 {main}
+REQUEST_URI=/admin/reserve
+HTTP_REFERER=http://ostrou0v.beget.tech/admin
+---
+2022/04/01 14:58:51 [error] [exception.ParseError] ParseError: syntax error, unexpected ';', expecting ')' in /home/o/ostrou0v/bron/public_html/protected/views/admin/reserve.php:113
+Stack trace:
+#0 /home/o/ostrou0v/bron/public_html/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/o/ostrou0...', Array, true)
+#1 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(872): CBaseController->renderFile('/home/o/ostrou0...', Array, true)
+#2 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(785): CController->renderPartial('reserve', Array, true)
+#3 /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php(148): CController->render('reserve', Array)
+#4 /home/o/ostrou0v/bron/public_html/framework/web/actions/CInlineAction.php(49): AdminController->actionReserve()
+#5 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#7 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /home/o/ostrou0v/bron/public_html/framework/web/CWebApplication.php(282): CController->run('reserve')
+#9 /home/o/ostrou0v/bron/public_html/framework/web/CWebApplication.php(141): CWebApplication->runController('admin/reserve')
+#10 /home/o/ostrou0v/bron/public_html/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#11 /home/o/ostrou0v/bron/public_html/index.php(9): CApplication->run()
+#12 {main}
+REQUEST_URI=/admin/reserve
+HTTP_REFERER=http://ostrou0v.beget.tech/admin
+---
+2022/04/02 13:48:23 [error] [exception.ArgumentCountError] ArgumentCountError: Too few arguments to function SiteService::infoCamp(), 1 passed in /home/o/ostrou0v/bron/public_html/protected/components/services/SiteService.php on line 64 and exactly 2 expected in /home/o/ostrou0v/bron/public_html/protected/components/services/SiteService.php:489
+Stack trace:
+#0 /home/o/ostrou0v/bron/public_html/protected/components/services/SiteService.php(64): SiteService::infoCamp(1)
+#1 /home/o/ostrou0v/bron/public_html/protected/components/services/AdminService.php(119): SiteService::getShifts()
+#2 /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php(147): AdminService::getFillReserv()
+#3 /home/o/ostrou0v/bron/public_html/framework/web/actions/CInlineAction.php(49): AdminController->actionReserve()
+#4 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#6 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /home/o/ostrou0v/bron/public_html/framework/web/CWebApplication.php(282): CController->run('reserve')
+#8 /home/o/ostrou0v/bron/public_html/framework/web/CWebApplication.php(141): CWebApplication->runController('admin/reserve')
+#9 /home/o/ostrou0v/bron/public_html/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#10 /home/o/ostrou0v/bron/public_html/index.php(9): CApplication->run()
+#11 {main}
+REQUEST_URI=/admin/reserve
+HTTP_REFERER=http://ostrou0v.beget.tech/admin
+---
+2022/04/02 13:50:09 [error] [exception.Error] Error: Call to undefined method Questionnaire::infoCamp() in /home/o/ostrou0v/bron/public_html/protected/components/services/SiteService.php:64
+Stack trace:
+#0 /home/o/ostrou0v/bron/public_html/protected/components/services/AdminService.php(119): SiteService::getShifts()
+#1 /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php(147): AdminService::getFillReserv()
+#2 /home/o/ostrou0v/bron/public_html/framework/web/actions/CInlineAction.php(49): AdminController->actionReserve()
+#3 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#4 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#5 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 /home/o/ostrou0v/bron/public_html/framework/web/CWebApplication.php(282): CController->run('reserve')
+#7 /home/o/ostrou0v/bron/public_html/framework/web/CWebApplication.php(141): CWebApplication->runController('admin/reserve')
+#8 /home/o/ostrou0v/bron/public_html/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#9 /home/o/ostrou0v/bron/public_html/index.php(9): CApplication->run()
+#10 {main}
+REQUEST_URI=/admin/reserve
+HTTP_REFERER=http://ostrou0v.beget.tech/admin
+---
+2022/04/02 14:14:07 [error] [system.db.CDbCommand] Не удалось выполнить CDbCommand::fetch(): SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 3. Выполнявшийся SQL-запрос: SELECT `seats`
+FROM `sb_camp`
+WHERE id = .
+in /home/o/ostrou0v/bron/public_html/protected/components/services/SiteService.php (511)
+in /home/o/ostrou0v/bron/public_html/protected/components/services/SiteService.php (72)
+in /home/o/ostrou0v/bron/public_html/protected/components/services/AdminService.php (119)
+2022/04/02 14:14:07 [error] [exception.CDbException] CDbException: CDbCommand не удалось исполнить SQL-запрос: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 3. The SQL statement executed was: SELECT `seats`
+FROM `sb_camp`
+WHERE id =  in /home/o/ostrou0v/bron/public_html/framework/db/CDbCommand.php:543
+Stack trace:
+#0 /home/o/ostrou0v/bron/public_html/framework/db/CDbCommand.php(415): CDbCommand->queryInternal('fetch', Array, Array)
+#1 /home/o/ostrou0v/bron/public_html/protected/components/services/SiteService.php(511): CDbCommand->queryRow()
+#2 /home/o/ostrou0v/bron/public_html/protected/components/services/SiteService.php(72): SiteService::infoCamp(NULL, 'seats')
+#3 /home/o/ostrou0v/bron/public_html/protected/components/services/AdminService.php(119): SiteService::getShifts()
+#4 /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php(147): AdminService::getFillReserv()
+#5 /home/o/ostrou0v/bron/public_html/framework/web/actions/CInlineAction.php(49): AdminController->actionReserve()
+#6 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#7 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#8 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 /home/o/ostrou0v/bron/public_html/framework/web/CWebApplication.php(282): CController->run('reserve')
+#10 /home/o/ostrou0v/bron/public_html/framework/web/CWebApplication.php(141): CWebApplication->runController('admin/reserve')
+#11 /home/o/ostrou0v/bron/public_html/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#12 /home/o/ostrou0v/bron/public_html/index.php(9): CApplication->run()
+#13 {main}
+REQUEST_URI=/admin/reserve
+HTTP_REFERER=http://ostrou0v.beget.tech/admin
+---
+2022/04/02 14:19:20 [error] [system.db.CDbCommand] Не удалось выполнить CDbCommand::fetch(): SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 3. Выполнявшийся SQL-запрос: SELECT `seats`
+FROM `sb_camp`
+WHERE id = .
+in /home/o/ostrou0v/bron/public_html/protected/components/services/SiteService.php (514)
+in /home/o/ostrou0v/bron/public_html/protected/components/services/SiteService.php (72)
+in /home/o/ostrou0v/bron/public_html/protected/components/services/AdminService.php (119)
+2022/04/02 14:19:20 [error] [exception.CDbException] CDbException: CDbCommand не удалось исполнить SQL-запрос: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 3. The SQL statement executed was: SELECT `seats`
+FROM `sb_camp`
+WHERE id =  in /home/o/ostrou0v/bron/public_html/framework/db/CDbCommand.php:543
+Stack trace:
+#0 /home/o/ostrou0v/bron/public_html/framework/db/CDbCommand.php(415): CDbCommand->queryInternal('fetch', Array, Array)
+#1 /home/o/ostrou0v/bron/public_html/protected/components/services/SiteService.php(514): CDbCommand->queryRow()
+#2 /home/o/ostrou0v/bron/public_html/protected/components/services/SiteService.php(72): SiteService::infoCamp(NULL, 'seats')
+#3 /home/o/ostrou0v/bron/public_html/protected/components/services/AdminService.php(119): SiteService::getShifts()
+#4 /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php(147): AdminService::getFillReserv()
+#5 /home/o/ostrou0v/bron/public_html/framework/web/actions/CInlineAction.php(49): AdminController->actionReserve()
+#6 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#7 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#8 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 /home/o/ostrou0v/bron/public_html/framework/web/CWebApplication.php(282): CController->run('reserve')
+#10 /home/o/ostrou0v/bron/public_html/framework/web/CWebApplication.php(141): CWebApplication->runController('admin/reserve')
+#11 /home/o/ostrou0v/bron/public_html/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#12 /home/o/ostrou0v/bron/public_html/index.php(9): CApplication->run()
+#13 {main}
+REQUEST_URI=/admin/reserve
+HTTP_REFERER=http://ostrou0v.beget.tech/admin
+---
+2022/04/02 14:20:34 [error] [system.db.CDbCommand] Не удалось выполнить CDbCommand::fetch(): SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 3. Выполнявшийся SQL-запрос: SELECT `min_age`
+FROM `sb_camp`
+WHERE id = .
+in /home/o/ostrou0v/bron/public_html/protected/components/services/SiteService.php (514)
+in /home/o/ostrou0v/bron/public_html/protected/components/services/SiteService.php (73)
+in /home/o/ostrou0v/bron/public_html/protected/components/services/AdminService.php (119)
+2022/04/02 14:20:34 [error] [exception.CDbException] CDbException: CDbCommand не удалось исполнить SQL-запрос: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 3. The SQL statement executed was: SELECT `min_age`
+FROM `sb_camp`
+WHERE id =  in /home/o/ostrou0v/bron/public_html/framework/db/CDbCommand.php:543
+Stack trace:
+#0 /home/o/ostrou0v/bron/public_html/framework/db/CDbCommand.php(415): CDbCommand->queryInternal('fetch', Array, Array)
+#1 /home/o/ostrou0v/bron/public_html/protected/components/services/SiteService.php(514): CDbCommand->queryRow()
+#2 /home/o/ostrou0v/bron/public_html/protected/components/services/SiteService.php(73): SiteService::infoCamp(NULL, 'min_age')
+#3 /home/o/ostrou0v/bron/public_html/protected/components/services/AdminService.php(119): SiteService::getShifts()
+#4 /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php(147): AdminService::getFillReserv()
+#5 /home/o/ostrou0v/bron/public_html/framework/web/actions/CInlineAction.php(49): AdminController->actionReserve()
+#6 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#7 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#8 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 /home/o/ostrou0v/bron/public_html/framework/web/CWebApplication.php(282): CController->run('reserve')
+#10 /home/o/ostrou0v/bron/public_html/framework/web/CWebApplication.php(141): CWebApplication->runController('admin/reserve')
+#11 /home/o/ostrou0v/bron/public_html/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#12 /home/o/ostrou0v/bron/public_html/index.php(9): CApplication->run()
+#13 {main}
+REQUEST_URI=/admin/reserve
+HTTP_REFERER=http://ostrou0v.beget.tech/admin
+---
+2022/04/02 16:23:33 [error] [exception.Error] Error: Call to undefined method SiteService::idDtoCamp() in /home/o/ostrou0v/bron/public_html/protected/views/admin/reserve.php:16
+Stack trace:
+#0 /home/o/ostrou0v/bron/public_html/framework/web/CBaseController.php(126): require()
+#1 /home/o/ostrou0v/bron/public_html/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/o/ostrou0...', Array, true)
+#2 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(872): CBaseController->renderFile('/home/o/ostrou0...', Array, true)
+#3 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(785): CController->renderPartial('reserve', Array, true)
+#4 /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php(148): CController->render('reserve', Array)
+#5 /home/o/ostrou0v/bron/public_html/framework/web/actions/CInlineAction.php(49): AdminController->actionReserve()
+#6 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#7 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#8 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 /home/o/ostrou0v/bron/public_html/framework/web/CWebApplication.php(282): CController->run('reserve')
+#10 /home/o/ostrou0v/bron/public_html/framework/web/CWebApplication.php(141): CWebApplication->runController('admin/reserve')
+#11 /home/o/ostrou0v/bron/public_html/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#12 /home/o/ostrou0v/bron/public_html/index.php(9): CApplication->run()
+#13 {main}
+REQUEST_URI=/admin/reserve
+HTTP_REFERER=http://ostrou0v.beget.tech/admin
+---
+2022/04/02 16:23:41 [error] [system.db.CDbCommand] Не удалось выполнить CDbCommand::fetch(): SQLSTATE[42S22]: Column not found: 1054 Unknown column 'date' in 'field list'. Выполнявшийся SQL-запрос: SELECT `date`
+FROM `sb_shifts`
+WHERE id = 1 and dto = 3.
+in /home/o/ostrou0v/bron/public_html/protected/components/services/SiteService.php (233)
+in /home/o/ostrou0v/bron/public_html/protected/views/admin/reserve.php (16)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (148)
+2022/04/02 16:23:41 [error] [exception.CDbException] CDbException: CDbCommand не удалось исполнить SQL-запрос: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'date' in 'field list'. The SQL statement executed was: SELECT `date`
+FROM `sb_shifts`
+WHERE id = 1 and dto = 3 in /home/o/ostrou0v/bron/public_html/framework/db/CDbCommand.php:543
+Stack trace:
+#0 /home/o/ostrou0v/bron/public_html/framework/db/CDbCommand.php(415): CDbCommand->queryInternal('fetch', Array, Array)
+#1 /home/o/ostrou0v/bron/public_html/protected/components/services/SiteService.php(233): CDbCommand->queryRow()
+#2 /home/o/ostrou0v/bron/public_html/protected/views/admin/reserve.php(16): SiteService::idDtoCamp(1, 3)
+#3 /home/o/ostrou0v/bron/public_html/framework/web/CBaseController.php(126): require('/home/o/ostrou0...')
+#4 /home/o/ostrou0v/bron/public_html/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/o/ostrou0...', Array, true)
+#5 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(872): CBaseController->renderFile('/home/o/ostrou0...', Array, true)
+#6 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(785): CController->renderPartial('reserve', Array, true)
+#7 /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php(148): CController->render('reserve', Array)
+#8 /home/o/ostrou0v/bron/public_html/framework/web/actions/CInlineAction.php(49): AdminController->actionReserve()
+#9 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#10 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#11 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /home/o/ostrou0v/bron/public_html/framework/web/CWebApplication.php(282): CController->run('reserve')
+#13 /home/o/ostrou0v/bron/public_html/framework/web/CWebApplication.php(141): CWebApplication->runController('admin/reserve')
+#14 /home/o/ostrou0v/bron/public_html/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#15 /home/o/ostrou0v/bron/public_html/index.php(9): CApplication->run()
+#16 {main}
+REQUEST_URI=/admin/reserve
+HTTP_REFERER=http://ostrou0v.beget.tech/admin
+---
+2022/04/02 16:23:58 [error] [system.db.CDbCommand] Не удалось выполнить CDbCommand::fetch(): SQLSTATE[42S22]: Column not found: 1054 Unknown column 'date' in 'field list'. Выполнявшийся SQL-запрос: SELECT `date`
+FROM `sb_shifts`
+WHERE 'id' = 1 and 'dto' = 3.
+in /home/o/ostrou0v/bron/public_html/protected/components/services/SiteService.php (233)
+in /home/o/ostrou0v/bron/public_html/protected/views/admin/reserve.php (16)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (148)
+2022/04/02 16:23:58 [error] [exception.CDbException] CDbException: CDbCommand не удалось исполнить SQL-запрос: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'date' in 'field list'. The SQL statement executed was: SELECT `date`
+FROM `sb_shifts`
+WHERE 'id' = 1 and 'dto' = 3 in /home/o/ostrou0v/bron/public_html/framework/db/CDbCommand.php:543
+Stack trace:
+#0 /home/o/ostrou0v/bron/public_html/framework/db/CDbCommand.php(415): CDbCommand->queryInternal('fetch', Array, Array)
+#1 /home/o/ostrou0v/bron/public_html/protected/components/services/SiteService.php(233): CDbCommand->queryRow()
+#2 /home/o/ostrou0v/bron/public_html/protected/views/admin/reserve.php(16): SiteService::idDtoCamp(1, 3)
+#3 /home/o/ostrou0v/bron/public_html/framework/web/CBaseController.php(126): require('/home/o/ostrou0...')
+#4 /home/o/ostrou0v/bron/public_html/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/o/ostrou0...', Array, true)
+#5 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(872): CBaseController->renderFile('/home/o/ostrou0...', Array, true)
+#6 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(785): CController->renderPartial('reserve', Array, true)
+#7 /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php(148): CController->render('reserve', Array)
+#8 /home/o/ostrou0v/bron/public_html/framework/web/actions/CInlineAction.php(49): AdminController->actionReserve()
+#9 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#10 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#11 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /home/o/ostrou0v/bron/public_html/framework/web/CWebApplication.php(282): CController->run('reserve')
+#13 /home/o/ostrou0v/bron/public_html/framework/web/CWebApplication.php(141): CWebApplication->runController('admin/reserve')
+#14 /home/o/ostrou0v/bron/public_html/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#15 /home/o/ostrou0v/bron/public_html/index.php(9): CApplication->run()
+#16 {main}
+REQUEST_URI=/admin/reserve
+HTTP_REFERER=http://ostrou0v.beget.tech/admin
+---
+2022/04/02 16:24:15 [error] [system.db.CDbCommand] Не удалось выполнить CDbCommand::fetch(): SQLSTATE[42S22]: Column not found: 1054 Unknown column 'date' in 'field list'. Выполнявшийся SQL-запрос: SELECT `date`
+FROM `sb_shifts`
+WHERE 'id' = 1 and 'dto' = 3.
+in /home/o/ostrou0v/bron/public_html/protected/components/services/SiteService.php (233)
+in /home/o/ostrou0v/bron/public_html/protected/views/admin/reserve.php (16)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (148)
+2022/04/02 16:24:15 [error] [exception.CDbException] CDbException: CDbCommand не удалось исполнить SQL-запрос: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'date' in 'field list'. The SQL statement executed was: SELECT `date`
+FROM `sb_shifts`
+WHERE 'id' = 1 and 'dto' = 3 in /home/o/ostrou0v/bron/public_html/framework/db/CDbCommand.php:543
+Stack trace:
+#0 /home/o/ostrou0v/bron/public_html/framework/db/CDbCommand.php(415): CDbCommand->queryInternal('fetch', Array, Array)
+#1 /home/o/ostrou0v/bron/public_html/protected/components/services/SiteService.php(233): CDbCommand->queryRow()
+#2 /home/o/ostrou0v/bron/public_html/protected/views/admin/reserve.php(16): SiteService::idDtoCamp(1, 3)
+#3 /home/o/ostrou0v/bron/public_html/framework/web/CBaseController.php(126): require('/home/o/ostrou0...')
+#4 /home/o/ostrou0v/bron/public_html/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/o/ostrou0...', Array, true)
+#5 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(872): CBaseController->renderFile('/home/o/ostrou0...', Array, true)
+#6 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(785): CController->renderPartial('reserve', Array, true)
+#7 /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php(148): CController->render('reserve', Array)
+#8 /home/o/ostrou0v/bron/public_html/framework/web/actions/CInlineAction.php(49): AdminController->actionReserve()
+#9 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#10 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#11 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /home/o/ostrou0v/bron/public_html/framework/web/CWebApplication.php(282): CController->run('reserve')
+#13 /home/o/ostrou0v/bron/public_html/framework/web/CWebApplication.php(141): CWebApplication->runController('admin/reserve')
+#14 /home/o/ostrou0v/bron/public_html/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#15 /home/o/ostrou0v/bron/public_html/index.php(9): CApplication->run()
+#16 {main}
+REQUEST_URI=/admin/reserve
+HTTP_REFERER=http://ostrou0v.beget.tech/admin
+---
+2022/04/02 16:24:48 [error] [system.db.CDbCommand] Не удалось выполнить CDbCommand::fetch(): SQLSTATE[42S22]: Column not found: 1054 Unknown column 'date' in 'field list'. Выполнявшийся SQL-запрос: SELECT `date`
+FROM `sb_shifts`
+WHERE 'id' = 1 or 'dto' = 3.
+in /home/o/ostrou0v/bron/public_html/protected/components/services/SiteService.php (233)
+in /home/o/ostrou0v/bron/public_html/protected/views/admin/reserve.php (16)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (148)
+2022/04/02 16:24:48 [error] [exception.CDbException] CDbException: CDbCommand не удалось исполнить SQL-запрос: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'date' in 'field list'. The SQL statement executed was: SELECT `date`
+FROM `sb_shifts`
+WHERE 'id' = 1 or 'dto' = 3 in /home/o/ostrou0v/bron/public_html/framework/db/CDbCommand.php:543
+Stack trace:
+#0 /home/o/ostrou0v/bron/public_html/framework/db/CDbCommand.php(415): CDbCommand->queryInternal('fetch', Array, Array)
+#1 /home/o/ostrou0v/bron/public_html/protected/components/services/SiteService.php(233): CDbCommand->queryRow()
+#2 /home/o/ostrou0v/bron/public_html/protected/views/admin/reserve.php(16): SiteService::idDtoCamp(1, 3)
+#3 /home/o/ostrou0v/bron/public_html/framework/web/CBaseController.php(126): require('/home/o/ostrou0...')
+#4 /home/o/ostrou0v/bron/public_html/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/o/ostrou0...', Array, true)
+#5 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(872): CBaseController->renderFile('/home/o/ostrou0...', Array, true)
+#6 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(785): CController->renderPartial('reserve', Array, true)
+#7 /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php(148): CController->render('reserve', Array)
+#8 /home/o/ostrou0v/bron/public_html/framework/web/actions/CInlineAction.php(49): AdminController->actionReserve()
+#9 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#10 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#11 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /home/o/ostrou0v/bron/public_html/framework/web/CWebApplication.php(282): CController->run('reserve')
+#13 /home/o/ostrou0v/bron/public_html/framework/web/CWebApplication.php(141): CWebApplication->runController('admin/reserve')
+#14 /home/o/ostrou0v/bron/public_html/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#15 /home/o/ostrou0v/bron/public_html/index.php(9): CApplication->run()
+#16 {main}
+REQUEST_URI=/admin/reserve
+HTTP_REFERER=http://ostrou0v.beget.tech/admin
+---
+2022/04/02 16:25:00 [error] [system.db.CDbCommand] Не удалось выполнить CDbCommand::fetch(): SQLSTATE[42S22]: Column not found: 1054 Unknown column 'date' in 'field list'. Выполнявшийся SQL-запрос: SELECT `date`
+FROM `sb_shifts`
+WHERE id = 1 or dto = 3.
+in /home/o/ostrou0v/bron/public_html/protected/components/services/SiteService.php (233)
+in /home/o/ostrou0v/bron/public_html/protected/views/admin/reserve.php (16)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (148)
+2022/04/02 16:25:00 [error] [exception.CDbException] CDbException: CDbCommand не удалось исполнить SQL-запрос: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'date' in 'field list'. The SQL statement executed was: SELECT `date`
+FROM `sb_shifts`
+WHERE id = 1 or dto = 3 in /home/o/ostrou0v/bron/public_html/framework/db/CDbCommand.php:543
+Stack trace:
+#0 /home/o/ostrou0v/bron/public_html/framework/db/CDbCommand.php(415): CDbCommand->queryInternal('fetch', Array, Array)
+#1 /home/o/ostrou0v/bron/public_html/protected/components/services/SiteService.php(233): CDbCommand->queryRow()
+#2 /home/o/ostrou0v/bron/public_html/protected/views/admin/reserve.php(16): SiteService::idDtoCamp(1, 3)
+#3 /home/o/ostrou0v/bron/public_html/framework/web/CBaseController.php(126): require('/home/o/ostrou0...')
+#4 /home/o/ostrou0v/bron/public_html/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/o/ostrou0...', Array, true)
+#5 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(872): CBaseController->renderFile('/home/o/ostrou0...', Array, true)
+#6 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(785): CController->renderPartial('reserve', Array, true)
+#7 /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php(148): CController->render('reserve', Array)
+#8 /home/o/ostrou0v/bron/public_html/framework/web/actions/CInlineAction.php(49): AdminController->actionReserve()
+#9 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#10 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#11 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /home/o/ostrou0v/bron/public_html/framework/web/CWebApplication.php(282): CController->run('reserve')
+#13 /home/o/ostrou0v/bron/public_html/framework/web/CWebApplication.php(141): CWebApplication->runController('admin/reserve')
+#14 /home/o/ostrou0v/bron/public_html/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#15 /home/o/ostrou0v/bron/public_html/index.php(9): CApplication->run()
+#16 {main}
+REQUEST_URI=/admin/reserve
+HTTP_REFERER=http://ostrou0v.beget.tech/admin
+---
+2022/04/02 16:25:18 [error] [system.db.CDbCommand] Не удалось выполнить CDbCommand::fetch(): SQLSTATE[42S22]: Column not found: 1054 Unknown column 'dto' in 'where clause'. Выполнявшийся SQL-запрос: SELECT *
+FROM `sb_shifts`
+WHERE id = 1 or dto = 3.
+in /home/o/ostrou0v/bron/public_html/protected/components/services/SiteService.php (233)
+in /home/o/ostrou0v/bron/public_html/protected/views/admin/reserve.php (16)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (148)
+2022/04/02 16:25:18 [error] [exception.CDbException] CDbException: CDbCommand не удалось исполнить SQL-запрос: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'dto' in 'where clause'. The SQL statement executed was: SELECT *
+FROM `sb_shifts`
+WHERE id = 1 or dto = 3 in /home/o/ostrou0v/bron/public_html/framework/db/CDbCommand.php:543
+Stack trace:
+#0 /home/o/ostrou0v/bron/public_html/framework/db/CDbCommand.php(415): CDbCommand->queryInternal('fetch', Array, Array)
+#1 /home/o/ostrou0v/bron/public_html/protected/components/services/SiteService.php(233): CDbCommand->queryRow()
+#2 /home/o/ostrou0v/bron/public_html/protected/views/admin/reserve.php(16): SiteService::idDtoCamp(1, 3)
+#3 /home/o/ostrou0v/bron/public_html/framework/web/CBaseController.php(126): require('/home/o/ostrou0...')
+#4 /home/o/ostrou0v/bron/public_html/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/o/ostrou0...', Array, true)
+#5 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(872): CBaseController->renderFile('/home/o/ostrou0...', Array, true)
+#6 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(785): CController->renderPartial('reserve', Array, true)
+#7 /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php(148): CController->render('reserve', Array)
+#8 /home/o/ostrou0v/bron/public_html/framework/web/actions/CInlineAction.php(49): AdminController->actionReserve()
+#9 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#10 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#11 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /home/o/ostrou0v/bron/public_html/framework/web/CWebApplication.php(282): CController->run('reserve')
+#13 /home/o/ostrou0v/bron/public_html/framework/web/CWebApplication.php(141): CWebApplication->runController('admin/reserve')
+#14 /home/o/ostrou0v/bron/public_html/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#15 /home/o/ostrou0v/bron/public_html/index.php(9): CApplication->run()
+#16 {main}
+REQUEST_URI=/admin/reserve
+HTTP_REFERER=http://ostrou0v.beget.tech/admin
+---
+2022/04/02 16:25:56 [error] [system.db.CDbCommand] Не удалось выполнить CDbCommand::fetch(): SQLSTATE[42S22]: Column not found: 1054 Unknown column 'dto' in 'where clause'. Выполнявшийся SQL-запрос: SELECT *
+FROM `sb_shifts`
+WHERE id = 1 or dto = 3.
+in /home/o/ostrou0v/bron/public_html/protected/components/services/SiteService.php (233)
+in /home/o/ostrou0v/bron/public_html/protected/views/admin/reserve.php (16)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (148)
+2022/04/02 16:25:56 [error] [exception.CDbException] CDbException: CDbCommand не удалось исполнить SQL-запрос: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'dto' in 'where clause'. The SQL statement executed was: SELECT *
+FROM `sb_shifts`
+WHERE id = 1 or dto = 3 in /home/o/ostrou0v/bron/public_html/framework/db/CDbCommand.php:543
+Stack trace:
+#0 /home/o/ostrou0v/bron/public_html/framework/db/CDbCommand.php(415): CDbCommand->queryInternal('fetch', Array, Array)
+#1 /home/o/ostrou0v/bron/public_html/protected/components/services/SiteService.php(233): CDbCommand->queryRow()
+#2 /home/o/ostrou0v/bron/public_html/protected/views/admin/reserve.php(16): SiteService::idDtoCamp(1, 3)
+#3 /home/o/ostrou0v/bron/public_html/framework/web/CBaseController.php(126): require('/home/o/ostrou0...')
+#4 /home/o/ostrou0v/bron/public_html/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/o/ostrou0...', Array, true)
+#5 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(872): CBaseController->renderFile('/home/o/ostrou0...', Array, true)
+#6 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(785): CController->renderPartial('reserve', Array, true)
+#7 /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php(148): CController->render('reserve', Array)
+#8 /home/o/ostrou0v/bron/public_html/framework/web/actions/CInlineAction.php(49): AdminController->actionReserve()
+#9 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#10 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#11 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /home/o/ostrou0v/bron/public_html/framework/web/CWebApplication.php(282): CController->run('reserve')
+#13 /home/o/ostrou0v/bron/public_html/framework/web/CWebApplication.php(141): CWebApplication->runController('admin/reserve')
+#14 /home/o/ostrou0v/bron/public_html/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#15 /home/o/ostrou0v/bron/public_html/index.php(9): CApplication->run()
+#16 {main}
+REQUEST_URI=/admin/reserve
+HTTP_REFERER=http://ostrou0v.beget.tech/admin
+---
+2022/04/02 16:28:28 [error] [exception.CException] CException: В классе CDbCommand и его поведениях не найден метод или замыкание с именем "queryOne". in /home/o/ostrou0v/bron/public_html/framework/base/CComponent.php:266
+Stack trace:
+#0 /home/o/ostrou0v/bron/public_html/protected/components/services/SiteService.php(233): CComponent->__call('queryOne', Array)
+#1 /home/o/ostrou0v/bron/public_html/protected/views/admin/reserve.php(16): SiteService::idDtoCamp(1, 7)
+#2 /home/o/ostrou0v/bron/public_html/framework/web/CBaseController.php(126): require('/home/o/ostrou0...')
+#3 /home/o/ostrou0v/bron/public_html/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/o/ostrou0...', Array, true)
+#4 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(872): CBaseController->renderFile('/home/o/ostrou0...', Array, true)
+#5 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(785): CController->renderPartial('reserve', Array, true)
+#6 /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php(148): CController->render('reserve', Array)
+#7 /home/o/ostrou0v/bron/public_html/framework/web/actions/CInlineAction.php(49): AdminController->actionReserve()
+#8 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#9 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#10 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 /home/o/ostrou0v/bron/public_html/framework/web/CWebApplication.php(282): CController->run('reserve')
+#12 /home/o/ostrou0v/bron/public_html/framework/web/CWebApplication.php(141): CWebApplication->runController('admin/reserve')
+#13 /home/o/ostrou0v/bron/public_html/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#14 /home/o/ostrou0v/bron/public_html/index.php(9): CApplication->run()
+#15 {main}
+REQUEST_URI=/admin/reserve
+HTTP_REFERER=http://ostrou0v.beget.tech/admin
+---
+2022/04/02 16:43:53 [warning] [application] Не удалось присвоить небезопасный атрибут "date_1" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:43:53 [warning] [application] Не удалось присвоить небезопасный атрибут "date_2" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:43:53 [warning] [application] Не удалось присвоить небезопасный атрибут "date_3" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:43:53 [warning] [application] Не удалось присвоить небезопасный атрибут "date_4" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:43:53 [warning] [application] Не удалось присвоить небезопасный атрибут "date_5" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:43:53 [warning] [application] Не удалось присвоить небезопасный атрибут "date_6" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:43:53 [warning] [application] Не удалось присвоить небезопасный атрибут "date_7" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:43:53 [warning] [application] Не удалось присвоить небезопасный атрибут "date_8" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:43:53 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_1" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:43:53 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_2" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:43:53 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_3" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:43:53 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_4" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:43:53 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_5" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:43:53 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_6" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:43:53 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_7" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:43:53 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_8" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:43:58 [warning] [application] Не удалось присвоить небезопасный атрибут "date_1" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:43:58 [warning] [application] Не удалось присвоить небезопасный атрибут "date_2" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:43:58 [warning] [application] Не удалось присвоить небезопасный атрибут "date_3" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:43:58 [warning] [application] Не удалось присвоить небезопасный атрибут "date_4" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:43:58 [warning] [application] Не удалось присвоить небезопасный атрибут "date_5" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:43:58 [warning] [application] Не удалось присвоить небезопасный атрибут "date_6" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:43:58 [warning] [application] Не удалось присвоить небезопасный атрибут "date_7" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:43:58 [warning] [application] Не удалось присвоить небезопасный атрибут "date_8" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:43:58 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_1" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:43:58 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_2" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:43:58 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_3" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:43:58 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_4" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:43:58 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_5" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:43:58 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_6" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:43:58 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_7" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:43:58 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_8" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:44:08 [warning] [application] Не удалось присвоить небезопасный атрибут "date_1" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:44:08 [warning] [application] Не удалось присвоить небезопасный атрибут "date_2" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:44:08 [warning] [application] Не удалось присвоить небезопасный атрибут "date_3" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:44:08 [warning] [application] Не удалось присвоить небезопасный атрибут "date_4" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:44:08 [warning] [application] Не удалось присвоить небезопасный атрибут "date_5" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:44:08 [warning] [application] Не удалось присвоить небезопасный атрибут "date_6" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:44:08 [warning] [application] Не удалось присвоить небезопасный атрибут "date_7" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:44:08 [warning] [application] Не удалось присвоить небезопасный атрибут "date_8" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:44:08 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_1" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:44:08 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_2" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:44:08 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_3" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:44:08 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_4" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:44:08 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_5" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:44:08 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_6" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:44:08 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_7" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:44:08 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_8" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:44:16 [warning] [application] Не удалось присвоить небезопасный атрибут "date_1" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:44:16 [warning] [application] Не удалось присвоить небезопасный атрибут "date_2" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:44:16 [warning] [application] Не удалось присвоить небезопасный атрибут "date_3" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:44:16 [warning] [application] Не удалось присвоить небезопасный атрибут "date_4" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:44:16 [warning] [application] Не удалось присвоить небезопасный атрибут "date_5" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:44:16 [warning] [application] Не удалось присвоить небезопасный атрибут "date_6" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:44:16 [warning] [application] Не удалось присвоить небезопасный атрибут "date_7" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:44:16 [warning] [application] Не удалось присвоить небезопасный атрибут "date_8" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:44:16 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_1" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:44:16 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_2" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:44:16 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_3" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:44:16 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_4" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:44:16 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_5" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:44:16 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_6" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:44:16 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_7" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:44:16 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_8" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:53:05 [error] [exception.ParseError] ParseError: syntax error, unexpected '$idSmenaEight' (T_VARIABLE), expecting ')' in /home/o/ostrou0v/bron/public_html/protected/views/admin/reserve.php:210
+Stack trace:
+#0 /home/o/ostrou0v/bron/public_html/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/o/ostrou0...', Array, true)
+#1 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(872): CBaseController->renderFile('/home/o/ostrou0...', Array, true)
+#2 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(785): CController->renderPartial('reserve', Array, true)
+#3 /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php(148): CController->render('reserve', Array)
+#4 /home/o/ostrou0v/bron/public_html/framework/web/actions/CInlineAction.php(49): AdminController->actionReserve()
+#5 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#7 /home/o/ostrou0v/bron/public_html/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /home/o/ostrou0v/bron/public_html/framework/web/CWebApplication.php(282): CController->run('reserve')
+#9 /home/o/ostrou0v/bron/public_html/framework/web/CWebApplication.php(141): CWebApplication->runController('admin/reserve')
+#10 /home/o/ostrou0v/bron/public_html/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#11 /home/o/ostrou0v/bron/public_html/index.php(9): CApplication->run()
+#12 {main}
+REQUEST_URI=/admin/reserve
+HTTP_REFERER=http://ostrou0v.beget.tech/admin/reserve
+---
+2022/04/02 16:53:31 [warning] [application] Не удалось присвоить небезопасный атрибут "date_1" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:53:31 [warning] [application] Не удалось присвоить небезопасный атрибут "date_2" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:53:31 [warning] [application] Не удалось присвоить небезопасный атрибут "date_3" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:53:31 [warning] [application] Не удалось присвоить небезопасный атрибут "date_4" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:53:31 [warning] [application] Не удалось присвоить небезопасный атрибут "date_5" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:53:31 [warning] [application] Не удалось присвоить небезопасный атрибут "date_6" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:53:31 [warning] [application] Не удалось присвоить небезопасный атрибут "date_7" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:53:31 [warning] [application] Не удалось присвоить небезопасный атрибут "date_8" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:53:31 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_1" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:53:31 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_2" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:53:31 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_3" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:53:31 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_4" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:53:31 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_5" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:53:31 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_6" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:53:31 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_7" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:53:31 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_8" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:53:37 [warning] [application] Не удалось присвоить небезопасный атрибут "date_1" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:53:37 [warning] [application] Не удалось присвоить небезопасный атрибут "date_2" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:53:37 [warning] [application] Не удалось присвоить небезопасный атрибут "date_3" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:53:37 [warning] [application] Не удалось присвоить небезопасный атрибут "date_4" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:53:37 [warning] [application] Не удалось присвоить небезопасный атрибут "date_5" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:53:37 [warning] [application] Не удалось присвоить небезопасный атрибут "date_6" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:53:37 [warning] [application] Не удалось присвоить небезопасный атрибут "date_7" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:53:37 [warning] [application] Не удалось присвоить небезопасный атрибут "date_8" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:53:37 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_1" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:53:37 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_2" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:53:37 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_3" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:53:37 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_4" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:53:37 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_5" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:53:37 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_6" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:53:37 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_7" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)
+2022/04/02 16:53:37 [warning] [application] Не удалось присвоить небезопасный атрибут "seats_8" класса "Reserve".
+in /home/o/ostrou0v/bron/public_html/protected/models/Reserve.php (174)
+in /home/o/ostrou0v/bron/public_html/protected/controllers/AdminController.php (134)
+in /home/o/ostrou0v/bron/public_html/index.php (9)

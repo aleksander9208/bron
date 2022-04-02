@@ -18,7 +18,6 @@ class Questionnaire extends CActiveRecord
     const CAMP_LIGHTHOUSE = 6; //маяк
     const CAMP_FLYGHT = 7; //полет
 
-
     const SHIFT_KIROVEC_1 = 1;
     const SHIFT_KIROVEC_2 = 2;
     const SHIFT_KIROVEC_3 = 3;
@@ -66,6 +65,7 @@ class Questionnaire extends CActiveRecord
     public $shift_name;
 
     public $is_reserve; //вспомогательное поле
+
 
 
     private $changedAttr = array();
@@ -869,6 +869,17 @@ class Questionnaire extends CActiveRecord
 
     public static function getDLOName($dloId = false, $numer = false)
     {
+
+        $result = Yii::app()->db->createCommand()
+            ->select('*')
+            ->from('sb_smena')
+            ->queryAll();
+        $arr = array();
+
+        foreach ($result as $smena) {
+            $arr[$smena['id']] = ($numer===false?$smena['date']:$smena['smena'].' смена');
+        }
+        /*
         $arr = array(
             self::DLO_1 => ($numer===false?'12.06-25.06':'1 смена'),
             self::DLO_2 => ($numer===false?'28.06-11.07':'2 смена'),
@@ -879,6 +890,7 @@ class Questionnaire extends CActiveRecord
             self::DLO_7 => ($numer===false?'06.08-19.08':'7 смена'),
             self::DLO_8 => ($numer===false?'15.08-28.08':'8 смена')
         );
+        */
         if (is_numeric($dloId)) {
             if (array_key_exists($dloId, $arr)) {
                 return $arr[$dloId];
@@ -887,6 +899,8 @@ class Questionnaire extends CActiveRecord
         }
         return $arr;
     }
+
+
 
     public static function getDLOMonthStart($dloId = false,$max = false)
     {

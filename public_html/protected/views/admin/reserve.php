@@ -9,18 +9,335 @@
             <?php echo CHtml::form('', 'post', array('class' => 'needs-validation', 'id' => 'z_anketa_form', 'novalidate' => 'novalidate')); ?>
 
             <label for="z_anketa_reserv_table">Сводная таблица лагерей и смен для резервирования в них мест</label>
+
+            <table id="z_anketa_reserv_table" class="table table-bordered table-striped table-hover table-sm">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col" class="text-center">Лагерь</th>
+                    <?
+                        //Количество смен
+                        $smena = count(Questionnaire::getDLOName());
+
+                        for($s=1; $s <= $smena; $s++) {
+                    ?>
+                        <th scope="col" class="text-center">
+                            <b>Смена <?= $s?></b>
+                            <?php echo CHtml::activeTextField(
+                                $model,
+                                'date_'.$s,
+                                array(
+                                    'class' => 'form-control text-center',
+                                    'data-mask'=>'0123456789',
+                                    'data-toggle'=>'tooltip',
+                                    'value'=> Questionnaire::getDLOName($s)
+                                )
+                            ); ?>
+                        </th>
+                    <? } ?>
+
+                    <th scope="col" class="text-center">Количество мест</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <?php
+                //получаем количество лагерей
+                $countCamp = Questionnaire::getCAMPName();
+
+                for($i=1; $i <= count($countCamp); $i++) {
+                    ?>
+                    <tr>
+                        <th scope="row" class="align-middle"><?php echo Questionnaire::getCAMPName($i); ?></th>
+
+                        <? if($idSmenaOne = SiteService::idDtoCamp($i, 1)) { ?>
+                            <td class="text-center">
+                                <?php echo CHtml::activeTextField(
+                                    $model,
+                                    'srez_'.$idSmenaOne,
+                                    array(
+                                        'class' => 'form-control text-center',
+                                        'data-mask'=>'0123456789',
+                                        'maxlength'=>3,
+                                        'data-max'=>$shifts[$idSmenaOne]['seats'],
+                                        'data-toggle'=>'tooltip',
+                                        'title'=>'Значение от 0 из '.$shifts[$idSmenaOne]['seats']
+                                    ));
+                                ?>
+                                <?php echo SiteService::templateSeatsCount(
+                                    $seats[$idSmenaOne]['seats'],
+                                    $shifts[$idSmenaOne]['seats'],
+                                    $rfill[$idSmenaOne]
+                                ); ?>
+                            </td>
+                        <? } else {?><td></td><? } ?>
+
+                        <? if($idSmenaTwo = SiteService::idDtoCamp($i, 2)) { ?>
+                            <td class="text-center">
+                                <?php echo CHtml::activeTextField(
+                                    $model,
+                                    'srez_'.$idSmenaTwo,
+                                    array(
+                                        'class' => 'form-control text-center',
+                                        'data-mask'=>'0123456789',
+                                        'maxlength'=>3,
+                                        'data-max'=>$shifts[$idSmenaOne]['seats'],
+                                        'data-toggle'=>'tooltip',
+                                        'title'=>'Значение от 0 из '.$shifts[$idSmenaOne]['seats']
+                                    ));
+                                ?>
+                                <?php echo SiteService::templateSeatsCount(
+                                    $seats[$idSmenaOne]['seats'],
+                                    $shifts[$idSmenaOne]['seats'],
+                                    $rfill[$idSmenaOne]
+                                ); ?>
+                            </td>
+                        <? } else {?><td></td><? } ?>
+
+                        <? if($idSmenaThree = SiteService::idDtoCamp($i, 3)) { ?>
+                            <td class="text-center">
+                                <?php echo CHtml::activeTextField(
+                                    $model,
+                                    'srez_'.$idSmenaThree,
+                                    array(
+                                        'class' => 'form-control text-center',
+                                        'data-mask'=>'0123456789',
+                                        'maxlength'=>3,
+                                        'data-max'=>$shifts[$idSmenaOne]['seats'],
+                                        'data-toggle'=>'tooltip',
+                                        'title'=>'Значение от 0 из '.$shifts[$idSmenaOne]['seats']
+                                    ));
+                                ?>
+                                <?php echo SiteService::templateSeatsCount(
+                                    $seats[$idSmenaOne]['seats'],
+                                    $shifts[$idSmenaOne]['seats'],
+                                    $rfill[$idSmenaOne]
+                                ); ?>
+                            </td>
+                        <? } else {?><td></td><? } ?>
+
+                        <? if($idSmenaFour = SiteService::idDtoCamp($i, 4)) { ?>
+                            <td class="text-center">
+                                <?php echo CHtml::activeTextField(
+                                    $model,
+                                    'srez_'.$idSmenaFour,
+                                    array(
+                                        'class' => 'form-control text-center',
+                                        'data-mask'=>'0123456789',
+                                        'maxlength'=>3,
+                                        'data-max'=>$shifts[$idSmenaOne]['seats'],
+                                        'data-toggle'=>'tooltip',
+                                        'title'=>'Значение от 0 из '.$shifts[$idSmenaOne]['seats']
+                                    ));
+                                ?>
+                                <?php echo SiteService::templateSeatsCount(
+                                    $seats[$idSmenaOne]['seats'],
+                                    $shifts[$idSmenaOne]['seats'],
+                                    $rfill[$idSmenaOne]
+                                ); ?>
+                            </td>
+                        <? } else {?><td></td><? } ?>
+
+                        <? if($idSmenaFive = SiteService::idDtoCamp($i, 5)) { ?>
+                            <td class="text-center">
+                                <?php echo CHtml::activeTextField(
+                                    $model,
+                                    'srez_'.$idSmenaFive,
+                                    array(
+                                        'class' => 'form-control text-center',
+                                        'data-mask'=>'0123456789',
+                                        'maxlength'=>3,
+                                        'data-max'=>$shifts[$idSmenaOne]['seats'],
+                                        'data-toggle'=>'tooltip',
+                                        'title'=>'Значение от 0 из '.$shifts[$idSmenaOne]['seats']
+                                    ));
+                                ?>
+                                <?php echo SiteService::templateSeatsCount(
+                                    $seats[$idSmenaOne]['seats'],
+                                    $shifts[$idSmenaOne]['seats'],
+                                    $rfill[$idSmenaOne]
+                                ); ?>
+                            </td>
+                        <? } else {?><td></td><? } ?>
+
+                        <? if($idSmenaSix = SiteService::idDtoCamp($i, 6)) { ?>
+                            <td class="text-center">
+                                <?php echo CHtml::activeTextField(
+                                    $model,
+                                    'srez_'.$idSmenaSix,
+                                    array(
+                                        'class' => 'form-control text-center',
+                                        'data-mask'=>'0123456789',
+                                        'maxlength'=>3,
+                                        'data-max'=>$shifts[$idSmenaOne]['seats'],
+                                        'data-toggle'=>'tooltip',
+                                        'title'=>'Значение от 0 из '.$shifts[$idSmenaOne]['seats']
+                                    ));
+                                ?>
+                                <?php echo SiteService::templateSeatsCount(
+                                    $seats[$idSmenaOne]['seats'],
+                                    $shifts[$idSmenaOne]['seats'],
+                                    $rfill[$idSmenaOne]
+                                ); ?>
+                            </td>
+                        <? } else {?><td></td><? } ?>
+
+                        <? if($idSmenaSeven = SiteService::idDtoCamp($i, 7)) { ?>
+                            <td class="text-center">
+                                <?php echo CHtml::activeTextField(
+                                    $model,
+                                    'srez_'.$idSmenaSeven,
+                                    array(
+                                        'class' => 'form-control text-center',
+                                        'data-mask'=>'0123456789',
+                                        'maxlength'=>3,
+                                        'data-max'=>$shifts[$idSmenaOne]['seats'],
+                                        'data-toggle'=>'tooltip',
+                                        'title'=>'Значение от 0 из '.$shifts[$idSmenaOne]['seats']
+                                    ));
+                                ?>
+                                <?php echo SiteService::templateSeatsCount(
+                                    $seats[$idSmenaOne]['seats'],
+                                    $shifts[$idSmenaOne]['seats'],
+                                    $rfill[$idSmenaOne]
+                                ); ?>
+                            </td>
+                        <? } else {?><td></td><? } ?>
+
+                        <? if($idSmenaEight = SiteService::idDtoCamp($i, 8)) { ?>
+                            <td class="text-center">
+                                <?php echo CHtml::activeTextField(
+                                    $model,
+                                    'srez_'.$idSmenaEight,
+                                    array(
+                                        'class' => 'form-control text-center',
+                                        'data-mask'=>'0123456789',
+                                        'maxlength'=>3,
+                                        'data-max'=>$shifts[$idSmenaOne]['seats'],
+                                        'data-toggle'=>'tooltip',
+                                        'title'=>'Значение от 0 из '.$shifts[$idSmenaOne]['seats']
+                                    ));
+                                ?>
+                                <?php echo SiteService::templateSeatsCount(
+                                    $seats[$idSmenaOne]['seats'],
+                                    $shifts[$idSmenaOne]['seats'],
+                                    $rfill[$idSmenaOne]
+                                ); ?>
+                            </td>
+                        <? } else {?><td></td><? } ?>
+
+                        <td class="text-center">
+                            <?php echo CHtml::activeTextField(
+                                $model,
+                                'seats_'.$i,
+                                array(
+                                    'class' => 'form-control text-center',
+                                    'data-mask'=>'0123456789',
+                                    'maxlength'=>3,
+                                    'data-toggle'=>'tooltip',
+                                    'value'=> SiteService::infoCamp($i, 'seats')
+                                )
+                            ); ?>
+                        </td>
+                    </tr>
+
+                <?php } ?>
+                </tbody>
+            </table>
+
+            <!--
             <table id="z_anketa_reserv_table" class="table table-bordered table-striped table-hover table-sm">
                 <thead class="thead-dark">
                     <tr>
                         <th scope="col" class="text-center">Лагерь</th>
-                        <th scope="col" class="text-center"><?php echo Questionnaire::getDLOName(Questionnaire::DLO_1); ?></th>
-                        <th scope="col" class="text-center"><?php echo Questionnaire::getDLOName(Questionnaire::DLO_2); ?></th>
-                        <th scope="col" class="text-center"><?php echo Questionnaire::getDLOName(Questionnaire::DLO_3); ?></th>
-                        <th scope="col" class="text-center"><?php echo Questionnaire::getDLOName(Questionnaire::DLO_4); ?></th>
-                        <th scope="col" class="text-center"><?php echo Questionnaire::getDLOName(Questionnaire::DLO_5); ?></th>
-                        <th scope="col" class="text-center"><?php echo Questionnaire::getDLOName(Questionnaire::DLO_6); ?></th>
-                        <th scope="col" class="text-center"><?php echo Questionnaire::getDLOName(Questionnaire::DLO_7); ?></th>
-                        <th scope="col" class="text-center"><?php echo Questionnaire::getDLOName(Questionnaire::DLO_8); ?></th>
+                        <th scope="col" class="text-center">
+                            <?php echo CHtml::activeTextField(
+                                $model,
+                                'date_'.Questionnaire::DLO_1,
+                                array(
+                                    'class' => 'form-control text-center',
+                                    'data-mask'=>'0123456789',
+                                    'data-toggle'=>'tooltip',
+                                    'value'=> Questionnaire::getDLOName(Questionnaire::DLO_1)
+                                )
+                            ); ?>
+                        </th>
+                        <th scope="col" class="text-center">
+                            <?php echo CHtml::activeTextField(
+                                $model,
+                                'date_'.Questionnaire::DLO_2,
+                                array(
+                                    'class' => 'form-control text-center',
+                                    'data-mask'=>'0123456789',
+                                    'data-toggle'=>'tooltip',
+                                    'value'=> Questionnaire::getDLOName(Questionnaire::DLO_2)
+                                )
+                            ); ?>                        </th>
+                        <th scope="col" class="text-center">
+                            <?php echo CHtml::activeTextField(
+                                $model,
+                                'date_'.Questionnaire::DLO_3,
+                                array(
+                                    'class' => 'form-control text-center',
+                                    'data-mask'=>'0123456789',
+                                    'data-toggle'=>'tooltip',
+                                    'value'=> Questionnaire::getDLOName(Questionnaire::DLO_3)
+                                )
+                            ); ?>                        </th>
+                        <th scope="col" class="text-center">
+                            <?php echo CHtml::activeTextField(
+                                $model,
+                                'date_'.Questionnaire::DLO_4,
+                                array(
+                                    'class' => 'form-control text-center',
+                                    'data-mask'=>'0123456789',
+                                    'data-toggle'=>'tooltip',
+                                    'value'=> Questionnaire::getDLOName(Questionnaire::DLO_4)
+                                )
+                            ); ?>                        </th>
+                        <th scope="col" class="text-center">
+                            <?php echo CHtml::activeTextField(
+                                $model,
+                                'date_'.Questionnaire::DLO_5,
+                                array(
+                                    'class' => 'form-control text-center',
+                                    'data-mask'=>'0123456789',
+                                    'data-toggle'=>'tooltip',
+                                    'value'=> Questionnaire::getDLOName(Questionnaire::DLO_5)
+                                )
+                            ); ?>                        </th>
+                        <th scope="col" class="text-center">
+                            <?php echo CHtml::activeTextField(
+                                $model,
+                                'date_'.Questionnaire::DLO_6,
+                                array(
+                                    'class' => 'form-control text-center',
+                                    'data-mask'=>'0123456789',
+                                    'data-toggle'=>'tooltip',
+                                    'value'=> Questionnaire::getDLOName(Questionnaire::DLO_6)
+                                )
+                            ); ?>                        </th>
+                        <th scope="col" class="text-center">
+                            <?php echo CHtml::activeTextField(
+                                $model,
+                                'date_'.Questionnaire::DLO_7,
+                                array(
+                                    'class' => 'form-control text-center',
+                                    'data-mask'=>'0123456789',
+                                    'data-toggle'=>'tooltip',
+                                    'value'=> Questionnaire::getDLOName(Questionnaire::DLO_7)
+                                )
+                            ); ?>                        </th>
+                        <th scope="col" class="text-center">
+                            <?php echo CHtml::activeTextField(
+                                $model,
+                                'date_'.Questionnaire::DLO_8,
+                                array(
+                                    'class' => 'form-control text-center',
+                                    'data-mask'=>'0123456789',
+                                    'data-toggle'=>'tooltip',
+                                    'value'=> Questionnaire::getDLOName(Questionnaire::DLO_8)
+                                )
+                            ); ?>                        </th>
                         <th scope="col" class="text-center">Количество мест</th>
                     </tr>
                 </thead>
@@ -282,6 +599,8 @@
                     </tr>
                 </tbody>
             </table>
+
+            -->
             <div class="form-group text-right">
                 <?php echo CHtml::submitButton('Применить', array('class' => 'btn btn-success')); ?>
             </div>

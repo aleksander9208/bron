@@ -56,300 +56,25 @@ class SiteService
 
     public static function getShifts($campId = false)
     {
+        $out = array();
 
-        $out = array(
-            Questionnaire::SHIFT_KIROVEC_1 => array(
-                'id' => Questionnaire::SHIFT_KIROVEC_1,
-                'camp' => Questionnaire::CAMP_KIROVEC,
-                'seats' => self::infoCamp(Questionnaire::CAMP_KIROVEC, 'seats'),
-                'min_age' => self::infoCamp(Questionnaire::CAMP_KIROVEC, 'min_age'),
-                'max_age' => self::infoCamp(Questionnaire::CAMP_KIROVEC, 'max_age'),
-                'dlo' => array(
-                    Questionnaire::DLO_1
-                )
-            ),
-            Questionnaire::SHIFT_KIROVEC_2 => array(
-                'id' => Questionnaire::SHIFT_KIROVEC_2,
-                'camp' => Questionnaire::CAMP_KIROVEC,
-                'seats' => self::infoCamp(Questionnaire::CAMP_KIROVEC, 'seats'),
-                'min_age' => self::infoCamp(Questionnaire::CAMP_KIROVEC, 'min_age'),
-                'max_age' => self::infoCamp(Questionnaire::CAMP_KIROVEC, 'max_age'),
-                'dlo' => array(
-                    Questionnaire::DLO_3,
-                )
-            ),
-            Questionnaire::SHIFT_KIROVEC_3 => array(
-                'id' => Questionnaire::SHIFT_KIROVEC_3,
-                'camp' => Questionnaire::CAMP_KIROVEC,
-                'seats' => self::infoCamp(Questionnaire::CAMP_KIROVEC, 'seats'),
-                'min_age' => self::infoCamp(Questionnaire::CAMP_KIROVEC, 'min_age'),
-                'max_age' => self::infoCamp(Questionnaire::CAMP_KIROVEC, 'max_age'),
-                'dlo' => array(
-                    Questionnaire::DLO_5,
-                )
-            ),
-            Questionnaire::SHIFT_KIROVEC_4 => array(
-                'id' => Questionnaire::SHIFT_KIROVEC_4,
-                'camp' => Questionnaire::CAMP_KIROVEC,
-                'seats' => self::infoCamp(Questionnaire::CAMP_KIROVEC, 'seats'),
-                'min_age' => self::infoCamp(Questionnaire::CAMP_KIROVEC, 'min_age'),
-                'max_age' => self::infoCamp(Questionnaire::CAMP_KIROVEC, 'max_age'),
-                'dlo' => array(
-                    Questionnaire::DLO_7,
-                )
-            ),
-            Questionnaire::SHIFT_BLUESCREEN_1 => array(
-                'id' => Questionnaire::SHIFT_BLUESCREEN_1,
-                'camp' => Questionnaire::CAMP_BLUESCREEN,
-                'seats' => self::infoCamp(Questionnaire::CAMP_BLUESCREEN, 'seats'),
-                'min_age' => self::infoCamp(Questionnaire::CAMP_BLUESCREEN, 'min_age'),
-                'max_age' => self::infoCamp(Questionnaire::CAMP_BLUESCREEN, 'max_age'),
-                'dlo' => array(
-                    Questionnaire::DLO_1
-                )
-            ),
-            Questionnaire::SHIFT_BLUESCREEN_2 => array(
-                'id' => Questionnaire::SHIFT_BLUESCREEN_2,
-                'camp' => Questionnaire::CAMP_BLUESCREEN,
-                'seats' => self::infoCamp(Questionnaire::CAMP_BLUESCREEN, 'seats'),
-                'min_age' => self::infoCamp(Questionnaire::CAMP_BLUESCREEN, 'min_age'),
-                'max_age' => self::infoCamp(Questionnaire::CAMP_BLUESCREEN, 'max_age'),
-                'dlo' => array(
-                    Questionnaire::DLO_2,
-                )
-            ),
-            Questionnaire::SHIFT_BLUESCREEN_3 => array(
-                'id' => Questionnaire::SHIFT_BLUESCREEN_3,
-                'camp' => Questionnaire::CAMP_BLUESCREEN,
-                'seats' => self::infoCamp(Questionnaire::CAMP_BLUESCREEN, 'seats'),
-                'min_age' => self::infoCamp(Questionnaire::CAMP_BLUESCREEN, 'min_age'),
-                'max_age' => self::infoCamp(Questionnaire::CAMP_BLUESCREEN, 'max_age'),
-                'dlo' => array(
-                    Questionnaire::DLO_4,
-                )
-            ),
-            Questionnaire::SHIFT_BLUESCREEN_4 => array(
-                'id' => Questionnaire::SHIFT_BLUESCREEN_4,
-                'camp' => Questionnaire::CAMP_BLUESCREEN,
-                'seats' => self::infoCamp(Questionnaire::CAMP_BLUESCREEN, 'seats'),
-                'min_age' => self::infoCamp(Questionnaire::CAMP_BLUESCREEN, 'min_age'),
-                'max_age' => self::infoCamp(Questionnaire::CAMP_BLUESCREEN, 'max_age'),
-                'dlo' => array(
-                    Questionnaire::DLO_6,
-                )
-            ),
-            Questionnaire::SHIFT_BLUESCREEN_5 => array(
-                'id' => Questionnaire::SHIFT_BLUESCREEN_5,
-                'camp' => Questionnaire::CAMP_BLUESCREEN,
-                'seats' => self::infoCamp(Questionnaire::CAMP_BLUESCREEN, 'seats'),
-                'min_age' => self::infoCamp(Questionnaire::CAMP_BLUESCREEN, 'min_age'),
-                'max_age' => self::infoCamp(Questionnaire::CAMP_BLUESCREEN, 'max_age'),
-                'dlo' => array(
-                    Questionnaire::DLO_8,
-                )
-            ),
-            Questionnaire::SHIFT_EAST_1 => array(
-                'id' => Questionnaire::SHIFT_EAST_1,
-                'camp' => Questionnaire::CAMP_EAST_4,
-                'seats' => self::infoCamp(Questionnaire::CAMP_EAST_4, 'seats'),
-                'min_age' => self::infoCamp(Questionnaire::CAMP_EAST_4, 'min_age'),
-                'max_age' => self::infoCamp(Questionnaire::CAMP_EAST_4, 'max_age'),
-                'dlo' => array(
-                    Questionnaire::DLO_1,
-                )
-            ),
-            Questionnaire::SHIFT_EAST_2 => array(
-                'id' => Questionnaire::SHIFT_EAST_2,
-                'camp' => Questionnaire::CAMP_EAST_4,
-                'seats' => self::infoCamp(Questionnaire::CAMP_EAST_4, 'seats'),
-                'min_age' => self::infoCamp(Questionnaire::CAMP_EAST_4, 'min_age'),
-                'max_age' => self::infoCamp(Questionnaire::CAMP_EAST_4, 'max_age'),
-                'dlo' => array(
-                    Questionnaire::DLO_3,
-                )
-            ),
-            Questionnaire::SHIFT_EAST_3 => array(
-                'id' => Questionnaire::SHIFT_EAST_3,
-                'camp' => Questionnaire::CAMP_EAST_4,
-                'seats' => self::infoCamp(Questionnaire::CAMP_EAST_4, 'seats'),
-                'min_age' => self::infoCamp(Questionnaire::CAMP_EAST_4, 'min_age'),
-                'max_age' => self::infoCamp(Questionnaire::CAMP_EAST_4, 'max_age'),
-                'dlo' => array(
-                    Questionnaire::DLO_5,
-                )
-            ),
-            Questionnaire::SHIFT_EAST_4 => array(
-                'id' => Questionnaire::SHIFT_EAST_4,
-                'camp' => Questionnaire::CAMP_EAST_4,
-                'seats' => self::infoCamp(Questionnaire::CAMP_EAST_4, 'seats'),
-                'min_age' => self::infoCamp(Questionnaire::CAMP_EAST_4, 'min_age'),
-                'max_age' => self::infoCamp(Questionnaire::CAMP_EAST_4, 'max_age'),
-                'dlo' => array(
-                    Questionnaire::DLO_7,
-                )
-            ),
-            Questionnaire::SHIFT_DIAMOND_1 => array(
-                'id' => Questionnaire::SHIFT_DIAMOND_1,
-                'camp' => Questionnaire::CAMP_DIAMOND,
-                'seats' => self::infoCamp(Questionnaire::CAMP_DIAMOND, 'seats'),
-                'min_age' => self::infoCamp(Questionnaire::CAMP_DIAMOND, 'min_age'),
-                'max_age' => self::infoCamp(Questionnaire::CAMP_DIAMOND, 'max_age'),
-                'dlo' => array(
-                    Questionnaire::DLO_1,
-                )
-            ),
-            Questionnaire::SHIFT_DIAMOND_2 => array(
-                'id' => Questionnaire::SHIFT_DIAMOND_2,
-                'camp' => Questionnaire::CAMP_DIAMOND,
-                'seats' => self::infoCamp(Questionnaire::CAMP_DIAMOND, 'seats'),
-                'min_age' => self::infoCamp(Questionnaire::CAMP_DIAMOND, 'min_age'),
-                'max_age' => self::infoCamp(Questionnaire::CAMP_DIAMOND, 'max_age'),
-                'dlo' => array(
-                    Questionnaire::DLO_3,
+        $result = Yii::app()->db->createCommand()
+            ->select('*')
+            ->from('sb_shifts')
+            ->queryAll();
 
-                )
-            ),
-            Questionnaire::SHIFT_DIAMOND_3 => array(
-                'id' => Questionnaire::SHIFT_DIAMOND_3,
-                'camp' => Questionnaire::CAMP_DIAMOND,
-                'seats' => self::infoCamp(Questionnaire::CAMP_DIAMOND, 'seats'),
-                'min_age' => self::infoCamp(Questionnaire::CAMP_DIAMOND, 'min_age'),
-                'max_age' => self::infoCamp(Questionnaire::CAMP_DIAMOND, 'max_age'),
+        foreach ($result as $k => $v) {
+            $out[$k+1] = array(
+                'id' => $k+1,
+                'camp' => $result[$k]['camp'],
+                'seats' => self::infoCamp((int)$result[$k]['camp'], 'seats'),
+                'min_age' => self::infoCamp((int)$result[$k]['camp'], 'min_age'),
+                'max_age' => self::infoCamp((int)$result[$k]['camp'], 'max_age'),
                 'dlo' => array(
-                    Questionnaire::DLO_5,
+                    $result[$k]['dlo']
                 )
-            ),
-            Questionnaire::SHIFT_DIAMOND_4 => array(
-                'id' => Questionnaire::SHIFT_DIAMOND_4,
-                'camp' => Questionnaire::CAMP_DIAMOND,
-                'seats' => self::infoCamp(Questionnaire::CAMP_DIAMOND, 'seats'),
-                'min_age' => self::infoCamp(Questionnaire::CAMP_DIAMOND, 'min_age'),
-                'max_age' => self::infoCamp(Questionnaire::CAMP_DIAMOND, 'max_age'),
-                'dlo' => array(
-                    Questionnaire::DLO_7,
-                )
-            ),
-            Questionnaire::SHIFT_BONFIRE_1 => array(
-                'id' => Questionnaire::SHIFT_BONFIRE_1,
-                'camp' => Questionnaire::CAMP_BONFIRE,
-                'seats' => self::infoCamp(Questionnaire::CAMP_BONFIRE, 'seats'),
-                'min_age' => self::infoCamp(Questionnaire::CAMP_BONFIRE, 'min_age'),
-                'max_age' => self::infoCamp(Questionnaire::CAMP_BONFIRE, 'max_age'),
-                'dlo' => array(
-                    Questionnaire::DLO_1,
-                )
-            ),
-            Questionnaire::SHIFT_BONFIRE_2 => array(
-                'id' => Questionnaire::SHIFT_BONFIRE_2,
-                'camp' => Questionnaire::CAMP_BONFIRE,
-                'seats' => self::infoCamp(Questionnaire::CAMP_BONFIRE, 'seats'),
-                'min_age' => self::infoCamp(Questionnaire::CAMP_BONFIRE, 'min_age'),
-                'max_age' => self::infoCamp(Questionnaire::CAMP_BONFIRE, 'max_age'),
-                'dlo' => array(
-                    Questionnaire::DLO_3
-                )
-            ),
-            Questionnaire::SHIFT_BONFIRE_3 => array(
-                'id' => Questionnaire::SHIFT_BONFIRE_3,
-                'camp' => Questionnaire::CAMP_BONFIRE,
-                'seats' => self::infoCamp(Questionnaire::CAMP_BONFIRE, 'seats'),
-                'min_age' => self::infoCamp(Questionnaire::CAMP_BONFIRE, 'min_age'),
-                'max_age' => self::infoCamp(Questionnaire::CAMP_BONFIRE, 'max_age'),
-                'dlo' => array(
-                    Questionnaire::DLO_5,
-                )
-            ),
-            Questionnaire::SHIFT_BONFIRE_4 => array(
-                'id' => Questionnaire::SHIFT_BONFIRE_4,
-                'camp' => Questionnaire::CAMP_BONFIRE,
-                'seats' => self::infoCamp(Questionnaire::CAMP_BONFIRE, 'seats'),
-                'min_age' => self::infoCamp(Questionnaire::CAMP_BONFIRE, 'min_age'),
-                'max_age' => self::infoCamp(Questionnaire::CAMP_BONFIRE, 'max_age'),
-                'dlo' => array(
-                    Questionnaire::DLO_7,
-                )
-            ),
-            Questionnaire::SHIFT_LIGHTHOUSE_1 => array(
-                'id' => Questionnaire::SHIFT_LIGHTHOUSE_1,
-                'camp' => Questionnaire::CAMP_LIGHTHOUSE,
-                'seats' => self::infoCamp(Questionnaire::CAMP_LIGHTHOUSE, 'seats'),
-                'min_age' => self::infoCamp(Questionnaire::CAMP_LIGHTHOUSE, 'min_age'),
-                'max_age' => self::infoCamp(Questionnaire::CAMP_LIGHTHOUSE, 'max_age'),
-                'dlo' => array(
-                    Questionnaire::DLO_1,
-                )
-            ),
-            Questionnaire::SHIFT_LIGHTHOUSE_2 => array(
-                'id' => Questionnaire::SHIFT_LIGHTHOUSE_2,
-                'camp' => Questionnaire::CAMP_LIGHTHOUSE,
-                'seats' => self::infoCamp(Questionnaire::CAMP_LIGHTHOUSE, 'seats'),
-                'min_age' => self::infoCamp(Questionnaire::CAMP_LIGHTHOUSE, 'min_age'),
-                'max_age' => self::infoCamp(Questionnaire::CAMP_LIGHTHOUSE, 'max_age'),
-                'dlo' => array(
-                    Questionnaire::DLO_3,
-                )
-            ),
-            Questionnaire::SHIFT_LIGHTHOUSE_3 => array(
-                'id' => Questionnaire::SHIFT_LIGHTHOUSE_3,
-                'camp' => Questionnaire::CAMP_LIGHTHOUSE,
-                'seats' => self::infoCamp(Questionnaire::CAMP_LIGHTHOUSE, 'seats'),
-                'min_age' => self::infoCamp(Questionnaire::CAMP_LIGHTHOUSE, 'min_age'),
-                'max_age' => self::infoCamp(Questionnaire::CAMP_LIGHTHOUSE, 'max_age'),
-                'dlo' => array(
-                    Questionnaire::DLO_5
-                )
-            ),
-            Questionnaire::SHIFT_LIGHTHOUSE_4 => array(
-                'id' => Questionnaire::SHIFT_LIGHTHOUSE_4,
-                'camp' => Questionnaire::CAMP_LIGHTHOUSE,
-                'seats' => self::infoCamp(Questionnaire::CAMP_LIGHTHOUSE, 'seats'),
-                'min_age' => self::infoCamp(Questionnaire::CAMP_LIGHTHOUSE, 'min_age'),
-                'max_age' => self::infoCamp(Questionnaire::CAMP_LIGHTHOUSE, 'max_age'),
-                'dlo' => array(
-                    Questionnaire::DLO_7
-                )
-            ),
-            Questionnaire::SHIFT_FLYGHT_1 => array(
-                'id' => Questionnaire::SHIFT_FLYGHT_1,
-                'camp' => Questionnaire::CAMP_FLYGHT,
-                'seats' => self::infoCamp(Questionnaire::CAMP_FLYGHT, 'seats'),
-                'min_age' => self::infoCamp(Questionnaire::CAMP_FLYGHT, 'min_age'),
-                'max_age' => self::infoCamp(Questionnaire::CAMP_FLYGHT, 'max_age'),
-                'dlo' => array(
-                    Questionnaire::DLO_1
-                )
-            ),
-            Questionnaire::SHIFT_FLYGHT_2 => array(
-                'id' => Questionnaire::SHIFT_FLYGHT_2,
-                'camp' => Questionnaire::CAMP_FLYGHT,
-                'seats' => self::infoCamp(Questionnaire::CAMP_FLYGHT, 'seats'),
-                'min_age' => self::infoCamp(Questionnaire::CAMP_FLYGHT, 'min_age'),
-                'max_age' => self::infoCamp(Questionnaire::CAMP_FLYGHT, 'max_age'),
-                'dlo' => array(
-                    Questionnaire::DLO_3
-                )
-            ),
-            Questionnaire::SHIFT_FLYGHT_3 => array(
-                'id' => Questionnaire::SHIFT_FLYGHT_3,
-                'camp' => Questionnaire::CAMP_FLYGHT,
-                'seats' => self::infoCamp(Questionnaire::CAMP_FLYGHT, 'seats'),
-                'min_age' => self::infoCamp(Questionnaire::CAMP_FLYGHT, 'min_age'),
-                'max_age' => self::infoCamp(Questionnaire::CAMP_FLYGHT, 'max_age'),
-                'dlo' => array(
-                    Questionnaire::DLO_5,
-                )
-            ),
-            Questionnaire::SHIFT_FLYGHT_4 => array(
-                'id' => Questionnaire::SHIFT_FLYGHT_4,
-                'camp' => Questionnaire::CAMP_FLYGHT,
-                'seats' => self::infoCamp(Questionnaire::CAMP_FLYGHT, 'seats'),
-                'min_age' => self::infoCamp(Questionnaire::CAMP_FLYGHT, 'min_age'),
-                'max_age' => self::infoCamp(Questionnaire::CAMP_FLYGHT, 'max_age'),
-                'dlo' => array(
-                    Questionnaire::DLO_7
-                )
-            ),
-        );
+            );
+        }
 
         if ($campId) {
             foreach ($out as $shiftId => $v) {
@@ -496,8 +221,17 @@ class SiteService
             ->where("shift_id = $id")
             ->queryAll();
 
-
-
         return count($result);
+    }
+
+    public function idDtoCamp($id, $dto)
+    {
+        $result = Yii::app()->db->createCommand()
+            ->select('id')
+            ->from('sb_shifts')
+            ->where("camp = $id and dlo = $dto")
+            ->queryRow();
+
+        return $result['id'];
     }
 }
