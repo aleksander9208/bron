@@ -96,7 +96,13 @@ class Reserve extends CActiveRecord
             'srez_27',
             'srez_28',
             'srez_29',
-            'seats'
+            'srez_30',
+            'srez_31',
+            'srez_32',
+            'srez_33',
+            'srez_34',
+            'srez_35',
+            'seats',
         );
     }
 
@@ -189,7 +195,7 @@ class Reserve extends CActiveRecord
 
             if($pieces['0'] == 'date') {
                 $command = Yii::app()->db->createCommand();
-                $command->update('sb_smena', array(
+                $command->update('sb_shifts', array(
                     $pieces[0] => $value,
                 ), "id=$pieces[1]");
             } else {

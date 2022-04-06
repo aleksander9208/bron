@@ -5,7 +5,7 @@
         <a href="<?php echo Yii::app()->createAbsoluteUrl('/site/addstatement'); ?>" class="btn btn-block btn-success mb-2 mx-auto mw-50 w-50">Подать заявку</a>
         <p>Для уточнения текущего статуса поданных заявок, отказа от&nbsp;них, подачи новых заявок на&nbsp;бронирование, пожалуйста, пройдите авторизацию и&nbsp;перейдите в &laquo;Личный кабинет&raquo;.</p>
         <div class="card mw-50 w-50 mx-auto mb-2">
-            <h5 class="card-header">Авторизация в личный кабинет</h5>
+            <h5 class="card-header">Вход в личный кабинет</h5>
             <div class="card-body">
                 <form id="z_auth_form" class="needs-validation" method="post">
                     <div class="form-group">

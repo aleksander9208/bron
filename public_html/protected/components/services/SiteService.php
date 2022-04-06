@@ -70,6 +70,8 @@ class SiteService
                 'seats' => self::infoCamp((int)$result[$k]['camp'], 'seats'),
                 'min_age' => self::infoCamp((int)$result[$k]['camp'], 'min_age'),
                 'max_age' => self::infoCamp((int)$result[$k]['camp'], 'max_age'),
+                'date' => $result[$k]['date'],
+                'day' => $result[$k]['day'],
                 'dlo' => array(
                     $result[$k]['dlo']
                 )

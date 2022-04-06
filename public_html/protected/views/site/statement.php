@@ -342,6 +342,190 @@
                 </tbody>
             </table-->
 
+
+            <table id="z_anketa_table" class="table table-bordered table-striped table-hover table-sm">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col" class="text-center">Лагерь</th>
+                    <th scope="col" class="text-center">Рекомендуемый возраст</th>
+                    <?
+                    //Количество смен
+                    $smena = count(Questionnaire::getDLOName());
+
+                    for($s=1; $s <= $smena; $s++) {
+                        ?>
+                        <th scope="col" class="text-center" width="14%">
+                            <b>Смена <?= $s?></b>
+                        </th>
+                    <? } ?>
+                </tr>
+                </thead>
+                <tbody>
+
+                    <?php
+
+                        //получаем количество лагерей
+                        $countCamp = Questionnaire::getCAMPName();
+
+                    for($i=1; $i <= count($countCamp); $i++) {
+
+                        $camp = Questionnaire::getAddress($i);
+                    ?>
+                        <tr>
+                            <th scope="row" class="align-middle text-center">
+                                <?php echo Questionnaire::getCAMPName($i); ?><br/>
+                                <small><?= $camp['address'] ?></small>
+                            </th>
+
+                            <td class="text-center">
+                                от <?php echo $camp['min_age']; ?>
+                                до <?php echo  $camp['max_age'];?> лет
+                            </td>
+
+                            <? if($idSmenaOne = SiteService::idDtoCamp($i, 1)) { ?>
+                                <td class="text-center"
+                                    data-dlo="<?= $idSmenaOne; ?>"
+                                    data-shift="<?= $idSmenaOne; ?>"
+                                >
+                                    <div><?= $shifts[$idSmenaOne]['day'] ?> дней</div>
+                                    <strong>
+                                        <?= $shifts[$idSmenaOne]['date'] ?>
+                                    </strong>
+                                    <br/>
+                                    <?php echo SiteService::templateChecker(
+                                            '',
+                                        $idSmenaOne,
+                                            $seats[$idSmenaOne]['seats'],
+                                            $shifts[$idSmenaOne]['seats'],
+                                            $shifts[$idSmenaOne]['min_age'],
+                                            $shifts[$idSmenaOne]['max_age'],
+                                            $postShifts,
+                                            '1');
+                                    ?>
+                                </td>
+                            <? } else {?><td></td><? } ?>
+
+                            <? if($idSmenaTwo = SiteService::idDtoCamp($i, 2)) { ?>
+                                <td class="text-center"
+                                    data-dlo="<?= $idSmenaTwo; ?>"
+                                    data-shift="<?= $idSmenaTwo; ?>"
+                                >
+                                    <div><?= $shifts[$idSmenaTwo]['day'] ?> дней</div>
+                                    <strong>
+                                        <?= $shifts[$idSmenaTwo]['date'] ?>
+                                    </strong>
+                                    <br/>
+                                    <?php echo SiteService::templateChecker(
+                                        '',
+                                        $idSmenaTwo,
+                                        $seats[$idSmenaTwo]['seats'],
+                                        $shifts[$idSmenaTwo]['seats'],
+                                        $shifts[$idSmenaTwo]['min_age'],
+                                        $shifts[$idSmenaTwo]['max_age'],
+                                        $postShifts,
+                                        '1');
+                                    ?>
+                                </td>
+                            <? } else {?><td></td><? } ?>
+
+                            <? if($idSmenaThree = SiteService::idDtoCamp($i, 3)) { ?>
+                                <td class="text-center"
+                                    data-dlo="<?= $idSmenaThree; ?>"
+                                    data-shift="<?= $idSmenaThree; ?>"
+                                >
+                                    <div><?= $shifts[$idSmenaThree]['day'] ?> дней</div>
+                                    <strong>
+                                        <?= $shifts[$idSmenaThree]['date'] ?>
+                                    </strong>
+                                    <br/>
+                                    <?php echo SiteService::templateChecker(
+                                        '',
+                                        $idSmenaThree,
+                                        $seats[$idSmenaThree]['seats'],
+                                        $shifts[$idSmenaThree]['seats'],
+                                        $shifts[$idSmenaThree]['min_age'],
+                                        $shifts[$idSmenaThree]['max_age'],
+                                        $postShifts,
+                                        '1');
+                                    ?>
+                                </td>
+                            <? } else {?><td></td><? } ?>
+
+                            <? if($idSmenaFour = SiteService::idDtoCamp($i, 4)) { ?>
+                                <td class="text-center"
+                                    data-dlo="<?= $idSmenaFour; ?>"
+                                    data-shift="<?= $idSmenaFour; ?>"
+                                >
+                                    <div><?= $shifts[$idSmenaFour]['day'] ?> дней</div>
+                                    <strong>
+                                        <?= $shifts[$idSmenaFour]['date'] ?>
+                                    </strong>
+                                    <br/>
+                                    <?php echo SiteService::templateChecker(
+                                        '',
+                                        $idSmenaFour,
+                                        $seats[$idSmenaFour]['seats'],
+                                        $shifts[$idSmenaFour]['seats'],
+                                        $shifts[$idSmenaFour]['min_age'],
+                                        $shifts[$idSmenaFour]['max_age'],
+                                        $postShifts,
+                                        '1');
+                                    ?>
+                                </td>
+                            <? } else {?><td></td><? } ?>
+
+                            <? if($idSmenaFive = SiteService::idDtoCamp($i, 5)) { ?>
+                                <td class="text-center"
+                                    data-dlo="<?= $idSmenaFive; ?>"
+                                    data-shift="<?= $idSmenaFive; ?>"
+                                >
+                                    <div><?= $shifts[$idSmenaFive]['day'] ?> дней</div>
+                                    <strong>
+                                        <?= $shifts[$idSmenaFive]['date'] ?>
+                                    </strong>
+                                    <br/>
+                                    <?php echo SiteService::templateChecker(
+                                        '',
+                                        $idSmenaFive,
+                                        $seats[$idSmenaFive]['seats'],
+                                        $shifts[$idSmenaFive]['seats'],
+                                        $shifts[$idSmenaFive]['min_age'],
+                                        $shifts[$idSmenaFive]['max_age'],
+                                        $postShifts,
+                                        '1');
+                                    ?>
+                                </td>
+                            <? } else {?><td></td><? } ?>
+
+                            <? if($idSmenaSix = SiteService::idDtoCamp($i, 6)) { ?>
+                                <td class="text-center"
+                                    data-dlo="<?= $idSmenaSix; ?>"
+                                    data-shift="<?= $idSmenaSix; ?>"
+                                >
+                                    <div><?= $shifts[$idSmenaSix]['day'] ?> дней</div>
+                                    <strong>
+                                        <?= $shifts[$idSmenaSix]['date'] ?>
+                                    </strong>
+                                    <br/>
+                                    <?php echo SiteService::templateChecker(
+                                        '',
+                                        $idSmenaSix,
+                                        $seats[$idSmenaSix]['seats'],
+                                        $shifts[$idSmenaSix]['seats'],
+                                        $shifts[$idSmenaSix]['min_age'],
+                                        $shifts[$idSmenaSix]['max_age'],
+                                        $postShifts,
+                                        '1');
+                                    ?>
+                                </td>
+                            <? } else {?><td></td><? } ?>
+
+                        </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
+
+            <!--
             <table id="z_anketa_table" class="table table-bordered table-striped table-hover table-sm">
                 <thead class="thead-dark">
                 <tr>
@@ -588,6 +772,7 @@
                 </tbody>
             </table>
 
+            -->
             <div class="form-group text-right">
                 <?php echo CHtml::submitButton('Подать заявку на регистрацию', array('class' => 'btn btn-success')); ?>
             </div>

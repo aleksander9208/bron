@@ -673,6 +673,29 @@ class Questionnaire extends CActiveRecord
         return $arr;
     }
 
+    public static function getAddress($campID = false)
+    {
+
+        $result = Yii::app()->db->createCommand()
+            ->select('*')
+            ->from('sb_camp')
+            ->queryAll();
+
+        $arr = array();
+
+        foreach ($result as $camp) {
+            $arr[$camp['id']] = $camp;
+        }
+
+        if (is_numeric($campID)) {
+            if (array_key_exists($campID, $arr)) {
+                return $arr[$campID];
+            }
+            return $campID;
+        }
+        return $arr;
+    }
+
     public static function getCAMPByShift($shiftId)
     {
         switch ($shiftId) {

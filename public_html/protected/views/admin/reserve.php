@@ -15,23 +15,13 @@
                 <tr>
                     <th scope="col" class="text-center">Лагерь</th>
                     <?
-                        //Количество смен
-                        $smena = count(Questionnaire::getDLOName());
+                    //Количество смен
+                    $smena = count(Questionnaire::getDLOName());
 
-                        for($s=1; $s <= $smena; $s++) {
-                    ?>
+                    for($s=1; $s <= $smena; $s++) {
+                        ?>
                         <th scope="col" class="text-center">
                             <b>Смена <?= $s?></b>
-                            <?php echo CHtml::activeTextField(
-                                $model,
-                                'date_'.$s,
-                                array(
-                                    'class' => 'form-control text-center',
-                                    'data-mask'=>'0123456789',
-                                    'data-toggle'=>'tooltip',
-                                    'value'=> Questionnaire::getDLOName($s)
-                                )
-                            ); ?>
                         </th>
                     <? } ?>
 
@@ -51,6 +41,18 @@
 
                         <? if($idSmenaOne = SiteService::idDtoCamp($i, 1)) { ?>
                             <td class="text-center">
+                                <b>Дата смены</b>
+                                <?php echo CHtml::activeTextField(
+                                    $model,
+                                    'date_'.$idSmenaOne,
+                                    array(
+                                        'class' => 'form-control text-center',
+                                        'data-mask'=>'0123456789',
+                                        'data-toggle'=>'tooltip',
+                                        'value'=> $shifts[$idSmenaOne]['date']
+                                    )
+                                ); ?>
+                                <b>Количество резерва</b>
                                 <?php echo CHtml::activeTextField(
                                     $model,
                                     'srez_'.$idSmenaOne,
@@ -73,6 +75,18 @@
 
                         <? if($idSmenaTwo = SiteService::idDtoCamp($i, 2)) { ?>
                             <td class="text-center">
+                                <b>Дата смены</b>
+                                <?php echo CHtml::activeTextField(
+                                    $model,
+                                    'date_'.$idSmenaTwo,
+                                    array(
+                                        'class' => 'form-control text-center',
+                                        'data-mask'=>'0123456789',
+                                        'data-toggle'=>'tooltip',
+                                        'value'=> $shifts[$idSmenaTwo]['date']
+                                    )
+                                ); ?>
+                                <b>Количество резерва</b>
                                 <?php echo CHtml::activeTextField(
                                     $model,
                                     'srez_'.$idSmenaTwo,
@@ -95,6 +109,18 @@
 
                         <? if($idSmenaThree = SiteService::idDtoCamp($i, 3)) { ?>
                             <td class="text-center">
+                                <b>Дата смены</b>
+                                <?php echo CHtml::activeTextField(
+                                    $model,
+                                    'date_'.$idSmenaThree,
+                                    array(
+                                        'class' => 'form-control text-center',
+                                        'data-mask'=>'0123456789',
+                                        'data-toggle'=>'tooltip',
+                                        'value'=> $shifts[$idSmenaThree]['date']
+                                    )
+                                ); ?>
+                                <b>Количество резерва</b>
                                 <?php echo CHtml::activeTextField(
                                     $model,
                                     'srez_'.$idSmenaThree,
@@ -117,6 +143,18 @@
 
                         <? if($idSmenaFour = SiteService::idDtoCamp($i, 4)) { ?>
                             <td class="text-center">
+                                <b>Дата смены</b>
+                                <?php echo CHtml::activeTextField(
+                                    $model,
+                                    'date_'.$idSmenaFour,
+                                    array(
+                                        'class' => 'form-control text-center',
+                                        'data-mask'=>'0123456789',
+                                        'data-toggle'=>'tooltip',
+                                        'value'=> $shifts[$idSmenaFour]['date']
+                                    )
+                                ); ?>
+                                <b>Количество резерва</b>
                                 <?php echo CHtml::activeTextField(
                                     $model,
                                     'srez_'.$idSmenaFour,
@@ -139,6 +177,18 @@
 
                         <? if($idSmenaFive = SiteService::idDtoCamp($i, 5)) { ?>
                             <td class="text-center">
+                                <b>Дата смены</b>
+                                <?php echo CHtml::activeTextField(
+                                    $model,
+                                    'date_'.$idSmenaFive,
+                                    array(
+                                        'class' => 'form-control text-center',
+                                        'data-mask'=>'0123456789',
+                                        'data-toggle'=>'tooltip',
+                                        'value'=> $shifts[$idSmenaFive]['date']
+                                    )
+                                ); ?>
+                                <b>Количество резерва</b>
                                 <?php echo CHtml::activeTextField(
                                     $model,
                                     'srez_'.$idSmenaFive,
@@ -161,53 +211,21 @@
 
                         <? if($idSmenaSix = SiteService::idDtoCamp($i, 6)) { ?>
                             <td class="text-center">
+                                <b>Дата смены</b>
+                                <?php echo CHtml::activeTextField(
+                                    $model,
+                                    'date_'.$idSmenaSix,
+                                    array(
+                                        'class' => 'form-control text-center',
+                                        'data-mask'=>'0123456789',
+                                        'data-toggle'=>'tooltip',
+                                        'value'=> $shifts[$idSmenaSix]['date']
+                                    )
+                                ); ?>
+                                <b>Количество резерва</b>
                                 <?php echo CHtml::activeTextField(
                                     $model,
                                     'srez_'.$idSmenaSix,
-                                    array(
-                                        'class' => 'form-control text-center',
-                                        'data-mask'=>'0123456789',
-                                        'maxlength'=>3,
-                                        'data-max'=>$shifts[$idSmenaOne]['seats'],
-                                        'data-toggle'=>'tooltip',
-                                        'title'=>'Значение от 0 из '.$shifts[$idSmenaOne]['seats']
-                                    ));
-                                ?>
-                                <?php echo SiteService::templateSeatsCount(
-                                    $seats[$idSmenaOne]['seats'],
-                                    $shifts[$idSmenaOne]['seats'],
-                                    $rfill[$idSmenaOne]
-                                ); ?>
-                            </td>
-                        <? } else {?><td></td><? } ?>
-
-                        <? if($idSmenaSeven = SiteService::idDtoCamp($i, 7)) { ?>
-                            <td class="text-center">
-                                <?php echo CHtml::activeTextField(
-                                    $model,
-                                    'srez_'.$idSmenaSeven,
-                                    array(
-                                        'class' => 'form-control text-center',
-                                        'data-mask'=>'0123456789',
-                                        'maxlength'=>3,
-                                        'data-max'=>$shifts[$idSmenaOne]['seats'],
-                                        'data-toggle'=>'tooltip',
-                                        'title'=>'Значение от 0 из '.$shifts[$idSmenaOne]['seats']
-                                    ));
-                                ?>
-                                <?php echo SiteService::templateSeatsCount(
-                                    $seats[$idSmenaOne]['seats'],
-                                    $shifts[$idSmenaOne]['seats'],
-                                    $rfill[$idSmenaOne]
-                                ); ?>
-                            </td>
-                        <? } else {?><td></td><? } ?>
-
-                        <? if($idSmenaEight = SiteService::idDtoCamp($i, 8)) { ?>
-                            <td class="text-center">
-                                <?php echo CHtml::activeTextField(
-                                    $model,
-                                    'srez_'.$idSmenaEight,
                                     array(
                                         'class' => 'form-control text-center',
                                         'data-mask'=>'0123456789',
