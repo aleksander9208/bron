@@ -182,7 +182,6 @@
                         'headerHtmlOptions' => array('class' => 'text-center','scope'=>'col'),
                         'filter' => array('НЕТ','ДА'),
                     ),
-                    /*
                     array(
                         'header' => 'Комментарий',
                         'name' => 'comment',
@@ -192,7 +191,6 @@
                         'headerHtmlOptions' => array('class' => 'text-center','scope'=>'col'),
                         'filter' => CHtml::activeTextField($model, 'comment', array('class' => 'form-control')),
                     ),
-*/
                     array(
                         'header' => 'Статус',
                         'name' => 'status',

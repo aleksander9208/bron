@@ -699,48 +699,54 @@ class Questionnaire extends CActiveRecord
     public static function getCAMPByShift($shiftId)
     {
         switch ($shiftId) {
-            case self::SHIFT_KIROVEC_1:
-            case self::SHIFT_KIROVEC_2:
-            case self::SHIFT_KIROVEC_3:
-            case self::SHIFT_KIROVEC_4:
-                return self::CAMP_KIROVEC;
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+            case 6:
+                return 1;
                 break;
-            case self::SHIFT_BLUESCREEN_1:
-            case self::SHIFT_BLUESCREEN_2:
-            case self::SHIFT_BLUESCREEN_3:
-            case self::SHIFT_BLUESCREEN_4:
-            case self::SHIFT_BLUESCREEN_5:
-                return self::CAMP_BLUESCREEN;
+            case 7:
+            case 8:
+            case 9:
+            case 10:
+            case 11:
+                return 2;
                 break;
-            case self::SHIFT_EAST_1:
-            case self::SHIFT_EAST_2:
-            case self::SHIFT_EAST_3:
-            case self::SHIFT_EAST_4:
-                return self::CAMP_EAST_4;
+            case 12:
+            case 13:
+            case 14:
+            case 15:
+            case 16:
+                return 3;
                 break;
-            case self::SHIFT_DIAMOND_1:
-            case self::SHIFT_DIAMOND_2:
-            case self::SHIFT_DIAMOND_3:
-            case self::SHIFT_DIAMOND_4:
-                return self::CAMP_DIAMOND;
+            case 17:
+            case 18:
+            case 19:
+            case 20:
+            case 21:
+                return 4;
                 break;
-            case self::SHIFT_BONFIRE_1:
-            case self::SHIFT_BONFIRE_2:
-            case self::SHIFT_BONFIRE_3:
-            case self::SHIFT_BONFIRE_4:
-                return self::CAMP_BONFIRE;
+            case 22:
+            case 23:
+            case 24:
+            case 25:
+            case 26:
+            case 27:
+                return 5;
                 break;
-            case self::SHIFT_LIGHTHOUSE_1:
-            case self::SHIFT_LIGHTHOUSE_2:
-            case self::SHIFT_LIGHTHOUSE_3:
-            case self::SHIFT_LIGHTHOUSE_4:
-                return self::CAMP_LIGHTHOUSE;
+            case 28:
+            case 29:
+            case 30:
+            case 31:
+                return 6;
                 break;
-            case self::SHIFT_FLYGHT_1:
-            case self::SHIFT_FLYGHT_2:
-            case self::SHIFT_FLYGHT_3:
-            case self::SHIFT_FLYGHT_4:
-                return self::CAMP_FLYGHT;
+            case 32:
+            case 33:
+            case 34:
+            case 35:
+                return 7;
                 break;
             default:
                 return 0;
@@ -779,44 +785,51 @@ class Questionnaire extends CActiveRecord
     public static function getShiftName($shiftId)
     {
         switch ($shiftId) {
-            case self::SHIFT_KIROVEC_1:
-            case self::SHIFT_BLUESCREEN_1:
-            case self::SHIFT_EAST_1:
-            case self::SHIFT_DIAMOND_1:
-            case self::SHIFT_BONFIRE_1:
-            case self::SHIFT_LIGHTHOUSE_1:
-            case self::SHIFT_FLYGHT_1:
+            case 1:
+            case 32:
+            case 22:
+            case 28:
+            case 7:
+            case 17:
+            case 12:
                 return 'Смена 1';
                 break;
-            case self::SHIFT_KIROVEC_2:
-            case self::SHIFT_BLUESCREEN_2:
-            case self::SHIFT_EAST_2:
-            case self::SHIFT_DIAMOND_2:
-            case self::SHIFT_BONFIRE_2:
-            case self::SHIFT_LIGHTHOUSE_2:
-            case self::SHIFT_FLYGHT_2:
+            case 2:
+            case 33:
+            case 29:
+            case 23:
+            case 18:
+            case 13:
+            case 8:
                 return 'Смена 2';
                 break;
-            case self::SHIFT_KIROVEC_3:
-            case self::SHIFT_BLUESCREEN_3:
-            case self::SHIFT_EAST_3:
-            case self::SHIFT_DIAMOND_3:
-            case self::SHIFT_BONFIRE_3:
-            case self::SHIFT_LIGHTHOUSE_3:
-            case self::SHIFT_FLYGHT_3:
+            case 3:
+            case 14:
+            case 34:
+            case 30:
+            case 24:
+            case 9:
                 return 'Смена 3';
                 break;
-            case self::SHIFT_KIROVEC_4:
-            case self::SHIFT_BLUESCREEN_4:
-            case self::SHIFT_DIAMOND_4:
-            case self::SHIFT_BONFIRE_4:
-            case self::SHIFT_FLYGHT_4:
-            case self::SHIFT_LIGHTHOUSE_4:
-            case self::SHIFT_EAST_4:
+            case 4:
+            case 20:
+            case 10:
+            case 25:
+            case 31:
+            case 35:
+            case 15:
                 return 'Смена 4';
                 break;
-            case self::SHIFT_BLUESCREEN_5:
+            case 5:
+            case 21:
+            case 26:
+            case 11:
+            case 16:
                 return 'Смена 5';
+                break;
+            case 27:
+            case 6:
+                return 'Смена 6';
                 break;
             default:
                 return '';
@@ -902,18 +915,6 @@ class Questionnaire extends CActiveRecord
         foreach ($result as $smena) {
             $arr[$smena['id']] = ($numer===false?$smena['date']:$smena['smena'].' смена');
         }
-        /*
-        $arr = array(
-            self::DLO_1 => ($numer===false?'12.06-25.06':'1 смена'),
-            self::DLO_2 => ($numer===false?'28.06-11.07':'2 смена'),
-            self::DLO_3 => ($numer===false?'28.06-18.07':'3 смена'),
-            self::DLO_4 => ($numer===false?'14.07-27.07':'4 смена'),
-            self::DLO_5 => ($numer===false?'21.07-03.08':'5 смена'),
-            self::DLO_6 => ($numer===false?'30.07-12.08':'6 смена'),
-            self::DLO_7 => ($numer===false?'06.08-19.08':'7 смена'),
-            self::DLO_8 => ($numer===false?'15.08-28.08':'8 смена')
-        );
-        */
         if (is_numeric($dloId)) {
             if (array_key_exists($dloId, $arr)) {
                 return $arr[$dloId];
@@ -1116,92 +1117,108 @@ class Questionnaire extends CActiveRecord
     public static function getPref($shiftId)
     {
         switch ($shiftId) {
-            case self::SHIFT_KIROVEC_1:
+            case 1:
                 return '1К';
                 break;
-            case self::SHIFT_KIROVEC_2:
+            case 2:
                 return '2К';
                 break;
-            case self::SHIFT_KIROVEC_3:
+            case 3:
                 return '3К';
                 break;
-            case self::SHIFT_KIROVEC_4:
+            case 4:
                 return '4К';
                 break;
+            case 5:
+                return '5К';
                 break;
-            case self::SHIFT_BLUESCREEN_1:
+            case 6:
+                return '6К';
+                break;
+            case 7:
                 return '1Г';
                 break;
-            case self::SHIFT_BLUESCREEN_2:
+            case 8:
                 return '2Г';
                 break;
-            case self::SHIFT_BLUESCREEN_3:
+            case 9:
                 return '3Г';
                 break;
-            case self::SHIFT_BLUESCREEN_4:
+            case 10:
                 return '4Г';
                 break;
-            case self::SHIFT_BLUESCREEN_5:
+            case 11:
                 return '5Г';
                 break;
-            case self::SHIFT_EAST_1:
+            case 12:
                 return '1В';
                 break;
-            case self::SHIFT_EAST_2:
+            case 13:
                 return '2В';
                 break;
-            case self::SHIFT_EAST_3:
+            case 14:
                 return '3В';
                 break;
-            case self::SHIFT_EAST_4:
+            case 15:
                 return '4В';
+            case 16:
+                return '5В';
                 break;
-            case self::SHIFT_DIAMOND_1:
+            case 17:
                 return '1А';
                 break;
-            case self::SHIFT_DIAMOND_2:
+            case 18:
                 return '2А';
                 break;
-            case self::SHIFT_DIAMOND_3:
+            case 19:
                 return '3А';
                 break;
-            case self::SHIFT_DIAMOND_4:
+            case 20:
                 return '4А';
                 break;
-            case self::SHIFT_BONFIRE_1:
+            case 21:
+                return '5А';
+                break;
+            case 22:
                 return '1КС';
                 break;
-            case self::SHIFT_BONFIRE_2:
+            case 23:
                 return '2КС';
                 break;
-            case self::SHIFT_BONFIRE_3:
+            case 24:
                 return '3КС';
                 break;
-            case self::SHIFT_BONFIRE_4:
+            case 25:
                 return '4КС';
                 break;
-            case self::SHIFT_LIGHTHOUSE_1:
+            case 26:
+                return '5КС';
+                break;
+            case 27:
+                return '6КС';
+                break;
+            case 28:
                 return '1М';
                 break;
-            case self::SHIFT_LIGHTHOUSE_2:
+            case 29:
                 return '2М';
                 break;
-            case self::SHIFT_LIGHTHOUSE_3:
+            case 30:
                 return '3М';
                 break;
-            case self::SHIFT_LIGHTHOUSE_4:
+            case 31:
                 return '4М';
                 break;
-            case self::SHIFT_FLYGHT_1:
+            case 32:
                 return '1П';
                 break;
-            case self::SHIFT_FLYGHT_2:
+            case 33:
                 return '2П';
                 break;
-            case self::SHIFT_FLYGHT_3:
+            case 34:
                 return '3П';
                 break;
-            case self::SHIFT_FLYGHT_4:
+            case 35:
                 return '4П';
                 break;
             default:

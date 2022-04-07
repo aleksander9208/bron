@@ -348,7 +348,7 @@
                 <tr>
                     <th scope="col" class="text-center">Лагерь</th>
                     <th scope="col" class="text-center">Рекомендуемый возраст</th>
-                    <?
+                    <? /*
                     //Количество смен
                     $smena = count(Questionnaire::getDLOName());
 
@@ -357,7 +357,7 @@
                         <th scope="col" class="text-center" width="14%">
                             <b>Смена <?= $s?></b>
                         </th>
-                    <? } ?>
+                    <? }  */?>
                 </tr>
                 </thead>
                 <tbody>
@@ -370,6 +370,13 @@
                     for($i=1; $i <= count($countCamp); $i++) {
 
                         $camp = Questionnaire::getAddress($i);
+
+                        $idSmenaOne = SiteService::idDtoCamp($i, 1);
+                        $idSmenaTwo = SiteService::idDtoCamp($i, 2);
+                        $idSmenaThree = SiteService::idDtoCamp($i, 3);
+                        $idSmenaFour = SiteService::idDtoCamp($i, 4);
+                        $idSmenaFive = SiteService::idDtoCamp($i, 5);
+                        $idSmenaSix = SiteService::idDtoCamp($i, 6);
                     ?>
                         <tr>
                             <th scope="row" class="align-middle text-center">
@@ -382,7 +389,7 @@
                                 до <?php echo  $camp['max_age'];?> лет
                             </td>
 
-                            <? if($idSmenaOne = SiteService::idDtoCamp($i, 1)) { ?>
+                            <? if($shifts[$idSmenaOne]['date']) { ?>
                                 <td class="text-center"
                                     data-dlo="<?= $idSmenaOne; ?>"
                                     data-shift="<?= $idSmenaOne; ?>"
@@ -403,9 +410,9 @@
                                             '1');
                                     ?>
                                 </td>
-                            <? } else {?><td></td><? } ?>
+                            <? } ?>
 
-                            <? if($idSmenaTwo = SiteService::idDtoCamp($i, 2)) { ?>
+                            <? if($shifts[$idSmenaTwo]['date']) { ?>
                                 <td class="text-center"
                                     data-dlo="<?= $idSmenaTwo; ?>"
                                     data-shift="<?= $idSmenaTwo; ?>"
@@ -426,9 +433,9 @@
                                         '1');
                                     ?>
                                 </td>
-                            <? } else {?><td></td><? } ?>
+                            <? } ?>
 
-                            <? if($idSmenaThree = SiteService::idDtoCamp($i, 3)) { ?>
+                            <? if($shifts[$idSmenaThree]['date']) { ?>
                                 <td class="text-center"
                                     data-dlo="<?= $idSmenaThree; ?>"
                                     data-shift="<?= $idSmenaThree; ?>"
@@ -449,9 +456,9 @@
                                         '1');
                                     ?>
                                 </td>
-                            <? } else {?><td></td><? } ?>
+                            <? } ?>
 
-                            <? if($idSmenaFour = SiteService::idDtoCamp($i, 4)) { ?>
+                            <? if($shifts[$idSmenaFour]['date']) { ?>
                                 <td class="text-center"
                                     data-dlo="<?= $idSmenaFour; ?>"
                                     data-shift="<?= $idSmenaFour; ?>"
@@ -472,9 +479,9 @@
                                         '1');
                                     ?>
                                 </td>
-                            <? } else {?><td></td><? } ?>
+                            <? } ?>
 
-                            <? if($idSmenaFive = SiteService::idDtoCamp($i, 5)) { ?>
+                            <? if($shifts[$idSmenaFive]['date']) { ?>
                                 <td class="text-center"
                                     data-dlo="<?= $idSmenaFive; ?>"
                                     data-shift="<?= $idSmenaFive; ?>"
@@ -495,9 +502,9 @@
                                         '1');
                                     ?>
                                 </td>
-                            <? } else {?><td></td><? } ?>
+                            <? } ?>
 
-                            <? if($idSmenaSix = SiteService::idDtoCamp($i, 6)) { ?>
+                            <? if($shifts[$idSmenaSix]['date']) { ?>
                                 <td class="text-center"
                                     data-dlo="<?= $idSmenaSix; ?>"
                                     data-shift="<?= $idSmenaSix; ?>"
@@ -518,7 +525,7 @@
                                         '1');
                                     ?>
                                 </td>
-                            <? } else {?><td></td><? } ?>
+                            <? } ?>
 
                         </tr>
                     <?php } ?>
