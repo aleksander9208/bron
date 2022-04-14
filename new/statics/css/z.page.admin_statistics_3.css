@@ -1,0 +1,11 @@
+#z_page_admin_statistics
+{
+}
+#z_page_admin_statistics .sort-link
+{
+    color: #FFFFFF;
+}
+#z_page_admin_statistics table.table
+{
+ font-size: 0.8em;
+}

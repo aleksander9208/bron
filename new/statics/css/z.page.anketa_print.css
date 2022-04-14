@@ -1,0 +1,33 @@
+#z_page_anketa_print
+{
+    padding: 1em;
+}
+#z_page_anketa_print #z_page_anketa_print_table
+{
+    display: table;
+    width: 100%;
+}
+#z_page_anketa_print #z_page_anketa_print_table .row
+{
+    margin-bottom: 0.8em;
+    display: table-row;
+}
+#z_page_anketa_print #z_page_anketa_print_table .row > label,
+#z_page_anketa_print #z_page_anketa_print_table .row > div
+{
+    display: table-cell;
+    vertical-align: middle;
+}
+#z_page_anketa_print #z_page_anketa_print_table .row > label
+{
+    font-weight: bold;
+    white-space: nowrap;
+    text-align: left;
+    font-size: 1.2em;
+}
+#z_page_anketa_print #z_page_anketa_print_table .row > div
+{
+    padding: 0.5em;
+    border-bottom: dotted 1px #000000;
+    text-align: right;
+}

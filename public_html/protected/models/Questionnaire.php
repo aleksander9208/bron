@@ -123,8 +123,8 @@ class Questionnaire extends CActiveRecord
             'tel_ur_contact' => 'Телефон контактного лица',
             'email_ur_contact' => 'E-mail контактного лица',
 
-            'fio_parent' => 'Ф.И.О. родителя',
-            'residence' => 'Город места жительства родителя',
+            'fio_parent' => 'Ф.И.О. родителя/опекуна',
+            'residence' => 'Город места жительства родителя/опекуна',
             'code' => 'Кодовое слово',
             'ur_code' => 'Кодовое слово',
             //'place_of_work' => 'Место работы',
@@ -507,6 +507,7 @@ class Questionnaire extends CActiveRecord
     {
         if ($this->isNewRecord) {
             $q = Questionnaire::model()->findByAttributes(array('fio_child' => $this->$attribute, 'shift_id' => $this->shift_id));
+
             if ($q && ($q->status != self::STATUS_CANCELED)) {
                 $this->addError($attribute, 'Заявка уже была принята ранее');
                 return false;
@@ -756,26 +757,26 @@ class Questionnaire extends CActiveRecord
     public static function geShiftIdsByCampId($campId)
     {
         switch ($campId) {
-            case self::CAMP_KIROVEC:
-                return array(self::SHIFT_KIROVEC_1, self::SHIFT_KIROVEC_2, self::SHIFT_KIROVEC_3, self::SHIFT_KIROVEC_4);
+            case 1:
+                return array(1, 2, 3, 4, 5, 6);
                 break;
-            case self::CAMP_BLUESCREEN:
-                return array(self::SHIFT_BLUESCREEN_1, self::SHIFT_BLUESCREEN_2, self::SHIFT_BLUESCREEN_3, self::SHIFT_BLUESCREEN_4, self::SHIFT_BLUESCREEN_5);
+            case 2:
+                return array(7, 8, 9, 10, 11);
                 break;
-            case self::CAMP_EAST_4:
-                return array(self::SHIFT_EAST_1, self::SHIFT_EAST_2, self::SHIFT_EAST_3, self::SHIFT_EAST_4);
+            case 3:
+                return array(12, 13, 14, 15, 16);
                 break;
-            case self::CAMP_DIAMOND:
-                return array(self::SHIFT_DIAMOND_1, self::SHIFT_DIAMOND_2, self::SHIFT_DIAMOND_3, self::SHIFT_DIAMOND_4);
+            case 4:
+                return array(17, 18, 19, 20, 21);
                 break;
-            case self::CAMP_BONFIRE:
-                return array(self::SHIFT_BONFIRE_1, self::SHIFT_BONFIRE_2, self::SHIFT_BONFIRE_3, self::SHIFT_BONFIRE_4);
+            case 5:
+                return array(22, 23, 24, 25, 26, 27);
                 break;
-            case self::CAMP_LIGHTHOUSE:
-                return array(self::SHIFT_LIGHTHOUSE_1, self::SHIFT_LIGHTHOUSE_2, self::SHIFT_LIGHTHOUSE_3, self::SHIFT_LIGHTHOUSE_4);
+            case 6:
+                return array(28, 29, 30, 31);
                 break;
-            case self::CAMP_FLYGHT:
-                return array(self::SHIFT_FLYGHT_1, self::SHIFT_FLYGHT_2, self::SHIFT_FLYGHT_3, self::SHIFT_FLYGHT_4);
+            case 7:
+                return array(31, 32, 33, 34);
                 break;
             default:
                 return 0;
@@ -835,7 +836,6 @@ class Questionnaire extends CActiveRecord
                 return '';
         }
     }
-
 
     public static function getShiftsByParams($campId = false, $dloId = false, $full = false, $age = false)
     {
@@ -924,8 +924,6 @@ class Questionnaire extends CActiveRecord
         return $arr;
     }
 
-
-
     public static function getDLOMonthStart($dloId = false,$max = false)
     {
         $arr = array(
@@ -946,7 +944,6 @@ class Questionnaire extends CActiveRecord
         }
         return $arr;
     }
-
 
     public function getBidList($route, $stat = false)
     {
@@ -1015,19 +1012,22 @@ class Questionnaire extends CActiveRecord
         if (is_numeric($this->shift_name)) {
             switch ($this->shift_name) {
                 case 1:
-                    $criteria->addInCondition('t.shift_id', array(self::SHIFT_KIROVEC_1, self::SHIFT_BLUESCREEN_1, self::SHIFT_EAST_1, self::SHIFT_DIAMOND_1, self::SHIFT_BONFIRE_1, self::SHIFT_LIGHTHOUSE_1, self::SHIFT_FLYGHT_1));
+                    $criteria->addInCondition('t.shift_id', array(1, 32, 22, 28, 7, 17, 12));
                     break;
                 case 2:
-                    $criteria->addInCondition('t.shift_id', array(self::SHIFT_KIROVEC_2, self::SHIFT_BLUESCREEN_2, self::SHIFT_EAST_2, self::SHIFT_DIAMOND_2, self::SHIFT_BONFIRE_2, self::SHIFT_LIGHTHOUSE_2, self::SHIFT_FLYGHT_2));
+                    $criteria->addInCondition('t.shift_id', array(2, 33, 29, 23, 18, 13, 8));
                     break;
                 case 3:
-                    $criteria->addInCondition('t.shift_id', array(self::SHIFT_KIROVEC_3, self::SHIFT_BLUESCREEN_3, self::SHIFT_EAST_3, self::SHIFT_DIAMOND_3, self::SHIFT_BONFIRE_3, self::SHIFT_LIGHTHOUSE_3, self::SHIFT_FLYGHT_3));
+                    $criteria->addInCondition('t.shift_id', array(3, 14, 34, 30, 24, 9));
                     break;
                 case 4:
-                    $criteria->addInCondition('t.shift_id', array(self::SHIFT_KIROVEC_4, self::SHIFT_BLUESCREEN_4, self::SHIFT_EAST_4, self::SHIFT_DIAMOND_4, self::SHIFT_BONFIRE_4, self::SHIFT_LIGHTHOUSE_4, self::SHIFT_FLYGHT_4));
+                    $criteria->addInCondition('t.shift_id', array(4, 20, 10, 25, 31, 35, 15));
                     break;
                 case 5:
-                    $criteria->addInCondition('t.shift_id', array(self::SHIFT_BLUESCREEN_5));
+                    $criteria->addInCondition('t.shift_id', array(5, 21, 26, 11, 16));
+                    break;
+                case 6:
+                    $criteria->addInCondition('t.shift_id', array(6, 27));
                     break;
             }
         }

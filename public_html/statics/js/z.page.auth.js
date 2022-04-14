@@ -32,13 +32,13 @@ if (typeof window.z == 'object')
                     ).on(
                         'change.'+_self.name,
                         '#z_auth_user_fio',
+                        '#z_auth_user_phone',
                         function ()
                             {
                                 _self.validate_fio();
                             }
                     ).on(
                         'change.'+_self.name,
-                        '#z_auth_user_phone',
                         function ()
                             {
                                 _self.validate_phone();
@@ -76,7 +76,7 @@ if (typeof window.z == 'object')
                             }
                     );
 
-                    $(_self.z.el.z_auth_user_phone).mask('(999) 999-99-99');
+                    //$(_self.z.el.z_auth_user_phone).mask('(999) 999-99-99');
 
                     _self.z.tasks.call(task_name, result_out);
                 },
