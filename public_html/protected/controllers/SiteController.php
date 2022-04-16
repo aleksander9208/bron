@@ -34,6 +34,7 @@ class SiteController extends Controller
         if (!Yii::app()->user->getIsGuest()) {
             if (Yii::app()->user->role==User::ROLE_USER) {
                 $model->fio_ur_contact = $model->fio_parent = Yii::app()->user->login;
+                $model->code = Yii::app()->user->code;
             }
             $model->putData(Yii::app()->user->id);
         }
@@ -49,6 +50,7 @@ class SiteController extends Controller
                     $model = new Questionnaire();
                     if (!Yii::app()->user->getIsGuest()) {
                         $model->fio_ur_contact = $model->fio_parent = Yii::app()->user->login;
+                        $model->code = Yii::app()->user->code;
                     }
                     $model->attributes = $postQuestionnaire;
                     $model->shift_id = (int)$ps;
@@ -61,6 +63,7 @@ class SiteController extends Controller
                 $model = new Questionnaire();
                 if (!Yii::app()->user->getIsGuest()) {
                     $model->fio_ur_contact = $model->fio_parent = Yii::app()->user->login;
+                    $model->code = Yii::app()->user->code;
                 }
                 $model->attributes = $postQuestionnaire;
                 $model->code = $postQuestionnaire['code'];
@@ -76,6 +79,7 @@ class SiteController extends Controller
                 Yii::app()->user->setFlash('q_done', 'Заявка подана');
                 if (!Yii::app()->user->getIsGuest()) {
                     $model->fio_ur_contact = $model->fio_parent = Yii::app()->user->login;
+                    $model->code = Yii::app()->user->code;
                 }
                 $identity = new UserIdentity('','','');
                 $identity->authenticateById($model->user_id);

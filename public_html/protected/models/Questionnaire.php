@@ -123,12 +123,12 @@ class Questionnaire extends CActiveRecord
             'tel_ur_contact' => 'Телефон контактного лица',
             'email_ur_contact' => 'E-mail контактного лица',
 
-            'fio_parent' => 'Ф.И.О. родителя/опекуна',
-            'residence' => 'Город места жительства родителя/опекуна',
+            'fio_parent' => 'Ф.И.О. заявителя/опекуна',
+            'residence' => 'Город места жительства заявителя/опекуна',
             'code' => 'Кодовое слово',
             'ur_code' => 'Кодовое слово',
             //'place_of_work' => 'Место работы',
-            'tel_parent' => 'Телефон родителя/опекуна',
+            'tel_parent' => 'Телефон заявителя/опекуна',
             //'email_parent' => 'E-mail родителя/опекуна',
 
             'fio_child' => 'Имя ребенка',
@@ -582,7 +582,7 @@ class Questionnaire extends CActiveRecord
             if (!$this->getError($attribute)) {
                 $shifts = SiteService::getShifts();
                 $reserve = Yii::app()->db->createCommand()
-                    ->select('srez_1,srez_2,srez_3,srez_4,srez_5,srez_6,srez_7,srez_8,srez_9,srez_10,srez_11,srez_12,srez_13,srez_14,srez_15,srez_16,srez_17,srez_18,srez_19,srez_20,srez_21,srez_22,srez_23,srez_24,srez_25,srez_26,srez_27,srez_28,srez_29')
+                    ->select('srez_1,srez_2,srez_3,srez_4,srez_5,srez_6,srez_7,srez_8,srez_9,srez_10,srez_11,srez_12,srez_13,srez_14,srez_15,srez_16,srez_17,srez_18,srez_19,srez_20,srez_21,srez_22,srez_23,srez_24,srez_25,srez_26,srez_27,srez_28,srez_29,srez_30,srez_31,srez_32,srez_33,srez_34,srez_35')
                     ->from('{{questionnaire_rezerv}}')
                     ->where('id=1')
                     ->queryRow();
@@ -1057,6 +1057,7 @@ class Questionnaire extends CActiveRecord
         $criteria->compare('t.fio_child', $this->fio_child, true);
         $criteria->compare('t.fio_ur_contact', $this->fio_ur_contact, true);
         $criteria->compare('t.fio_parent', $this->fio_parent, true);
+        $criteria->compare('t.code', $this->fio_parent, true);
         $criteria->compare('t.tel_parent', $this->tel_parent, true);
         $criteria->compare('t.booking_id', $this->booking_id, true);
         $criteria->compare('t.comment', $this->comment, true);
