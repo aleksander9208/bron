@@ -134,7 +134,7 @@
                     array(
                         'header' => 'Кодовое слово',
                         'name' => 'code',
-                        'value' => '$data->code',
+                        'value' => '$data->code ?: $data->ur_code',
                         'htmlOptions' => array('class'=>'text-center'),
                         'headerHtmlOptions' => array('class' => 'text-center','scope'=>'col'),
                         'filter' => CHtml::activeTextField($model, 'code', array('class' => 'form-control')),

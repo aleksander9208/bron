@@ -20,18 +20,11 @@
                     <div class="form-group">
                         <label for="z_auth_user_phone" class="col-form-label">Телефон родителя:</label>
                         <div class="input-group mb-2">
-                            <?php echo CHtml::activeTextField(
-                                    $model,
-                                    'password',
-                                    array(
-                                        'placeholder' => 'Введите телефон',
-                                        'class' => 'form-control',
-                                        'required'=>'required',
-                                        'id'=>'z_auth_user_phone',
-                                        'maxlength'=>11,
-                                        'data-mask'=>'0123456789'
-                                    )); ?>
-                            <div class="invalid-feedback">Укажите телефон подавшего заявку</div>
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">+7</div>
+                            </div>
+                            <?php echo CHtml::activeTextField($model, 'password', array('placeholder' => 'Введите телефон', 'class' => 'form-control', 'required'=>'required', 'id'=>'z_auth_user_phone', 'maxlength'=>15, 'data-mask'=>'0123456789')); ?>
+                            <div class="invalid-feedback">Укажите телефон подавшего заявку (Например: (905) 123-45-67)</div>
                         </div>
                     </div>
                     <div class="form-group">

@@ -30,6 +30,7 @@ if (typeof window.z == 'object')
                         [
                             '#z_anketa_fio_parent',
                             '#z_anketa_code',
+                            '#z_anketa_ur_code',
                             '#z_anketa_fio_ur_contact',
                             '#z_anketa_fio_child',
 
@@ -52,6 +53,7 @@ if (typeof window.z == 'object')
                                     {
                                         case 'z_anketa_fio_parent':
                                         case 'z_anketa_code':
+                                        case 'z_anketa_ur_code':
                                         case 'z_anketa_fio_ur_contact':
                                         case 'z_anketa_fio_child':
                                             _self.validate_fio($(this));
@@ -92,7 +94,8 @@ if (typeof window.z == 'object')
                             '#z_anketa_fio_ur_contact',
                             '#z_anketa_fio_child',
                             '#z_anketa_fio_parent',
-                            '#z_anketa_code'
+                            '#z_anketa_code',
+                            '#z_anketa_ur_code'
                         ].join(),
                         function (event)
                             {
@@ -121,7 +124,8 @@ if (typeof window.z == 'object')
                             '#z_anketa_fio_ur_contact',
                             '#z_anketa_fio_child',
                             '#z_anketa_fio_parent',
-                            '#z_anketa_code'
+                            '#z_anketa_code',
+                            '#z_anketa_ur_code'
                         ].join(),
                         function (event)
                             {
@@ -157,8 +161,8 @@ if (typeof window.z == 'object')
                         _self.validate_fio(_self.z.el.z_anketa_fio_parent);
                     if (typeof _self.z.el.z_anketa_code == 'object')
                         _self.validate_fio(_self.z.el.z_anketa_code);
-                    if (typeof _self.z.el.z_anketa_code == 'object')
-                        _self.validate_fio(_self.z.el.z_anketa_code);
+                    if (typeof _self.z.el.z_anketa_ur_code == 'object')
+                        _self.validate_fio(_self.z.el.z_anketa_ur_code);
                     if (typeof _self.z.el.z_anketa_residence == 'object')
                         _self.validate_required(_self.z.el.z_anketa_residence);
                     //if (typeof _self.z.el.z_anketa_place_of_work == 'object')

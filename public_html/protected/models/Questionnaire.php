@@ -124,11 +124,11 @@ class Questionnaire extends CActiveRecord
             'email_ur_contact' => 'E-mail контактного лица',
 
             'fio_parent' => 'Ф.И.О. заявителя/опекуна',
-            'residence' => 'Город места жительства заявителя/опекуна',
+            'residence' => 'Город места жительства родителя/опекуна',
             'code' => 'Кодовое слово',
             'ur_code' => 'Кодовое слово',
             //'place_of_work' => 'Место работы',
-            'tel_parent' => 'Телефон заявителя/опекуна',
+            'tel_parent' => 'Телефон родителя/опекуна',
             //'email_parent' => 'E-mail родителя/опекуна',
 
             'fio_child' => 'Имя ребенка',
@@ -365,7 +365,7 @@ class Questionnaire extends CActiveRecord
     {
         if ($this->isNewRecord && !$this->$attribute) {
             $login = trim($this->type == self::TYPE_UR ? $this->fio_ur_contact : $this->fio_parent);
-            $code = trim($this->code == self::TYPE_UR ? $this->ur_code : $this->code);
+            $code = trim($this->type == self::TYPE_UR ? $this->ur_code : $this->code);
             $tel = ($this->type == self::TYPE_UR ? $this->tel_ur_contact : $this->tel_parent);
             Yii::log('FIND USER BY LOGIN:' . $login, 'profile', 'debug');
             $user = User::model()->findByAttributes(array('login' => $login, 'code'=> $code,));
@@ -1057,7 +1057,7 @@ class Questionnaire extends CActiveRecord
         $criteria->compare('t.fio_child', $this->fio_child, true);
         $criteria->compare('t.fio_ur_contact', $this->fio_ur_contact, true);
         $criteria->compare('t.fio_parent', $this->fio_parent, true);
-        $criteria->compare('t.code', $this->fio_parent, true);
+        $criteria->compare('t.code', $this->code, true);
         $criteria->compare('t.tel_parent', $this->tel_parent, true);
         $criteria->compare('t.booking_id', $this->booking_id, true);
         $criteria->compare('t.comment', $this->comment, true);

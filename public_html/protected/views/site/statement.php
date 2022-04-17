@@ -67,16 +67,15 @@
                 <div class="invalid-feedback">Заполните поле корректно</div>
             </div>
             <div class="form-group z_anketa_block_<?php echo Questionnaire::TYPE_UR; ?>">
-                <?php echo CHtml::activeLabel($model, 'code', array('for'=>'z_anketa_code')); ?>
+                <?php echo CHtml::activeLabel($model, 'ur_code', array('for'=>'z_anketa_ur_code')); ?>
                 <?php echo CHtml::activeTextField(
                         $model,
-                        'code',
+                        'ur_code',
                         array(
                             'class' => 'form-control',
-                            'placeholder' => $model->getAttributeLabel('code'),
-                            'id'=>'z_anketa_code',
+                            'placeholder' => $model->getAttributeLabel('ur_code'),
+                            'id'=>'z_anketa_ur_code',
                             'data-mask'=>' абвгдеёжзийклмнопрстуфхцчшщъыьэюя-',
-                            'value'=> $model->code
                         )); ?>
                 <div class="info-code">Запомните кодовое слово для последующего входа в личный кабинет</div>
                 <div class="invalid-feedback">Заполните поле корректно</div>
@@ -84,7 +83,10 @@
             <div class="form-group z_anketa_block_<?php echo Questionnaire::TYPE_UR; ?>">
                 <?php echo CHtml::activeLabel($model, 'tel_ur_contact', array('for'=>'z_anketa_tel_ur_contact')); ?>
                 <div class="input-group">
-                    <?php echo CHtml::activeTextField($model, 'tel_ur_contact', array((Questionnaire::TYPE_UR==$model->type?'_':'').'disabled'=>'disabled', 'class' => 'form-control', 'placeholder' => $model->getAttributeLabel('tel_ur_contact'), 'required'=>'required', 'id'=>'z_anketa_tel_ur_contact', 'maxlength'=>11, 'data-mask'=>'0123456789')); ?>
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">+7</div>
+                    </div>
+                    <?php echo CHtml::activeTextField($model, 'tel_ur_contact', array((Questionnaire::TYPE_UR==$model->type?'_':'').'disabled'=>'disabled', 'class' => 'form-control', 'placeholder' => $model->getAttributeLabel('tel_ur_contact'), 'required'=>'required', 'id'=>'z_anketa_tel_ur_contact', 'maxlength'=>15, 'data-mask'=>'0123456789')); ?>
                     <div class="invalid-feedback">Заполните поле корректно</div>
                 </div>
             </div>
@@ -123,7 +125,6 @@
                                 'placeholder' => $model->getAttributeLabel('code'),
                                 'id'=>'z_anketa_code',
                                 'data-mask'=>' абвгдеёжзийклмнопрстуфхцчшщъыьэюя-',
-                                'value'=> $model->code
                             )); ?>
                 <div class="info-code">Запомните кодовое слово для последующего входа в личный кабинет</div>
                 <div class="invalid-feedback">Заполните поле корректно</div>
@@ -196,7 +197,10 @@
             <div class="form-group">
                 <?php echo CHtml::activeLabel($model, 'tel_parent', array('for'=>'z_anketa_tel_parent')); ?>
                 <div class="input-group">
-                    <?php echo CHtml::activeTextField($model, 'tel_parent', array('class' => 'form-control', 'placeholder' => $model->getAttributeLabel('tel_parent'), 'required'=>'required', 'id'=>'z_anketa_tel_parent', 'maxlength'=>11, 'data-mask'=>'0123456789')); ?>
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">+7</div>
+                    </div>
+                    <?php echo CHtml::activeTextField($model, 'tel_parent', array('class' => 'form-control', 'placeholder' => $model->getAttributeLabel('tel_parent'), 'required'=>'required', 'id'=>'z_anketa_tel_parent', 'maxlength'=>15, 'data-mask'=>'0123456789')); ?>
                     <div class="invalid-feedback">Заполните поле корректно</div>
                 </div>
             </div>
